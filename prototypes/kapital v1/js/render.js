@@ -19,7 +19,7 @@ function drawBlock(col, row, type, owner, role) {
   const x = cellX(col), y = cellY(row), s = CELL;
 
   if (type === 'apartment') { drawApartment(x, y, s); return; }
-  if (type === 'tower')     { drawTower(x, y, s, owner); return; }
+  if (type === 'tower')     { drawTower(x, y, s, owner, row, col); return; }
   if (type === 'platform')  {
     const r = role || grid[row]?.[col]?.role || 'base';
     drawPlatform(x, y, s, r, owner);
@@ -66,7 +66,31 @@ function drawBrickBody(x, y, w, h, palette) {
   }
 }
 
-function drawTower(x, y, s, owner) {
+function isTowerAt(row, col) {
+  if (row < 0 || row >= ROWS) return false;
+  if (grid[row][col].type === 'tower') return true;
+  // Cells pending in the current build animation aren't in `grid` yet.
+  if (animBuild) {
+    for (const c of animBuild.cells)
+      if (c.type === 'tower' && c.row === row && c.col === col) return true;
+  }
+  return false;
+}
+
+function drawTower(x, y, s, owner, row, col) {
+  // Choose tower variant based on vertical neighbours (tower runs merge).
+  const hasAbove = row != null && isTowerAt(row + 1, col);
+  const hasBelow = row != null && isTowerAt(row - 1, col);
+  let variant;
+  if (!hasAbove && !hasBelow)      variant = 'tower_alone';
+  else if (!hasAbove &&  hasBelow) variant = 'tower_up';    // top of run
+  else if ( hasAbove && !hasBelow) variant = 'tower_down';  // bottom of run
+  else                              variant = 'tower_mid';  // middle of run
+
+  TileAtlas.drawTile(ctx, variant, x, y, currentNow, s / TILE_SIZE);
+  return;
+
+  // Procedural fallback (unused while atlas is active)
   const p = TOWER_PALETTE[owner ?? 0];
   drawBrickBody(x, y, s, s, p);
 
@@ -101,6 +125,12 @@ function drawTower(x, y, s, owner) {
 //   role 'left'  — triangular ramp "\" at col-1 (brick in bottom-right triangle)
 //   role 'right' — triangular ramp "/" at col+1 (brick in bottom-left triangle)
 function drawPlatform(x, y, s, role, owner) {
+  const name = role === 'left'  ? 'platform_left'
+             : role === 'right' ? 'platform_right'
+             :                    'platform_base';
+  TileAtlas.drawTile(ctx, name, x, y, currentNow, s / TILE_SIZE);
+  return;
+
   const p = TOWER_PALETTE[owner ?? 0];
 
   if (role === 'base') {
@@ -166,200 +196,37 @@ function drawPlatform(x, y, s, role, owner) {
   ctx.lineWidth = 1;
 }
 
-// Brick apartment with one lit window + small chimney extending above the tile.
 function drawApartment(x, y, s) {
-  // Brick body (greyscale stone)
-  const brick     = '#5a5a5a';
-  const brickDark = '#2a2a2a';
-  const mortar    = '#141414';
-
-  ctx.fillStyle = brick;
-  ctx.fillRect(x + 1, y + 1, s - 2, s - 2);
-
-  // Horizontal mortar lines
-  ctx.fillStyle = mortar;
-  const brickH = 5;
-  for (let by = y + brickH; by < y + s - 1; by += brickH) {
-    ctx.fillRect(x + 1, by, s - 2, 1);
-  }
-  // Vertical mortar lines (staggered)
-  for (let row = 0; row * brickH < s - 2; row++) {
-    const oy = y + row * brickH;
-    const offset = (row % 2) * 6;
-    for (let bx = x + 6 + offset; bx < x + s - 1; bx += 12) {
-      ctx.fillRect(bx, oy, 1, brickH);
-    }
-  }
-
-  // Subtle highlight top row
-  ctx.fillStyle = '#7a7a7a';
-  ctx.fillRect(x + 1, y + 1, s - 2, 1);
-  // Shadow right edge
-  ctx.fillStyle = brickDark;
-  ctx.fillRect(x + s - 3, y + 1, 2, s - 2);
-  ctx.fillRect(x + 1, y + s - 3, s - 2, 2);
-
-  // Window (centred, slightly upper half)
-  const wW = 10, wH = 10;
-  const wx = x + (s - wW) / 2;
-  const wy = y + 10;
-  // Frame
-  ctx.fillStyle = '#0a0a0a';
-  ctx.fillRect(wx - 1, wy - 1, wW + 2, wH + 2);
-
-  // Animated lit pane: sinusoidal brightness, per-apartment phase so no two
-  // windows pulse in sync. Wider range (less grey) and 2× faster.
-  const phase = x * 0.031 + y * 0.047;
-  const fluc  = 0.5 + 0.5 * Math.sin(currentNow * 0.0018 + phase); // 0..1
-  const v     = Math.round(215 + 40 * fluc);                      
-  ctx.fillStyle = `rgb(${v},${v},${v})`;
-  ctx.fillRect(wx, wy, wW, wH);
-
-  // Cross bars
-  ctx.fillStyle = '#404040';
-  ctx.fillRect(wx + wW / 2 - 0.5, wy, 1, wH);
-  ctx.fillRect(wx, wy + wH / 2 - 0.5, wW, 1);
-
-  // Highlight — tracks the pane brightness so it glows too
-  const vh = Math.min(255, v + 40);
-  ctx.fillStyle = `rgb(${vh},${vh},${vh})`;
-  ctx.fillRect(wx + 1, wy + 1, 2, 2);
-
-  // Sill
-  ctx.fillStyle = '#1a1a1a';
-  ctx.fillRect(wx - 2, wy + wH, wW + 4, 2);
-
-  // Chimney — extends above the tile
-  const chX = x + s - 10;
-  const chW = 6;
-  const chTop = y - 6;
-  ctx.fillStyle = '#2a2a2a';
-  ctx.fillRect(chX, chTop, chW, 8);
-  ctx.fillStyle = '#4a4a4a';
-  ctx.fillRect(chX + 1, chTop + 1, chW - 2, 6);
-  // Chimney cap
-  ctx.fillStyle = '#141414';
-  ctx.fillRect(chX - 1, chTop, chW + 2, 2);
-
-  // Smoke puffs
-  ctx.fillStyle = 'rgba(180,180,180,0.35)';
-  ctx.beginPath(); ctx.arc(chX + chW / 2,     chTop - 3, 2, 0, Math.PI * 2); ctx.fill();
-  ctx.beginPath(); ctx.arc(chX + chW / 2 - 2, chTop - 6, 1.5, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = 'rgba(200,200,200,0.2)';
-  ctx.beginPath(); ctx.arc(chX + chW / 2 + 1, chTop - 9, 2, 0, Math.PI * 2); ctx.fill();
+  TileAtlas.drawTile(ctx, 'apartment', x, y, currentNow, s / TILE_SIZE);
 }
 
 function drawFlag(x, y, s, row, col) {
-  // Pole — thin vertical bar, just left of centre
-  const poleX   = x + s / 2 - 1;
-  const poleTop = y + 3;
-  const poleBot = y + s - 2;
-  ctx.fillStyle = '#1a1a1a';
-  ctx.fillRect(poleX, poleTop, 2, poleBot - poleTop);
-  ctx.fillStyle = '#4a4a4a';
-  ctx.fillRect(poleX, poleTop, 1, poleBot - poleTop);
-  // Finial at the top
-  ctx.fillStyle = '#666';
-  ctx.fillRect(poleX - 1, poleTop - 1, 4, 2);
-
-  // Waving triangular flag
-  const phase = col * 0.6 + row * 0.4;
-  const wave  = Math.sin(currentNow * 0.005 + phase) * 2;
-  const baseX = poleX + 2;
-  const topY  = y + 5;
-  const botY  = y + 15;
-  const tipX  = baseX + 14;
-
-  ctx.fillStyle = '#888888';
-  ctx.beginPath();
-  ctx.moveTo(baseX,        topY);
-  ctx.lineTo(tipX + wave,  (topY + botY) / 2 + wave * 0.4);
-  ctx.lineTo(baseX,        botY);
-  ctx.closePath();
-  ctx.fill();
-  // Shadow on the under-fold
-  ctx.fillStyle = '#555555';
-  ctx.beginPath();
-  ctx.moveTo(baseX,        (topY + botY) / 2);
-  ctx.lineTo(tipX + wave,  (topY + botY) / 2 + wave * 0.4);
-  ctx.lineTo(baseX,        botY);
-  ctx.closePath();
-  ctx.fill();
-  // Outline
-  ctx.strokeStyle = '#2a2a2a';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(baseX,        topY);
-  ctx.lineTo(tipX + wave,  (topY + botY) / 2 + wave * 0.4);
-  ctx.lineTo(baseX,        botY);
-  ctx.stroke();
-
-  // Tiny base rock at the pole foot
-  ctx.fillStyle = '#333';
-  ctx.fillRect(poleX - 3, y + s - 3, 8, 2);
-  ctx.fillStyle = '#1a1a1a';
-  ctx.fillRect(poleX - 3, y + s - 1, 8, 1);
+  TileAtlas.drawTile(ctx, 'flag', x, y, currentNow, s / TILE_SIZE);
 }
 
 function drawCannon(x, y, s, owner, row, col) {
   const cx = x + s / 2;
   const apexY = y + s - CANNON_PIVOT_Y;   // apex of the triangular base
 
-  // Triangular base — stone wedge pointing up, filling the cell
-  ctx.fillStyle = '#3a3a3a';
-  ctx.beginPath();
-  ctx.moveTo(x + 1,      y + s - 1);    // bottom-left
-  ctx.lineTo(x + s - 1,  y + s - 1);    // bottom-right
-  ctx.lineTo(cx,         apexY);        // apex
-  ctx.closePath();
-  ctx.fill();
-
-  // Left-face highlight
-  ctx.strokeStyle = '#5a5a5a';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(x + 1, y + s - 1);
-  ctx.lineTo(cx,    apexY);
-  ctx.stroke();
-
-  // Right-face shadow
-  ctx.fillStyle = '#1e1e1e';
-  ctx.beginPath();
-  ctx.moveTo(cx,         apexY);
-  ctx.lineTo(x + s - 1,  y + s - 1);
-  ctx.lineTo(cx,         y + s - 1);
-  ctx.closePath();
-  ctx.fill();
-
-  // Bottom edge shadow
-  ctx.fillStyle = '#0a0a0a';
-  ctx.fillRect(x + 1, y + s - 2, s - 2, 1);
-
-  // Barrel — animated, extending beyond the cell
+  // Barrel — animated, extending beyond the cell. Drawn first so the tile
+  // base (drawn after) sits on top of the pivot hub.
   const angle = cannonAngle(row, col, currentNow);
   const dir   = owner === 0 ? 1 : -1;
   const px    = cx, py = apexY;
   const ex    = px + dir * BARREL_LEN * Math.cos(angle);
   const ey    = py - BARREL_LEN * Math.sin(angle);
 
-  ctx.lineCap = 'round';
-  ctx.strokeStyle = '#121212';
-  ctx.lineWidth = 8;
-  ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(ex, ey); ctx.stroke();
-  ctx.strokeStyle = '#3a3a3a';
-  ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(ex, ey); ctx.stroke();
   ctx.lineCap = 'butt';
-
-  // Muzzle
-  ctx.fillStyle = '#050505';
-  ctx.beginPath(); ctx.arc(ex, ey, 4, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#2a2a2a';
-  ctx.beginPath(); ctx.arc(ex, ey, 1.5, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#8a8a8a';
+  ctx.lineWidth = 10;
+  ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(ex, ey); ctx.stroke();
 
   // Pivot hub
-  ctx.fillStyle = '#1a1a1a';
-  ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#8a8a8a';
+  ctx.beginPath(); ctx.arc(px, py, 4, 0, Math.PI * 2); ctx.fill();
+
+  // Tile base drawn on top of the barrel's pivot end
+  TileAtlas.drawTile(ctx, 'cannon', x, y, currentNow, s / TILE_SIZE);
 }
 
 function drawGrid() {
@@ -367,7 +234,7 @@ function drawGrid() {
   for (let row = 0; row < ROWS; row++)
     for (let col = 0; col < TOTAL_COLS; col++) {
       const { type, owner, role } = grid[row][col];
-      if (type === 'empty' || type === 'cannon') continue;
+      if (type === 'empty' || type === 'ground' || type === 'cannon') continue;
       drawBlock(col, row, type, owner, role);
     }
   // Second pass: cannons on top so their barrels overlap neighbours freely
@@ -380,9 +247,7 @@ function drawGrid() {
 
 // ─── Background ───────────────────────────────────────────────────────────────
 function drawBackground() {
-  const grad = ctx.createLinearGradient(0, 0, 0, CH);
-  grad.addColorStop(0, '#030303'); grad.addColorStop(0.6, '#080808'); grad.addColorStop(1, '#111111');
-  ctx.fillStyle = grad;
+  ctx.fillStyle = '#111212';
   ctx.fillRect(0, 0, WORLD_W, CH);
 
   drawGrassGround();
@@ -398,44 +263,9 @@ function drawBackground() {
 
 function drawGrassGround() {
   const gy = cellY(0);
-  const s  = CELL;
-
-  // Dirt body (bottom 2/3)
-  ctx.fillStyle = '#2a2a2a';
-  ctx.fillRect(0, gy + 6, WORLD_W, s - 6);
-
-  // Dirt speckles
-  ctx.fillStyle = '#444444';
-  for (let i = 0; i < WORLD_W; i += 7) {
-    ctx.fillRect(i, gy + 12, 2, 2);
-    ctx.fillRect(i + 3, gy + 22, 2, 2);
-  }
-  ctx.fillStyle = '#141414';
-  for (let i = 0; i < GRID_W; i += 9) {
-    ctx.fillRect(i + 1, gy + 16, 2, 2);
-    ctx.fillRect(i + 5, gy + 26, 2, 2);
-  }
-
-  // Grass top band
-  ctx.fillStyle = '#555555';
-  ctx.fillRect(0, gy, WORLD_W, 8);
-  // Darker bottom edge
-  ctx.fillStyle = '#333333';
-  ctx.fillRect(0, gy + 6, WORLD_W, 2);
-  // Highlight row
-  ctx.fillStyle = '#777777';
-  ctx.fillRect(0, gy, WORLD_W, 2);
-
-  // Grass blades poking up
-  ctx.fillStyle = '#777777';
-  for (let x = 0; x < WORLD_W; x += 5) {
-    const h = 1 + ((x * 37) % 3);
-    ctx.fillRect(x, gy - h, 1, h);
-  }
-  // Brighter blades
-  ctx.fillStyle = '#aaaaaa';
-  for (let x = 2; x < WORLD_W; x += 11) {
-    ctx.fillRect(x, gy - 2, 1, 2);
+  const scale = CELL / TILE_SIZE;
+  for (let col = 0; col < TOTAL_COLS; col++) {
+    TileAtlas.drawTile(ctx, 'ground', cellX(col), gy, currentNow, scale);
   }
 }
 
@@ -461,25 +291,34 @@ function drawHoverHighlight() {
   for (const col of cols)
     if (col >= 0 && col < TOTAL_COLS) {
       ctx.fillStyle = color;
-      ctx.fillRect(cellX(col), 0, CELL, CH);
+      ctx.fillRect(cellX(col), 0, CELL, cellY(0));
     }
 }
 
 // ─── Side panel ───────────────────────────────────────────────────────────────
-function sideBtn(label, sub, x, y, w, h, active, color) {
+function sideBtn(label, sub, x, y, w, h, active, color, disabled) {
   ctx.fillStyle   = active ? color + '28' : '#111';
   ctx.fillRect(x, y, w, h);
   ctx.strokeStyle = active ? color : '#222222';
   ctx.lineWidth   = active ? 2 : 1;
   ctx.strokeRect(x, y, w, h);
-  ctx.fillStyle   = active ? color : '#888';
-  ctx.font        = 'bold 13px monospace';
-  ctx.textAlign   = 'center';
-  ctx.fillText(label, x + w / 2, y + h / 2 - 3);
-  if (sub) {
-    ctx.fillStyle = active ? '#dddddd' : '#444';
-    ctx.font      = '11px monospace';
-    ctx.fillText(sub, x + w / 2, y + h / 2 + 13);
+
+  const textColor = disabled ? '#555555' : '#eeeeee';
+  ctx.fillStyle = textColor;
+  ctx.font      = '14px monospace';
+  ctx.textAlign = 'center';
+  const labelY = y + h / 2 - 3;
+  const subY   = y + h / 2 + 14;
+  ctx.fillText(label, x + w / 2, labelY);
+  if (sub) ctx.fillText(sub, x + w / 2, subY);
+
+  if (disabled) {
+    ctx.strokeStyle = textColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x + 8,     y + h / 2 + 2);
+    ctx.lineTo(x + w - 8, y + h / 2 + 2);
+    ctx.stroke();
   }
   ctx.textAlign = 'left';
 }
@@ -504,7 +343,7 @@ function drawSidePanel() {
   ctx.beginPath(); ctx.moveTo(bx, y); ctx.lineTo(bx + bw, y); ctx.stroke(); y += 12;
 
   // Player panels
-  const ppH = 54;
+  const ppH = 108;
   for (let p = 0; p < 2; p++) {
     const isActive = p === state.turn;
     const col = PLAYER_COLORS[p];
@@ -515,16 +354,40 @@ function drawSidePanel() {
       ctx.restore();
       ctx.strokeStyle = col + '88'; ctx.lineWidth = 1; ctx.strokeRect(bx, y, bw, ppH);
     }
-    ctx.fillStyle = isActive ? col : '#555';
-    ctx.font = `bold ${isActive ? 14 : 12}px monospace`;
-    ctx.fillText(PLAYER_NAMES[p], bx + 8, y + 20);
-    ctx.fillStyle = isActive ? '#dddddd' : '#444';
-    ctx.font = `${isActive ? 14 : 12}px monospace`;
-    ctx.fillText(`$ ${state.wallets[p]}`, bx + 8, y + 40);
-    if (isActive) {
-      ctx.fillStyle = '#777'; ctx.font = '10px monospace';
-      ctx.fillText(`+$${calcIncome(p)}`, bx + bw - 40, y + 40);
-    }
+    const textColor = isActive ? '#eeeeee' : '#555555';
+    ctx.fillStyle = textColor;
+    ctx.font      = '14px monospace';
+    const pad2 = n => String(n).padStart(2, '0');
+    ctx.fillText(PLAYER_NAMES[p], bx + 8, y + 16);
+    ctx.fillText(`$${pad2(state.wallets[p])} / $${WALLET_MAX}`, bx + 8, y + 34);
+
+    // Wallet fill bar
+    const barX = bx + 8;
+    const barY = y + 42;
+    const barW = bw - 16;
+    const barH = 5;
+    ctx.fillStyle = '#222';
+    ctx.fillRect(barX, barY, barW, barH);
+    const frac = Math.max(0, Math.min(1, state.wallets[p] / WALLET_MAX));
+    ctx.fillStyle = textColor;
+    ctx.fillRect(barX, barY, Math.round(barW * frac), barH);
+
+    ctx.fillStyle = isActive ? '#999999' : '#444444';
+    ctx.fillText(`+$${calcIncome(p)} / turn`, bx + 8, y + 66);
+
+    const maxI  = calcMaxInhabitants(p);
+    const curI  = Math.min(state.inhabitants[p], maxI);
+    ctx.fillStyle = textColor;
+    ctx.fillText(`${curI} / ${maxI} inhabitants`, bx + 8, y + 84);
+
+    // Inhabitants fill bar
+    const ibY = y + 92;
+    ctx.fillStyle = '#222';
+    ctx.fillRect(barX, ibY, barW, barH);
+    const ifrac = maxI > 0 ? curI / maxI : 0;
+    ctx.fillStyle = textColor;
+    ctx.fillRect(barX, ibY, Math.round(barW * ifrac), barH);
+
     y += ppH + 8;
   }
 
@@ -533,14 +396,15 @@ function drawSidePanel() {
   ctx.beginPath(); ctx.moveTo(bx, y); ctx.lineTo(bx + bw, y); ctx.stroke(); y += 14;
 
   // Build buttons
-  ctx.fillStyle = '#777'; ctx.font = 'bold 10px monospace'; ctx.fillText('BUILD', bx, y + 10); y += 20;
+  ctx.fillStyle = '#777'; ctx.font = '10px monospace'; ctx.fillText('BUILD', bx, y + 10); y += 20;
   buildBtns.length = 0;
-  const bh = 38;
-  for (const { type, label, cost } of BUILD_TYPES) {
+  const bh = 44;
+  for (const { type, label } of BUILD_TYPES) {
     const sel  = ui.selectedType === type;
+    const cost = type === 'flag' ? flagCost(state.turn) : BLOCK_COSTS[type];
     const affd = state.wallets[state.turn] >= cost;
     buildBtns.push({ type, x: bx, y, w: bw, h: bh });
-    sideBtn(label, `$${cost}`, bx, y, bw, bh, sel, affd ? PLAYER_COLORS[state.turn] : '#333');
+    sideBtn(label, `$${cost}`, bx, y, bw, bh, sel, PLAYER_COLORS[state.turn], !affd);
     y += bh + 5;
   }
 
@@ -553,7 +417,7 @@ function drawSidePanel() {
   ctx.fillStyle   = idle ? '#1e1e1e' : '#111'; ctx.fillRect(bx, y, bw, etH);
   ctx.strokeStyle = idle ? '#dddddd' : '#333'; ctx.lineWidth = idle ? 2 : 1;
   ctx.strokeRect(bx, y, bw, etH);
-  ctx.fillStyle = idle ? '#dddddd' : '#444'; ctx.font = 'bold 14px monospace';
+  ctx.fillStyle = idle ? '#dddddd' : '#444'; ctx.font = '14px monospace';
   ctx.textAlign = 'center';
   ctx.fillText('END TURN', bx + bw / 2, y + etH / 2 + 5);
   ctx.textAlign = 'left';
@@ -595,18 +459,19 @@ function render(now) {
   currentNow = now;
   updateAnim(now);
   updateCamera();
-  ctx.clearRect(0, 0, CW, CH);
+  ctx.fillStyle = '#111212';
+  ctx.fillRect(0, 0, CW, CH);
 
   // World (camera-translated, clipped to viewport)
   ctx.save();
   ctx.beginPath();
   ctx.rect(0, 0, GRID_W, CH);
   ctx.clip();
-  ctx.translate(-Math.round(cameraX), 0);
+  ctx.translate(-Math.round(cameraX), -Math.round(cameraY));
   drawBackground();
-  drawHoverHighlight();
   drawGrid();
   drawAnim(now);
+  drawHoverHighlight();
   ctx.restore();
 
   // UI (screen space)

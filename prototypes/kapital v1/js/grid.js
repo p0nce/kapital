@@ -21,19 +21,21 @@ function inZone(col, player) {
 function initGrid() {
   for (let c = 0; c < TOTAL_COLS; c++) setCell(0, c, 'ground', null);
 
-  // P1 start: one apartment, one tower, and a flag on top of the tower
-  const p1c = P1_START + Math.floor(P_COLS / 2);  // 3
-  setCell(1, p1c - 2, 'apartment', 0);
-  setCell(1, p1c + 1, 'tower',     0);
-  setCell(2, p1c + 1, 'tower',     0);
-  setCell(3, p1c + 1, 'flag',      0);
+  // Default city: 3 apartments side by side, the middle one sits on a
+  // single-cell tower, a flag on top of that middle apartment.
+  const p1c = P1_START + Math.floor(P_COLS / 2);
+  setCell(1, p1c - 1, 'apartment', 0);
+  setCell(1, p1c,     'tower',     0);
+  setCell(1, p1c + 1, 'apartment', 0);
+  setCell(2, p1c,     'apartment', 0);
+  setCell(3, p1c,     'flag',      0);
 
-  // P2 start: mirrored
-  const p2c = P2_START + Math.floor(P_COLS / 2);  // 30
-  setCell(1, p2c + 2, 'apartment', 1);
-  setCell(1, p2c - 1, 'tower',     1);
-  setCell(2, p2c - 1, 'tower',     1);
-  setCell(3, p2c - 1, 'flag',      1);
+  const p2c = P2_START + Math.floor(P_COLS / 2);
+  setCell(1, p2c - 1, 'apartment', 1);
+  setCell(1, p2c,     'tower',     1);
+  setCell(1, p2c + 1, 'apartment', 1);
+  setCell(2, p2c,     'apartment', 1);
+  setCell(3, p2c,     'flag',      1);
 }
 
 // ─── Physics ──────────────────────────────────────────────────────────────────
@@ -45,6 +47,15 @@ function fallPass() {
       for (let col = 0; col < TOTAL_COLS; col++) {
         const cell = grid[row][col];
         if (cell.type === 'empty' || cell.type === 'ground') continue;
+
+        // Platform wings are supported by their base (same row, adjacent col),
+        // not by whatever is directly below them.
+        if (cell.type === 'platform' && (cell.role === 'left' || cell.role === 'right')) {
+          const baseCol = cell.role === 'left' ? col + 1 : col - 1;
+          const base = grid[row]?.[baseCol];
+          if (base && base.type === 'platform' && base.role === 'base') continue;
+        }
+
         if (grid[row - 1][col].type === 'empty') {
           grid[row - 1][col] = cell;
           grid[row][col] = { type: 'empty', owner: null, role: null };
@@ -75,14 +86,21 @@ function cascadeDestroy(startRow, startCol, maxCount = Infinity) {
   if (maxCount <= 0) return;
   const destroyed = new Set();
   const queue = [[startRow, startCol]];
+  let billed = 0;    // number of destructions that count toward maxCount (wings are free)
   while (queue.length) {
-    if (destroyed.size >= maxCount) break;
     const [r, c] = queue.shift();
     if (r < 0 || r >= ROWS || c < 0 || c >= TOTAL_COLS) continue;
     const key = r * 1000 + c;
     if (destroyed.has(key)) continue;
     const cell = grid[r][c];
     if (cell.type === 'empty' || cell.type === 'ground') continue;
+
+    // Platform wings come with their base for free — they don't use strength.
+    const isWing = cell.type === 'platform' && (cell.role === 'left' || cell.role === 'right');
+    if (!isWing) {
+      if (billed >= maxCount) continue;
+      billed++;
+    }
     destroyed.add(key);
 
     // Whatever sits directly above — unless it's a platform wing
@@ -109,6 +127,10 @@ function cascadeDestroy(startRow, startCol, maxCount = Infinity) {
   for (const key of destroyed) {
     const r = Math.floor(key / 1000);
     const c = key % 1000;
+    const was = grid[r][c];
+    if (was.type === 'apartment' && was.owner != null) {
+      state.inhabitants[was.owner] = Math.max(0, state.inhabitants[was.owner] - 1);
+    }
     grid[r][c] = { type: 'empty', owner: null, role: null };
   }
 }

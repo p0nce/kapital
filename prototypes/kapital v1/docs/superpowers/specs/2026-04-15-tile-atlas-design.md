@@ -7,9 +7,9 @@ Introduce an editable pixel-art tile atlas so some blocks can be drawn from auth
 
 ## Asset
 
-**File:** `assets/tiles.png` — 48 × 80 pixel PNG, nearest-neighbour scaling.
+**File:** `assets/atlas.png` — 48 × 88 pixel PNG, nearest-neighbour scaling.
 
-**Grid:** each tile is **8 × 8 pixels**. The sheet is **6 columns × 10 rows**.
+**Grid:** each tile is **8 × 8 pixels**. The sheet is **6 columns × 11 rows**.
 
 - **Columns** are animation frames, left to right: frame 0 → frame 5.
 - **Rows** are block slots:
@@ -26,12 +26,13 @@ Introduce an editable pixel-art tile atlas so some blocks can be drawn from auth
 | 7   | `cannon`         |
 | 8   | `apartment`      |
 | 9   | `ground`         |
+| 10  | `tower_mid`      |
 
-Tower has three slots because its appearance depends on vertical neighbours:
+Tower has four slots because its appearance depends on vertical neighbours:
 - `tower_alone` — standalone single-cell tower.
 - `tower_up` — top of a vertical tower run (no tower above, tower below).
 - `tower_down` — bottom of a run (tower above, no tower below).
-- Middle cells of a run are not a distinct slot in this version; if needed later, add `tower_mid` as row 10.
+- `tower_mid` — middle of a run (tower both above and below).
 
 ## Initial Art
 
@@ -75,7 +76,7 @@ const TileAtlas = {
 
 **Behaviour:**
 
-- On script load, create an `Image()`, set `src = 'assets/tiles.png'`, and store a `ready` Promise that resolves on `onload` / rejects on `onerror`.
+- On script load, create an `Image()`, set `src = 'assets/atlas.png'`, and store a `ready` Promise that resolves on `onload` / rejects on `onerror`.
 - `drawTile` computes `frame = Math.floor(now / TILE_FRAME_MS) % TILE_FRAMES` and calls `ctx.drawImage(image, frame * 8, row * 8, 8, 8, x, y, 8 * scale, 8 * scale)`.
 - Drawing before the image loads is a no-op (early return if `!image.complete`).
 - `ctx.imageSmoothingEnabled = false` is set at the call site by the caller; the loader does not mutate shared context state.
@@ -97,7 +98,7 @@ const TileAtlas = {
 
 ## Success Criteria
 
-- `assets/tiles.png` exists in the repo at 48 × 80 pixels.
+- `assets/atlas.png` exists in the repo at 48 × 88 pixels.
 - Opening the PNG in a pixel-art editor clearly shows 10 rows × 6 columns of distinct 8×8 cells.
 - Loading `index.html` does not log any errors; `TileAtlas.ready` resolves.
 - Calling `TileAtlas.drawTile(ctx, 'tower_alone', 100, 100, performance.now(), 4)` from the dev console draws a 32×32 block that visibly animates through 6 frames.

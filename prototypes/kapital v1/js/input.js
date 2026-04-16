@@ -13,8 +13,16 @@ function inRect(mx, my, r) {
 
 // ─── Events ──────────────────────────────────────────────────────────────────
 canvas.addEventListener('mousemove', e => {
-  const { mx } = canvasPos(e);
+  const { mx, my } = canvasPos(e);
+  ui.mouseX = mx;
+  ui.mouseY = my;
   ui.hoverCol = (mx >= 0 && mx < GRID_W) ? Math.floor((mx + cameraX) / CELL) : -1;
+});
+
+canvas.addEventListener('mouseleave', () => {
+  ui.mouseX = -1;
+  ui.mouseY = -1;
+  ui.hoverCol = -1;
 });
 
 canvas.addEventListener('click', e => {
@@ -49,6 +57,19 @@ canvas.addEventListener('click', e => {
     }
   }
 });
+
+// ─── Keyboard: arrow-key camera pan ───────────────────────────────────────────
+function setKey(code, down) {
+  switch (code) {
+    case 'ArrowLeft':  case 'KeyA': keyState.left  = down; return true;
+    case 'ArrowRight': case 'KeyD': keyState.right = down; return true;
+    case 'ArrowUp':    case 'KeyW': keyState.up    = down; return true;
+    case 'ArrowDown':  case 'KeyS': keyState.down  = down; return true;
+  }
+  return false;
+}
+window.addEventListener('keydown', e => { if (setKey(e.code, true))  e.preventDefault(); });
+window.addEventListener('keyup',   e => { if (setKey(e.code, false)) e.preventDefault(); });
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 initGrid();

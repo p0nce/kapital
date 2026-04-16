@@ -81,11 +81,9 @@ function updateVolley(now) {
       if (cell.type === 'ground') { p.dead = true; break; }
       if (cell.type !== 'empty' && cell.owner === p.owner) continue;  // pass through own blocks
       if (cell.type !== 'empty') {
-        // Strength = sum of two uniform random variables (triangular
-        // distribution). Range 1..4 with mean ~2.5. Limits how many blocks
-        // the cascade can destroy (closest-first, BFS order).
-        const strength = 1 + Math.floor((Math.random() + Math.random()) * 2);
-        cascadeDestroy(row, col, strength);
+        // A hit destroys the struck cell and everything structurally
+        // supported by it (full support-chain cascade, no strength cap).
+        cascadeDestroy(row, col);
         fallPass();
         animFlash = { col, startTime: now };
         p.dead = true;
