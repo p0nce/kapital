@@ -1,4 +1,5 @@
 import turtle;
+import brutor;
 
 int main(string[] args)
 {
@@ -8,11 +9,17 @@ int main(string[] args)
 
 class BrutorGame : TurtleGame
 {
+    GameState state;
+
     override void load()
     {
         setBackgroundColor(color("#1a1a2e"));
         setTitle("Brutor");
         console.size(60, 30);
+
+        state.reset();
+        state.startTurn();
+        state.doRoll();
     }
 
     override void update(double dt)
@@ -20,14 +27,17 @@ class BrutorGame : TurtleGame
         if (keyboard.isDown("escape")) exitGame;
     }
 
+    override void mousePressed(float x, float y, MouseButton button, int repeat)
+    {
+        if (button == MouseButton.left)
+        {
+            state.handleClick(x, y, windowWidth);
+        }
+    }
+
     override void draw()
     {
-        with (console)
-        {
-            cls();
-            locate(20, 14);
-            fg(TM_colorWhite);
-            print("BRUTOR");
-        }
+        console.cls();
+        state.draw(canvas, console, windowWidth, windowHeight);
     }
 }
