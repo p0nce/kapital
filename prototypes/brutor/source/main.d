@@ -31,13 +31,13 @@ class BrutorGame : TurtleGame
     {
         if (button == MouseButton.left)
         {
-            state.handleClick(x, y, windowWidth);
+            state.handleClick(x, y, cast(float) windowWidth);
         }
     }
 
     override void draw()
     {
         console.cls();
-        state.draw(canvas, console, windowWidth, windowHeight);
+        state.draw(canvas, console, cast(float) windowWidth, cast(float) windowHeight);
     }
 }

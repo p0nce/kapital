@@ -73,10 +73,9 @@ struct GameState
     {
         players[activePlayer].dice.roll();
         rollsUsed++;
-        if (rollsUsed >= MAX_ROLLS)
-            phase = Phase.resolving;
-        else
-            phase = Phase.selecting;
+        // Always go to selecting so the player can see their dice
+        // If no rolls remain, they can only click CONFIRM
+        phase = Phase.selecting;
     }
 
     /// Confirm the current dice and resolve damage
@@ -300,7 +299,6 @@ struct GameState
         {
             // Player labels
             locate(5, 1);
-            fg(TM_colorYellow);
             if (activePlayer == 0)
                 fg(TM_colorYellow);
             else
