@@ -84,6 +84,18 @@ After a turn ends, the 5 dice are analyzed for groups of matching values:
 
 Multiple independent groups are possible (e.g., two pairs = 2 damage to each of two body parts).
 
+### Critical Hits
+
+If the combination happens on the first dice roll and the player confirms immediately (no re-rolls), the damage is a critical hit:
+
+| Combination | Normal | Critical |
+|---|---|---|
+| Pair | 2 damage | 4 damage |
+| Three of a kind | 3 damage | 6 damage |
+| Full house | 3+3 damage | 6+6 damage |
+| Four of a kind | Set HP to 1 | Set HP to 1 on matched part + 1 random other part |
+| Yahtzee | Destroy 1 part | Destroy matched part + 1 random other part |
+
 ### Edge Cases
 
 - Damage cannot reduce HP below 0
