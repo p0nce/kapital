@@ -21,6 +21,9 @@ class BrutorGame : TurtleGame
         console.palette(pal);
         // Couture has no real blue — override LBlue so the MP bar pops.
         console.setPaletteEntry(TM_colorLBlue, 70, 130, 220, 255);
+        // Couture collapses magenta into red; introduce a real magenta
+        // so reroll indicators stand apart from damage/label reds.
+        console.setPaletteEntry(TM_colorLMagenta, 230, 82, 183, 255);
 
         state.reset();
         state.startTurn();

@@ -21,7 +21,7 @@ enum Phase
 enum MAX_MP = 5;
 
 /// How many rerolls an INSTANT resolution can store for next turn.
-enum MAX_BANKED_REROLLS = 2;
+enum MAX_REROLLS = 5;
 
 /// A clickable button. Holds its bounds, label, and visibility/enabled
 /// flags, and knows how to hit-test, render its background (canvas), and
@@ -96,11 +96,12 @@ struct Button
         if (!visible || label.length == 0) return;
         int col, row;
         GameState.centerTextInRect(x, y, w, h,
-                                   cast(int) label.length, col, row);
+                                   GameState.visibleCCLLen(label), col, row);
         con.locate(col, row);
         // White reads well on red (idle), green (owned), and grey (locked).
+        // Use cprint so labels can embed CCL tags (e.g. "<lmagenta>...</lmagenta>").
         con.fg(TM_colorWhite);
-        con.print(label);
+        con.cprint(label);
     }
 }
 
@@ -109,9 +110,10 @@ struct Player
     DiceSet dice;
     Avatar avatar;
     int mp = 0;
-    // Rerolls banked from a previous turn's INSTANT resolution. Consumed at
-    // the start of this player's next turn.
-    int bankedRerolls = 0;
+    // Persistent reroll pool. Grows by +2 at the start of each of this
+    // player's turns (-1 per missing arm), clamped to [0, MAX_REROLLS].
+    // The initial roll of a turn is free; every subsequent reroll costs 1.
+    int rerolls = 0;
     // Helmet tier. Incoming head damage is reduced by helmetLevel (min 0).
     //   0 = no helmet, 1 = basic (match-start default), 2 = reinforced.
     int helmetLevel = 1;
@@ -138,7 +140,7 @@ struct Player
         dice.reset();
         avatar.reset();
         mp = 0;//5;
-        bankedRerolls = 0;
+        rerolls = 0;
         helmetLevel = 1;
         shieldLevel = 1;
         parryActive = false;
@@ -225,7 +227,7 @@ private bool isNudgeAvailable(ref Player me)
 
 private string applyInstantPlus(ref Player me, Player other)
 {
-    return "INSTANT also on 2nd roll";
+    return "INSTANT at any time";
 }
 
 private bool isInstantPlusAvailable(ref Player me)
@@ -343,7 +345,7 @@ immutable Upgrade[] UPGRADES = [
         INSTANT_PLUS_UPGRADE_ID, /*requires NUDGE*/ NUDGE_UPGRADE_ID,
         "INSTANT++",
         2,
-        "Bank on 2nd roll\n+1 reroll banked",
+        "INSTANT at any time",
         &applyInstantPlus,
         &isInstantPlusAvailable,
         1, 1,    // dice → directly below NUDGE
@@ -373,10 +375,9 @@ struct GameState
 {
     Player[2] players;
     int activePlayer = 0;     // 0 or 1
-    int rollsUsed = 0;        // how many rolls used this turn (0-3)
-    // Extra rolls this turn, consumed from the active player's banked
-    // rerolls at startTurn(). Adds on top of MAX_ROLLS for the current turn.
-    int extraRollsThisTurn = 0;
+    // Rolls taken this turn. 0 before the initial (free) roll, 1 after,
+    // incrementing for each subsequent reroll.
+    int rollsUsed = 0;
     Phase phase = Phase.rolling;
     string statusText = "";
     // Short message shown on the upgrade screen after a successful
@@ -422,15 +423,14 @@ struct GameState
     enum VIRTUAL_W = CONSOLE_COLS * CELL_VIRTUAL; // 960
     enum VIRTUAL_H = CONSOLE_ROWS * CELL_VIRTUAL; // 540
 
-    // Layout constants (virtual pixels)
-    enum DICE_SIZE = 50.0f;
-    enum DICE_GAP = 15.0f;
-    enum DICE_Y = 298.0f;
-    // Cell rows for the per-die tags. Dice aren't on the cell grid, so
-    // the tags pick the closest full rows above / below and the " +1 "
-    // hit-test uses the same row so its background lines up with the text.
-    enum DICE_TAG_ROW_ABOVE = 23; // y = 276, one full cell above the dice
-    enum DICE_TAG_ROW_BELOW = 30; // y = 360, one full cell below the dice
+    // Layout constants (virtual pixels). Dice are sized to 6x6 cells
+    // (6 * CELL_VIRTUAL = 72) and top-aligned to the console grid.
+    enum DICE_SIZE = 72.0f;
+    enum DICE_GAP = cast(float) CELL_VIRTUAL; // 1 console col between dice
+    enum DICE_Y = 276.0f; // row 23, dice occupy rows 23..28
+    // Cell rows for the per-die tags, one row above/below the dice block.
+    enum DICE_TAG_ROW_ABOVE = 21; // y = 252
+    enum DICE_TAG_ROW_BELOW = 30; // y = 360
     // 264 = 22 console cells. REROLL and INSTANT share this width so
     // they line up vertically.
     enum REROLL_W = 264.0f;
@@ -438,9 +438,9 @@ struct GameState
     enum REROLL_Y = 390.0f;
 
     // "INSTANT" button: shown whenever the active player has a damaging
-    // combo AND still has rerolls left. Resolves the turn now and banks
-    // the unused rerolls (capped at MAX_BANKED_REROLLS) for their next
-    // turn. Sits directly below the REROLL button.
+    // combo AND still has rerolls left. Resolves the turn now, leaving
+    // the reroll pool as-is (unused rerolls stay for future turns).
+    // Sits directly below the REROLL button.
     enum INSTANT_W = REROLL_W;
     enum INSTANT_H = 40.0f;
     enum INSTANT_Y = REROLL_Y + REROLL_H + 10.0f; // 440
@@ -487,7 +487,6 @@ struct GameState
         players[1].reset();
         activePlayer = 0;
         rollsUsed = 0;
-        extraRollsThisTurn = 0;
         phase = Phase.rolling;
         statusText = "";
         upgradeToast = "";
@@ -504,14 +503,22 @@ struct GameState
         return 1 - activePlayer;
     }
 
-    /// Start a new turn for the active player. Consumes any rerolls the
-    /// player banked on their previous turn into this turn's roll quota.
+    /// Start a new turn for the active player. Tops up the persistent
+    /// reroll pool by +2, minus one per missing arm, clamped to
+    /// [0, MAX_REROLLS]. The initial roll is free; subsequent rerolls
+    /// deduct from the pool.
     void startTurn()
     {
         players[activePlayer].dice.reset();
         rollsUsed = 0;
-        extraRollsThisTurn = players[activePlayer].bankedRerolls;
-        players[activePlayer].bankedRerolls = 0;
+        auto av = players[activePlayer].avatar;
+        int gain = 2;
+        if (av.hp[BodyPart.leftArm]  == 0) gain--;
+        if (av.hp[BodyPart.rightArm] == 0) gain--;
+        int newPool = players[activePlayer].rerolls + gain;
+        if (newPool < 0) newPool = 0;
+        if (newPool > MAX_REROLLS) newPool = MAX_REROLLS;
+        players[activePlayer].rerolls = newPool;
         // Refill nudges for the active player if they own the NUDGE upgrade.
         int nudgeIdx = upgradeIndexById(NUDGE_UPGRADE_ID);
         players[activePlayer].nudgesRemainingThisTurn =
@@ -534,17 +541,13 @@ struct GameState
         players[activePlayer].nudgesRemainingThisTurn--;
     }
 
-    /// Total rolls available this turn (base quota + banked rerolls).
-    /// Each missing arm drops the base quota by 1 — one less reroll per
-    /// turn per arm (so both arms gone = two fewer rolls).
-    int totalRollsThisTurn() const
+    /// True while the active player can still roll: either the initial
+    /// (free) roll hasn't happened yet, or at least one reroll remains
+    /// in the pool.
+    bool canRollMore() const
     {
-        int base = MAX_ROLLS;
-        if (players[activePlayer].avatar.hp[BodyPart.rightArm] == 0)
-            base--;
-        if (players[activePlayer].avatar.hp[BodyPart.leftArm] == 0)
-            base--;
-        return base + extraRollsThisTurn;
+        if (rollsUsed == 0) return true;
+        return players[activePlayer].rerolls > 0;
     }
 
     /// The active player can only toggle KEEP on dice while their head is
@@ -563,8 +566,8 @@ struct GameState
         auto av = players[idx].avatar;
         if (av.hp[BodyPart.head] == 0)
             out_ ~= PlayerStatus("Beheaded", "no KEEP");
-        if (av.hp[BodyPart.rightArm] == 0)
-            out_ ~= PlayerStatus("No weapon", "");
+        if (av.hp[BodyPart.chest] == 0)
+            out_ ~= PlayerStatus("Impaled", "-1 HP all parts/turn");
         int armsGone = 0;
         if (av.hp[BodyPart.leftArm]  == 0) armsGone++;
         if (av.hp[BodyPart.rightArm] == 0) armsGone++;
@@ -596,13 +599,17 @@ struct GameState
         return frozen;
     }
 
-    /// Perform a roll. The initial roll rolls every die. On rerolls,
-    /// missing legs freeze dice at the high indices (see legDebuffMask).
+    /// Perform a roll. The initial roll (rollsUsed == 0) is free; every
+    /// subsequent reroll consumes 1 from the active player's pool.
+    /// On rerolls, missing legs freeze dice at the high indices.
     void doRoll()
     {
         bool[NUM_DICE] frozen;
         if (rollsUsed >= 1)
+        {
             frozen = legDebuffMask();
+            players[activePlayer].rerolls--;
+        }
         players[activePlayer].dice.roll(frozen);
         rollsUsed++;
         // Always go to selecting so the player can see their dice
@@ -720,22 +727,6 @@ struct GameState
         animTimer = ANIM_DURATION;
     }
 
-    /// Number of rerolls the active player would bank by clicking INSTANT
-    /// right now. Always +1 reroll (capped at MAX_BANKED_REROLLS).
-    int instantBankAmount() const
-    {
-        enum int gain = 1;
-        return gain > MAX_BANKED_REROLLS ? MAX_BANKED_REROLLS : gain;
-    }
-
-    /// Resolve via INSTANT: bank the unused rerolls onto the active player
-    /// and resolve damage as usual.
-    void doInstant()
-    {
-        players[activePlayer].bankedRerolls = instantBankAmount();
-        doResolve();
-    }
-
     /// Per-frame update: advances the damage animation and, once done,
     /// either ends the game or hands the turn over to the other player.
     void update(double dt)
@@ -762,10 +753,24 @@ struct GameState
         animTimer = 0;
         hitAnim[] = false;
 
+        // Impaled: a missing chest bleeds 1 HP from every other living part
+        // at the end of the impaled player's turn. Bypasses helmet/shield.
+        if (players[activePlayer].avatar.hp[BodyPart.chest] == 0)
+        {
+            foreach (i; 0 .. NUM_BODY_PARTS)
+                if (players[activePlayer].avatar.hp[i] > 0)
+                    players[activePlayer].avatar.applyDamage(cast(BodyPart) i, 1);
+        }
+
         if (!players[opponent].avatar.isAlive())
         {
             phase = Phase.gameOver;
             statusText = format("Player %d wins!", activePlayer + 1);
+        }
+        else if (!players[activePlayer].avatar.isAlive())
+        {
+            phase = Phase.gameOver;
+            statusText = format("Player %d wins!", opponent + 1);
         }
         else
         {
@@ -851,24 +856,21 @@ struct GameState
     }
 
     /// True when the player may click INSTANT: a scoring combo is on the
-    /// table (damage, straight, or full house) and they have at least one
-    /// reroll left to bank. Hands with no combo at all can't INSTANT —
-    /// they have nothing worth locking in. Banking is allowed after the
-    /// first roll only; INSTANT++ also unlocks banking after the 2nd roll.
+    /// table (damage, straight, or full house) and at least one reroll
+    /// remains in the pool (otherwise INSTANT is equivalent to ending the
+    /// turn). Baseline INSTANT is additionally restricted to after the
+    /// 1st roll; INSTANT++ lifts that restriction.
     bool canInstant()
     {
         if (phase != Phase.selecting)
             return false;
-        if (rollsUsed >= totalRollsThisTurn())
+        if (players[activePlayer].rerolls <= 0)
             return false;
-        if (rollsUsed >= 2)
-        {
-            int idx = upgradeIndexById(INSTANT_PLUS_UPGRADE_ID);
-            bool hasIt = idx >= 0
-                && players[activePlayer].isUpgradePurchased(idx);
-            if (!hasIt)
-                return false;
-        }
+        int idx = upgradeIndexById(INSTANT_PLUS_UPGRADE_ID);
+        bool anyTime = idx >= 0
+            && players[activePlayer].isUpgradePurchased(idx);
+        if (!anyTime && rollsUsed >= 2)
+            return false;
         auto combos = activeCombos();
         if (combos.length == 0)
             return false;
@@ -880,7 +882,7 @@ struct GameState
     {
         if (phase == Phase.selecting)
         {
-            if (rollsUsed < totalRollsThisTurn())
+            if (canRollMore())
                 doRoll();
             else
                 doResolve();
@@ -945,6 +947,25 @@ struct GameState
         vy = row * cast(float) CELL_VIRTUAL;
     }
 
+    /// Visible cell width of a CCL-tagged string — tag bytes (`<...>`)
+    /// consume no cells, every other dchar counts as one.
+    static int visibleCCLLen(string s) pure
+    {
+        int n = 0;
+        bool inTag = false;
+        foreach (dchar c; s)
+        {
+            if (inTag)
+            {
+                if (c == '>') inTag = false;
+                continue;
+            }
+            if (c == '<') { inTag = true; continue; }
+            n++;
+        }
+        return n;
+    }
+
     /// Center an N-cell-wide, 1-cell-tall text label inside a virtual rect.
     /// Returns the (col, row) to pass to console.locate().
     static void centerTextInRect(float rectVX, float rectVY, float rectVW, float rectVH,
@@ -978,7 +999,15 @@ struct GameState
     Button rerollButton()
     {
         float btnX = (VIRTUAL_W - REROLL_W) / 2;
-        string lbl = (rollsUsed < totalRollsThisTurn()) ? "REROLL" : "NEXT TURN";
+        // The initial roll is free; after that, rerolls cost 1 from the
+        // pool. NEXT TURN replaces REROLL once the pool is empty.
+        string lbl;
+        if (rollsUsed == 0)
+            lbl = "ROLL";
+        else if (players[activePlayer].rerolls > 0)
+            lbl = "REROLL <lmagenta>-1\u2318</lmagenta>";
+        else
+            lbl = "NEXT TURN";
         Button b = {
             x: btnX, y: REROLL_Y, w: REROLL_W, h: REROLL_H,
             label: lbl, visible: phase == Phase.selecting,
@@ -989,13 +1018,9 @@ struct GameState
     Button instantButton()
     {
         float btnX = (VIRTUAL_W - INSTANT_W) / 2;
-        int bank = instantBankAmount();
-        string lbl = bank > 0
-            ? format("INSTANT (+%d stored)", bank)
-            : "INSTANT";
         Button b = {
             x: btnX, y: INSTANT_Y, w: INSTANT_W, h: INSTANT_H,
-            label: lbl, visible: canInstant(),
+            label: "INSTANT", visible: canInstant(),
         };
         return b;
     }
@@ -1115,12 +1140,12 @@ struct GameState
 
                 if (instantButton().hitTest(vx, vy))
                 {
-                    doInstant();
+                    doResolve();
                     return;
                 }
                 if (rerollButton().hitTest(vx, vy))
                 {
-                    if (rollsUsed < totalRollsThisTurn())
+                    if (canRollMore())
                         doRoll();
                     else
                         doResolve();
@@ -1399,7 +1424,7 @@ struct GameState
         // (they're just about to click NEXT TURN), so freeze the dice into a
         // neutral look: no hover highlight and no kept highlight.
         bool diceInteractive = phase == Phase.selecting
-                            && rollsUsed < totalRollsThisTurn()
+                            && canRollMore()
                             && canKeep();
 
         // Dice frozen by missing legs render greyed, to signal they can't
@@ -1727,35 +1752,31 @@ struct GameState
             drawPlayerHP(con, players[0].avatar, players[0].mp, 0, 35);
             drawPlayerHP(con, players[1].avatar, players[1].mp, 56, 35);
 
-            // Rerolls remaining this turn. Banked rerolls are shown as
-            // diamonds next to the player labels, not inline here.
-            locate(32, 1);
-            fg(TM_colorWhite);
-            int rerollsLeft = totalRollsThisTurn() - rollsUsed;
-            print(format("%d rerolls remaining.", rerollsLeft));
-
-            // Diamond indicators next to each player label:
-            //   active player -> rerolls remaining this turn
-            //   other player  -> banked rerolls stored for their next turn
-            int p1Pips = (activePlayer == 0) ? rerollsLeft : players[0].bankedRerolls;
-            int p2Pips = (activePlayer == 1) ? rerollsLeft : players[1].bankedRerolls;
+            // Reroll indicator hugging each player label (8 cells wide):
+            //   5-cell magenta bar (filled = pips, empty = remaining capacity)
+            //   + space + pip count + ⌘
+            //   Shows each player's persistent reroll pool. The active
+            //   player's pool shrinks as they spend rerolls this turn.
+            int p1Pips = players[0].rerolls;
+            int p2Pips = players[1].rerolls;
             int p1LabelEnd = (activePlayer == 0) ? 16 : 8;
             int p2LabelStart = (activePlayer == 1) ? 64 : 72;
+            enum int REROLL_BAR_MAX = MAX_REROLLS; // 5 cells
 
-            if (p1Pips > 0)
+            void drawRerollIndicator(int startCol, int pips)
             {
-                locate(p1LabelEnd + 1, 1);
-                fg(TM_colorLRed);
-                foreach (_; 0 .. p1Pips)
-                    print("*");
+                locate(startCol, 2);
+                foreach (j; 0 .. REROLL_BAR_MAX)
+                {
+                    if (j < pips) { fg(TM_colorLMagenta); print("\u25A0"); }
+                    else          { fg(TM_colorGrey);     print("\u25A1"); }
+                }
+                fg(TM_colorLMagenta);
+                print(format(" %d\u2318", pips));
             }
-            if (p2Pips > 0)
-            {
-                locate(p2LabelStart - 1 - p2Pips, 1);
-                fg(TM_colorLRed);
-                foreach (_; 0 .. p2Pips)
-                    print("*");
-            }
+
+            drawRerollIndicator(p1LabelEnd + 1, p1Pips);
+            drawRerollIndicator(p2LabelStart - 9, p2Pips);
 
             // Nudges available to the active player this turn, shown
             // next to the active player's label with '+' markers (row 3,
@@ -1775,7 +1796,7 @@ struct GameState
 
             // "KEEP" tag above each kept die — only while rerolls remain.
             // Cell-aligned so its background lines up cleanly.
-            if (phase == Phase.selecting && rollsUsed < totalRollsThisTurn())
+            if (phase == Phase.selecting && canRollMore())
             {
                 float totalDiceW = NUM_DICE * DICE_SIZE + (NUM_DICE - 1) * DICE_GAP;
                 float startX = (VIRTUAL_W - totalDiceW) / 2;
