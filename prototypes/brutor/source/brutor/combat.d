@@ -89,24 +89,27 @@ DamageDescription describeDamage(Combo[] combos)
                 // Handled elsewhere (straight is detected above).
                 break;
 
+            // Damage chunk uses text-mode CCL tags so the renderer can
+            // recolor "N♦DMG" in red via cprint, while the rest of
+            // the line stays in the ambient (white) color.
             case ComboType.pair:
                 out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 1);
-                out_.previewLines ~= format("Pair of %d \u2192 1 damage to %s.", face, bp);
+                out_.previewLines ~= format("Pair of %d: <lred>1♦DMG</lred> to %s.", face, bp);
                 break;
 
             case ComboType.threeOfAKind:
                 out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 2);
-                out_.previewLines ~= format("Three of a kind of %d \u2192 2 damage to %s.", face, bp);
+                out_.previewLines ~= format("Three of a kind of %d: <lred>2♦DMG</lred> to %s.", face, bp);
                 break;
 
             case ComboType.fourOfAKind:
                 out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 3);
-                out_.previewLines ~= format("Four of a kind of %d \u2192 3 damage to %s.", face, bp);
+                out_.previewLines ~= format("Four of a kind of %d: <lred>3♦DMG</lred> to %s.", face, bp);
                 break;
 
             case ComboType.yahtzee:
-                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 5);
-                out_.previewLines ~= format("Yahtzee of %d \u2192 5 damage to %s.", face, bp);
+                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 6);
+                out_.previewLines ~= format("Yahtzee of %d: <lred>6♦DMG</lred> to %s.", face, bp);
                 break;
         }
     }

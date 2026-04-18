@@ -53,11 +53,15 @@ struct Avatar
     /// `helmetLevel` draws a helmet when > 0. Level 2 (reinforced) renders
     /// a brighter dome plus a crest ridge to distinguish it from level 1.
     /// `hasShield` adds a heater shield wielded by the left arm.
+    /// `healFlash` + `healFlashOn` mirror damage flashing but render the
+    /// marked parts in bright green, used for repair animations.
     void draw(Canvas* c, float cx, float cy, float s = 1.0f,
               in bool[NUM_BODY_PARTS] flash = [false, false, false, false, false, false],
               bool flashOn = false,
               int helmetLevel = 0,
-              bool hasShield = false)
+              bool hasShield = false,
+              in bool[NUM_BODY_PARTS] healFlash = [false, false, false, false, false, false],
+              bool healFlashOn = false)
     {
         float headRadius = 18.0f * s;
         float chestW = 40.0f * s;
@@ -74,6 +78,8 @@ struct Avatar
         {
             if (flash[p] && flashOn)
                 return rgba(255, 255, 255, 255);
+            if (healFlash[p] && healFlashOn)
+                return rgba(120, 230, 120, 255);
             return hpColor(hp[p]);
         }
 
