@@ -3,6 +3,7 @@ module brutor.combat;
 import brutor.dice;
 import brutor.avatar;
 import turtle;
+import std.format : format;
 
 /// A single damage action to apply to an avatar
 struct DamageAction
@@ -10,62 +11,113 @@ struct DamageAction
     enum Type
     {
         flatDamage,  // subtract amount from HP
-        setTo1,      // set HP to 1 (four of a kind)
-        destroy,     // set HP to 0 (yahtzee)
     }
 
     Type type;
     BodyPart target;
-    int amount; // only used for flatDamage
+    int amount;
 }
 
-/// Resolve dice combos into damage actions.
-/// isCritical = true if player confirmed on first roll (no re-rolls used).
-DamageAction[] resolveDamage(Combo[] combos, bool isCritical)
+/// Human-readable body part names (used in previews).
+string bodyPartName(BodyPart part)
+{
+    final switch (part)
+    {
+        case BodyPart.leftLeg:  return "Left Leg";
+        case BodyPart.rightLeg: return "Right Leg";
+        case BodyPart.leftArm:  return "Left Arm";
+        case BodyPart.rightArm: return "Right Arm";
+        case BodyPart.chest:    return "Chest";
+        case BodyPart.head:     return "Head";
+    }
+}
+
+/// True when the combos describe a straight (1-2-3-4-5 or 2-3-4-5-6).
+/// A straight deals no damage — it awards one Tech point instead.
+bool isStraight(Combo[] combos)
+{
+    return combos.length == 1 && combos[0].type == ComboType.straight;
+}
+
+/// True when the combos describe a full house: one three-of-a-kind plus
+/// one pair, exactly. Callers use this to apply bespoke damage (3 + 2).
+bool isFullHouse(Combo[] combos)
+{
+    if (combos.length != 2)
+        return false;
+    return (combos[0].type == ComboType.threeOfAKind && combos[1].type == ComboType.pair)
+        || (combos[0].type == ComboType.pair && combos[1].type == ComboType.threeOfAKind);
+}
+
+/// Combined description of what a turn's dice will do: the deterministic
+/// damage actions (for the matched body parts) and the human-readable
+/// preview lines.
+struct DamageDescription
 {
     DamageAction[] actions;
+    string[] previewLines;
+}
+
+/// Single source of truth for combo → damage mapping and its description.
+DamageDescription describeDamage(Combo[] combos)
+{
+    DamageDescription out_;
+
+    // Straight: no damage, just a preview line. GameState raises a parry
+    // wall on the active player when the turn resolves.
+    if (isStraight(combos))
+    {
+        out_.previewLines ~= "Straight \u2192 Parry (block opponent's next turn).";
+        return out_;
+    }
+
+    // Full house is resolved by GameState (needs opponent HP to count
+    // how many of the two targeted parts are still alive). No damage is
+    // emitted here — GameState adds its own preview line.
+    if (isFullHouse(combos))
+        return out_;
 
     foreach (combo; combos)
     {
+        int face = cast(int) combo.target + 1;
+        string bp = bodyPartName(combo.target);
+
         final switch (combo.type)
         {
             case ComboType.single:
-                // No damage
+            case ComboType.straight:
+                // Handled elsewhere (straight is detected above).
                 break;
 
             case ComboType.pair:
-                int dmg = isCritical ? 4 : 2;
-                actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, dmg);
+                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 1);
+                out_.previewLines ~= format("Pair of %d \u2192 1 damage to %s.", face, bp);
                 break;
 
             case ComboType.threeOfAKind:
-                int dmg = isCritical ? 6 : 3;
-                actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, dmg);
+                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 2);
+                out_.previewLines ~= format("Three of a kind of %d \u2192 2 damage to %s.", face, bp);
                 break;
 
             case ComboType.fourOfAKind:
-                actions ~= DamageAction(DamageAction.Type.setTo1, combo.target, 0);
-                if (isCritical)
-                {
-                    // Also set a random OTHER body part to 1
-                    BodyPart other = randomOtherBodyPart(combo.target);
-                    actions ~= DamageAction(DamageAction.Type.setTo1, other, 0);
-                }
+                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 3);
+                out_.previewLines ~= format("Four of a kind of %d \u2192 3 damage to %s.", face, bp);
                 break;
 
             case ComboType.yahtzee:
-                actions ~= DamageAction(DamageAction.Type.destroy, combo.target, 0);
-                if (isCritical)
-                {
-                    // Also destroy a random OTHER body part
-                    BodyPart other = randomOtherBodyPart(combo.target);
-                    actions ~= DamageAction(DamageAction.Type.destroy, other, 0);
-                }
+                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 5);
+                out_.previewLines ~= format("Yahtzee of %d \u2192 5 damage to %s.", face, bp);
                 break;
         }
     }
 
-    return actions;
+    return out_;
+}
+
+/// Resolve dice combos into damage actions that will actually be applied.
+DamageAction[] resolveDamage(Combo[] combos)
+{
+    return describeDamage(combos).actions;
 }
 
 /// Apply a list of damage actions to an avatar
@@ -78,24 +130,6 @@ void applyActions(ref Avatar avatar, DamageAction[] actions)
             case DamageAction.Type.flatDamage:
                 avatar.applyDamage(action.target, action.amount);
                 break;
-            case DamageAction.Type.setTo1:
-                avatar.setHP(action.target, 1);
-                break;
-            case DamageAction.Type.destroy:
-                avatar.destroy(action.target);
-                break;
         }
     }
-}
-
-/// Pick a random body part that is NOT the given one
-private BodyPart randomOtherBodyPart(BodyPart exclude)
-{
-    BodyPart result;
-    do
-    {
-        result = cast(BodyPart) randInt(0, NUM_BODY_PARTS);
-    }
-    while (result == exclude);
-    return result;
 }

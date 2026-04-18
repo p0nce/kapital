@@ -32,6 +32,7 @@ enum ComboType
     threeOfAKind, // 3 dice - 3 damage
     fourOfAKind,  // 4 dice - set HP to 1
     yahtzee,      // 5 dice - destroy body part
+    straight,     // 1-2-3-4-5 or 2-3-4-5-6 - no damage, +1 Tech point
 }
 
 /// A single detected combination from analyzing the dice
@@ -46,12 +47,13 @@ struct DiceSet
     int[NUM_DICE] values = [1, 1, 1, 1, 1];
     bool[NUM_DICE] kept = [false, false, false, false, false];
 
-    /// Roll all un-kept dice
-    void roll()
+    /// Roll all un-kept, non-frozen dice. `frozen` lets the caller pin
+    /// specific indices in place (e.g., leg-debuff rerolls).
+    void roll(in bool[NUM_DICE] frozen = [false, false, false, false, false])
     {
         foreach (i; 0 .. NUM_DICE)
         {
-            if (!kept[i])
+            if (!kept[i] && !frozen[i])
                 values[i] = randInt(1, 7); // randInt is [min, max)
         }
     }
@@ -69,13 +71,25 @@ struct DiceSet
     }
 
     /// Analyze the current dice and return all combinations found.
-    /// A full house returns TWO combos (threeOfAKind + pair).
+    /// A full house returns TWO combos (threeOfAKind + pair). A straight
+    /// (1-2-3-4-5 or 2-3-4-5-6) returns a single straight combo.
     Combo[] analyze()
     {
         // Count occurrences of each face value
         int[7] counts = 0; // index 0 unused, 1-6 for dice faces
         foreach (v; values)
             counts[v]++;
+
+        // Straight detection: five distinct consecutive values.
+        bool lowStraight  = counts[1] == 1 && counts[2] == 1 && counts[3] == 1 &&
+                            counts[4] == 1 && counts[5] == 1;
+        bool highStraight = counts[2] == 1 && counts[3] == 1 && counts[4] == 1 &&
+                            counts[5] == 1 && counts[6] == 1;
+        if (lowStraight || highStraight)
+        {
+            // No body part target — use a placeholder; consumers ignore it.
+            return [Combo(ComboType.straight, BodyPart.leftLeg)];
+        }
 
         Combo[] combos;
         foreach (face; 1 .. 7)

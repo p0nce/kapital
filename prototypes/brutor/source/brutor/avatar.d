@@ -16,10 +16,15 @@ struct Avatar
         hp[] = MAX_HP;
     }
 
-    /// Is this avatar still alive? (head HP > 0)
+    /// Is this avatar still alive? An avatar loses when 3 or fewer body
+    /// parts remain alive — i.e., they stay in the fight while more than
+    /// 3 parts still have HP.
     bool isAlive()
     {
-        return hp[BodyPart.head] > 0;
+        int alive = 0;
+        foreach (h; hp)
+            if (h > 0) alive++;
+        return alive > 3;
     }
 
     /// Apply flat damage to a body part (clamp to 0)
@@ -42,37 +47,111 @@ struct Avatar
     }
 
     /// Draw the avatar at the given center position using the canvas API.
-    /// cx, cy is the center of the chest area.
-    void draw(Canvas* c, float cx, float cy)
+    /// cx, cy is the center of the chest area. s is a scale factor.
+    /// `flash` marks body parts that should flash (damage animation);
+    /// when `flashOn` is true, those parts render in bright white.
+    /// `helmetLevel` draws a helmet when > 0. Level 2 (reinforced) renders
+    /// a brighter dome plus a crest ridge to distinguish it from level 1.
+    /// `hasShield` adds a heater shield wielded by the left arm.
+    void draw(Canvas* c, float cx, float cy, float s = 1.0f,
+              in bool[NUM_BODY_PARTS] flash = [false, false, false, false, false, false],
+              bool flashOn = false,
+              int helmetLevel = 0,
+              bool hasShield = false)
     {
-        enum headRadius = 18.0f;
-        enum chestW = 40.0f;
-        enum chestH = 50.0f;
-        enum armW = 12.0f;
-        enum armH = 45.0f;
-        enum legW = 14.0f;
-        enum legH = 50.0f;
+        float headRadius = 18.0f * s;
+        float chestW = 40.0f * s;
+        float chestH = 50.0f * s;
+        float armW = 12.0f * s;
+        float armH = 45.0f * s;
+        float legW = 14.0f * s;
+        float legH = 50.0f * s;
 
         float chestTop = cy - chestH / 2;
         float chestBot = cy + chestH / 2;
+
+        Color partColor(BodyPart p)
+        {
+            if (flash[p] && flashOn)
+                return rgba(255, 255, 255, 255);
+            return hpColor(hp[p]);
+        }
 
         // Head (centered above chest)
         if (hp[BodyPart.head] > 0)
         {
             float headCy = chestTop - headRadius - 4;
             c.save();
-            c.fillStyle = hpColor(hp[BodyPart.head]);
+            c.fillStyle = partColor(BodyPart.head);
             c.beginPath();
             c.arc(cx, headCy, headRadius, 0, 6.2832f);
             c.fill();
             c.restore();
+
+            // Helmet: a metallic dome over the top half of the head plus a
+            // brim extending slightly past the temples. Level 2 is drawn in
+            // a brighter steel and sprouts a longitudinal crest.
+            if (helmetLevel > 0)
+            {
+                float helmetR = headRadius * 1.08f;
+                float brimW = headRadius * 2.5f;
+                float brimH = 4.0f * s;
+                float brimY = headCy - headRadius * 0.1f;
+
+                Color domeCol = (helmetLevel >= 2)
+                    ? rgba(150, 160, 185, 255)
+                    : rgba(85, 90, 110, 255);
+                Color brimCol = (helmetLevel >= 2)
+                    ? rgba(95, 100, 120, 255)
+                    : rgba(55, 60, 75, 255);
+
+                // Dome (top semicircle).
+                c.save();
+                c.fillStyle = domeCol;
+                c.beginPath();
+                c.moveTo(cx - helmetR, headCy);
+                c.arc(cx, headCy, helmetR, 3.1416f, 6.2832f);
+                c.closePath();
+                c.fill();
+                c.restore();
+
+                // Brim.
+                c.save();
+                c.fillStyle = brimCol;
+                c.beginPath();
+                c.moveTo(cx - brimW / 2, brimY);
+                c.lineTo(cx + brimW / 2, brimY);
+                c.lineTo(cx + brimW / 2, brimY + brimH);
+                c.lineTo(cx - brimW / 2, brimY + brimH);
+                c.closePath();
+                c.fill();
+                c.restore();
+
+                // Reinforced crest: a thin ridge running along the top of
+                // the dome front-to-back.
+                if (helmetLevel >= 2)
+                {
+                    float crestW = 4.0f * s;
+                    float crestH = helmetR + 3.0f * s;
+                    c.save();
+                    c.fillStyle = rgba(210, 215, 225, 255);
+                    c.beginPath();
+                    c.moveTo(cx - crestW / 2, headCy - crestH);
+                    c.lineTo(cx + crestW / 2, headCy - crestH);
+                    c.lineTo(cx + crestW / 2, headCy);
+                    c.lineTo(cx - crestW / 2, headCy);
+                    c.closePath();
+                    c.fill();
+                    c.restore();
+                }
+            }
         }
 
         // Chest
         if (hp[BodyPart.chest] > 0)
         {
             c.save();
-            c.fillStyle = hpColor(hp[BodyPart.chest]);
+            c.fillStyle = partColor(BodyPart.chest);
             c.beginPath();
             c.moveTo(cx - chestW / 2, chestTop);
             c.lineTo(cx + chestW / 2, chestTop);
@@ -87,7 +166,7 @@ struct Avatar
         if (hp[BodyPart.leftArm] > 0)
         {
             c.save();
-            c.fillStyle = hpColor(hp[BodyPart.leftArm]);
+            c.fillStyle = partColor(BodyPart.leftArm);
             c.beginPath();
             float ax = cx - chestW / 2 - armW;
             float ay = chestTop;
@@ -104,7 +183,7 @@ struct Avatar
         if (hp[BodyPart.rightArm] > 0)
         {
             c.save();
-            c.fillStyle = hpColor(hp[BodyPart.rightArm]);
+            c.fillStyle = partColor(BodyPart.rightArm);
             c.beginPath();
             float ax = cx + chestW / 2;
             float ay = chestTop;
@@ -115,13 +194,18 @@ struct Avatar
             c.closePath();
             c.fill();
             c.restore();
+
+            // Sword held in the right hand
+            float handCx = ax + armW / 2;
+            float handCy = ay + armH;
+            drawSword(c, handCx, handCy, s);
         }
 
         // Left leg
         if (hp[BodyPart.leftLeg] > 0)
         {
             c.save();
-            c.fillStyle = hpColor(hp[BodyPart.leftLeg]);
+            c.fillStyle = partColor(BodyPart.leftLeg);
             c.beginPath();
             float lx = cx - legW - 2;
             float ly = chestBot;
@@ -138,7 +222,7 @@ struct Avatar
         if (hp[BodyPart.rightLeg] > 0)
         {
             c.save();
-            c.fillStyle = hpColor(hp[BodyPart.rightLeg]);
+            c.fillStyle = partColor(BodyPart.rightLeg);
             c.beginPath();
             float lx = cx + 2;
             float ly = chestBot;
@@ -146,6 +230,49 @@ struct Avatar
             c.lineTo(lx + legW, ly);
             c.lineTo(lx + legW, ly + legH);
             c.lineTo(lx, ly + legH);
+            c.closePath();
+            c.fill();
+            c.restore();
+        }
+
+        // Shield — 30% oversized heater held by the left arm, nudged one
+        // console cell to the right and drawn last so it sits on top of
+        // every other body part. `hasShield` is self-gated: it clears the
+        // moment the left arm is destroyed.
+        if (hasShield)
+        {
+            float shieldW = 28.0f * s * 1.3f;
+            float shieldH = 42.0f * s * 1.3f;
+            float armLeftX = cx - chestW / 2 - armW;
+            float sRight = armLeftX + armW * 0.4f + 12.0f; // +1 console col
+            float sLeft = sRight - shieldW;
+            float sTop = chestTop + armH * 0.05f;
+            float sBot = sTop + shieldH;
+            float sMidY = sTop + shieldH * 0.65f;
+            float sCenterX = (sLeft + sRight) / 2;
+
+            // Heater face (wood).
+            c.save();
+            c.fillStyle = rgba(120, 70, 50, 255);
+            c.beginPath();
+            c.moveTo(sLeft, sTop);
+            c.lineTo(sRight, sTop);
+            c.lineTo(sRight, sMidY);
+            c.lineTo(sCenterX, sBot);
+            c.lineTo(sLeft, sMidY);
+            c.closePath();
+            c.fill();
+            c.restore();
+
+            // Steel rim along the top edge.
+            c.save();
+            c.fillStyle = rgba(90, 90, 100, 255);
+            float rimH = 5.0f * s;
+            c.beginPath();
+            c.moveTo(sLeft, sTop);
+            c.lineTo(sRight, sTop);
+            c.lineTo(sRight, sTop + rimH);
+            c.lineTo(sLeft, sTop + rimH);
             c.closePath();
             c.fill();
             c.restore();
@@ -204,12 +331,71 @@ struct Avatar
     }
 }
 
-/// Returns a color based on current HP: green (5) -> yellow (3) -> red (1)
+/// Draw a simple sword (handle + guard + blade) with pommel at (hx, hy).
+/// The sword points down-and-outward to the right.
+private void drawSword(Canvas* c, float hx, float hy, float s)
+{
+    float handleW = 5.0f * s;
+    float handleH = 14.0f * s;
+    float guardW  = 22.0f * s;
+    float guardH  = 4.0f * s;
+    float bladeW  = 6.0f * s;
+    float bladeH  = 55.0f * s;
+
+    // Handle (brown), below the hand
+    c.save();
+    c.fillStyle = rgba(110, 70, 30, 255);
+    float handleX = hx - handleW / 2;
+    float handleY = hy;
+    c.beginPath();
+    c.moveTo(handleX, handleY);
+    c.lineTo(handleX + handleW, handleY);
+    c.lineTo(handleX + handleW, handleY + handleH);
+    c.lineTo(handleX, handleY + handleH);
+    c.closePath();
+    c.fill();
+    c.restore();
+
+    // Cross-guard (dark grey)
+    c.save();
+    c.fillStyle = rgba(80, 80, 90, 255);
+    float guardX = hx - guardW / 2;
+    float guardY = handleY + handleH;
+    c.beginPath();
+    c.moveTo(guardX, guardY);
+    c.lineTo(guardX + guardW, guardY);
+    c.lineTo(guardX + guardW, guardY + guardH);
+    c.lineTo(guardX, guardY + guardH);
+    c.closePath();
+    c.fill();
+    c.restore();
+
+    // Blade (silver), extends downward from the guard
+    c.save();
+    c.fillStyle = rgba(200, 205, 215, 255);
+    float bladeX = hx - bladeW / 2;
+    float bladeY = guardY + guardH;
+    c.beginPath();
+    c.moveTo(bladeX, bladeY);
+    c.lineTo(bladeX + bladeW, bladeY);
+    // Pointed tip
+    c.lineTo(bladeX + bladeW / 2, bladeY + bladeH);
+    c.closePath();
+    c.fill();
+    c.restore();
+}
+
+/// Returns a color based on current HP:
+/// 5 (full) = light grey, 4 = grey, 3 = red, 2 = darker red, 1 = darkest red.
 private Color hpColor(int currentHP)
 {
-    float t = cast(float) currentHP / MAX_HP; // 1.0 = full, 0.0 = dead
-    // Green at full, yellow at mid, red at low
-    int r = cast(int)(255 * (1.0f - t));
-    int g = cast(int)(255 * t);
-    return rgba(r, g, 40, 255);
+    switch (currentHP)
+    {
+        case 5:  return rgba(200, 200, 210, 255); // light grey
+        case 4:  return rgba(120, 120, 130, 255); // grey
+        case 3:  return rgba(200,  45,  55, 255); // red
+        case 2:  return rgba(140,  30,  40, 255); // darker red
+        case 1:  return rgba( 90,  20,  25, 255); // darkest red
+        default: return rgba( 40,  10,  15, 255); // (not normally drawn)
+    }
 }
