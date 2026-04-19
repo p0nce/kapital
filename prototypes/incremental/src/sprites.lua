@@ -24,6 +24,8 @@ function sprites.load()
   quads.ground          = { atlas = underground, q = love.graphics.newQuad(  8,  72,  8,  8, uw, uh) }
   -- Log pile tile at (8, 240), 1x1 tile = 8x8 px
   quads.log_pile_tile   = { atlas = underground, q = love.graphics.newQuad(  8, 240,  8,  8, uw, uh) }
+  -- Stone pile tile at (8, 0), 1x1 tile = 8x8 px
+  quads.stone_pile_tile = { atlas = underground, q = love.graphics.newQuad(  8,   0,  8,  8, uw, uh) }
   -- Rock: two quads from Underground.png → 3x1 tiles = 24x8 px total
   quads.rock_left  = { atlas = underground, q = love.graphics.newQuad( 88, 16,  8,  8, uw, uh) }
   quads.rock_right = { atlas = underground, q = love.graphics.newQuad(104, 16, 16,  8, uw, uh) }

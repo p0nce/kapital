@@ -9,8 +9,8 @@ local building_defs = {
   lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false },
   log_pile     = { name = "Log pile",     x = 56,  y = 0, w = 9, h = 1, built = true  },
   tree         = { name = "Tree",         x = 128, y = 0, w = 7, h = 4, built = true  },
-  stone_pile   = { name = "Stone pile",   x = 192, y = 0, w = 7, h = 4, built = true  },
-  rock         = { name = "Rock",         x = 256, y = 0, w = 7, h = 4, built = true  },
+  stone_pile   = { name = "Stone pile",   x = 192, y = 0, w = 9, h = 1, built = true  },
+  rock         = { name = "Mine",         x = 256, y = 0, w = 7, h = 4, built = true  },
   dormitory    = { name = "Dormitory",    x = 320, y = 0, w = 7, h = 4, built = false },
   compactor    = { name = "Compactor",    x = 384, y = 0, w = 7, h = 4, built = false },
   assembler    = { name = "Assembler",    x = 448, y = 0, w = 7, h = 4, built = false },
@@ -68,7 +68,8 @@ function world.draw(state)
   }
   -- Tile strip sprites: {quad_name, count} — drawn as N horizontal repetitions
   local tile_strip_map = {
-    log_pile = { quad_name = "log_pile_tile", count = 9, y_offset = 8 },
+    log_pile   = { quad_name = "log_pile_tile",   count = 9, y_offset = 8 },
+    stone_pile = { quad_name = "stone_pile_tile", count = 9, y_offset = 8 },
   }
 
   for building_id, building in pairs(state.buildings) do
