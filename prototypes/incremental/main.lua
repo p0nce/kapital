@@ -3,6 +3,7 @@ local state = require("src/state")
 local world = require("src/world")
 local sprites = require("src/sprites")
 local camera = require("src/camera")
+local workers = require("src/workers")
 
 function love.load()
   world.init(state)
@@ -11,6 +12,7 @@ end
 
 function love.update(dt)
   state.update(dt)
+  workers.update(dt, state)
 end
 
 function love.draw()
@@ -19,6 +21,7 @@ function love.draw()
 
   camera.attach(state)
   world.draw(state)
+  workers.draw(state)
   camera.detach()
 end
 
