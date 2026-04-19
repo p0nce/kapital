@@ -1,26 +1,37 @@
 -- src/sprites.lua
 local sprites = {}
 
-local atlas = nil
+local atlases = {}
 local quads = {}
 
 function sprites.load()
-  atlas = love.graphics.newImage("Tilesets/Chroma-Noir-8x8/Buildings.png")
-  atlas:setFilter("nearest", "nearest")
-  local aw, ah = atlas:getDimensions()
+  local buildings = love.graphics.newImage("Tilesets/Chroma-Noir-8x8/Buildings.png")
+  buildings:setFilter("nearest", "nearest")
+  local bw, bh = buildings:getDimensions()
+  atlases.buildings = buildings
 
   -- House sprite at (0, 32), 7x4 tiles = 56x32 px
-  quads.house = love.graphics.newQuad(0, 32, 56, 32, aw, ah)
+  quads.house = { atlas = buildings, q = love.graphics.newQuad(0, 32, 56, 32, bw, bh) }
   -- Tree sprite at (120, 80), 1x2 tiles = 8x16 px
-  quads.tree = love.graphics.newQuad(120, 80, 8, 16, aw, ah)
+  quads.tree  = { atlas = buildings, q = love.graphics.newQuad(120, 80, 8, 16, bw, bh) }
+
+  local underground = love.graphics.newImage("Tilesets/Chroma-Noir-8x8/Underground.png")
+  underground:setFilter("nearest", "nearest")
+  local uw, uh = underground:getDimensions()
+  atlases.underground = underground
+
+  -- Ground tile at (8, 72), 1x1 tile = 8x8 px
+  quads.ground = { atlas = underground, q = love.graphics.newQuad(8, 72, 8, 8, uw, uh) }
 end
 
 function sprites.get_atlas()
-  return atlas
+  return atlases.buildings
 end
 
 function sprites.get_quad(name)
-  return quads[name]
+  local entry = quads[name]
+  if entry then return entry.atlas, entry.q end
+  return nil, nil
 end
 
 return sprites

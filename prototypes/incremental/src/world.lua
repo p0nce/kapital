@@ -41,40 +41,53 @@ function world.build(state, building_id)
   end
 end
 
+local GROUND_Y = 32  -- world y where ground surface sits
+
 function world.draw(state)
   local inv_zoom = 1 / state.camera.zoom
-  local atlas = sprites.get_atlas()
   local font = love.graphics.getFont()
+
+  -- Draw ground strip
+  local ground_atlas, ground_quad = sprites.get_quad("ground")
+  if ground_atlas and ground_quad then
+    love.graphics.setColor(1, 1, 1)
+    local x = -64
+    while x < 700 do
+      love.graphics.draw(ground_atlas, ground_quad, x, GROUND_Y)
+      x = x + 8
+    end
+  end
 
   -- Per-building sprite overrides; falls back to house quad
   local sprite_map = {
-    tree = sprites.get_quad("tree"),
+    tree = "tree",
   }
 
   for building_id, building in pairs(state.buildings) do
     if not building.built then goto continue end
-    local GROUND_Y = 32  -- all sprites bottom-align to this y offset
-    local quad = sprite_map[building_id] or sprites.get_quad("house")
-    local qx, qy, bw, bh = quad:getViewport()
-    local draw_y = building.y + GROUND_Y - bh  -- bottom-align to ground
 
-    if atlas and quad then
+    local sprite_name = sprite_map[building_id] or "house"
+    local batlas, quad = sprites.get_quad(sprite_name)
+    local qx, qy, bw, bh = quad:getViewport()
+    local draw_y = GROUND_Y - bh  -- bottom-align to ground
+
+    if batlas and quad then
       love.graphics.setColor(1, 1, 1)
-      love.graphics.draw(atlas, quad, building.x, draw_y)
+      love.graphics.draw(batlas, quad, building.x, draw_y)
     else
       love.graphics.setColor(0.3, 0.3, 0.3)
       love.graphics.rectangle("fill", building.x, draw_y, bw, bh)
     end
 
-    -- Label centered horizontally on top of the building, constant screen size
+    -- Label centered above the building, constant screen size
     love.graphics.push()
     local text_w = font:getWidth(building.name)
     local text_h = font:getHeight()
     local cx = building.x + bw / 2 - (text_w * inv_zoom) / 2
-    love.graphics.translate(cx, building.y - text_h * inv_zoom - 2)
+    love.graphics.translate(cx, draw_y - text_h * inv_zoom - 2)
     love.graphics.scale(inv_zoom, inv_zoom)
     love.graphics.setColor(0, 0, 0)
-    love.graphics.print(building.name, 1, 1)  -- shadow
+    love.graphics.print(building.name, 1, 1)
     love.graphics.setColor(1, 1, 1)
     love.graphics.print(building.name, 0, 0)
     love.graphics.pop()
