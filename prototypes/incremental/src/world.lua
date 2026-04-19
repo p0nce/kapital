@@ -51,7 +51,7 @@ function world.draw(state)
   local ground_atlas, ground_quad = sprites.get_quad("ground")
   if ground_atlas and ground_quad then
     love.graphics.setColor(1, 1, 1)
-    local x = -200
+    local x = -1000
     while x < 900 do
       love.graphics.draw(ground_atlas, ground_quad, x, GROUND_Y)
       x = x + 8
