@@ -3,61 +3,19 @@ local world = {}
 local building_modules = {}
 local sprites = require("src/sprites")
 
--- Buildings are spaced with 16px (2-tile) gaps so labels don't overlap.
--- Layout (world px): lumberyard@0 log_pile@40 tree@72 stone_pile@104
---                    rock@136 dormitory@168 compactor@208 assembler@248
---                    loading_dock@288 play_zone@328
+-- All buildings use the same house sprite: 56x32 px (7x4 tiles).
+-- Spaced with 8px gaps. Layout origin x values: 0, 64, 128, 192, 256, 320, 384, 448, 512, 576
 local building_defs = {
-  lumberyard = {
-    name = "Lumberyard",
-    x = 0, y = 0, w = 3, h = 3,
-    built = false,
-  },
-  log_pile = {
-    name = "Log pile",
-    x = 40, y = 0, w = 2, h = 2,
-    built = true,
-  },
-  tree = {
-    name = "Tree",
-    x = 72, y = 0, w = 2, h = 2,
-    built = true,
-  },
-  stone_pile = {
-    name = "Stone pile",
-    x = 104, y = 0, w = 2, h = 2,
-    built = true,
-  },
-  rock = {
-    name = "Rock",
-    x = 136, y = 0, w = 2, h = 2,
-    built = true,
-  },
-  dormitory = {
-    name = "Dormitory",
-    x = 168, y = 0, w = 2, h = 3,
-    built = false,
-  },
-  compactor = {
-    name = "Compactor",
-    x = 208, y = 0, w = 2, h = 2,
-    built = false,
-  },
-  assembler = {
-    name = "Assembler",
-    x = 248, y = 0, w = 2, h = 2,
-    built = false,
-  },
-  loading_dock = {
-    name = "Loading Dock",
-    x = 288, y = 0, w = 2, h = 2,
-    built = false,
-  },
-  play_zone = {
-    name = "Play Zone",
-    x = 328, y = 0, w = 3, h = 3,
-    built = false,
-  },
+  lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false },
+  log_pile     = { name = "Log pile",     x = 64,  y = 0, w = 7, h = 4, built = true  },
+  tree         = { name = "Tree",         x = 128, y = 0, w = 7, h = 4, built = true  },
+  stone_pile   = { name = "Stone pile",   x = 192, y = 0, w = 7, h = 4, built = true  },
+  rock         = { name = "Rock",         x = 256, y = 0, w = 7, h = 4, built = true  },
+  dormitory    = { name = "Dormitory",    x = 320, y = 0, w = 7, h = 4, built = false },
+  compactor    = { name = "Compactor",    x = 384, y = 0, w = 7, h = 4, built = false },
+  assembler    = { name = "Assembler",    x = 448, y = 0, w = 7, h = 4, built = false },
+  loading_dock = { name = "Loading Dock", x = 512, y = 0, w = 7, h = 4, built = false },
+  play_zone    = { name = "Play Zone",    x = 576, y = 0, w = 7, h = 4, built = false },
 }
 
 function world.init(state)
@@ -87,29 +45,28 @@ function world.draw(state)
   local inv_zoom = 1 / state.camera.zoom
   local atlas = sprites.get_atlas()
   local house_quad = sprites.get_quad("house")
+  local font = love.graphics.getFont()
 
   for building_id, building in pairs(state.buildings) do
-    local bw, bh = building.w * 8, building.h * 8
+    local bw = 56  -- natural sprite width (7 * 8)
+    local bh = 32  -- natural sprite height (4 * 8)
 
     if atlas and house_quad then
-      if building.built then
-        love.graphics.setColor(1, 1, 1)
-      else
-        love.graphics.setColor(0.35, 0.35, 0.35)
-      end
-      -- Scale sprite from 56x32 to the building's world dimensions
-      love.graphics.draw(atlas, house_quad, building.x, building.y,
-        0, bw / 56, bh / 32)
+      love.graphics.setColor(building.built and {1,1,1} or {0.35,0.35,0.35})
+      love.graphics.draw(atlas, house_quad, building.x, building.y)
     else
-      -- Fallback rectangles if atlas not loaded
-      love.graphics.setColor(building.built and 0.3 or 0.1, 0.3, 0.3)
+      love.graphics.setColor(building.built and {0.3,0.3,0.3} or {0.1,0.1,0.1})
       love.graphics.rectangle("fill", building.x, building.y, bw, bh)
     end
 
-    -- Label at constant screen size
+    -- Label centered horizontally on top of the building, constant screen size
     love.graphics.push()
-    love.graphics.translate(building.x + 2, building.y + bh + 2)
+    local text_w = font:getWidth(building.name)
+    local cx = building.x + bw / 2 - (text_w * inv_zoom) / 2
+    love.graphics.translate(cx, building.y + 2)
     love.graphics.scale(inv_zoom, inv_zoom)
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.print(building.name, 1, 1)  -- shadow
     love.graphics.setColor(1, 1, 1)
     love.graphics.print(building.name, 0, 0)
     love.graphics.pop()
