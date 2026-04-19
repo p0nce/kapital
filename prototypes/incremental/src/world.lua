@@ -53,15 +53,17 @@ function world.draw(state)
 
   for building_id, building in pairs(state.buildings) do
     if not building.built then goto continue end
+    local GROUND_Y = 32  -- all sprites bottom-align to this y offset
     local quad = sprite_map[building_id] or sprites.get_quad("house")
     local qx, qy, bw, bh = quad:getViewport()
+    local draw_y = building.y + GROUND_Y - bh  -- bottom-align to ground
 
     if atlas and quad then
       love.graphics.setColor(1, 1, 1)
-      love.graphics.draw(atlas, quad, building.x, building.y)
+      love.graphics.draw(atlas, quad, building.x, draw_y)
     else
       love.graphics.setColor(0.3, 0.3, 0.3)
-      love.graphics.rectangle("fill", building.x, building.y, bw, bh)
+      love.graphics.rectangle("fill", building.x, draw_y, bw, bh)
     end
 
     -- Label centered horizontally on top of the building, constant screen size
