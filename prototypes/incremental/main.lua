@@ -50,7 +50,7 @@ end
 
 function love.draw()
   love.graphics.setColor(0.05, 0.05, 0.05)
-  love.graphics.rectangle("fill", 0, 0, 800, 600)
+  love.graphics.rectangle("fill", 0, 0, love.graphics.getDimensions())
 
   camera.attach(state)
   world.draw(state)
