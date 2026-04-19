@@ -6,11 +6,13 @@ local camera = require("src/camera")
 local workers = require("src/workers")
 local input = require("src/input")
 local hud = require("src/ui/hud")
+local menu = require("src/ui/menu")
 local tree = require("src/buildings/tree")
 local rock = require("src/buildings/rock")
 local log_pile = require("src/buildings/log_pile")
 local stone_pile = require("src/buildings/stone_pile")
 local lumberyard = require("src/buildings/lumberyard")
+local dormitory = require("src/buildings/dormitory")
 
 function love.load()
   world.init(state)
@@ -20,11 +22,15 @@ function love.load()
   log_pile.init(state)
   stone_pile.init(state)
   lumberyard.init(state)
+  dormitory.init(state)
 end
 
 function love.update(dt)
   state.update(dt)
+  camera.update(dt, state)
   workers.update(dt, state)
+  tree.update(dt, state)
+  rock.update(dt, state)
 end
 
 function love.draw()
@@ -37,6 +43,16 @@ function love.draw()
   camera.detach()
 
   hud.draw(state)
+
+  if menu.get_open_building(state) == "dormitory" then
+    menu.draw_header("Dormitory")
+    local items = dormitory.menu_items(state)
+    local y = 40
+    for _, item in ipairs(items) do
+      menu.draw_item(y, item.label, item.affordable)
+      y = y + 25
+    end
+  end
 end
 
 function love.mousepressed(x, y, button)
@@ -44,5 +60,9 @@ function love.mousepressed(x, y, button)
 end
 
 function love.keypressed(key)
-  -- Will route to input system
+  input.keypressed(state, key)
+end
+
+function love.wheelmoved(x, y)
+  input.wheelmoved(state, x, y)
 end

@@ -1,5 +1,6 @@
 -- src/world.lua
 local world = {}
+local building_modules = {}
 
 local building_defs = {
   lumberyard = {
@@ -87,6 +88,43 @@ function world.draw(state)
     love.graphics.rectangle("fill", building.x, building.y, building.w * 8, building.h * 8)
     love.graphics.setColor(1, 1, 1)
     love.graphics.print(building.name, building.x + 2, building.y + 2)
+  end
+end
+
+function world.init_modules()
+  building_modules = {
+    compactor = require("src/buildings/compactor"),
+    assembler = require("src/buildings/assembler"),
+    loading_dock = require("src/buildings/loading_dock"),
+    play_zone = require("src/buildings/play_zone"),
+  }
+end
+
+function world.try_build(state, building_id)
+  if building_modules[building_id] and building_modules[building_id].build then
+    return building_modules[building_id].build(state)
+  end
+  return false
+end
+
+-- Handle click on a building: open its menu or trigger buy
+-- screen_x/y for menu hit detection, world_x/y for building bounds
+function world.mousepressed(state, world_x, world_y, screen_x, screen_y)
+  local menu = require("src/ui/menu")
+
+  if menu.is_open(state) then
+    if menu.close_button_hit(screen_x, screen_y) then
+      menu.close(state)
+    end
+    -- While menu is open, block world clicks
+    return
+  end
+
+  local dorm = state.buildings.dormitory
+  if world_x >= dorm.x and world_x < dorm.x + dorm.w * 8 and
+     world_y >= dorm.y and world_y < dorm.y + dorm.h * 8 then
+    menu.open(state, "dormitory")
+    return
   end
 end
 
