@@ -4,7 +4,10 @@ local rock = {}
 
 function rock.click(state)
   resources.add(state, "points", 1)
-  resources.add(state, "stones", 1)
+  if state.buildings.stone_pile.contents < state.buildings.stone_pile.cap then
+    resources.add(state, "stones", 1)
+    state.buildings.stone_pile.contents = state.buildings.stone_pile.contents + 1
+  end
 end
 
 function rock.init(state)

@@ -8,12 +8,18 @@ local input = require("src/input")
 local hud = require("src/ui/hud")
 local tree = require("src/buildings/tree")
 local rock = require("src/buildings/rock")
+local log_pile = require("src/buildings/log_pile")
+local stone_pile = require("src/buildings/stone_pile")
+local lumberyard = require("src/buildings/lumberyard")
 
 function love.load()
   world.init(state)
   sprites.load()
   tree.init(state)
   rock.init(state)
+  log_pile.init(state)
+  stone_pile.init(state)
+  lumberyard.init(state)
 end
 
 function love.update(dt)
