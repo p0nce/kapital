@@ -36,7 +36,11 @@ function input.keypressed(state, key)
   elseif key == "f5" then
     love.event.quit("restart")
   elseif key == "escape" then
-    menu.close(state)
+    if menu.is_open(state) then
+      menu.close(state)
+    else
+      love.event.quit()
+    end
   end
 end
 
