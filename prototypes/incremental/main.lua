@@ -1,10 +1,12 @@
 -- main.lua
+local state = require("src/state")
+
 function love.load()
-  -- Will be populated with state initialization
+  -- State is initialized
 end
 
 function love.update(dt)
-  -- Will dispatch to subsystems
+  state.update(dt)
 end
 
 function love.draw()
