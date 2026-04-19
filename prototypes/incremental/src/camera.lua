@@ -16,8 +16,15 @@ function camera.update(dt, state)
   elseif love.keyboard.isDown("right") then
     state.camera.x = state.camera.x + EDGE_SCROLL_SPEED * dt
   end
+  if love.keyboard.isDown("up") then
+    state.camera.y = state.camera.y - EDGE_SCROLL_SPEED * dt
+  elseif love.keyboard.isDown("down") then
+    state.camera.y = state.camera.y + EDGE_SCROLL_SPEED * dt
+  end
   if state.camera.x < -200 then state.camera.x = -200 end
-  if state.camera.x > 750 then state.camera.x = 750 end
+  if state.camera.x > 750  then state.camera.x = 750  end
+  if state.camera.y < -100 then state.camera.y = -100 end
+  if state.camera.y > 100  then state.camera.y = 100  end
 end
 
 function camera.attach(state)

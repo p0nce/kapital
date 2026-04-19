@@ -37,31 +37,18 @@ function input.keypressed(state, key)
     love.event.quit("restart")
   elseif key == "escape" then
     menu.close(state)
-  elseif key == "up" then
-    state.camera.y = state.camera.y - 30
-  elseif key == "down" then
-    state.camera.y = state.camera.y + 30
   end
 end
 
+local WHEEL_PAN_SPEED = 24
+local HUD_HEIGHT = 30  -- pixels; wheel ignored when cursor is over HUD
+
 function input.wheelmoved(state, x, y)
-  local camera = require("src/camera")
-  local zooms = {1, 2, 3, 4, 6}
-  if y > 0 then
-    for i, z in ipairs(zooms) do
-      if z == state.camera.zoom and i < #zooms then
-        camera.set_zoom(state, zooms[i + 1])
-        break
-      end
-    end
-  elseif y < 0 then
-    for i, z in ipairs(zooms) do
-      if z == state.camera.zoom and i > 1 then
-        camera.set_zoom(state, zooms[i - 1])
-        break
-      end
-    end
-  end
+  local _, my = love.mouse.getPosition()
+  if my <= HUD_HEIGHT then return end
+  state.camera.y = state.camera.y - y * WHEEL_PAN_SPEED
+  if state.camera.y < -100 then state.camera.y = -100 end
+  if state.camera.y >  100 then state.camera.y =  100 end
 end
 
 return input
