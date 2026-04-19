@@ -5,6 +5,7 @@ local sprites = require("src/sprites")
 local camera = require("src/camera")
 local workers = require("src/workers")
 local input = require("src/input")
+local screen = require("src/screen")
 local hud = require("src/ui/hud")
 local menu = require("src/ui/menu")
 local tree = require("src/buildings/tree")
@@ -50,7 +51,7 @@ end
 
 function love.draw()
   love.graphics.setColor(0.05, 0.05, 0.05)
-  love.graphics.rectangle("fill", 0, 0, love.graphics.getDimensions())
+  love.graphics.rectangle("fill", 0, 0, screen.dims())
 
   camera.attach(state)
   world.draw(state)
