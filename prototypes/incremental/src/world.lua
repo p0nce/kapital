@@ -1,6 +1,7 @@
 -- src/world.lua
 local world = {}
 local building_modules = {}
+local sprites = require("src/sprites")
 
 -- Buildings are spaced with 16px (2-tile) gaps so labels don't overlap.
 -- Layout (world px): lumberyard@0 log_pile@40 tree@72 stone_pile@104
@@ -84,16 +85,30 @@ end
 
 function world.draw(state)
   local inv_zoom = 1 / state.camera.zoom
+  local atlas = sprites.get_atlas()
+  local house_quad = sprites.get_quad("house")
+
   for building_id, building in pairs(state.buildings) do
-    if building.built then
-      love.graphics.setColor(0.3, 0.3, 0.3)
+    local bw, bh = building.w * 8, building.h * 8
+
+    if atlas and house_quad then
+      if building.built then
+        love.graphics.setColor(1, 1, 1)
+      else
+        love.graphics.setColor(0.35, 0.35, 0.35)
+      end
+      -- Scale sprite from 56x32 to the building's world dimensions
+      love.graphics.draw(atlas, house_quad, building.x, building.y,
+        0, bw / 56, bh / 32)
     else
-      love.graphics.setColor(0.1, 0.1, 0.1)
+      -- Fallback rectangles if atlas not loaded
+      love.graphics.setColor(building.built and 0.3 or 0.1, 0.3, 0.3)
+      love.graphics.rectangle("fill", building.x, building.y, bw, bh)
     end
-    love.graphics.rectangle("fill", building.x, building.y, building.w * 8, building.h * 8)
-    -- Render label at constant screen size regardless of zoom
+
+    -- Label at constant screen size
     love.graphics.push()
-    love.graphics.translate(building.x + 2, building.y + 2)
+    love.graphics.translate(building.x + 2, building.y + bh + 2)
     love.graphics.scale(inv_zoom, inv_zoom)
     love.graphics.setColor(1, 1, 1)
     love.graphics.print(building.name, 0, 0)

@@ -2,16 +2,23 @@
 local sprites = {}
 
 local atlas = nil
+local quads = {}
 
 function sprites.load()
-  -- Placeholder: for now, we'll just note that atlas is nil
-  -- In a later task, we'll integrate the actual Chroma Noir PNG
-  -- For MVP testing, we use rectangles; sprite mapping comes later
+  atlas = love.graphics.newImage("Tilesets/Chroma-Noir-8x8/Buildings.png")
+  atlas:setFilter("nearest", "nearest")
+  local aw, ah = atlas:getDimensions()
+
+  -- House sprite at (0, 32), 7x4 tiles = 56x32 px
+  quads.house = love.graphics.newQuad(0, 32, 56, 32, aw, ah)
 end
 
-function sprites.get_quad(sprite_name)
-  -- Placeholder for sprite lookup
-  return nil
+function sprites.get_atlas()
+  return atlas
+end
+
+function sprites.get_quad(name)
+  return quads[name]
 end
 
 return sprites
