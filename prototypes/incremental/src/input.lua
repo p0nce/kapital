@@ -11,12 +11,16 @@ function input.mousepressed(state, x, y, button)
 
   local world_x, world_y = camera.screen_to_world(state, x, y)
 
-  if world_x >= 40 and world_x < 56 and world_y >= 0 and world_y < 16 then
+  local tb = state.buildings.tree
+  if world_x >= tb.x and world_x < tb.x + tb.w * 8 and
+     world_y >= tb.y and world_y < tb.y + tb.h * 8 then
     tree.click(state)
     return
   end
 
-  if world_x >= 72 and world_x < 88 and world_y >= 0 and world_y < 16 then
+  local rb = state.buildings.rock
+  if world_x >= rb.x and world_x < rb.x + rb.w * 8 and
+     world_y >= rb.y and world_y < rb.y + rb.h * 8 then
     rock.click(state)
     return
   end

@@ -4,10 +4,9 @@ local hud = {}
 function hud.draw(state)
   love.graphics.setColor(1, 1, 1)
   local text = string.format(
-    "Points: %d  Wood: %d  Stones: %d  SP: %d  Bombs: %d",
+    "Points: %d  Wood: %d  SP: %d  Bombs: %d",
     math.floor(state.resources.points),
     math.floor(state.resources.wood),
-    math.floor(state.resources.stones),
     state.resources.sp,
     state.resources.bombs
   )

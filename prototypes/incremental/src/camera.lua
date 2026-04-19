@@ -12,7 +12,7 @@ function camera.update(dt, state)
     state.camera.x = state.camera.x + EDGE_SCROLL_SPEED * dt
   end
   if state.camera.x < -50 then state.camera.x = -50 end
-  if state.camera.x > 300 then state.camera.x = 300 end
+  if state.camera.x > 400 then state.camera.x = 400 end
 end
 
 function camera.attach(state)

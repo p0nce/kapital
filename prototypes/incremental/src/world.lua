@@ -2,6 +2,10 @@
 local world = {}
 local building_modules = {}
 
+-- Buildings are spaced with 16px (2-tile) gaps so labels don't overlap.
+-- Layout (world px): lumberyard@0 log_pile@40 tree@72 stone_pile@104
+--                    rock@136 dormitory@168 compactor@208 assembler@248
+--                    loading_dock@288 play_zone@328
 local building_defs = {
   lumberyard = {
     name = "Lumberyard",
@@ -10,47 +14,47 @@ local building_defs = {
   },
   log_pile = {
     name = "Log pile",
-    x = 24, y = 0, w = 2, h = 2,
+    x = 40, y = 0, w = 2, h = 2,
     built = true,
   },
   tree = {
     name = "Tree",
-    x = 40, y = 0, w = 2, h = 2,
+    x = 72, y = 0, w = 2, h = 2,
     built = true,
   },
   stone_pile = {
     name = "Stone pile",
-    x = 56, y = 0, w = 2, h = 2,
+    x = 104, y = 0, w = 2, h = 2,
     built = true,
   },
   rock = {
     name = "Rock",
-    x = 72, y = 0, w = 2, h = 2,
+    x = 136, y = 0, w = 2, h = 2,
     built = true,
   },
   dormitory = {
     name = "Dormitory",
-    x = 88, y = 0, w = 2, h = 3,
+    x = 168, y = 0, w = 2, h = 3,
     built = false,
   },
   compactor = {
     name = "Compactor",
-    x = 104, y = 0, w = 2, h = 2,
+    x = 208, y = 0, w = 2, h = 2,
     built = false,
   },
   assembler = {
     name = "Assembler",
-    x = 120, y = 0, w = 2, h = 2,
+    x = 248, y = 0, w = 2, h = 2,
     built = false,
   },
   loading_dock = {
     name = "Loading Dock",
-    x = 136, y = 0, w = 2, h = 2,
+    x = 288, y = 0, w = 2, h = 2,
     built = false,
   },
   play_zone = {
     name = "Play Zone",
-    x = 152, y = 0, w = 3, h = 3,
+    x = 328, y = 0, w = 3, h = 3,
     built = false,
   },
 }
