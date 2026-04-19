@@ -1,0 +1,2899 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>inteli.mmx</title>
+    <style type="text/css" media="screen">
+      html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+      blockquote, pre, a, abbr, address, cite, code, del, dfn, em, figure,
+      img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, u, i, dl,
+      dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+      tbody, tfoot, thead, tr, th, td {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        font-size: 100%;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      h1 { font-size: 200%; }
+      h2 { font-size: 160%; }
+      h3 { font-size: 120%; }
+      h4 { font-size: 100%; }
+      h5 { font-size: 80%; }
+      h6 { font-size: 80%; font-weight: normal; }
+
+      ul, ol {
+        margin: 1.4em 0;
+      }
+      ul ul, ol ol, ul ol, ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      ul, ol {
+        margin-left: 2.8em;
+      }
+
+      ol {
+        list-style: decimal;
+      }
+      ol ol {
+        list-style: lower-alpha;
+      }
+      ol ol ol {
+        list-style: lower-roman;
+      }
+      ol ol ol ol {
+        list-style: decimal;
+      }
+
+      blockquote {
+        margin: 0.1em;
+        margin-left: 1em;
+        border-left: 2px solid #cccccc;
+        padding-left: 0.7em;
+      }
+
+      .color_red { color: #dc322f; }
+      .color_blue { color: #268bd2; }
+      .color_green { color: #859901; }
+      .color_yellow { color: #b58901; }
+      .color_black { color: black; }
+      .color_white { color: white; }
+
+      .font_big {
+        font-size: 1.2em;
+      }
+
+      .ddoc_section_h {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19.5px;
+        margin-top: 11px;
+        display: block;
+      }
+
+      body.dlang .dlang {
+        display: inline-block;
+      }
+
+      body.dlang .declaration .dlang {
+          display: block;
+      }
+
+      body.dlang .ddoc_header_anchor a.dlang {
+        display: block;
+        color: rgba(0, 136, 204, 1);
+        text-decoration: none;
+      }
+
+      body.dlang .ddoc_header_anchor .code {
+        color: rgba(0, 136, 204, 1);
+      }
+
+      #ddoc_main .module {
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          overflow-x: hidden;
+          padding: 15px;
+      }
+
+      #ddoc_main .section .section {
+        margin-top: 0;
+      }
+
+      #ddoc_main .ddoc_module_members_section {
+          padding: 1px 0 0;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members section.intro {
+          background: #fff none repeat scroll 0 0;
+          list-style-type: none;
+          width: 100%;
+      }
+
+      #ddoc_main .ddoc_header_anchor {
+          font-size: 1.4em;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_header_anchor > .code {
+          display: inline-block;
+
+      }
+
+      #ddoc_main .ddoc_decl {
+        background-color: transparent;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0;
+        padding-left: 15px;
+      }
+
+      #ddoc_main .ddoc_decl .section, #ddoc_main .section.ddoc_sections {
+        background: white none repeat scroll 0 0;
+        margin: 0;
+        padding: 5px;
+        position: relative;
+        border-radius: 5px;
+      }
+
+      #ddoc_main .ddoc_decl .section h4:first-of-type, #ddoc_main .section.ddoc_sections h4:first-of-type {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration {
+          margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration .code {
+          color: rgba(0, 0, 0, 1);
+          margin-bottom: 15px;
+          padding-bottom: 6px;
+      }
+
+      #ddoc_main .declaration div .para {
+          margin-bottom: 0;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr td:first-of-type {
+        padding: 7px;
+        text-align: right;
+        vertical-align: top;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      #ddoc_main .ddoc_params .graybox {
+        border: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox td {
+        border-color: rgba(214, 214, 214, 1);
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:first-child > td {
+        border-top: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:last-child > td {
+        border-bottom: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:first-child {
+        border-left: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:last-child {
+        border-right: 0 none;
+        width: 100%;
+      }
+
+      #ddoc_main em.term, #ddoc_main em.term .code {
+        color: rgba(65, 65, 65, 1);
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      #ddoc_main .see-also {
+        cursor: pointer;
+        font-family: Menlo,monospace;
+      }
+
+      #ddoc_main .ddoc_decl .section > div:last-of-type {
+        margin-bottom: 15px;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members {
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .code_sample {
+        background: inherit;
+      }
+
+      #ddoc_main .declaration .code-line {
+          display: block;
+          font: 1em Menlo,monospace;
+      }
+
+      #ddoc_main a[name] {
+        margin: -112px 0 0;
+        padding-top: 112px;
+      }
+
+      #ddoc_main .ddoc_decl td {
+        max-width: inherit;
+      }
+
+      #ddoc_main .declaration a {
+        color: inherit;
+      }
+
+      #ddoc_main .declaration a:hover {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: underline;
+      }
+
+      body.ddoc {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-family: Helvetica,Arial,sans-serif;
+        font-size: 62.5%;
+        margin: 0;
+        border: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+      }
+
+      .ddoc a[name] {
+        display: block;
+        height: 0;
+        margin: -85px 0 0;
+        padding-top: 85px;
+        width: 0;
+      }
+
+      .ddoc .module {
+          border-color: transparent;
+          background-color: rgba(255, 255, 255, 1);
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-image: none;
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.07);
+          display: block;
+          margin-left: 0;
+          min-height: calc(100% - 173px);
+          overflow: auto;
+          padding-bottom: 100px;
+      }
+
+      .ddoc .content_wrapper {
+          background-color: rgba(242, 242, 242, 1);
+          margin: 0 auto;
+          max-width: 980px;
+      }
+
+      .ddoc .section {
+        padding: 15px 25px 30px;
+      }
+
+      .ddoc .section .section {
+        margin: 30px 0 0;
+        padding: 0;
+      }
+
+      .ddoc .para {
+        color: rgba(65, 65, 65, 1);
+        font-size: 1.4em;
+        line-height: 145%;
+        margin-bottom: 15px;
+      }
+
+      .ddoc .ddoc_examples .para {
+        margin-bottom: 0;
+      }
+
+      .ddoc .module_name {
+          color: rgba(0, 0, 0, 1);
+          display: block;
+          font-family: Helvetica;
+          font-size: 2.8em;
+          font-weight: 100;
+          margin-bottom: 0;
+          padding: 15px 0;
+      }
+
+      .ddoc .module a {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: none;
+      }
+
+      .ddoc .code {
+        color: rgba(128, 128, 128, 1);
+        font-family: Menlo,monospace;
+        font-size: 0.85em;
+        word-wrap: break-word;
+      }
+
+      .ddoc .code i {
+        font-style: normal;
+      }
+
+      .ddoc .code .code {
+        font-size: 1em;
+      }
+
+      .ddoc .code_sample {
+        background-clip: padding-box;
+        margin: 1px 0;
+        text-align: left;
+      }
+
+      .ddoc .code_sample {
+        display: block;
+        font-size: 1.4em;
+        margin-left: 21px;
+      }
+
+      .ddoc ol .code_sample {
+        font-size: 1em;
+      }
+
+      .ddoc .code_lines {
+        counter-reset: li;
+        line-height: 1.6em;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ddoc .code_listing .code_sample div {
+        margin-left: 13px;
+        width: 93%;
+      }
+
+      .ddoc .code_listing .code_sample div .code_lines li {
+        list-style-type: none;
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .ddoc .code_sample div .code_lines li::before {
+        margin-left: -33px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+10)::before {
+        margin-left: -39px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+100)::before {
+        margin-left: -46px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample .code_lines .code {
+        color: #000;
+      }
+
+      .ddoc div.dlang {
+        margin: 10px 0 21px;
+        padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+          margin: 10px 0 21px;
+          padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+        border-left: 5px solid rgba(0, 155, 51, 0.2);
+      }
+
+      .ddoc .code_lines li::before {
+        color: rgba(128, 128, 128, 1);
+        content: counter(li, decimal);
+        counter-increment: li;
+        font-family: Menlo,monospace;
+        font-size: 0.9em;
+        margin-right: 16px;
+      }
+
+      .ddoc .code_lines li {
+        padding-left: 0;
+        white-space: pre-wrap;
+      }
+
+      .ddoc .code_lines pre {
+        display: contents;
+      }
+
+      .ddoc .code_lines li:only-of-type::before {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:only-of-type {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:nth-child(n+10) {
+        text-indent: -17px;
+      }
+
+      .ddoc .code_lines li:nth-child(n+10)::before {
+        margin-right: 12px;
+      }
+
+      .ddoc .graybox {
+        border: 1px solid rgba(233, 233, 233, 1);
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: hide;
+        margin: 20px 0 36px;
+        text-align: left;
+      }
+
+      .ddoc .graybox p {
+        margin: 0;
+        min-width: 50px;
+      }
+
+      .ddoc th {
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: bottom;
+      }
+
+      .ddoc td {
+        border: 1px solid rgba(233, 233, 233, 1);
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: middle;
+      }
+
+      .punctuation {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .comment {
+        color: rgba(0, 131, 18, 1);
+      }
+
+      .operator {
+        color: #000;
+      }
+
+      .keyword {
+        color: rgba(170, 13, 145, 1);
+      }
+
+      .keyword_type {
+        color: rgba(170, 51, 145, 1);
+      }
+
+      .string_literal {
+        color: rgba(196, 26, 22, 1);
+      }
+
+      .ddoc_psuper_symbol {
+        color: rgba(92, 38, 153, 1);
+      }
+
+      .param {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .psymbol {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .ddoc_member_header .ddoc_header_anchor .code {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body id="ddoc_main" class="ddoc dlang">
+    <div class="content_wrapper">
+      <article class="module">
+        <h1 class="module_name">inteli.mmx</h1>
+        <section id="module_content"><section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    MMX intrinsics.
+ <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#techs=MMX">https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#techs=MMX</a>
+
+  </p>
+</div>
+<div class="ddoc_license">
+  <h4>License</h4>
+  <p class="para">
+    <a href="http://www.boost.org/LICENSE_1_0.txt">Boost License 1.0</a>
+  </p>
+</div>
+
+</section>
+<section class="section ddoc_module_members_section">
+  <div class="ddoc_module_members">
+    <ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_add_pi16" id="_mm_add_pi16"><code class="code">_mm_add_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_add_pi16"></span>nothrow @nogc __m64 <code class="code">_mm_add_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_add_pi32" id="_mm_add_pi32"><code class="code">_mm_add_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_add_pi32"></span>nothrow @nogc __m64 <code class="code">_mm_add_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_add_pi8" id="_mm_add_pi8"><code class="code">_mm_add_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_add_pi8"></span>nothrow @nogc __m64 <code class="code">_mm_add_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_adds_pi16" id="_mm_adds_pi16"><code class="code">_mm_adds_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_adds_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_adds_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using signed saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_adds_pi8" id="_mm_adds_pi8"><code class="code">_mm_adds_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_adds_pi8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_adds_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using signed saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_adds_pu16" id="_mm_adds_pu16"><code class="code">_mm_adds_pu16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_adds_pu16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_adds_pu16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using unsigned saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_adds_pu8" id="_mm_adds_pu8"><code class="code">_mm_adds_pu8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_adds_pu8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_adds_pu8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using unsigned saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_and_si64" id="_mm_and_si64"><code class="code">_mm_and_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_and_si64"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_and_si64</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise AND of 64 bits (representing integer data) in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_andnot_si64" id="_mm_andnot_si64"><code class="code">_mm_andnot_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_andnot_si64"></span>nothrow @nogc __m64 <code class="code">_mm_andnot_si64</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise NOT of 64 bits (representing integer data) in <code class="code"><code class="code">a</code></code> and then AND with <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpeq_pi16" id="_mm_cmpeq_pi16"><code class="code">_mm_cmpeq_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpeq_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_cmpeq_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for equality.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpeq_pi32" id="_mm_cmpeq_pi32"><code class="code">_mm_cmpeq_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpeq_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_cmpeq_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for equality.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpeq_pi8" id="_mm_cmpeq_pi8"><code class="code">_mm_cmpeq_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpeq_pi8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_cmpeq_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for equality,
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpgt_pi16" id="_mm_cmpgt_pi16"><code class="code">_mm_cmpgt_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpgt_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_cmpgt_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for greater-than.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpgt_pi32" id="_mm_cmpgt_pi32"><code class="code">_mm_cmpgt_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpgt_pi32"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_cmpgt_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for greater-than.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpgt_pi8" id="_mm_cmpgt_pi8"><code class="code">_mm_cmpgt_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpgt_pi8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_cmpgt_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed signed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for greater-than.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtm64_si64" id="_mm_cvtm64_si64"><code class="code">_mm_cvtm64_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtm64_si64"></span>pure nothrow @nogc @safe long <code class="code">_mm_cvtm64_si64</code>(__m64 <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Copy 64-bit integer <code class="code"><code class="code">a</code></code> to <code class="code">dst</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtsi32_si64" id="_mm_cvtsi32_si64"><code class="code">_mm_cvtsi32_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtsi32_si64"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_cvtsi32_si64</code>(int <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Copy 32-bit integer <code class="code"><code class="code">a</code></code> to the lower elements of <code class="code">dst</code>, and zero the upper element of <code class="code">dst</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtsi64_m64" id="_mm_cvtsi64_m64"><code class="code">_mm_cvtsi64_m64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtsi64_m64"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_cvtsi64_m64</code>(long <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Copy 64-bit integer <code class="code"><code class="code">a</code></code> to <code class="code">dst</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtsi64_si32" id="_mm_cvtsi64_si32"><code class="code">_mm_cvtsi64_si32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtsi64_si32"></span>pure nothrow @nogc @safe int <code class="code">_mm_cvtsi64_si32</code>(__m64 <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Get the lower 32-bit integer in <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_empty" id="_mm_empty"><code class="code">_mm_empty</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_empty"></span>pure nothrow @nogc @safe void <code class="code">_mm_empty</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Empty the MMX state, which marks the x87 FPU registers as available for
+use by x87 instructions.
+This instruction is supposed to be used at the end of all MMX technology procedures.
+But this is useless when using <code class="code">intel-intrinsics</code>, with all D compilers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_m_empty" id="_m_empty"><code class="code">_m_empty</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_m_empty"></span>deprecated alias <code class="code">_m_empty</code> = _mm_empty;
+<br>
+<span class="ddoc_anchor" id="_m_from_int"></span>deprecated alias <code class="code">_m_from_int</code> = _mm_cvtsi32_si64;
+<br>
+<span class="ddoc_anchor" id="_m_from_int64"></span>deprecated alias <code class="code">_m_from_int64</code> = _mm_cvtsi64_m64;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Deprecated intrinsics.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_madd_pi16" id="_mm_madd_pi16"><code class="code">_mm_madd_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_madd_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_madd_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Multiply packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, producing intermediate 32-bit integers.
+Horizontally add adjacent pairs of intermediate 32-bit integers
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_mulhi_pi16" id="_mm_mulhi_pi16"><code class="code">_mm_mulhi_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_mulhi_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_mulhi_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Multiply the packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, producing intermediate 32-bit integers,
+and store the high 16 bits of the intermediate integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_mullo_pi16" id="_mm_mullo_pi16"><code class="code">_mm_mullo_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_mullo_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_mullo_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Multiply the packed 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, producing intermediate 32-bit integers,
+and store the low 16 bits of the intermediate integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_or_si64" id="_mm_or_si64"><code class="code">_mm_or_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_or_si64"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_or_si64</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise OR of 64 bits in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_packs_pi16" id="_mm_packs_pi16"><code class="code">_mm_packs_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_packs_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_packs_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Convert packed 16-bit integers from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> to packed 8-bit integers using signed saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_packs_pi32" id="_mm_packs_pi32"><code class="code">_mm_packs_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_packs_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_packs_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Convert packed 32-bit integers from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> to packed 16-bit integers using signed saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_packs_pu16" id="_mm_packs_pu16"><code class="code">_mm_packs_pu16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_packs_pu16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_packs_pu16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Convert packed 16-bit integers from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> to packed 8-bit integers using unsigned saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_m_packssdw" id="_m_packssdw"><code class="code">_m_packssdw</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_m_packssdw"></span>deprecated alias <code class="code">_m_packssdw</code> = _mm_packs_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_packsswb"></span>deprecated alias <code class="code">_m_packsswb</code> = _mm_packs_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_packuswb"></span>deprecated alias <code class="code">_m_packuswb</code> = _mm_packs_pu16;
+<br>
+<span class="ddoc_anchor" id="_m_paddb"></span>deprecated alias <code class="code">_m_paddb</code> = _mm_add_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_paddd"></span>deprecated alias <code class="code">_m_paddd</code> = _mm_add_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_paddsb"></span>deprecated alias <code class="code">_m_paddsb</code> = _mm_adds_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_paddsw"></span>deprecated alias <code class="code">_m_paddsw</code> = _mm_adds_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_paddusb"></span>deprecated alias <code class="code">_m_paddusb</code> = _mm_adds_pu8;
+<br>
+<span class="ddoc_anchor" id="_m_paddusw"></span>deprecated alias <code class="code">_m_paddusw</code> = _mm_adds_pu16;
+<br>
+<span class="ddoc_anchor" id="_m_paddw"></span>deprecated alias <code class="code">_m_paddw</code> = _mm_add_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_pand"></span>deprecated alias <code class="code">_m_pand</code> = _mm_and_si64;
+<br>
+<span class="ddoc_anchor" id="_m_pandn"></span>deprecated alias <code class="code">_m_pandn</code> = _mm_andnot_si64;
+<br>
+<span class="ddoc_anchor" id="_m_pcmpeqb"></span>deprecated alias <code class="code">_m_pcmpeqb</code> = _mm_cmpeq_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_pcmpeqd"></span>deprecated alias <code class="code">_m_pcmpeqd</code> = _mm_cmpeq_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_pcmpeqw"></span>deprecated alias <code class="code">_m_pcmpeqw</code> = _mm_cmpeq_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_pcmpgtb"></span>deprecated alias <code class="code">_m_pcmpgtb</code> = _mm_cmpgt_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_pcmpgtd"></span>deprecated alias <code class="code">_m_pcmpgtd</code> = _mm_cmpgt_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_pcmpgtw"></span>deprecated alias <code class="code">_m_pcmpgtw</code> = _mm_cmpgt_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_pmaddwd"></span>deprecated alias <code class="code">_m_pmaddwd</code> = _mm_madd_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_pmulhw"></span>deprecated alias <code class="code">_m_pmulhw</code> = _mm_mulhi_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_pmullw"></span>deprecated alias <code class="code">_m_pmullw</code> = _mm_mullo_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_por"></span>deprecated alias <code class="code">_m_por</code> = _mm_or_si64;
+<br>
+<span class="ddoc_anchor" id="_m_pslld"></span>deprecated alias <code class="code">_m_pslld</code> = _mm_sll_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_pslldi"></span>deprecated alias <code class="code">_m_pslldi</code> = _mm_slli_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_psllq"></span>deprecated alias <code class="code">_m_psllq</code> = _mm_sll_si64;
+<br>
+<span class="ddoc_anchor" id="_m_psllqi"></span>deprecated alias <code class="code">_m_psllqi</code> = _mm_slli_si64;
+<br>
+<span class="ddoc_anchor" id="_m_psllw"></span>deprecated alias <code class="code">_m_psllw</code> = _mm_sll_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psllwi"></span>deprecated alias <code class="code">_m_psllwi</code> = _mm_slli_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psrad"></span>deprecated alias <code class="code">_m_psrad</code> = _mm_sra_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_psradi"></span>deprecated alias <code class="code">_m_psradi</code> = _mm_srai_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_psraw"></span>deprecated alias <code class="code">_m_psraw</code> = _mm_sra_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psrawi"></span>deprecated alias <code class="code">_m_psrawi</code> = _mm_srai_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psrld"></span>deprecated alias <code class="code">_m_psrld</code> = _mm_srl_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_psrldi"></span>deprecated alias <code class="code">_m_psrldi</code> = _mm_srli_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_psrlq"></span>deprecated alias <code class="code">_m_psrlq</code> = _mm_srl_si64;
+<br>
+<span class="ddoc_anchor" id="_m_psrlqi"></span>deprecated alias <code class="code">_m_psrlqi</code> = _mm_srli_si64;
+<br>
+<span class="ddoc_anchor" id="_m_psrlw"></span>deprecated alias <code class="code">_m_psrlw</code> = _mm_srl_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psrlwi"></span>deprecated alias <code class="code">_m_psrlwi</code> = _mm_srli_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psubb"></span>deprecated alias <code class="code">_m_psubb</code> = _mm_sub_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_psubd"></span>deprecated alias <code class="code">_m_psubd</code> = _mm_sub_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_psubsb"></span>deprecated alias <code class="code">_m_psubsb</code> = _mm_subs_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_psubsw"></span>deprecated alias <code class="code">_m_psubsw</code> = _mm_subs_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_psubusb"></span>deprecated alias <code class="code">_m_psubusb</code> = _mm_subs_pu8;
+<br>
+<span class="ddoc_anchor" id="_m_psubusw"></span>deprecated alias <code class="code">_m_psubusw</code> = _mm_subs_pu16;
+<br>
+<span class="ddoc_anchor" id="_m_psubw"></span>deprecated alias <code class="code">_m_psubw</code> = _mm_sub_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_punpckhbw"></span>deprecated alias <code class="code">_m_punpckhbw</code> = _mm_unpackhi_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_punpckhdq"></span>deprecated alias <code class="code">_m_punpckhdq</code> = _mm_unpackhi_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_punpckhwd"></span>deprecated alias <code class="code">_m_punpckhwd</code> = _mm_unpackhi_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_punpcklbw"></span>deprecated alias <code class="code">_m_punpcklbw</code> = _mm_unpacklo_pi8;
+<br>
+<span class="ddoc_anchor" id="_m_punpckldq"></span>deprecated alias <code class="code">_m_punpckldq</code> = _mm_unpacklo_pi32;
+<br>
+<span class="ddoc_anchor" id="_m_punpcklwd"></span>deprecated alias <code class="code">_m_punpcklwd</code> = _mm_unpacklo_pi16;
+<br>
+<span class="ddoc_anchor" id="_m_pxor"></span>deprecated alias <code class="code">_m_pxor</code> = _mm_xor_si64;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Deprecated intrinsics.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_set_pi16" id="_mm_set_pi16"><code class="code">_mm_set_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_set_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_set_pi16</code>(short <code class="code">e3</code>, short <code class="code">e2</code>, short <code class="code">e1</code>, short <code class="code">e0</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set packed 16-bit integers with the supplied values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_set_pi32" id="_mm_set_pi32"><code class="code">_mm_set_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_set_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_set_pi32</code>(int <code class="code">e1</code>, int <code class="code">e0</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set packed 32-bit integers with the supplied values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_set_pi8" id="_mm_set_pi8"><code class="code">_mm_set_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_set_pi8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_set_pi8</code>(byte <code class="code">e7</code>, byte <code class="code">e6</code>, byte <code class="code">e5</code>, byte <code class="code">e4</code>, byte <code class="code">e3</code>, byte <code class="code">e2</code>, byte <code class="code">e1</code>, byte <code class="code">e0</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set packed 8-bit integers with the supplied values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_set1_pi16" id="_mm_set1_pi16"><code class="code">_mm_set1_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_set1_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_set1_pi16</code>(short <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Broadcast 16-bit integer <code class="code"><code class="code">a</code></code> to all elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_set1_pi32" id="_mm_set1_pi32"><code class="code">_mm_set1_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_set1_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_set1_pi32</code>(int <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Broadcast 32-bit integer <code class="code"><code class="code">a</code></code> to all elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_set1_pi8" id="_mm_set1_pi8"><code class="code">_mm_set1_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_set1_pi8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_set1_pi8</code>(byte <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Broadcast 8-bit integer <code class="code"><code class="code">a</code></code> to all elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_setr_pi16" id="_mm_setr_pi16"><code class="code">_mm_setr_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_setr_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_setr_pi16</code>(short <code class="code">e3</code>, short <code class="code">e2</code>, short <code class="code">e1</code>, short <code class="code">e0</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set packed 16-bit integers with the supplied values in reverse order.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_setr_pi32" id="_mm_setr_pi32"><code class="code">_mm_setr_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_setr_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_setr_pi32</code>(int <code class="code">e1</code>, int <code class="code">e0</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set packed 32-bit integers with the supplied values in reverse order.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_setr_pi8" id="_mm_setr_pi8"><code class="code">_mm_setr_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_setr_pi8"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_setr_pi8</code>(byte <code class="code">e7</code>, byte <code class="code">e6</code>, byte <code class="code">e5</code>, byte <code class="code">e4</code>, byte <code class="code">e3</code>, byte <code class="code">e2</code>, byte <code class="code">e1</code>, byte <code class="code">e0</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set packed 8-bit integers with the supplied values in reverse order.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_setzero_si64" id="_mm_setzero_si64"><code class="code">_mm_setzero_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_setzero_si64"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_setzero_si64</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Return vector of type <code class="code">__m64</code> with all elements set to zero.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sll_pi16" id="_mm_sll_pi16"><code class="code">_mm_sll_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sll_pi16"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_sll_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 16-bit integers in <code class="code"><code class="code">a</code></code> left by <code class="code"><code class="code">bits</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sll_pi32" id="_mm_sll_pi32"><code class="code">_mm_sll_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sll_pi32"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_sll_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 32-bit integers in <code class="code"><code class="code">a</code></code> left by <code class="code"><code class="code">bits</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sll_si64" id="_mm_sll_si64"><code class="code">_mm_sll_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sll_si64"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_sll_si64</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift 64-bit integer <code class="code"><code class="code">a</code></code> left by <code class="code"><code class="code">bits</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_slli_pi16" id="_mm_slli_pi16"><code class="code">_mm_slli_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_slli_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_slli_pi16</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 16-bit integers in <code class="code"><code class="code">a</code></code> left by <code class="code"><code class="code">imm8</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_slli_pi32" id="_mm_slli_pi32"><code class="code">_mm_slli_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_slli_pi32"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_slli_pi32</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 32-bit integers in <code class="code"><code class="code">a</code></code> left by <code class="code"><code class="code">imm8</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_slli_si64" id="_mm_slli_si64"><code class="code">_mm_slli_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_slli_si64"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_slli_si64</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift 64-bit integer <code class="code"><code class="code">a</code></code> left by <code class="code"><code class="code">imm8</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sra_pi16" id="_mm_sra_pi16"><code class="code">_mm_sra_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sra_pi16"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_sra_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 16-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">bits</code></code> while shifting in sign <code class="code">bits</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sra_pi32" id="_mm_sra_pi32"><code class="code">_mm_sra_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sra_pi32"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_sra_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 32-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">bits</code></code> while shifting in sign <code class="code">bits</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srai_pi16" id="_mm_srai_pi16"><code class="code">_mm_srai_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srai_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_srai_pi16</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 16-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">imm8</code></code> while shifting in sign bits.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srai_pi32" id="_mm_srai_pi32"><code class="code">_mm_srai_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srai_pi32"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_srai_pi32</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 32-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">imm8</code></code> while shifting in sign bits.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srl_pi16" id="_mm_srl_pi16"><code class="code">_mm_srl_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srl_pi16"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_srl_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 16-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">bits</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srl_pi32" id="_mm_srl_pi32"><code class="code">_mm_srl_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srl_pi32"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_srl_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 32-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">bits</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srl_si64" id="_mm_srl_si64"><code class="code">_mm_srl_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srl_si64"></span>deprecated pure nothrow @nogc @safe __m64 <code class="code">_mm_srl_si64</code>(__m64 <code class="code">a</code>, __m64 <code class="code">bits</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift 64-bit integer <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">bits</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srli_pi16" id="_mm_srli_pi16"><code class="code">_mm_srli_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srli_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_srli_pi16</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 16-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">imm8</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srli_pi32" id="_mm_srli_pi32"><code class="code">_mm_srli_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srli_pi32"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_srli_pi32</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift packed 32-bit integers in <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">imm8</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_srli_si64" id="_mm_srli_si64"><code class="code">_mm_srli_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_srli_si64"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_srli_si64</code>(__m64 <code class="code">a</code>, int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Shift 64-bit integer <code class="code"><code class="code">a</code></code> right by <code class="code"><code class="code">imm8</code></code> while shifting in zeros.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sub_pi16" id="_mm_sub_pi16"><code class="code">_mm_sub_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sub_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_sub_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed 16-bit integers in <code class="code"><code class="code">b</code></code> from packed 16-bit integers in <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sub_pi32" id="_mm_sub_pi32"><code class="code">_mm_sub_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sub_pi32"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_sub_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed 32-bit integers in <code class="code"><code class="code">b</code></code> from packed 32-bit integers in <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_sub_pi8" id="_mm_sub_pi8"><code class="code">_mm_sub_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_sub_pi8"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_sub_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed 8-bit integers in <code class="code"><code class="code">b</code></code> from packed 8-bit integers in <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_subs_pi16" id="_mm_subs_pi16"><code class="code">_mm_subs_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_subs_pi16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_subs_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed 16-bit integers in <code class="code"><code class="code">b</code></code> from packed 16-bit integers in <code class="code"><code class="code">a</code></code> using saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_subs_pi8" id="_mm_subs_pi8"><code class="code">_mm_subs_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_subs_pi8"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_subs_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed 8-bit integers in <code class="code"><code class="code">b</code></code> from packed 8-bit integers in <code class="code"><code class="code">a</code></code> using saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_subs_pu16" id="_mm_subs_pu16"><code class="code">_mm_subs_pu16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_subs_pu16"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_subs_pu16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed unsigned 16-bit integers in <code class="code"><code class="code">b</code></code> from packed unsigned 16-bit integers in <code class="code"><code class="code">a</code></code>
+using saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_subs_pu8" id="_mm_subs_pu8"><code class="code">_mm_subs_pu8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_subs_pu8"></span>pure nothrow @nogc @safe __m64 <code class="code">_mm_subs_pu8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract packed unsigned 8-bit integers in <code class="code"><code class="code">b</code></code> from packed unsigned 8-bit integers in <code class="code"><code class="code">a</code></code>
+using saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_m_to_int" id="_m_to_int"><code class="code">_m_to_int</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_m_to_int"></span>deprecated alias <code class="code">_m_to_int</code> = _mm_cvtsi64_si32;
+<br>
+<span class="ddoc_anchor" id="_m_to_int64"></span>deprecated alias <code class="code">_m_to_int64</code> = _mm_cvtm64_si64;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Deprecated intrinsics.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_unpackhi_pi16" id="_mm_unpackhi_pi16"><code class="code">_mm_unpackhi_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_unpackhi_pi16"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_unpackhi_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Unpack and interleave 16-bit integers from the high half of <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_unpackhi_pi32" id="_mm_unpackhi_pi32"><code class="code">_mm_unpackhi_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_unpackhi_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_unpackhi_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Unpack and interleave 32-bit integers from the high half of <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_unpackhi_pi8" id="_mm_unpackhi_pi8"><code class="code">_mm_unpackhi_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_unpackhi_pi8"></span>nothrow @nogc __m64 <code class="code">_mm_unpackhi_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Unpack and interleave 8-bit integers from the high half of <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_unpacklo_pi16" id="_mm_unpacklo_pi16"><code class="code">_mm_unpacklo_pi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_unpacklo_pi16"></span>nothrow @nogc __m64 <code class="code">_mm_unpacklo_pi16</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Unpack and interleave 16-bit integers from the low half of <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_unpacklo_pi32" id="_mm_unpacklo_pi32"><code class="code">_mm_unpacklo_pi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_unpacklo_pi32"></span>pure nothrow @nogc @trusted __m64 <code class="code">_mm_unpacklo_pi32</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Unpack and interleave 32-bit integers from the low half of <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_unpacklo_pi8" id="_mm_unpacklo_pi8"><code class="code">_mm_unpacklo_pi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_unpacklo_pi8"></span>nothrow @nogc __m64 <code class="code">_mm_unpacklo_pi8</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Unpack and interleave 8-bit integers from the low half of <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_xor_si64" id="_mm_xor_si64"><code class="code">_mm_xor_si64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_xor_si64"></span>nothrow @nogc __m64 <code class="code">_mm_xor_si64</code>(__m64 <code class="code">a</code>, __m64 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise XOR of 64 bits (representing integer data) in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+  </div>
+</section>
+</section>
+      </article>
+    </div>
+  </body>
+</html>

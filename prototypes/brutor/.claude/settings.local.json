@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone *)",
+      "WebSearch",
+      "WebFetch(domain:code.dlang.org)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(dub build *)",
+      "Bash(./build.bat)",
+      "WebFetch(domain:github.com)",
+      "Bash(echo \"---EXIT---: $?\")",
+      "Bash(wait %1)",
+      "Read(//c/Users/guill/AppData/Local/Temp/claude/D--kapital-prototypes-brutor/b845af76-18fd-4d9b-88a9-98673777441d/tasks/**)",
+      "Bash(taskkill //IM brutor.exe //F)",
+      "Bash(git -C D:/kapital clone https://github.com/p0nce/turtle.git)",
+      "Bash(git -C D:/kapital clone https://github.com/AuburnSounds/game-mixer.git)",
+      "Bash(wait)"
+    ]
+  }
+}

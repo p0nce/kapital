@@ -1,0 +1,2696 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>inteli.smmintrin</title>
+    <style type="text/css" media="screen">
+      html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+      blockquote, pre, a, abbr, address, cite, code, del, dfn, em, figure,
+      img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, u, i, dl,
+      dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+      tbody, tfoot, thead, tr, th, td {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        font-size: 100%;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      h1 { font-size: 200%; }
+      h2 { font-size: 160%; }
+      h3 { font-size: 120%; }
+      h4 { font-size: 100%; }
+      h5 { font-size: 80%; }
+      h6 { font-size: 80%; font-weight: normal; }
+
+      ul, ol {
+        margin: 1.4em 0;
+      }
+      ul ul, ol ol, ul ol, ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      ul, ol {
+        margin-left: 2.8em;
+      }
+
+      ol {
+        list-style: decimal;
+      }
+      ol ol {
+        list-style: lower-alpha;
+      }
+      ol ol ol {
+        list-style: lower-roman;
+      }
+      ol ol ol ol {
+        list-style: decimal;
+      }
+
+      blockquote {
+        margin: 0.1em;
+        margin-left: 1em;
+        border-left: 2px solid #cccccc;
+        padding-left: 0.7em;
+      }
+
+      .color_red { color: #dc322f; }
+      .color_blue { color: #268bd2; }
+      .color_green { color: #859901; }
+      .color_yellow { color: #b58901; }
+      .color_black { color: black; }
+      .color_white { color: white; }
+
+      .font_big {
+        font-size: 1.2em;
+      }
+
+      .ddoc_section_h {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19.5px;
+        margin-top: 11px;
+        display: block;
+      }
+
+      body.dlang .dlang {
+        display: inline-block;
+      }
+
+      body.dlang .declaration .dlang {
+          display: block;
+      }
+
+      body.dlang .ddoc_header_anchor a.dlang {
+        display: block;
+        color: rgba(0, 136, 204, 1);
+        text-decoration: none;
+      }
+
+      body.dlang .ddoc_header_anchor .code {
+        color: rgba(0, 136, 204, 1);
+      }
+
+      #ddoc_main .module {
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          overflow-x: hidden;
+          padding: 15px;
+      }
+
+      #ddoc_main .section .section {
+        margin-top: 0;
+      }
+
+      #ddoc_main .ddoc_module_members_section {
+          padding: 1px 0 0;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members section.intro {
+          background: #fff none repeat scroll 0 0;
+          list-style-type: none;
+          width: 100%;
+      }
+
+      #ddoc_main .ddoc_header_anchor {
+          font-size: 1.4em;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_header_anchor > .code {
+          display: inline-block;
+
+      }
+
+      #ddoc_main .ddoc_decl {
+        background-color: transparent;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0;
+        padding-left: 15px;
+      }
+
+      #ddoc_main .ddoc_decl .section, #ddoc_main .section.ddoc_sections {
+        background: white none repeat scroll 0 0;
+        margin: 0;
+        padding: 5px;
+        position: relative;
+        border-radius: 5px;
+      }
+
+      #ddoc_main .ddoc_decl .section h4:first-of-type, #ddoc_main .section.ddoc_sections h4:first-of-type {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration {
+          margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration .code {
+          color: rgba(0, 0, 0, 1);
+          margin-bottom: 15px;
+          padding-bottom: 6px;
+      }
+
+      #ddoc_main .declaration div .para {
+          margin-bottom: 0;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr td:first-of-type {
+        padding: 7px;
+        text-align: right;
+        vertical-align: top;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      #ddoc_main .ddoc_params .graybox {
+        border: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox td {
+        border-color: rgba(214, 214, 214, 1);
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:first-child > td {
+        border-top: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:last-child > td {
+        border-bottom: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:first-child {
+        border-left: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:last-child {
+        border-right: 0 none;
+        width: 100%;
+      }
+
+      #ddoc_main em.term, #ddoc_main em.term .code {
+        color: rgba(65, 65, 65, 1);
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      #ddoc_main .see-also {
+        cursor: pointer;
+        font-family: Menlo,monospace;
+      }
+
+      #ddoc_main .ddoc_decl .section > div:last-of-type {
+        margin-bottom: 15px;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members {
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .code_sample {
+        background: inherit;
+      }
+
+      #ddoc_main .declaration .code-line {
+          display: block;
+          font: 1em Menlo,monospace;
+      }
+
+      #ddoc_main a[name] {
+        margin: -112px 0 0;
+        padding-top: 112px;
+      }
+
+      #ddoc_main .ddoc_decl td {
+        max-width: inherit;
+      }
+
+      #ddoc_main .declaration a {
+        color: inherit;
+      }
+
+      #ddoc_main .declaration a:hover {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: underline;
+      }
+
+      body.ddoc {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-family: Helvetica,Arial,sans-serif;
+        font-size: 62.5%;
+        margin: 0;
+        border: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+      }
+
+      .ddoc a[name] {
+        display: block;
+        height: 0;
+        margin: -85px 0 0;
+        padding-top: 85px;
+        width: 0;
+      }
+
+      .ddoc .module {
+          border-color: transparent;
+          background-color: rgba(255, 255, 255, 1);
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-image: none;
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.07);
+          display: block;
+          margin-left: 0;
+          min-height: calc(100% - 173px);
+          overflow: auto;
+          padding-bottom: 100px;
+      }
+
+      .ddoc .content_wrapper {
+          background-color: rgba(242, 242, 242, 1);
+          margin: 0 auto;
+          max-width: 980px;
+      }
+
+      .ddoc .section {
+        padding: 15px 25px 30px;
+      }
+
+      .ddoc .section .section {
+        margin: 30px 0 0;
+        padding: 0;
+      }
+
+      .ddoc .para {
+        color: rgba(65, 65, 65, 1);
+        font-size: 1.4em;
+        line-height: 145%;
+        margin-bottom: 15px;
+      }
+
+      .ddoc .ddoc_examples .para {
+        margin-bottom: 0;
+      }
+
+      .ddoc .module_name {
+          color: rgba(0, 0, 0, 1);
+          display: block;
+          font-family: Helvetica;
+          font-size: 2.8em;
+          font-weight: 100;
+          margin-bottom: 0;
+          padding: 15px 0;
+      }
+
+      .ddoc .module a {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: none;
+      }
+
+      .ddoc .code {
+        color: rgba(128, 128, 128, 1);
+        font-family: Menlo,monospace;
+        font-size: 0.85em;
+        word-wrap: break-word;
+      }
+
+      .ddoc .code i {
+        font-style: normal;
+      }
+
+      .ddoc .code .code {
+        font-size: 1em;
+      }
+
+      .ddoc .code_sample {
+        background-clip: padding-box;
+        margin: 1px 0;
+        text-align: left;
+      }
+
+      .ddoc .code_sample {
+        display: block;
+        font-size: 1.4em;
+        margin-left: 21px;
+      }
+
+      .ddoc ol .code_sample {
+        font-size: 1em;
+      }
+
+      .ddoc .code_lines {
+        counter-reset: li;
+        line-height: 1.6em;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ddoc .code_listing .code_sample div {
+        margin-left: 13px;
+        width: 93%;
+      }
+
+      .ddoc .code_listing .code_sample div .code_lines li {
+        list-style-type: none;
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .ddoc .code_sample div .code_lines li::before {
+        margin-left: -33px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+10)::before {
+        margin-left: -39px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+100)::before {
+        margin-left: -46px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample .code_lines .code {
+        color: #000;
+      }
+
+      .ddoc div.dlang {
+        margin: 10px 0 21px;
+        padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+          margin: 10px 0 21px;
+          padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+        border-left: 5px solid rgba(0, 155, 51, 0.2);
+      }
+
+      .ddoc .code_lines li::before {
+        color: rgba(128, 128, 128, 1);
+        content: counter(li, decimal);
+        counter-increment: li;
+        font-family: Menlo,monospace;
+        font-size: 0.9em;
+        margin-right: 16px;
+      }
+
+      .ddoc .code_lines li {
+        padding-left: 0;
+        white-space: pre-wrap;
+      }
+
+      .ddoc .code_lines pre {
+        display: contents;
+      }
+
+      .ddoc .code_lines li:only-of-type::before {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:only-of-type {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:nth-child(n+10) {
+        text-indent: -17px;
+      }
+
+      .ddoc .code_lines li:nth-child(n+10)::before {
+        margin-right: 12px;
+      }
+
+      .ddoc .graybox {
+        border: 1px solid rgba(233, 233, 233, 1);
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: hide;
+        margin: 20px 0 36px;
+        text-align: left;
+      }
+
+      .ddoc .graybox p {
+        margin: 0;
+        min-width: 50px;
+      }
+
+      .ddoc th {
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: bottom;
+      }
+
+      .ddoc td {
+        border: 1px solid rgba(233, 233, 233, 1);
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: middle;
+      }
+
+      .punctuation {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .comment {
+        color: rgba(0, 131, 18, 1);
+      }
+
+      .operator {
+        color: #000;
+      }
+
+      .keyword {
+        color: rgba(170, 13, 145, 1);
+      }
+
+      .keyword_type {
+        color: rgba(170, 51, 145, 1);
+      }
+
+      .string_literal {
+        color: rgba(196, 26, 22, 1);
+      }
+
+      .ddoc_psuper_symbol {
+        color: rgba(92, 38, 153, 1);
+      }
+
+      .param {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .psymbol {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .ddoc_member_header .ddoc_header_anchor .code {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body id="ddoc_main" class="ddoc dlang">
+    <div class="content_wrapper">
+      <article class="module">
+        <h1 class="module_name">inteli.smmintrin</h1>
+        <section id="module_content"><section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    SSE4.1 intrinsics.
+ <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#techs=SSE4_1">https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#techs=SSE4_1</a>
+
+  </p>
+</div>
+<div class="ddoc_license">
+  <h4>License</h4>
+  <p class="para">
+    <a href="http://www.boost.org/LICENSE_1_0.txt">Boost License 1.0</a>
+  </p>
+</div>
+
+</section>
+<section class="section ddoc_module_members_section">
+  <div class="ddoc_module_members">
+    <ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_MM_FROUND_TO_NEAREST_INT" id="_MM_FROUND_TO_NEAREST_INT"><code class="code">_MM_FROUND_TO_NEAREST_INT</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_MM_FROUND_TO_NEAREST_INT"></span>enum int <code class="code">_MM_FROUND_TO_NEAREST_INT</code>;
+<br>
+<span class="ddoc_anchor" id="_MM_FROUND_TO_NEG_INF"></span>enum int <code class="code">_MM_FROUND_TO_NEG_INF</code>;
+<br>
+<span class="ddoc_anchor" id="_MM_FROUND_TO_POS_INF"></span>enum int <code class="code">_MM_FROUND_TO_POS_INF</code>;
+<br>
+<span class="ddoc_anchor" id="_MM_FROUND_TO_ZERO"></span>enum int <code class="code">_MM_FROUND_TO_ZERO</code>;
+<br>
+<span class="ddoc_anchor" id="_MM_FROUND_CUR_DIRECTION"></span>enum int <code class="code">_MM_FROUND_CUR_DIRECTION</code>;
+<br>
+<span class="ddoc_anchor" id="_MM_FROUND_RAISE_EXC"></span>enum int <code class="code">_MM_FROUND_RAISE_EXC</code>;
+<br>
+<span class="ddoc_anchor" id="_MM_FROUND_NO_EXC"></span>enum int <code class="code">_MM_FROUND_NO_EXC</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    SSE4.1 rounding modes
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_adds_epi32" id="_mm_adds_epi32"><code class="code">_mm_adds_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_adds_epi32"></span>pure nothrow @nogc __m128i <code class="code">_mm_adds_epi32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add packed signed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using saturation.
+#BONUS
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_blend_epi16" id="_mm_blend_epi16"><code class="code">_mm_blend_epi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_blend_epi16"></span>pure @trusted __m128i <code class="code">_mm_blend_epi16</code>(int imm8)(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Blend packed 16-bit integers from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using control mask <code class="code">imm8</code>, and store the results.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_blend_pd" id="_mm_blend_pd"><code class="code">_mm_blend_pd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_blend_pd"></span>@trusted __m128d <code class="code">_mm_blend_pd</code>(int imm8)(__m128d <code class="code">a</code>, __m128d <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Blend packed double-precision (64-bit) floating-point elements from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using control mask <code class="code">imm8</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_blend_ps" id="_mm_blend_ps"><code class="code">_mm_blend_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_blend_ps"></span>pure @trusted __m128 <code class="code">_mm_blend_ps</code>(int imm8)(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Blend packed single-precision (32-bit) floating-point elements from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using control
+mask <code class="code">imm8</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_blendv_epi8" id="_mm_blendv_epi8"><code class="code">_mm_blendv_epi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_blendv_epi8"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_blendv_epi8</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>, __m128i <code class="code">mask</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Blend packed 8-bit integers from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using <code class="code"><code class="code">mask</code></code>.
+Select from <code class="code"><code class="code">b</code></code> if the high-order bit of the corresponding 8-bit element in <code class="code"><code class="code">mask</code></code> is set, else select from <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_blendv_pd" id="_mm_blendv_pd"><code class="code">_mm_blendv_pd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_blendv_pd"></span>nothrow @nogc @trusted __m128d <code class="code">_mm_blendv_pd</code>(__m128d <code class="code">a</code>, __m128d <code class="code">b</code>, __m128d <code class="code">mask</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Blend packed double-precision (64-bit) floating-point elements from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using <code class="code"><code class="code">mask</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_blendv_ps" id="_mm_blendv_ps"><code class="code">_mm_blendv_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_blendv_ps"></span>pure nothrow @nogc @trusted __m128 <code class="code">_mm_blendv_ps</code>(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>, __m128 <code class="code">mask</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Blend packed single-precision (32-bit) floating-point elements from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using <code class="code"><code class="code">mask</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_ceil_pd" id="_mm_ceil_pd"><code class="code">_mm_ceil_pd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_ceil_pd"></span>nothrow @nogc @trusted __m128d <code class="code">_mm_ceil_pd</code>(__m128d <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the packed double-precision (64-bit) floating-point elements in <code class="code"><code class="code">a</code></code> up to an integer value,
+and store the results as packed double-precision floating-point elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_ceil_ps" id="_mm_ceil_ps"><code class="code">_mm_ceil_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_ceil_ps"></span>nothrow @nogc @trusted __m128 <code class="code">_mm_ceil_ps</code>(__m128 <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the packed single-precision (32-bit) floating-point elements in <code class="code"><code class="code">a</code></code> up to an integer value,
+and store the results as packed single-precision floating-point elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_ceil_sd" id="_mm_ceil_sd"><code class="code">_mm_ceil_sd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_ceil_sd"></span>nothrow @nogc @trusted __m128d <code class="code">_mm_ceil_sd</code>(__m128d <code class="code">a</code>, __m128d <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the lower double-precision (64-bit) floating-point element in <code class="code"><code class="code">b</code></code> up to an integer value,
+store the result as <code class="code">a</code> double-precision floating-point element in the lower element of result,
+and copy the upper element from <code class="code"><code class="code">a</code></code> to the upper element of dst.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_ceil_ss" id="_mm_ceil_ss"><code class="code">_mm_ceil_ss</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_ceil_ss"></span>nothrow @nogc @trusted __m128 <code class="code">_mm_ceil_ss</code>(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the lower single-precision (32-bit) floating-point element in <code class="code"><code class="code">b</code></code> up to an integer value,
+store the result as <code class="code">a</code> single-precision floating-point element in the lower element of result,
+and copy the upper 3 packed elements from <code class="code"><code class="code">a</code></code> to the upper elements of result.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cmpeq_epi64" id="_mm_cmpeq_epi64"><code class="code">_mm_cmpeq_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cmpeq_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cmpeq_epi64</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed 64-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> for equality.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepi16_epi32" id="_mm_cvtepi16_epi32"><code class="code">_mm_cvtepi16_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepi16_epi32"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepi16_epi32</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sign extend packed 16-bit integers in <code class="code"><code class="code">a</code></code> to packed 32-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepi16_epi64" id="_mm_cvtepi16_epi64"><code class="code">_mm_cvtepi16_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepi16_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepi16_epi64</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sign extend packed 16-bit integers in <code class="code"><code class="code">a</code></code> to packed 64-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepi32_epi64" id="_mm_cvtepi32_epi64"><code class="code">_mm_cvtepi32_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepi32_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepi32_epi64</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sign extend packed 32-bit integers in <code class="code"><code class="code">a</code></code> to packed 64-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepi8_epi16" id="_mm_cvtepi8_epi16"><code class="code">_mm_cvtepi8_epi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepi8_epi16"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepi8_epi16</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sign extend packed 8-bit integers in <code class="code"><code class="code">a</code></code> to packed 16-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepi8_epi32" id="_mm_cvtepi8_epi32"><code class="code">_mm_cvtepi8_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepi8_epi32"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepi8_epi32</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sign extend packed 8-bit integers in <code class="code"><code class="code">a</code></code> to packed 32-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepi8_epi64" id="_mm_cvtepi8_epi64"><code class="code">_mm_cvtepi8_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepi8_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepi8_epi64</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sign extend packed 8-bit integers in the low 8 bytes of <code class="code"><code class="code">a</code></code> to packed 64-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepu16_epi32" id="_mm_cvtepu16_epi32"><code class="code">_mm_cvtepu16_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepu16_epi32"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepu16_epi32</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Zero extend packed unsigned 16-bit integers in <code class="code"><code class="code">a</code></code> to packed 32-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepu16_epi64" id="_mm_cvtepu16_epi64"><code class="code">_mm_cvtepu16_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepu16_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepu16_epi64</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Zero extend packed unsigned 16-bit integers in <code class="code"><code class="code">a</code></code> to packed 64-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepu32_epi64" id="_mm_cvtepu32_epi64"><code class="code">_mm_cvtepu32_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepu32_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepu32_epi64</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Zero extend packed unsigned 32-bit integers in <code class="code"><code class="code">a</code></code> to packed 64-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepu8_epi16" id="_mm_cvtepu8_epi16"><code class="code">_mm_cvtepu8_epi16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepu8_epi16"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepu8_epi16</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Zero extend packed unsigned 8-bit integers in <code class="code"><code class="code">a</code></code> to packed 16-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepu8_epi32" id="_mm_cvtepu8_epi32"><code class="code">_mm_cvtepu8_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepu8_epi32"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepu8_epi32</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Zero extend packed unsigned 8-bit integers in <code class="code"><code class="code">a</code></code> to packed 32-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_cvtepu8_epi64" id="_mm_cvtepu8_epi64"><code class="code">_mm_cvtepu8_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_cvtepu8_epi64"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_cvtepu8_epi64</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Zero extend packed unsigned 8-bit integers in the low 8 bytes of <code class="code"><code class="code">a</code></code> to packed 64-bit integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_dp_pd" id="_mm_dp_pd"><code class="code">_mm_dp_pd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_dp_pd"></span>@trusted __m128d <code class="code">_mm_dp_pd</code>(int imm8)(__m128d <code class="code">a</code>, __m128d <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Conditionally multiply the packed double-precision (64-bit) floating-point elements
+in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using the high 4 bits in <code class="code">imm8</code>, sum the four products, and conditionally
+store the sum in dst using the low 4 bits of <code class="code">imm8</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_dp_ps" id="_mm_dp_ps"><code class="code">_mm_dp_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_dp_ps"></span>@trusted __m128 <code class="code">_mm_dp_ps</code>(int imm8)(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Conditionally multiply the packed single-precision (32-bit) floating-point elements
+in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code> using the high 4 bits in <code class="code">imm8</code>, sum the four products,
+and conditionally store the sum in result using the low 4 bits of <code class="code">imm8</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_extract_epi32" id="_mm_extract_epi32"><code class="code">_mm_extract_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_extract_epi32"></span>pure nothrow @nogc @trusted int <code class="code">_mm_extract_epi32</code>(__m128i <code class="code">a</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extract <code class="code">a</code> 32-bit integer from <code class="code"><code class="code">a</code></code>, selected with <code class="code"><code class="code">imm8</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_extract_epi64" id="_mm_extract_epi64"><code class="code">_mm_extract_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_extract_epi64"></span>pure nothrow @nogc @trusted long <code class="code">_mm_extract_epi64</code>(__m128i <code class="code">a</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extract <code class="code">a</code> 64-bit integer from <code class="code"><code class="code">a</code></code>, selected with <code class="code"><code class="code">imm8</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_extract_epi8" id="_mm_extract_epi8"><code class="code">_mm_extract_epi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_extract_epi8"></span>nothrow @nogc @trusted int <code class="code">_mm_extract_epi8</code>(__m128i <code class="code">a</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extract an 8-bit integer from <code class="code"><code class="code">a</code></code>, selected with <code class="code"><code class="code">imm8</code></code>.
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Warning:</span>
+the returned value is zero-extended to 32-bits.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_extract_ps" id="_mm_extract_ps"><code class="code">_mm_extract_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_extract_ps"></span>nothrow @nogc @trusted int <code class="code">_mm_extract_ps</code>(__m128 <code class="code">a</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extract <code class="code">a</code> single-precision (32-bit) floating-point element from <code class="code"><code class="code">a</code></code>, selected with <code class="code"><code class="code">imm8</code></code>.
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+returns <code class="code">a</code> 32-bit <i>integer</i>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_floor_pd" id="_mm_floor_pd"><code class="code">_mm_floor_pd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_floor_pd"></span>nothrow @nogc @trusted __m128d <code class="code">_mm_floor_pd</code>(__m128d <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the packed double-precision (64-bit) floating-point elements in <code class="code"><code class="code">a</code></code> down to an
+integer value, and store the results as packed double-precision floating-point elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_floor_ps" id="_mm_floor_ps"><code class="code">_mm_floor_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_floor_ps"></span>nothrow @nogc @trusted __m128 <code class="code">_mm_floor_ps</code>(__m128 <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the packed single-precision (32-bit) floating-point elements in <code class="code"><code class="code">a</code></code> down to an
+integer value, and store the results as packed single-precision floating-point elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_floor_sd" id="_mm_floor_sd"><code class="code">_mm_floor_sd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_floor_sd"></span>nothrow @nogc @trusted __m128d <code class="code">_mm_floor_sd</code>(__m128d <code class="code">a</code>, __m128d <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the lower double-precision (64-bit) floating-point element in <code class="code"><code class="code">b</code></code> down to an
+integer value, store the result as <code class="code">a</code> double-precision floating-point element in the
+lower element, and copy the upper element from <code class="code"><code class="code">a</code></code> to the upper element.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_floor_ss" id="_mm_floor_ss"><code class="code">_mm_floor_ss</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_floor_ss"></span>nothrow @nogc @trusted __m128 <code class="code">_mm_floor_ss</code>(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the lower single-precision (32-bit) floating-point element in <code class="code"><code class="code">b</code></code> down to an
+integer value, store the result as <code class="code">a</code> single-precision floating-point element in the
+lower element, and copy the upper 3 packed elements from <code class="code"><code class="code">a</code></code> to the upper elements.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_insert_epi32" id="_mm_insert_epi32"><code class="code">_mm_insert_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_insert_epi32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_insert_epi32</code>(__m128i <code class="code">a</code>, int <code class="code">i</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Insert the 32-bit integer <code class="code"><code class="code">i</code></code> into <code class="code"><code class="code">a</code></code> at the location specified by <code class="code"><code class="code">imm8</code>[1:0]</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_insert_epi64" id="_mm_insert_epi64"><code class="code">_mm_insert_epi64</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_insert_epi64"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_insert_epi64</code>(__m128i <code class="code">a</code>, long <code class="code">i</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Insert the 64-bit integer <code class="code"><code class="code">i</code></code> into <code class="code"><code class="code">a</code></code> at the location specified by <code class="code"><code class="code">imm8</code>[0]</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_insert_epi8" id="_mm_insert_epi8"><code class="code">_mm_insert_epi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_insert_epi8"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_insert_epi8</code>(__m128i <code class="code">a</code>, int <code class="code">i</code>, const int <code class="code">imm8</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Insert the 8-bit integer <code class="code"><code class="code">i</code></code> into <code class="code"><code class="code">a</code></code> at the location specified by <code class="code"><code class="code">imm8</code>[2:0]</code>.
+Copy <code class="code">a</code> to dst, and insert the lower 8-bit integer from <code class="code">i</code> into dst at the location specified by <code class="code">imm8</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_insert_ps" id="_mm_insert_ps"><code class="code">_mm_insert_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_insert_ps"></span>@trusted __m128 <code class="code">_mm_insert_ps</code>(int imm8)(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Warning:</span>
+of course it does something totally different from <code class="code">_mm_insert_epi32</code>!
+Copy <code class="code"><code class="code">a</code></code> to <code class="code">tmp</code>, then insert <code class="code">a</code> single-precision (32-bit) floating-point element from <code class="code"><code class="code">b</code></code>
+into <code class="code">tmp</code> using the control in <code class="code">imm8</code>. Store <code class="code">tmp</code> to result using the mask in <code class="code">imm8[3:0]</code>
+(elements are zeroed out when the corresponding bit is set).
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_max_epi32" id="_mm_max_epi32"><code class="code">_mm_max_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_max_epi32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_max_epi32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed signed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, returns packed maximum values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_max_epi8" id="_mm_max_epi8"><code class="code">_mm_max_epi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_max_epi8"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_max_epi8</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed signed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>,
+and return packed maximum values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_max_epu16" id="_mm_max_epu16"><code class="code">_mm_max_epu16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_max_epu16"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_max_epu16</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed unsigned 16-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, returns packed maximum values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_max_epu32" id="_mm_max_epu32"><code class="code">_mm_max_epu32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_max_epu32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_max_epu32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed unsigned 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, returns packed maximum values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_min_epi32" id="_mm_min_epi32"><code class="code">_mm_min_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_min_epi32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_min_epi32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed signed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, returns packed maximum values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_min_epi8" id="_mm_min_epi8"><code class="code">_mm_min_epi8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_min_epi8"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_min_epi8</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed signed 8-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>,
+and return packed minimum values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_min_epu16" id="_mm_min_epu16"><code class="code">_mm_min_epu16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_min_epu16"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_min_epu16</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed unsigned 16-bit integers in <code class="code">a</code> and <code class="code">b</code>, and store packed minimum values in dst.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_min_epu32" id="_mm_min_epu32"><code class="code">_mm_min_epu32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_min_epu32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_min_epu32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compare packed unsigned 32-bit integers in <code class="code">a</code> and <code class="code">b</code>, and store packed minimum values in dst.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_minpos_epu16" id="_mm_minpos_epu16"><code class="code">_mm_minpos_epu16</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_minpos_epu16"></span>nothrow @nogc @trusted __m128i <code class="code">_mm_minpos_epu16</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Horizontally compute the minimum amongst the packed unsigned 16-bit integers in <code class="code"><code class="code">a</code></code>,
+store the minimum and index in return value, and zero the remaining bits.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_mpsadbw_epu8" id="_mm_mpsadbw_epu8"><code class="code">_mm_mpsadbw_epu8</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_mpsadbw_epu8"></span>@trusted __m128i <code class="code">_mm_mpsadbw_epu8</code>(int imm8)(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the sum of absolute differences (SADs) of quadruplets of unsigned 8-bit integers
+in <code class="code"><code class="code">a</code></code> compared to those in <code class="code"><code class="code">b</code></code>, and store the 16-bit results in dst.
+Eight SADs are performed using one quadruplet from <code class="code"><code class="code">b</code></code> and eight quadruplets from <code class="code"><code class="code">a</code></code>.
+One quadruplet is selected from <code class="code"><code class="code">b</code></code> starting at on the offset specified in <code class="code">imm8[1:0]</code>.
+Eight quadruplets are formed from sequential 8-bit integers selected from <code class="code"><code class="code">a</code></code> starting
+at the offset specified in <code class="code">imm8[2]</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_mul_epi32" id="_mm_mul_epi32"><code class="code">_mm_mul_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_mul_epi32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_mul_epi32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Multiply the low signed 32-bit integers from each packed 64-bit element in <code class="code">a</code> and <code class="code">b</code>, and store the signed 64-bit results in dst.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_mullo_epi32" id="_mm_mullo_epi32"><code class="code">_mm_mullo_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_mullo_epi32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_mullo_epi32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Multiply the packed 32-bit integers in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>, producing intermediate 64-bit integers,
+return the low 32 bits of the intermediate integers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_packus_epi32" id="_mm_packus_epi32"><code class="code">_mm_packus_epi32</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_packus_epi32"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_packus_epi32</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Convert packed signed 32-bit integers from <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>
+to packed 16-bit integers using unsigned saturation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_round_pd" id="_mm_round_pd"><code class="code">_mm_round_pd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_round_pd"></span>@trusted __m128d <code class="code">_mm_round_pd</code>(int rounding)(__m128d <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the packed double-precision (64-bit) floating-point elements in <code class="code"><code class="code">a</code></code> using the
+rounding parameter, and store the results as packed double-precision floating-point elements.
+Rounding is done according to the rounding[3:0] parameter, which can be one of:
+   (MM_FROUND_TO_NEAREST_INT |MM_FROUND_NO_EXC) // round to nearest, and suppress exceptions
+   (MM_FROUND_TO_NEG_INF |MM_FROUND_NO_EXC)     // round down, and suppress exceptions
+   (MM_FROUND_TO_POS_INF |MM_FROUND_NO_EXC)     // round up, and suppress exceptions
+   (MM_FROUND_TO_ZERO |MM_FROUND_NO_EXC)        // truncate, and suppress exceptions
+   MM_FROUND_CUR_DIRECTION // use MXCSR.RC; see MM_SET_ROUNDING_MODE
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_round_ps" id="_mm_round_ps"><code class="code">_mm_round_ps</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_round_ps"></span>@trusted __m128 <code class="code">_mm_round_ps</code>(int rounding)(__m128 <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the packed single-precision (32-bit) floating-point elements in <code class="code"><code class="code">a</code></code> using the
+rounding parameter, and store the results as packed single-precision floating-point elements.
+Rounding is done according to the rounding[3:0] parameter, which can be one of:
+   (MM_FROUND_TO_NEAREST_INT |MM_FROUND_NO_EXC) // round to nearest, and suppress exceptions
+   (MM_FROUND_TO_NEG_INF |MM_FROUND_NO_EXC)     // round down, and suppress exceptions
+   (MM_FROUND_TO_POS_INF |MM_FROUND_NO_EXC)     // round up, and suppress exceptions
+   (MM_FROUND_TO_ZERO |MM_FROUND_NO_EXC)        // truncate, and suppress exceptions
+   MM_FROUND_CUR_DIRECTION // use MXCSR.RC; see MM_SET_ROUNDING_MODE
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_round_sd" id="_mm_round_sd"><code class="code">_mm_round_sd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_round_sd"></span>@trusted __m128d <code class="code">_mm_round_sd</code>(int rounding)(__m128d <code class="code">a</code>, __m128d <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the lower double-precision (64-bit) floating-point element in <code class="code"><code class="code">b</code></code> using the
+rounding parameter, store the result as <code class="code">a</code> double-precision floating-point element
+in the lower element of result, and copy the upper element from <code class="code"><code class="code">a</code></code> to the upper element of result.
+Rounding is done according to the rounding[3:0] parameter, which can be one of:
+   (MM_FROUND_TO_NEAREST_INT |MM_FROUND_NO_EXC) // round to nearest, and suppress exceptions
+   (MM_FROUND_TO_NEG_INF |MM_FROUND_NO_EXC)     // round down, and suppress exceptions
+   (MM_FROUND_TO_POS_INF |MM_FROUND_NO_EXC)     // round up, and suppress exceptions
+   (MM_FROUND_TO_ZERO |MM_FROUND_NO_EXC)        // truncate, and suppress exceptions
+   MM_FROUND_CUR_DIRECTION // use MXCSR.RC; see MM_SET_ROUNDING_MODE
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_round_ss" id="_mm_round_ss"><code class="code">_mm_round_ss</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_round_ss"></span>@trusted __m128 <code class="code">_mm_round_ss</code>(int rounding)(__m128 <code class="code">a</code>, __m128 <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Round the lower single-precision (32-bit) floating-point element in <code class="code"><code class="code">b</code></code> using the
+rounding parameter, store the result as <code class="code">a</code> single-precision floating-point element
+in the lower element of result, and copy the upper 3 packed elements from <code class="code"><code class="code">a</code></code>
+to the upper elements of result.
+Rounding is done according to the rounding[3:0] parameter, which can be one of:
+   (MM_FROUND_TO_NEAREST_INT |MM_FROUND_NO_EXC) // round to nearest, and suppress exceptions
+   (MM_FROUND_TO_NEG_INF |MM_FROUND_NO_EXC)     // round down, and suppress exceptions
+   (MM_FROUND_TO_POS_INF |MM_FROUND_NO_EXC)     // round up, and suppress exceptions
+   (MM_FROUND_TO_ZERO |MM_FROUND_NO_EXC)        // truncate, and suppress exceptions
+   MM_FROUND_CUR_DIRECTION // use MXCSR.RC; see MM_SET_ROUNDING_MODE
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_stream_load_si128" id="_mm_stream_load_si128"><code class="code">_mm_stream_load_si128</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_stream_load_si128"></span>pure nothrow @nogc @trusted __m128i <code class="code">_mm_stream_load_si128</code>(void* <code class="code">mem_addr</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Load 128-bits of integer data from memory using a non-temporal memory hint.
+<code class="code"><code class="code">mem_addr</code></code> must be aligned on a 16-byte boundary or a general-protection
+exception may be generated.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_test_all_ones" id="_mm_test_all_ones"><code class="code">_mm_test_all_ones</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_test_all_ones"></span>nothrow @nogc @safe int <code class="code">_mm_test_all_ones</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Return 1 if all bits in <code class="code"><code class="code">a</code></code> are all 1's. Else return 0.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_test_all_zeros" id="_mm_test_all_zeros"><code class="code">_mm_test_all_zeros</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_test_all_zeros"></span>nothrow @nogc @safe int <code class="code">_mm_test_all_zeros</code>(__m128i <code class="code">a</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Return 1 if all bits in <code class="code"><code class="code">a</code></code> are all 0's. Else return 0.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_test_all_zeros" id="_mm_test_all_zeros"><code class="code">_mm_test_all_zeros</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_test_all_zeros.2"></span>nothrow @nogc @safe int <code class="code">_mm_test_all_zeros</code>(__m128i <code class="code">a</code>, __m128i <code class="code">mask</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise AND of 128 bits (representing integer data) in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">mask</code></code>,
+and return 1 if the result is zero, otherwise return 0.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_test_mix_ones_zeros" id="_mm_test_mix_ones_zeros"><code class="code">_mm_test_mix_ones_zeros</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_test_mix_ones_zeros"></span>nothrow @nogc @trusted int <code class="code">_mm_test_mix_ones_zeros</code>(__m128i <code class="code">a</code>, __m128i <code class="code">mask</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise AND of 128 bits (representing integer data) in <code class="code"><code class="code">a</code></code> and <code class="code">mask</code>, and set ZF to 1
+if the result is zero, otherwise set ZF to 0. Compute the bitwise NOT of <code class="code">a</code> and then AND with
+<code class="code">mask</code>, and set CF to 1 if the result is zero, otherwise set CF to 0. Return 1 if both the ZF and
+CF values are zero, otherwise return 0.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_testc_si128" id="_mm_testc_si128"><code class="code">_mm_testc_si128</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_testc_si128"></span>pure nothrow @nogc @trusted int <code class="code">_mm_testc_si128</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise NOT of <code class="code">a</code> and then AND with <code class="code">b</code>, and return 1 if the
+result is zero, otherwise return 0.
+In other words, test if all bits masked by <code class="code"><code class="code">b</code></code> are 1 in <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_testnzc_si128" id="_mm_testnzc_si128"><code class="code">_mm_testnzc_si128</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_testnzc_si128"></span>nothrow @nogc @trusted int <code class="code">_mm_testnzc_si128</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise AND of 128 bits (representing integer data) in <code class="code"><code class="code">a</code></code> and <code class="code"><code class="code">b</code></code>,
+and set ZF to 1 if the result is zero, otherwise set ZF to 0.
+Compute the bitwise NOT of <code class="code"><code class="code">a</code></code> and then AND with <code class="code"><code class="code">b</code></code>, and set CF to 1 if the
+result is zero, otherwise set CF to 0.
+Return 1 if both the ZF and CF values are zero, otherwise return 0.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#_mm_testz_si128" id="_mm_testz_si128"><code class="code">_mm_testz_si128</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="_mm_testz_si128"></span>nothrow @nogc @trusted int <code class="code">_mm_testz_si128</code>(__m128i <code class="code">a</code>, __m128i <code class="code">b</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compute the bitwise AND of 128 bits (representing integer data) in <code class="code">a</code> and <code class="code">b</code>,
+and return 1 if the result is zero, otherwise return 0.
+In other words, test if all bits masked by <code class="code"><code class="code">b</code></code> are 0 in <code class="code"><code class="code">a</code></code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+  </div>
+</section>
+</section>
+      </article>
+    </div>
+  </body>
+</html>

@@ -109,14 +109,27 @@ end
 
 -- Handle click on a building: open its menu or trigger buy
 -- screen_x/y for menu hit detection, world_x/y for building bounds
+local MENU_X = 200
+local MENU_Y = 100
+local MENU_W = 300
+
 function world.mousepressed(state, world_x, world_y, screen_x, screen_y)
   local menu = require("src/ui/menu")
+  local dormitory = require("src/buildings/dormitory")
 
   if menu.is_open(state) then
     if menu.close_button_hit(screen_x, screen_y) then
       menu.close(state)
+      return
     end
-    -- While menu is open, block world clicks
+    -- Dormitory menu: Buy floor button is the first item at y_offset=40
+    if menu.get_open_building(state) == "dormitory" then
+      local item_y = MENU_Y + 40
+      if screen_x >= MENU_X + 10 and screen_x < MENU_X + MENU_W - 10 and
+         screen_y >= item_y and screen_y < item_y + 20 then
+        dormitory.buy_floor(state)
+      end
+    end
     return
   end
 

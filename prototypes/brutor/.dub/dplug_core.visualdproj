@@ -1,0 +1,126 @@
+<DProject>
+  <ProjectGuid>{00184FF3-D093-4669-A902-8F18894ED011}</ProjectGuid>
+  <Config name="debug" platform="x64">
+    <symdebug>1</symdebug>
+    <optimize>0</optimize>
+    <useInline>0</useInline>
+    <release>0</release>
+    <lib>1</lib>
+    <exefile>lib/dplug_core.lib</exefile>
+    <imppath>"C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core" "C:\Users\guill\AppData\Local\dub\packages\intel-intrinsics\1.14.2\intel-intrinsics\source" "C:\Users\guill\AppData\Local\dub\packages\numem\1.6.5\numem\source" </imppath>
+    <fileImppath></fileImppath>
+    <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+    <additionalOptions></additionalOptions>
+    <versionids>Have_dplug_core Have_intel_intrinsics Have_numem encodePNG decodeJPEG decodePNG decodeQOI decodeQOIX decodeSQZ</versionids>
+    <useUnitTests>0</useUnitTests>
+    <betterC>0</betterC>
+    <obj>0</obj>
+    <link>0</link>
+    <subsystem>0</subsystem>
+    <multiobj>0</multiobj>
+    <singleFileCompilation>2</singleFileCompilation>
+    <mscoff>0</mscoff>    <oneobj>0</oneobj>
+    <trace>0</trace>
+    <quiet>0</quiet>
+    <verbose>0</verbose>
+    <vtls>0</vtls>
+    <cpu>0</cpu>
+    <isX86_64>1</isX86_64>
+    <isLinux>0</isLinux>
+    <isOSX>0</isOSX>
+    <isWindows>0</isWindows>
+    <isFreeBSD>0</isFreeBSD>
+    <isSolaris>0</isSolaris>
+    <isDragonFlyBSD>0</isDragonFlyBSD>
+    <scheduler>0</scheduler>
+    <useDeprecated>0</useDeprecated>
+    <useAssert>0</useAssert>
+    <useInvariants>0</useInvariants>
+    <useIn>0</useIn>
+    <useOut>0</useOut>
+    <useArrayBounds>0</useArrayBounds>
+    <noboundscheck>0</noboundscheck>
+    <useSwitchError>0</useSwitchError>
+    <preservePaths>1</preservePaths>
+    <warnings>1</warnings>
+    <infowarnings>0</infowarnings>
+    <checkProperty>0</checkProperty>
+    <genStackFrame>0</genStackFrame>
+    <pic>0</pic>
+    <cov>0</cov>
+    <nofloat>0</nofloat>
+    <Dversion>2</Dversion>
+    <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+    <compiler>2</compiler>
+    <otherDMD>0</otherDMD>
+    <outdir>lib/</outdir>
+    <objdir>obj/debug/dplug_core</objdir>
+    <objname />
+    <libname />
+    <doDocComments>0</doDocComments>
+    <docdir />
+    <docname />
+    <modules_ddoc />
+    <ddocfiles />
+    <doHdrGeneration>0</doHdrGeneration>
+    <hdrdir />
+    <hdrname />
+    <doXGeneration>1</doXGeneration>
+    <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+    <debuglevel>0</debuglevel>
+    <versionlevel>0</versionlevel>
+    <debugids />
+    <dump_source>0</dump_source>
+    <mapverbosity>0</mapverbosity>
+    <createImplib>0</createImplib>
+    <defaultlibname />
+    <debuglibname />
+    <moduleDepsFile />
+    <run>0</run>
+    <runargs />
+    <runCv2pdb>1</runCv2pdb>
+    <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+    <cv2pdbPre2043>0</cv2pdbPre2043>
+    <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+    <cv2pdbEnumType>0</cv2pdbEnumType>
+    <cv2pdbOptions />
+    <objfiles />
+    <linkswitches />
+    <libpaths />
+    <deffile />
+    <resfile />
+    <debugworkingdir>..\</debugworkingdir>
+    <preBuildCommand />
+    <postBuildCommand />
+    <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
+  </Config>
+  <Folder name="dplug_core">
+    <Folder name="dplug_core">
+    <Folder name="core">
+    <Folder name="dplug">
+    <Folder name="core">
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\binrange.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\btree.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\file.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\fpcontrol.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\lockedqueue.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\map.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\math.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\nogc.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\package.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\profiler.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\random.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\ringbuf.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\runtime.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\sharedlib.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\string.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\sync.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\thread.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\traits.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core\dplug\core\vec.d" />
+    </Folder>
+    </Folder>
+    </Folder>
+    </Folder>
+  </Folder>
+</DProject>

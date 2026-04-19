@@ -1,0 +1,1198 @@
+[
+ {
+  "name" : "colors.colorspace",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\colors\\0.0.4\\colors\\source\\colors\\colorspace.d",
+  "members" : [
+   {
+    "name" : "Colorspace",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 14,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "rgba8",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 21,
+      "char" : 5
+     },
+     {
+      "name" : "rgba16",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 27,
+      "char" : 5
+     },
+     {
+      "name" : "rgbaf32",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 36,
+      "char" : 5
+     },
+     {
+      "name" : "hslaf32",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 42,
+      "char" : 5
+     },
+     {
+      "name" : "unknown",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 71,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "L8",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 83,
+    "char" : 10,
+    "members" : [
+     {
+      "name" : "l",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 86,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 0,
+      "align" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L89_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 89,
+    "char" : 1,
+    "endline" : 98,
+    "endchar" : 1
+   },
+   {
+    "name" : "LA8",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 98,
+    "char" : 10,
+    "members" : [
+     {
+      "name" : "l",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 101,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 102,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 1,
+      "align" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L105_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 105,
+    "char" : 1,
+    "endline" : 115,
+    "endchar" : 1
+   },
+   {
+    "name" : "RGB8",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 115,
+    "char" : 10,
+    "members" : [
+     {
+      "name" : "r",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 118,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "g",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 119,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 1,
+      "align" : 1
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 120,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 2,
+      "align" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L122_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 122,
+    "char" : 1,
+    "endline" : 132,
+    "endchar" : 1
+   },
+   {
+    "name" : "RGB16",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 132,
+    "char" : 10,
+    "members" : [
+     {
+      "name" : "r",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 135,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "g",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 136,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 2,
+      "align" : 1
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 137,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 4,
+      "align" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L139_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 139,
+    "char" : 1,
+    "endline" : 151,
+    "endchar" : 1
+   },
+   {
+    "name" : "RGBA8",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 151,
+    "char" : 10,
+    "members" : [
+     {
+      "name" : "r",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 154,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "g",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 155,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 1,
+      "align" : 1
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 156,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 2,
+      "align" : 1
+     },
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 157,
+      "char" : 11,
+      "deco" : "h",
+      "init" : "cast(ubyte)0u",
+      "offset" : 3,
+      "align" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L159_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 159,
+    "char" : 1,
+    "endline" : 170,
+    "endchar" : 1
+   },
+   {
+    "name" : "RGBA16",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 170,
+    "char" : 10,
+    "members" : [
+     {
+      "name" : "r",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 173,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "g",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 174,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 2,
+      "align" : 1
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 175,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 4,
+      "align" : 1
+     },
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 176,
+      "char" : 12,
+      "deco" : "t",
+      "init" : "cast(ushort)0u",
+      "offset" : 6,
+      "align" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L178_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 178,
+    "char" : 1,
+    "endline" : 195,
+    "endchar" : 1
+   },
+   {
+    "name" : "RGBAf",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 195,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "r",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 197,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 0
+     },
+     {
+      "name" : "g",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 198,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 4
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 199,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 8
+     },
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 200,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 12
+     }
+    ]
+   },
+   {
+    "name" : "HSLAf",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 211,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "h",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 213,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 0
+     },
+     {
+      "name" : "s",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 214,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 4
+     },
+     {
+      "name" : "l",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 215,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 8
+     },
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 216,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 12
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "colors.conversions",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\colors\\0.0.4\\colors\\source\\colors\\conversions.d",
+  "members" : [
+   {
+    "name" : "colors.types",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors.colorspace",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "hslToRgb",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 10,
+    "deco" : "FNaNbNiNffffZG3f",
+    "parameters" : [
+     {
+      "name" : "hue",
+      "deco" : "f"
+     },
+     {
+      "name" : "sat",
+      "deco" : "f"
+     },
+     {
+      "name" : "light",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 59,
+    "endchar" : 1
+   },
+   {
+    "name" : "rgbToHsl",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 64,
+    "char" : 10,
+    "deco" : "FNaNbNiNffffZG3f",
+    "parameters" : [
+     {
+      "name" : "red",
+      "deco" : "f"
+     },
+     {
+      "name" : "green",
+      "deco" : "f"
+     },
+     {
+      "name" : "blue",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 104,
+    "endchar" : 1
+   },
+   {
+    "name" : "getIntermediateColorspace",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 107,
+    "char" : 12,
+    "deco" : "FNaNbNiNfE6colors10colorspace10ColorspaceQBgZQBk",
+    "parameters" : [
+     {
+      "name" : "source",
+      "deco" : "E6colors10colorspace10Colorspace"
+     },
+     {
+      "name" : "target",
+      "deco" : "E6colors10colorspace10Colorspace"
+     }
+    ],
+    "endline" : 117,
+    "endchar" : 1
+   },
+   {
+    "name" : "convertToIntermediate",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 119,
+    "char" : 7,
+    "deco" : "FNaNbNiNeS6colors5types5ColorEQu10colorspace10ColorspaceZQBw",
+    "parameters" : [
+     {
+      "name" : "c",
+      "deco" : "S6colors5types5Color"
+     },
+     {
+      "name" : "target",
+      "deco" : "E6colors10colorspace10Colorspace"
+     }
+    ],
+    "endline" : 180,
+    "endchar" : 1
+   },
+   {
+    "name" : "convertFromIntermediate",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 184,
+    "char" : 7,
+    "deco" : "FNaNbNiNeS6colors5types5ColorEQu10colorspace10ColorspaceZQBw",
+    "parameters" : [
+     {
+      "name" : "c",
+      "deco" : "S6colors5types5Color"
+     },
+     {
+      "name" : "target",
+      "deco" : "E6colors10colorspace10Colorspace"
+     }
+    ],
+    "endline" : 241,
+    "endchar" : 1
+   },
+   {
+    "name" : "clamp_0_1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 243,
+    "char" : 6,
+    "deco" : "FNaNbNiNfKfZv",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "f",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 247,
+    "endchar" : 1
+   },
+   {
+    "name" : "clamp_0_255",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 249,
+    "char" : 6,
+    "deco" : "FNaNbNiNfKfZv",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "f",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 253,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "colors",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\colors\\0.0.4\\colors\\source\\colors\\package.d",
+  "members" : [
+   {
+    "name" : "colors.types",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 15
+   },
+   {
+    "name" : "colors.colorspace",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 15
+   },
+   {
+    "name" : "colors.parser",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 15
+   }
+  ]
+ },
+ {
+  "name" : "colors.parser",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\colors\\0.0.4\\colors\\source\\colors\\parser.d",
+  "members" : [
+   {
+    "name" : "std.math",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "PI",
+     "floor"
+    ]
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "strlen"
+    ]
+   },
+   {
+    "name" : "colors.types",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors.colorspace",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors.conversions",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "color",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 7,
+    "deco" : "FNaNbNiNfAxaZS6colors5types5Color",
+    "parameters" : [
+     {
+      "name" : "cssColorString",
+      "deco" : "Axa"
+     }
+    ],
+    "endline" : 32,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L33_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 33,
+    "char" : 1,
+    "endline" : 85,
+    "endchar" : 1
+   },
+   {
+    "name" : "parseCSSColor",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 85,
+    "char" : 6,
+    "deco" : "FNaNbNiNfAxaJS6colors5types5ColorJAyaZb",
+    "parameters" : [
+     {
+      "name" : "cssColorString",
+      "deco" : "Axa"
+     },
+     {
+      "name" : "outColor",
+      "deco" : "S6colors5types5Color",
+      "storageClass" : [
+       "out"
+      ]
+     },
+     {
+      "name" : "error",
+      "deco" : "Aya",
+      "storageClass" : [
+       "out"
+      ]
+     }
+    ],
+    "endline" : 644,
+    "endchar" : 1
+   },
+   {
+    "name" : "namedColors",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 649,
+    "char" : 34,
+    "storageClass" : [
+     "static",
+     "immutable"
+    ],
+    "deco" : "yG148Aa",
+    "originalType" : "string[147 + 1]",
+    "init" : "[\"aliceblue\", \"antiquewhite\", \"aqua\", \"aquamarine\", \"azure\", \"beige\", \"bisque\", \"black\", \"blanchedalmond\", \"blue\", \"blueviolet\", \"brown\", \"burlywood\", \"cadetblue\", \"chartreuse\", \"chocolate\", \"coral\", \"cornflowerblue\", \"cornsilk\", \"crimson\", \"cyan\", \"darkblue\", \"darkcyan\", \"darkgoldenrod\", \"darkgray\", \"darkgreen\", \"darkgrey\", \"darkkhaki\", \"darkmagenta\", \"darkolivegreen\", \"darkorange\", \"darkorchid\", \"darkred\", \"darksalmon\", \"darkseagreen\", \"darkslateblue\", \"darkslategray\", \"darkslategrey\", \"darkturquoise\", \"darkviolet\", \"deeppink\", \"deepskyblue\", \"dimgray\", \"dimgrey\", \"dodgerblue\", \"firebrick\", \"floralwhite\", \"forestgreen\", \"fuchsia\", \"gainsboro\", \"ghostwhite\", \"gold\", \"goldenrod\", \"gray\", \"green\", \"greenyellow\", \"grey\", \"honeydew\", \"hotpink\", \"indianred\", \"indigo\", \"ivory\", \"khaki\", \"lavender\", \"lavenderblush\", \"lawngreen\", \"lemonchiffon\", \"lightblue\", \"lightcoral\", \"lightcyan\", \"lightgoldenrodyellow\", \"lightgray\", \"lightgreen\", \"lightgrey\", \"lightpink\", \"lightsalmon\", \"lightseagreen\", \"lightskyblue\", \"lightslategray\", \"lightslategrey\", \"lightsteelblue\", \"lightyellow\", \"lime\", \"limegreen\", \"linen\", \"magenta\", \"maroon\", \"mediumaquamarine\", \"mediumblue\", \"mediumorchid\", \"mediumpurple\", \"mediumseagreen\", \"mediumslateblue\", \"mediumspringgreen\", \"mediumturquoise\", \"mediumvioletred\", \"midnightblue\", \"mintcream\", \"mistyrose\", \"moccasin\", \"navajowhite\", \"navy\", \"oldlace\", \"olive\", \"olivedrab\", \"orange\", \"orangered\", \"orchid\", \"palegoldenrod\", \"palegreen\", \"paleturquoise\", \"palevioletred\", \"papayawhip\", \"peachpuff\", \"peru\", \"pink\", \"plum\", \"powderblue\", \"purple\", \"red\", \"rosybrown\", \"royalblue\", \"saddlebrown\", \"salmon\", \"sandybrown\", \"seagreen\", \"seashell\", \"sienna\", \"silver\", \"skyblue\", \"slateblue\", \"slategray\", \"slategrey\", \"snow\", \"springgreen\", \"steelblue\", \"tan\", \"teal\", \"thistle\", \"tomato\", \"transparent\", \"turquoise\", \"violet\", \"wheat\", \"white\", \"whitesmoke\", \"yellow\", \"yellowgreen\"]"
+   },
+   {
+    "name" : "namedColorValues",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 692,
+    "char" : 32,
+    "storageClass" : [
+     "static",
+     "immutable"
+    ],
+    "deco" : "yG148k",
+    "originalType" : "uint[147 + 1]",
+    "init" : "[4042850303u, 4209760255u, 16777215u, 2147472639u, 4043309055u, 4126530815u, 4293182719u, 255u, 4293643775u, 65535u, 2318131967u, 2771004159u, 3736635391u, 1604231423u, 2147418367u, 3530104575u, 4286533887u, 1687547391u, 4294499583u, 3692313855u, 16777215u, 35839u, 9145343u, 3095792639u, 2846468607u, 6553855u, 2846468607u, 3182914559u, 2332068863u, 1433087999u, 4287365375u, 2570243327u, 2332033279u, 3918953215u, 2411499519u, 1211993087u, 793726975u, 793726975u, 13554175u, 2483082239u, 4279538687u, 12582911u, 1768516095u, 1768516095u, 512819199u, 2988581631u, 4294635775u, 579543807u, 4278255615u, 3705462015u, 4177068031u, 4292280575u, 3668254975u, 2155905279u, 8388863u, 2919182335u, 2155905279u, 4043305215u, 4285117695u, 3445382399u, 1258324735u, 4294963455u, 4041641215u, 3873897215u, 4293981695u, 2096890111u, 4294626815u, 2916673279u, 4034953471u, 3774873599u, 4210742015u, 3553874943u, 2431553791u, 3553874943u, 4290167295u, 4288707327u, 548580095u, 2278488831u, 2005441023u, 2005441023u, 2965692159u, 4294959359u, 16711935u, 852308735u, 4210091775u, 4278255615u, 2147483903u, 1724754687u, 52735u, 3126187007u, 2473647103u, 1018393087u, 2070474495u, 16423679u, 1221709055u, 3340076543u, 421097727u, 4127193855u, 4293190143u, 4293178879u, 4292783615u, 33023u, 4260751103u, 2155872511u, 1804477439u, 4289003775u, 4282712319u, 3664828159u, 4008225535u, 2566625535u, 2951671551u, 3681588223u, 4293907967u, 4292524543u, 3448061951u, 4290825215u, 3718307327u, 2967529215u, 2147516671u, 4278190335u, 3163525119u, 1097458175u, 2336560127u, 4202722047u, 4104413439u, 780883967u, 4294307583u, 2689740287u, 3233857791u, 2278484991u, 1784335871u, 1887473919u, 1887473919u, 4294638335u, 16744447u, 1182971135u, 3535047935u, 8421631u, 3636451583u, 4284696575u, 0u, 1088475391u, 4001558271u, 4125012991u, 4294967295u, 4126537215u, 4294902015u, 2597139199u]"
+   },
+   {
+    "name" : "__unittest_L733_C1",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 733,
+    "char" : 1,
+    "endline" : 837,
+    "endchar" : 1
+   },
+   {
+    "name" : "convertStringToDouble",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 837,
+    "char" : 15,
+    "deco" : "FNaNbNiPxabPbZd",
+    "parameters" : [
+     {
+      "name" : "s",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "mustConsumeEntireInput",
+      "deco" : "b"
+     },
+     {
+      "name" : "err",
+      "deco" : "Pb"
+     }
+    ],
+    "endline" : 870,
+    "endchar" : 1
+   },
+   {
+    "name" : "stb__clex_parse_number_literal",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 872,
+    "char" : 8,
+    "deco" : "FNaNbNiPxaPQePbbZd",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "q",
+      "deco" : "PPxa"
+     },
+     {
+      "name" : "err",
+      "deco" : "Pb"
+     },
+     {
+      "name" : "allowFloat",
+      "deco" : "b"
+     }
+    ],
+    "endline" : 990,
+    "endchar" : 1
+   },
+   {
+    "name" : "stb__clex_pow",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 992,
+    "char" : 8,
+    "deco" : "FNaNbNidkZd",
+    "parameters" : [
+     {
+      "name" : "base",
+      "deco" : "d"
+     },
+     {
+      "name" : "exponent",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 1002,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "colors.types",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\colors\\0.0.4\\colors\\source\\colors\\types.d",
+  "members" : [
+   {
+    "name" : "colors.conversions",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors.colorspace",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors.parser",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "Color",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 26,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "_RGBA8",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 35,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "S6colors10colorspace5RGBA8",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "_RGBA16",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 36,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "S6colors10colorspace6RGBA16",
+      "offset" : 0,
+      "align" : 1
+     },
+     {
+      "name" : "_RGBAf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 46,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "S6colors10colorspace5RGBAf",
+      "offset" : 0
+     },
+     {
+      "name" : "_HSLAf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 47,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "S6colors10colorspace5HSLAf",
+      "offset" : 0
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 53,
+      "char" : 5,
+      "deco" : "FNaNbNcNiNfAxaZS6colors5types5Color",
+      "originalType" : "pure nothrow @nogc ref @safe (const(char)[] cssColor)",
+      "parameters" : [
+       {
+        "name" : "cssColor",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 56,
+      "endchar" : 5
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 61,
+      "char" : 5,
+      "deco" : "FNaNbNcNiNfS6colors10colorspace5RGBA8ZSQBb5types5Color",
+      "originalType" : "pure nothrow @nogc ref @safe (RGBA8 c)",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "S6colors10colorspace5RGBA8"
+       }
+      ],
+      "endline" : 65,
+      "endchar" : 5
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 70,
+      "char" : 5,
+      "deco" : "FNaNbNcNiNfS6colors10colorspace6RGBA16ZSQBc5types5Color",
+      "originalType" : "pure nothrow @nogc ref @safe (RGBA16 c)",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "S6colors10colorspace6RGBA16"
+       }
+      ],
+      "endline" : 74,
+      "endchar" : 5
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 80,
+      "char" : 5,
+      "deco" : "FNaNbNcNiNfS6colors10colorspace5RGBAfZSQBb5types5Color",
+      "originalType" : "pure nothrow @nogc ref @safe (RGBAf c)",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "S6colors10colorspace5RGBAf"
+       }
+      ],
+      "endline" : 84,
+      "endchar" : 5
+     },
+     {
+      "name" : "colorspace",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 89,
+      "char" : 16,
+      "deco" : "xFNaNbNiNfZE6colors10colorspace10Colorspace",
+      "endline" : 92,
+      "endchar" : 5
+     },
+     {
+      "name" : "assumeColorspace",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 97,
+      "char" : 10,
+      "deco" : "FNaNbNiE6colors10colorspace10ColorspaceZv",
+      "parameters" : [
+       {
+        "name" : "colorspace",
+        "deco" : "E6colors10colorspace10Colorspace"
+       }
+      ],
+      "endline" : 100,
+      "endchar" : 5
+     },
+     {
+      "name" : "toRGBA8",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 105,
+      "char" : 11,
+      "deco" : "xFNaNbNiNfZS6colors10colorspace5RGBA8",
+      "endline" : 109,
+      "endchar" : 5
+     },
+     {
+      "name" : "toRGBA16",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 114,
+      "char" : 12,
+      "deco" : "xFNaNbNiNfZS6colors10colorspace6RGBA16",
+      "endline" : 118,
+      "endchar" : 5
+     },
+     {
+      "name" : "toRGBAf",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 123,
+      "char" : 11,
+      "deco" : "xFNaNbNiNfZS6colors10colorspace5RGBAf",
+      "endline" : 127,
+      "endchar" : 5
+     },
+     {
+      "name" : "_colorspace",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 134,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "E6colors10colorspace10Colorspace",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L136_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 136,
+    "char" : 1,
+    "endline" : 157,
+    "endchar" : 1
+   },
+   {
+    "name" : "rgb",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 157,
+    "char" : 7,
+    "deco" : "FNaNbNiNfffffZS6colors5types5Color",
+    "parameters" : [
+     {
+      "name" : "red",
+      "deco" : "f"
+     },
+     {
+      "name" : "green",
+      "deco" : "f"
+     },
+     {
+      "name" : "blue",
+      "deco" : "f"
+     },
+     {
+      "name" : "alpha",
+      "deco" : "f",
+      "default" : "1.0F"
+     }
+    ],
+    "endline" : 170,
+    "endchar" : 1
+   },
+   {
+    "name" : "rgba",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 177,
+    "char" : 1,
+    "originalType" : "rgb"
+   },
+   {
+    "name" : "hsl",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 192,
+    "char" : 7,
+    "deco" : "FNaNbNiNfffffZS6colors5types5Color",
+    "parameters" : [
+     {
+      "name" : "hueDegrees",
+      "deco" : "f"
+     },
+     {
+      "name" : "sat",
+      "deco" : "f"
+     },
+     {
+      "name" : "light",
+      "deco" : "f"
+     },
+     {
+      "name" : "alpha",
+      "deco" : "f",
+      "default" : "1.0F"
+     }
+    ],
+    "endline" : 208,
+    "endchar" : 1
+   },
+   {
+    "name" : "hsla",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 215,
+    "char" : 1,
+    "originalType" : "hsl"
+   },
+   {
+    "name" : "toColorSpace",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 221,
+    "char" : 7,
+    "deco" : "FNaNbNiNfxS6colors5types5ColorEQu10colorspace10ColorspaceZSQBwQBsQBp",
+    "parameters" : [
+     {
+      "name" : "color",
+      "deco" : "xS6colors5types5Color"
+     },
+     {
+      "name" : "target",
+      "deco" : "E6colors10colorspace10Colorspace"
+     }
+    ],
+    "endline" : 252,
+    "endchar" : 1
+   }
+  ]
+ }
+]

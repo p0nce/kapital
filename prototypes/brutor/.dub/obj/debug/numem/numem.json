@@ -1,0 +1,8574 @@
+[
+ {
+  "name" : "numem.core.atomic",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\atomic.d",
+  "members" : [
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 15
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.attributes",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\attributes.d",
+  "members" : [
+   {
+    "name" : "weak",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 45,
+    "char" : 15,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yS5numem4core10attributes5_weak",
+    "originalType" : "_weak",
+    "init" : "_weak()"
+   },
+   {
+    "name" : "_weak",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 46,
+    "char" : 13,
+    "members" : []
+   },
+   {
+    "name" : "section",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 69,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "name",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 69,
+      "char" : 29,
+      "deco" : "Aya",
+      "offset" : 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.cpp",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\cpp.d",
+  "members" : [
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 2,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.lifetime",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 19,
+    "char" : 7,
+    "name" : "_nu_cpp_new",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXCtor",
+      "kind" : "value",
+      "deco" : "b"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isCPP!T",
+    "members" : [
+     {
+      "name" : "_nu_cpp_new",
+      "kind" : "function",
+      "line" : 19,
+      "char" : 7,
+      "type" : "@nogc Ref!T(auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 32,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 44,
+    "char" : 6,
+    "name" : "_nu_cpp_delete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXDtor",
+      "kind" : "value",
+      "deco" : "b"
+     }
+    ],
+    "constraint" : "isCPP!T",
+    "members" : [
+     {
+      "name" : "_nu_cpp_delete",
+      "kind" : "function",
+      "line" : 44,
+      "char" : 6,
+      "type" : "@nogc void(ref T ptr)",
+      "parameters" : [
+       {
+        "name" : "ptr",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 53,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__cpp_new",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 60,
+    "char" : 15,
+    "linkage" : "cpp",
+    "deco" : "RNimZPv",
+    "originalType" : "@nogc extern (C++) void*(size_t bytes)",
+    "parameters" : [
+     {
+      "name" : "bytes",
+      "deco" : "m"
+     }
+    ]
+   },
+   {
+    "name" : "__cpp_delete",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 63,
+    "char" : 14,
+    "linkage" : "cpp",
+    "deco" : "RNiPvZv",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.exception",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\exception.d",
+  "members" : [
+   {
+    "name" : "numem.core.memory",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "nogc_delete",
+     "nogc_new"
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 6,
+    "name" : "assumeNoThrow",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isSomeFunction!T",
+    "members" : [
+     {
+      "name" : "assumeNoThrow",
+      "kind" : "function",
+      "line" : 24,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "nothrow @nogc (T expr, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "expr",
+        "type" : "T"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 31,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 40,
+    "char" : 6,
+    "name" : "assumeNoThrowNoGC",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isSomeFunction!T",
+    "members" : [
+     {
+      "name" : "assumeNoThrowNoGC",
+      "kind" : "function",
+      "line" : 40,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "nothrow @nogc (T expr, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "expr",
+        "type" : "T"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 47,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 57,
+    "char" : 6,
+    "name" : "assumeNoGC",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isSomeFunction!T",
+    "members" : [
+     {
+      "name" : "assumeNoGC",
+      "kind" : "function",
+      "line" : 57,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "@nogc (T expr, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "expr",
+        "type" : "T"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 66,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 75,
+    "char" : 6,
+    "name" : "assumePure",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isSomeFunction!T",
+    "members" : [
+     {
+      "name" : "assumePure",
+      "kind" : "function",
+      "line" : 75,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "pure (T expr, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "expr",
+        "type" : "T"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 84,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 93,
+    "char" : 6,
+    "name" : "assumeNoThrowNoGCPure",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isSomeFunction!T",
+    "members" : [
+     {
+      "name" : "assumeNoThrowNoGCPure",
+      "kind" : "function",
+      "line" : 93,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "pure (T expr, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "expr",
+        "type" : "T"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 102,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "NuException",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 107,
+    "char" : 1,
+    "base" : "object.Exception",
+    "members" : [
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 111,
+      "char" : 5,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNiNlZv",
+      "endline" : 119,
+      "endchar" : 5
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 124,
+      "char" : 5,
+      "deco" : "FNiAxaC6object9ThrowableAyamZC5numem4core9exception11NuException",
+      "originalType" : "@nogc (const(char)[] msg, Throwable nextInChain = null, string file = __FILE__, size_t line = __LINE__)",
+      "parameters" : [
+       {
+        "name" : "msg",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "nextInChain",
+        "deco" : "C6object9Throwable",
+        "default" : "null"
+       },
+       {
+        "name" : "file",
+        "deco" : "Aya",
+        "default" : "__FILE__"
+       },
+       {
+        "name" : "line",
+        "deco" : "m",
+        "default" : "cast(ulong)__LINE__"
+       }
+      ],
+      "endline" : 126,
+      "endchar" : 5
+     },
+     {
+      "name" : "create",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 131,
+      "char" : 24,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNiAxaC6object9ThrowableAyamZC5numem4core9exception11NuException",
+      "originalType" : "@nogc NuException(const(char)[] msg, Throwable nextInChain = null, string file = __FILE__, size_t line = __LINE__)",
+      "parameters" : [
+       {
+        "name" : "msg",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "nextInChain",
+        "deco" : "C6object9Throwable",
+        "default" : "null"
+       },
+       {
+        "name" : "file",
+        "deco" : "Aya",
+        "default" : "__FILE__"
+       },
+       {
+        "name" : "line",
+        "deco" : "m",
+        "default" : "cast(ulong)__LINE__"
+       }
+      ],
+      "endline" : 133,
+      "endchar" : 5
+     },
+     {
+      "name" : "message",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 139,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "xFNbNiNfZAxa",
+      "endline" : 141,
+      "endchar" : 5,
+      "overrides" : [
+       "object.Throwable.message"
+      ]
+     },
+     {
+      "name" : "free",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 146,
+      "char" : 10,
+      "deco" : "FNiNeZv",
+      "endline" : 149,
+      "endchar" : 5
+     },
+     {
+      "name" : "freeNoThrow",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 155,
+      "char" : 10,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNbNiNeZv",
+      "endline" : 159,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 167,
+    "char" : 6,
+    "name" : "enforce",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "enforce",
+      "kind" : "function",
+      "line" : 167,
+      "char" : 6,
+      "type" : "@nogc @trusted void(T in_, const(char)[] err)",
+      "parameters" : [
+       {
+        "name" : "in_",
+        "type" : "T"
+       },
+       {
+        "name" : "err",
+        "type" : "const(char)[]"
+       }
+      ],
+      "endline" : 171,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 178,
+    "char" : 6,
+    "name" : "enforce",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "enforce",
+      "kind" : "function",
+      "line" : 178,
+      "char" : 6,
+      "type" : "@nogc @trusted void(T in_, NuException t)",
+      "parameters" : [
+       {
+        "name" : "in_",
+        "type" : "T"
+       },
+       {
+        "name" : "t",
+        "type" : "NuException"
+       }
+      ],
+      "endline" : 182,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.hooks",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\hooks.d",
+  "members" : [
+   {
+    "name" : "core.attribute",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "weak"
+    ]
+   },
+   {
+    "name" : "nu_malloc",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 41,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNimZPv",
+    "originalType" : "pure nothrow @nogc @system extern (C) void*(size_t bytes)",
+    "parameters" : [
+     {
+      "name" : "bytes",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 46,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_realloc",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 70,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiPvmZQe",
+    "originalType" : "pure nothrow @nogc @system extern (C) void*(void* data, size_t newSize)",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "newSize",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 75,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_free",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 90,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiPvZv",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 95,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_memcpy",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 110,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiNkMPvMxPvmZQi",
+    "originalType" : "pure nothrow @nogc @system extern (C) void*(return scope void* dst, scope const void* src, size_t bytes)",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "Pv",
+      "storageClass" : [
+       "scope",
+       "return"
+      ]
+     },
+     {
+      "name" : "src",
+      "deco" : "xPv",
+      "storageClass" : [
+       "scope"
+      ]
+     },
+     {
+      "name" : "bytes",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 115,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_memmove",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 132,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiNkMPvMxPvmZQi",
+    "originalType" : "pure nothrow @nogc @system extern (C) void*(return scope void* dst, scope const void* src, size_t bytes)",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "Pv",
+      "storageClass" : [
+       "scope",
+       "return"
+      ]
+     },
+     {
+      "name" : "src",
+      "deco" : "xPv",
+      "storageClass" : [
+       "scope"
+      ]
+     },
+     {
+      "name" : "bytes",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 137,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_memset",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 152,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiNkMPvhmZQf",
+    "originalType" : "pure nothrow @nogc @system extern (C) void*(return scope void* dst, ubyte value, size_t bytes)",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "Pv",
+      "storageClass" : [
+       "scope",
+       "return"
+      ]
+     },
+     {
+      "name" : "value",
+      "deco" : "h"
+     },
+     {
+      "name" : "bytes",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 157,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_fatal",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 177,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiAxaZv",
+    "parameters" : [
+     {
+      "name" : "errMsg",
+      "deco" : "Axa"
+     }
+    ],
+    "endline" : 211,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_supported",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 227,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiZb",
+    "endline" : 231,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_barrier_acquire",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 238,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiZv",
+    "endline" : 243,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_barrier_release",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 250,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiZv",
+    "endline" : 255,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_load_32",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 262,
+    "char" : 13,
+    "linkage" : "c",
+    "deco" : "UNaNbNiKNgkZNgk",
+    "parameters" : [
+     {
+      "name" : "src",
+      "deco" : "Ngk",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 267,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_store_32",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 274,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiKkkZv",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "k",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "value",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 281,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_add_32",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 288,
+    "char" : 13,
+    "storageClass" : [
+     "extern"
+    ],
+    "linkage" : "c",
+    "deco" : "UNaNbNiKkkZk",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "k",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "value",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 298,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_sub_32",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 305,
+    "char" : 13,
+    "storageClass" : [
+     "extern"
+    ],
+    "linkage" : "c",
+    "deco" : "UNaNbNiKkkZk",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "k",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "value",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 315,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_load_ptr",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 322,
+    "char" : 21,
+    "storageClass" : [
+     "extern"
+    ],
+    "linkage" : "c",
+    "deco" : "UNaNbNiPPNgvZQf",
+    "parameters" : [
+     {
+      "name" : "src",
+      "deco" : "PPNgv"
+     }
+    ],
+    "endline" : 330,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_store_ptr",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 337,
+    "char" : 13,
+    "storageClass" : [
+     "extern"
+    ],
+    "linkage" : "c",
+    "deco" : "UNaNbNiPPvQcZv",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "PPv"
+     },
+     {
+      "name" : "value",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 345,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_atomic_cmpxhg_ptr",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 352,
+    "char" : 13,
+    "storageClass" : [
+     "extern"
+    ],
+    "linkage" : "c",
+    "deco" : "UNaNbNiPPvQcQeZb",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "PPv"
+     },
+     {
+      "name" : "oldvalue",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "value",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 365,
+    "endchar" : 1
+   },
+   {
+    "name" : "nuopt_autoreleasepool_push",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 382,
+    "char" : 50,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "linkage" : "c",
+    "deco" : "PUNbNiZPv",
+    "init" : "null"
+   },
+   {
+    "name" : "nuopt_autoreleasepool_pop",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 386,
+    "char" : 54,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "linkage" : "c",
+    "deco" : "PUNbNiPvZv",
+    "init" : "null"
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.lifetime",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\lifetime.d",
+  "members" : [
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.exception",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.memory",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.casting",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "nogc_construct",
+     "nogc_initialize",
+     "nogc_delete"
+    ]
+   },
+   {
+    "name" : "fp_t",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 24,
+    "char" : 20,
+    "deco" : "PFNbNiC6ObjectZv"
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 28,
+    "char" : 9,
+    "name" : "xdtor",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "xdtor",
+      "kind" : "function",
+      "line" : 29,
+      "char" : 10,
+      "type" : "void(ref T obj)",
+      "parameters" : [
+       {
+        "name" : "obj",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 31,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 37,
+    "char" : 6,
+    "name" : "initializeAt",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "initializeAt",
+      "kind" : "function",
+      "line" : 37,
+      "char" : 6,
+      "type" : "nothrow @nogc @trusted void(ref scope T chunk)",
+      "parameters" : [
+       {
+        "name" : "chunk",
+        "type" : "T",
+        "storageClass" : [
+         "scope",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 64,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 70,
+    "char" : 6,
+    "name" : "initializeAtNoCtx",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "initializeAtNoCtx",
+      "kind" : "function",
+      "line" : 70,
+      "char" : 6,
+      "type" : "nothrow @nogc @trusted void(ref scope T chunk)",
+      "parameters" : [
+       {
+        "name" : "chunk",
+        "type" : "T",
+        "storageClass" : [
+         "scope",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 90,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 96,
+    "char" : 6,
+    "name" : "destruct",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "reInit",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "destruct",
+      "kind" : "function",
+      "line" : 96,
+      "char" : 6,
+      "type" : "@nogc @trusted void(ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 158,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 163,
+    "char" : 6,
+    "name" : "emplace",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "UT",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "emplace",
+      "kind" : "function",
+      "line" : 163,
+      "char" : 6,
+      "type" : "@nogc void(ref UT dst, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "type" : "UT",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 270,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 273,
+    "char" : 6,
+    "name" : "emplace",
+    "parameters" : [
+     {
+      "name" : "UT",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "emplace",
+      "kind" : "function",
+      "line" : 273,
+      "char" : 6,
+      "type" : "@nogc void(auto ref UT dst, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "type" : "UT",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 275,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 280,
+    "char" : 6,
+    "name" : "__copy",
+    "parameters" : [
+     {
+      "name" : "S",
+      "kind" : "type"
+     },
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__copy",
+      "kind" : "function",
+      "line" : 280,
+      "char" : 6,
+      "type" : "@nogc @system void(ref S source, ref T target)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "S",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "target",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 308,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 315,
+    "char" : 6,
+    "name" : "__move",
+    "parameters" : [
+     {
+      "name" : "S",
+      "kind" : "type"
+     },
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__move",
+      "kind" : "function",
+      "line" : 315,
+      "char" : 6,
+      "type" : "@nogc @trusted void(ref S source, ref T target)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "S",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "target",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 324,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 327,
+    "char" : 3,
+    "name" : "__move",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__move",
+      "kind" : "function",
+      "line" : 327,
+      "char" : 3,
+      "type" : "@nogc @trusted T(ref return scope T source)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "T",
+        "storageClass" : [
+         "scope",
+         "ref",
+         "return"
+        ]
+       }
+      ],
+      "endline" : 331,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 335,
+    "char" : 6,
+    "name" : "__moveImpl",
+    "parameters" : [
+     {
+      "name" : "S",
+      "kind" : "type"
+     },
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__moveImpl",
+      "kind" : "function",
+      "line" : 335,
+      "char" : 6,
+      "type" : "@nogc @system void(ref S source, ref T target)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "S",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "target",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 365,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 374,
+    "char" : 6,
+    "name" : "__blit",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__blit",
+      "kind" : "function",
+      "line" : 374,
+      "char" : 6,
+      "type" : "nothrow @nogc @system void(ref T to, ref T from)",
+      "parameters" : [
+       {
+        "name" : "to",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "from",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 376,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 382,
+    "char" : 6,
+    "name" : "__copy_postblit",
+    "parameters" : [
+     {
+      "name" : "S",
+      "kind" : "type"
+     },
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__copy_postblit",
+      "kind" : "function",
+      "line" : 382,
+      "char" : 6,
+      "type" : "@nogc @system void(ref S source, ref T target)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "S",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "target",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 397,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 417,
+    "char" : 6,
+    "name" : "__move_postblit",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__move_postblit",
+      "kind" : "function",
+      "line" : 417,
+      "char" : 6,
+      "type" : "@nogc @system void(ref T newLocation, ref T oldLocation)",
+      "parameters" : [
+       {
+        "name" : "newLocation",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "oldLocation",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 440,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 452,
+    "char" : 1,
+    "name" : "forward",
+    "parameters" : [
+     {
+      "name" : "args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "core.internal.traits",
+      "kind" : "import",
+      "line" : 454,
+      "char" : 12,
+      "protection" : "private",
+      "selective" : [
+       "AliasSeq"
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 457,
+      "char" : 5,
+      "name" : "fwd",
+      "parameters" : [
+       {
+        "name" : "arg",
+        "kind" : "alias"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "fwd",
+        "kind" : "alias",
+        "line" : 464,
+        "char" : 13,
+        "type" : "arg"
+       }
+      ]
+     },
+     {
+      "name" : "Result",
+      "kind" : "alias",
+      "line" : 474,
+      "char" : 5,
+      "type" : "AliasSeq!()"
+     },
+     {
+      "name" : "forward",
+      "kind" : "alias",
+      "line" : 478,
+      "char" : 9,
+      "type" : "Result[0]"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 487,
+    "char" : 1,
+    "name" : "nu_destroywith",
+    "parameters" : [
+     {
+      "name" : "handlerFunc",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_destroywith",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 487,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "Handler",
+        "kind" : "alias",
+        "line" : 489,
+        "char" : 5,
+        "type" : "handlerFunc"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 496,
+    "char" : 1,
+    "name" : "nu_autoreleasewith",
+    "parameters" : [
+     {
+      "name" : "handlerFunc",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_autoreleasewith",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 496,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "Handler",
+        "kind" : "alias",
+        "line" : 498,
+        "char" : 5,
+        "type" : "handlerFunc"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 512,
+    "char" : 6,
+    "name" : "nu_autorelease",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_autorelease",
+      "kind" : "function",
+      "line" : 512,
+      "char" : 6,
+      "type" : "@nogc @trusted bool(T item)",
+      "parameters" : [
+       {
+        "name" : "item",
+        "type" : "T"
+       }
+      ],
+      "endline" : 536,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "nu_autoreleasepool_push",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 552,
+    "char" : 7,
+    "deco" : "FNiZPv",
+    "endline" : 561,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_autoreleasepool_pop",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 577,
+    "char" : 6,
+    "deco" : "FNiPvZv",
+    "parameters" : [
+     {
+      "name" : "ctx",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 585,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_arpool_stack",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 596,
+    "char" : 27,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "deco" : "AS5numem4core8lifetime13nu_arpool_ctx"
+   },
+   {
+    "name" : "nu_arpool_handler_t",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 599,
+    "char" : 1,
+    "deco" : "PFNiPvZv"
+   },
+   {
+    "name" : "nu_arpool_element",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 602,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "ptr",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 603,
+      "char" : 11,
+      "deco" : "Pv",
+      "offset" : 0
+     },
+     {
+      "name" : "handler",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 604,
+      "char" : 25,
+      "deco" : "PFNiPvZv",
+      "originalType" : "nu_arpool_handler_t",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "nu_arpool_ctx",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 608,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "queue",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 610,
+      "char" : 25,
+      "storageClass" : [
+       "@nogc"
+      ],
+      "deco" : "AS5numem4core8lifetime17nu_arpool_element",
+      "offset" : 0
+     },
+     {
+      "name" : "fctx",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 611,
+      "char" : 11,
+      "storageClass" : [
+       "@nogc"
+      ],
+      "deco" : "Pv",
+      "offset" : 16
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 613,
+      "char" : 5,
+      "deco" : "FNiZv",
+      "endline" : 619,
+      "endchar" : 5
+     },
+     {
+      "name" : "push",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 621,
+      "char" : 10,
+      "deco" : "FNiS5numem4core8lifetime17nu_arpool_elementZv",
+      "parameters" : [
+       {
+        "name" : "element",
+        "deco" : "S5numem4core8lifetime17nu_arpool_element"
+       }
+      ],
+      "endline" : 624,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "protection" : "public",
+      "line" : 608,
+      "char" : 1,
+      "deco" : "FNcNiNjS5numem4core8lifetime13nu_arpool_ctxZQBl",
+      "originalType" : "ref nu_arpool_ctx(nu_arpool_ctx p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S5numem4core8lifetime13nu_arpool_ctx"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 629,
+    "char" : 1,
+    "name" : "nu_getdestroywith",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "A",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "attrs",
+      "kind" : "alias",
+      "line" : 632,
+      "char" : 13,
+      "type" : "__traits(getAttributes, Unref!T)"
+     },
+     {
+      "name" : "nu_getdestroywith",
+      "kind" : "alias",
+      "line" : 635,
+      "char" : 17,
+      "type" : "nu_getdestroywith!(Unref!T, attrs)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 652,
+    "char" : 6,
+    "name" : "nu_isdestroywith",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "H",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_isdestroywith",
+      "kind" : "variable",
+      "line" : 652,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(identifier, H) == __traits(identifier, nu_destroywith) && is(typeof(H.Handler)) && is(typeof(H.Handler(lvalueOf!T)))"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 659,
+    "char" : 1,
+    "name" : "nu_getautoreleasewith",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "A",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "attrs",
+      "kind" : "alias",
+      "line" : 662,
+      "char" : 13,
+      "type" : "__traits(getAttributes, Unref!T)"
+     },
+     {
+      "name" : "nu_getautoreleasewith",
+      "kind" : "alias",
+      "line" : 665,
+      "char" : 17,
+      "type" : "nu_getautoreleasewith!(Unref!T, attrs)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 682,
+    "char" : 6,
+    "name" : "nu_isautoreleasewith",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "H",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_isautoreleasewith",
+      "kind" : "variable",
+      "line" : 682,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(identifier, H) == __traits(identifier, nu_autoreleasewith) && is(typeof(H.Handler)) && is(typeof(H.Handler(lvalueOf!T)))"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.math",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\math.d",
+  "members" : [
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 3,
+    "name" : "nu_alignup",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "__traits(isIntegral, T)",
+    "members" : [
+     {
+      "name" : "nu_alignup",
+      "kind" : "function",
+      "line" : 24,
+      "char" : 3,
+      "type" : "@nogc T(T value, T alignment)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T"
+       },
+       {
+        "name" : "alignment",
+        "type" : "T"
+       }
+      ],
+      "endline" : 26,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 39,
+    "char" : 3,
+    "name" : "nu_aligndown",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "__traits(isIntegral, T)",
+    "members" : [
+     {
+      "name" : "nu_aligndown",
+      "kind" : "function",
+      "line" : 39,
+      "char" : 3,
+      "type" : "@nogc T(T value, T alignment)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T"
+       },
+       {
+        "name" : "alignment",
+        "type" : "T"
+       }
+      ],
+      "endline" : 41,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 53,
+    "char" : 6,
+    "name" : "nu_is_aligned",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_is_aligned",
+      "kind" : "function",
+      "line" : 53,
+      "char" : 6,
+      "type" : "pure nothrow @nogc @trusted bool(T value, size_t alignment)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T"
+       },
+       {
+        "name" : "alignment",
+        "type" : "size_t"
+       }
+      ],
+      "endline" : 55,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 67,
+    "char" : 12,
+    "name" : "nu_min",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(typeof(() => T.init < T.init))",
+    "members" : [
+     {
+      "name" : "nu_min",
+      "kind" : "function",
+      "line" : 67,
+      "char" : 12,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "pure nothrow @nogc ref @trusted T(auto ref T a, auto ref T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       },
+       {
+        "name" : "b",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 69,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 81,
+    "char" : 12,
+    "name" : "nu_max",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(typeof(() => T.init > T.init))",
+    "members" : [
+     {
+      "name" : "nu_max",
+      "kind" : "function",
+      "line" : 81,
+      "char" : 12,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "pure nothrow @nogc ref @trusted T(auto ref T a, auto ref T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       },
+       {
+        "name" : "b",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 83,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 97,
+    "char" : 3,
+    "name" : "nu_bsr",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "__traits(isIntegral, T)",
+    "members" : [
+     {
+      "name" : "nu_bsr",
+      "kind" : "function",
+      "line" : 97,
+      "char" : 3,
+      "type" : "pure nothrow @nogc @trusted T(T value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T"
+       }
+      ],
+      "endline" : 117,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 131,
+    "char" : 3,
+    "name" : "nu_bsf",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "__traits(isIntegral, T)",
+    "members" : [
+     {
+      "name" : "nu_bsf",
+      "kind" : "function",
+      "line" : 131,
+      "char" : 3,
+      "type" : "pure nothrow @nogc @trusted T(T value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T"
+       }
+      ],
+      "endline" : 151,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.memory",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\memory.d",
+  "members" : [
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.math",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "ALIGN_PTR_SIZE",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 23,
+    "char" : 13,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "m",
+    "originalType" : "size_t",
+    "init" : "8LU"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 37,
+    "char" : 23,
+    "name" : "nu_mallocT",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_mallocT",
+      "kind" : "function",
+      "line" : 37,
+      "char" : 23,
+      "type" : "nothrow @nogc ref @trusted void[AllocSize!T]()",
+      "endline" : 39,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 51,
+    "char" : 23,
+    "name" : "nu_storageT",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_storageT",
+      "kind" : "function",
+      "line" : 51,
+      "char" : 23,
+      "type" : "nothrow @nogc ref @trusted void[AllocSize!T](ref T object)",
+      "parameters" : [
+       {
+        "name" : "object",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 57,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 101,
+    "char" : 9,
+    "name" : "nu_resize",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_resize",
+      "kind" : "function",
+      "line" : 101,
+      "char" : 9,
+      "type" : "@nogc ref T[](ref T[] buffer, size_t length, int alignment = 1)",
+      "parameters" : [
+       {
+        "name" : "buffer",
+        "type" : "T[]",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "length",
+        "type" : "size_t"
+       },
+       {
+        "name" : "alignment",
+        "deco" : "i",
+        "default" : "1"
+       }
+      ],
+      "endline" : 142,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 154,
+    "char" : 5,
+    "name" : "nu_malloca",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_malloca",
+      "kind" : "function",
+      "line" : 154,
+      "char" : 5,
+      "type" : "T[](size_t count)",
+      "parameters" : [
+       {
+        "name" : "count",
+        "type" : "size_t"
+       }
+      ],
+      "endline" : 159,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 172,
+    "char" : 6,
+    "name" : "nu_freea",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_freea",
+      "kind" : "function",
+      "line" : 172,
+      "char" : 6,
+      "type" : "void(ref T[] slice)",
+      "parameters" : [
+       {
+        "name" : "slice",
+        "type" : "T[]",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 183,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 195,
+    "char" : 6,
+    "name" : "nu_cleara",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_cleara",
+      "kind" : "function",
+      "line" : 195,
+      "char" : 6,
+      "type" : "void(ref T[] slice)",
+      "parameters" : [
+       {
+        "name" : "slice",
+        "type" : "T[]",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 198,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 207,
+    "char" : 6,
+    "name" : "nu_reverse",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_reverse",
+      "kind" : "function",
+      "line" : 207,
+      "char" : 6,
+      "type" : "nothrow @nogc void(auto ref T[] range)",
+      "parameters" : [
+       {
+        "name" : "range",
+        "type" : "T[]",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 219,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 236,
+    "char" : 12,
+    "name" : "nu_dup",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_dup",
+      "kind" : "function",
+      "line" : 236,
+      "char" : 12,
+      "type" : "@nogc @trusted inout(T)[](inout(T)[] buffer)",
+      "parameters" : [
+       {
+        "name" : "buffer",
+        "type" : "inout(T)[]"
+       }
+      ],
+      "endline" : 242,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 259,
+    "char" : 16,
+    "name" : "nu_idup",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_idup",
+      "kind" : "function",
+      "line" : 259,
+      "char" : 16,
+      "type" : "@nogc @trusted immutable(T)[](inout(T)[] buffer)",
+      "parameters" : [
+       {
+        "name" : "buffer",
+        "type" : "inout(T)[]"
+       }
+      ],
+      "endline" : 261,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 266,
+    "char" : 3,
+    "name" : "nu_retain",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isRefcounted!T",
+    "members" : [
+     {
+      "name" : "nu_retain",
+      "kind" : "function",
+      "line" : 266,
+      "char" : 3,
+      "type" : "@nogc @trusted T(auto ref T value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 287,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 299,
+    "char" : 3,
+    "name" : "nu_release",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isRefcounted!T",
+    "members" : [
+     {
+      "name" : "nu_release",
+      "kind" : "function",
+      "line" : 299,
+      "char" : 3,
+      "type" : "@nogc @trusted T(auto ref T value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 320,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 339,
+    "char" : 12,
+    "name" : "nu_terminate",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(T == char) || is(T == wchar) || is(T == dchar)",
+    "members" : [
+     {
+      "name" : "nu_terminate",
+      "kind" : "function",
+      "line" : 339,
+      "char" : 12,
+      "type" : "@nogc @system inout(T)[](ref inout(T)[] text)",
+      "parameters" : [
+       {
+        "name" : "text",
+        "type" : "inout(T)[]",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 362,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 374,
+    "char" : 6,
+    "name" : "nu_swap",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_swap",
+      "kind" : "function",
+      "line" : 374,
+      "char" : 6,
+      "type" : "@nogc void(ref T a, ref T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "b",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 385,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "nu_is_overlapping",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 420,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNiPvmQdmZb",
+    "originalType" : "nothrow @nogc extern (C) bool(void* a, size_t aLength, void* b, size_t bLength)",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "aLength",
+      "deco" : "m"
+     },
+     {
+      "name" : "b",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "bLength",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 442,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_aligned_size",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 459,
+    "char" : 8,
+    "linkage" : "c",
+    "deco" : "UNaNbNiNfmmZm",
+    "originalType" : "pure nothrow @nogc @safe extern (C) size_t(size_t request, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "request",
+      "deco" : "m"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 461,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_realign",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 475,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiNePvmZQe",
+    "originalType" : "pure nothrow @nogc @trusted extern (C) void*(void* ptr, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 477,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_aligned_alloc",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 495,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNimmZPv",
+    "originalType" : "pure nothrow @nogc extern (C) void*(size_t size, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "size",
+      "deco" : "m"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 506,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_aligned_realloc",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 528,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiPvmmZQf",
+    "originalType" : "pure nothrow @nogc extern (C) void*(void* ptr, size_t size, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "size",
+      "deco" : "m"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 530,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_aligned_realloc_destructive",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 552,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNaNbNiPvmmZQf",
+    "originalType" : "pure nothrow @nogc extern (C) void*(void* ptr, size_t size, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "size",
+      "deco" : "m"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 554,
+    "endchar" : 1
+   },
+   {
+    "name" : "nu_aligned_free",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 569,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNaNbNiPvmZv",
+    "originalType" : "pure nothrow @nogc extern (C) void(void* ptr, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 584,
+    "endchar" : 1
+   },
+   {
+    "name" : "__nu_store_aligned_ptr",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 587,
+    "char" : 7,
+    "deco" : "FNaNbNiPvmmZQf",
+    "originalType" : "pure nothrow @nogc void*(void* ptr, size_t size, size_t alignment)",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "size",
+      "deco" : "m"
+     },
+     {
+      "name" : "alignment",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 606,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 609,
+    "char" : 7,
+    "name" : "__nu_aligned_realloc",
+    "parameters" : [
+     {
+      "name" : "preserveIfResized",
+      "kind" : "value",
+      "deco" : "b"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__nu_aligned_realloc",
+      "kind" : "function",
+      "line" : 609,
+      "char" : 7,
+      "type" : "pure nothrow @nogc void*(void* aligned, size_t size, size_t alignment)",
+      "parameters" : [
+       {
+        "name" : "aligned",
+        "type" : "void*"
+       },
+       {
+        "name" : "size",
+        "type" : "size_t"
+       },
+       {
+        "name" : "alignment",
+        "type" : "size_t"
+       }
+      ],
+      "endline" : 648,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.meta",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\meta.d",
+  "members" : [
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 1,
+    "name" : "AliasSeq",
+    "parameters" : [
+     {
+      "name" : "AliasList",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "AliasSeq",
+      "kind" : "alias",
+      "line" : 22,
+      "char" : 1,
+      "type" : "AliasList"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 1,
+    "name" : "allSatisfy",
+    "parameters" : [
+     {
+      "name" : "F",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "allSatisfy",
+      "kind" : "variable",
+      "line" : 35,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "true"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 42,
+    "char" : 1,
+    "name" : "anySatisfy",
+    "parameters" : [
+     {
+      "name" : "F",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "anySatisfy",
+      "kind" : "variable",
+      "line" : 49,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "false"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 55,
+    "char" : 1,
+    "name" : "staticMap",
+    "parameters" : [
+     {
+      "name" : "F",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "staticMap",
+      "kind" : "alias",
+      "line" : 57,
+      "char" : 9,
+      "type" : "AliasSeq!()"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 85,
+    "char" : 1,
+    "name" : "Filter",
+    "parameters" : [
+     {
+      "name" : "F",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Filter",
+      "kind" : "alias",
+      "line" : 86,
+      "char" : 5,
+      "type" : "AliasSeq!()"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\package.d",
+  "members" : []
+ },
+ {
+  "name" : "numem.core.traits",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\traits.d",
+  "members" : [
+   {
+    "name" : "numem.core.meta",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 29,
+    "char" : 1,
+    "name" : "Fields",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Fields",
+      "kind" : "alias",
+      "line" : 31,
+      "char" : 9,
+      "type" : "typeof(T.tupleof[0..__dollar - __traits(isNested, T)])"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 41,
+    "char" : 1,
+    "name" : "BaseElemOf",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "BaseElemOf",
+      "kind" : "alias",
+      "line" : 43,
+      "char" : 9,
+      "type" : "BaseElemOf!E"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 51,
+    "char" : 1,
+    "name" : "ElementType",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "ElementType",
+      "kind" : "alias",
+      "line" : 53,
+      "char" : 9,
+      "type" : "Y"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 61,
+    "char" : 1,
+    "name" : "OriginalType",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 62,
+      "char" : 5,
+      "name" : "Impl",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "Impl",
+        "kind" : "alias",
+        "line" : 63,
+        "char" : 36,
+        "type" : "OriginalType!U"
+       }
+      ]
+     },
+     {
+      "name" : "OriginalType",
+      "kind" : "alias",
+      "line" : 67,
+      "char" : 5,
+      "type" : "ModifyTypePreservingTQ!(Impl, T)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 73,
+    "char" : 1,
+    "name" : "ModifyTypePreservingTQ",
+    "parameters" : [
+     {
+      "name" : "Modifier",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "ModifyTypePreservingTQ",
+      "kind" : "alias",
+      "line" : 74,
+      "char" : 54,
+      "storageClass" : [
+       "immutable"
+      ],
+      "type" : "Modifier!U"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 88,
+    "char" : 1,
+    "name" : "Unconst",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type",
+      "type" : "const(U)"
+     },
+     {
+      "name" : "U",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Unconst",
+      "kind" : "alias",
+      "line" : 88,
+      "char" : 1,
+      "type" : "U"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 93,
+    "char" : 1,
+    "name" : "Unshared",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type",
+      "type" : "shared(U)"
+     },
+     {
+      "name" : "U",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Unshared",
+      "kind" : "alias",
+      "line" : 93,
+      "char" : 1,
+      "type" : "U"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 98,
+    "char" : 1,
+    "name" : "Unqual",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type",
+      "type" : "const(U)"
+     },
+     {
+      "name" : "U",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Unqual",
+      "kind" : "alias",
+      "line" : 100,
+      "char" : 9,
+      "type" : "V"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 108,
+    "char" : 1,
+    "name" : "Ref",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Ref",
+      "kind" : "alias",
+      "line" : 110,
+      "char" : 9,
+      "type" : "T"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 118,
+    "char" : 1,
+    "name" : "Unref",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Unref",
+      "kind" : "alias",
+      "line" : 120,
+      "char" : 9,
+      "type" : "typeof(*T.init)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 128,
+    "char" : 1,
+    "name" : "AllocSize",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "AllocSize",
+      "kind" : "variable",
+      "line" : 130,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(classInstanceSize, T)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 138,
+    "char" : 1,
+    "name" : "AllocAlign",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "AllocAlign",
+      "kind" : "variable",
+      "line" : 140,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(classInstanceAlignment, T)"
+     }
+    ]
+   },
+   {
+    "name" : "__DummyStruct",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 145,
+    "char" : 9,
+    "members" : []
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 150,
+    "char" : 13,
+    "name" : "rvalueOf",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "rvalueOf",
+      "kind" : "function",
+      "line" : 150,
+      "char" : 13,
+      "type" : "@property T(T val)",
+      "parameters" : [
+       {
+        "name" : "val",
+        "type" : "T"
+       }
+      ],
+      "endline" : 150,
+      "endchar" : 46
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 157,
+    "char" : 13,
+    "name" : "rvalueOf",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "rvalueOf",
+      "kind" : "function",
+      "line" : 157,
+      "char" : 13,
+      "type" : "@property T(inout __DummyStruct = __DummyStruct.init)",
+      "parameters" : [
+       {
+        "type" : "__DummyStruct",
+        "storageClass" : [
+         "inout"
+        ],
+        "default" : "__DummyStruct.init"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 164,
+    "char" : 17,
+    "name" : "lvalueOf",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "lvalueOf",
+      "kind" : "function",
+      "line" : 164,
+      "char" : 17,
+      "type" : "@property ref T(inout __DummyStruct = __DummyStruct.init)",
+      "parameters" : [
+       {
+        "type" : "__DummyStruct",
+        "storageClass" : [
+         "inout"
+        ],
+        "default" : "__DummyStruct.init"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 169,
+    "char" : 6,
+    "name" : "isMovable",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isMovable",
+      "kind" : "variable",
+      "line" : 169,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == struct) || is(T == union) || __traits(isStaticArray, T) && hasElaborateMove!(T.init[0])"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 176,
+    "char" : 6,
+    "name" : "isAggregateType",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isAggregateType",
+      "kind" : "variable",
+      "line" : 176,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == class) || is(T == interface) || is(T == struct) || is(T == union)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 183,
+    "char" : 6,
+    "name" : "isClasslike",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isClasslike",
+      "kind" : "variable",
+      "line" : 183,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == class) || is(T == interface)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 189,
+    "char" : 6,
+    "name" : "isStructLike",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isStructLike",
+      "kind" : "variable",
+      "line" : 189,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == struct) || is(T == union)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 195,
+    "char" : 6,
+    "name" : "isType",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isType",
+      "kind" : "variable",
+      "line" : 195,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "!is(typeof(T)) || is(T == void)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 200,
+    "char" : 6,
+    "name" : "isScalarType",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isScalarType",
+      "kind" : "variable",
+      "line" : 200,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(isScalar, T) && is(T : real)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 205,
+    "char" : 6,
+    "name" : "isBasicType",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isBasicType",
+      "kind" : "variable",
+      "line" : 205,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "isScalarType!T || is(immutable(T) == immutable(void))"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 210,
+    "char" : 6,
+    "name" : "isPointer",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isPointer",
+      "kind" : "variable",
+      "line" : 210,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == U*, U) && !isClasslike!T"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 216,
+    "char" : 6,
+    "name" : "isHeapAllocated",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isHeapAllocated",
+      "kind" : "variable",
+      "line" : 216,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == class) || is(T == U*, U)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 222,
+    "char" : 6,
+    "name" : "isArray",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isArray",
+      "kind" : "variable",
+      "line" : 222,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(T == E[n], E, size_t n)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 227,
+    "char" : 6,
+    "name" : "isFloatingPoint",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isFloatingPoint",
+      "kind" : "variable",
+      "line" : 227,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(isFloating, T)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 232,
+    "char" : 6,
+    "name" : "isIntegral",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isIntegral",
+      "kind" : "variable",
+      "line" : 232,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(isIntegral, T)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 237,
+    "char" : 6,
+    "name" : "isNumeric",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isNumeric",
+      "kind" : "variable",
+      "line" : 237,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(isFloating, T) || __traits(isIntegral, T)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 241,
+    "char" : 1,
+    "name" : "FtoI",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "FtoI",
+      "kind" : "alias",
+      "line" : 243,
+      "char" : 9,
+      "deco" : "m"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 253,
+    "char" : 1,
+    "name" : "isAssignable",
+    "parameters" : [
+     {
+      "name" : "Lhs",
+      "kind" : "type"
+     },
+     {
+      "name" : "Rhs",
+      "kind" : "type",
+      "default" : "Lhs"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isAssignable",
+      "kind" : "variable",
+      "line" : 254,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(compiles, lvalueOf!Lhs = rvalueOf!Rhs) && __traits(compiles, lvalueOf!Lhs = lvalueOf!Rhs)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 262,
+    "char" : 6,
+    "name" : "isAnyAssignable",
+    "parameters" : [
+     {
+      "name" : "Lhs",
+      "kind" : "type"
+     },
+     {
+      "name" : "Rhs",
+      "kind" : "type",
+      "default" : "Lhs"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isAnyAssignable",
+      "kind" : "variable",
+      "line" : 262,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "isAssignable!(Lhs, Rhs) || isAssignable!(Rhs, Lhs)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 269,
+    "char" : 6,
+    "name" : "isAnyCompatible",
+    "parameters" : [
+     {
+      "name" : "Lhs",
+      "kind" : "type"
+     },
+     {
+      "name" : "Rhs",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isAnyCompatible",
+      "kind" : "variable",
+      "line" : 269,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(Unqual!Lhs : Unqual!Rhs) || is(Unqual!Rhs : Unqual!Lhs)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 276,
+    "char" : 6,
+    "name" : "isAnyCompatibleRange",
+    "parameters" : [
+     {
+      "name" : "TRange",
+      "kind" : "type"
+     },
+     {
+      "name" : "TValue",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isAnyCompatibleRange",
+      "kind" : "variable",
+      "line" : 276,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "is(TRange == U[], U) && isAnyCompatible!(typeof(TRange.init[0]), TValue)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 281,
+    "char" : 1,
+    "name" : "hasUDA",
+    "parameters" : [
+     {
+      "name" : "symbol",
+      "kind" : "alias"
+     },
+     {
+      "name" : "attrib",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasUDA",
+      "kind" : "variable",
+      "line" : 282,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "anySatisfy!(isDesiredAttr!attrib, __traits(getAttributes, symbol))"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 288,
+    "char" : 1,
+    "name" : "getUDAs",
+    "parameters" : [
+     {
+      "name" : "symbol",
+      "kind" : "alias"
+     },
+     {
+      "name" : "attrib",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "getUDAs",
+      "kind" : "alias",
+      "line" : 289,
+      "char" : 5,
+      "type" : "Filter!(isDesiredAttr!attrib, __traits(getAttributes, symbol))"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 293,
+    "char" : 1,
+    "name" : "isDesiredAttr",
+    "parameters" : [
+     {
+      "name" : "attribute",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 296,
+      "char" : 5,
+      "name" : "isDesiredAttr",
+      "parameters" : [
+       {
+        "name" : "toCheck",
+        "kind" : "alias"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "isDesiredAttr",
+        "kind" : "variable",
+        "line" : 299,
+        "char" : 22,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "toCheck == attribute"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 321,
+    "char" : 11,
+    "name" : "isInstanceOf",
+    "parameters" : [
+     {
+      "name" : "S",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isInstanceOf",
+      "kind" : "variable",
+      "line" : 321,
+      "char" : 11,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "is(T == S!Args, Args...)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 322,
+    "char" : 1,
+    "name" : "isInstanceOf",
+    "parameters" : [
+     {
+      "name" : "S",
+      "kind" : "alias"
+     },
+     {
+      "name" : "T",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 323,
+      "char" : 10,
+      "name" : "impl",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "alias",
+        "specAlias" : "S!Args"
+       },
+       {
+        "name" : "Args",
+        "kind" : "tuple"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "impl",
+        "kind" : "variable",
+        "line" : 323,
+        "char" : 10,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "true"
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 324,
+      "char" : 10,
+      "name" : "impl",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "alias"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "impl",
+        "kind" : "variable",
+        "line" : 324,
+        "char" : 10,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "false"
+       }
+      ]
+     },
+     {
+      "name" : "isInstanceOf",
+      "kind" : "variable",
+      "line" : 325,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "impl!T"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 331,
+    "char" : 6,
+    "name" : "isCPP",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isCPP",
+      "kind" : "variable",
+      "line" : 331,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "isAggregateType!(Unref!T) && (__traits(getLinkage, Unref!T) == \"C++\")"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 340,
+    "char" : 6,
+    "name" : "isObjectiveC",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isObjectiveC",
+      "kind" : "variable",
+      "line" : 340,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "isClasslike!T && (__traits(getLinkage, T) == \"Objective-C\")"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 353,
+    "char" : 6,
+    "name" : "isValidObjectiveC",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isValidObjectiveC",
+      "kind" : "variable",
+      "line" : 353,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "isClasslike!T && (__traits(getLinkage, T) == \"Objective-C\") && is(typeof(T.retain)) && is(typeof(T.release))"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 364,
+    "char" : 6,
+    "name" : "isCOMClass",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isCOMClass",
+      "kind" : "variable",
+      "line" : 364,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "(is(T == class) || is(T == interface)) && __traits(isCOMClass, T)"
+     }
+    ]
+   },
+   {
+    "name" : "rcRetainNames",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 371,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "BAyaQdQfQhZ",
+    "init" : "AliasSeq!(\"retain\", \"Retain\", \"addRef\", \"AddRef\")"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 386,
+    "char" : 1,
+    "name" : "hasRCRetainFunction",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasRCRetainFunction",
+      "kind" : "variable",
+      "line" : 388,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "true"
+     }
+    ]
+   },
+   {
+    "name" : "rcReleaseNames",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 398,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "BAyaQdZ",
+    "init" : "AliasSeq!(\"release\", \"Release\")"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 413,
+    "char" : 1,
+    "name" : "hasRCReleaseFunction",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasRCReleaseFunction",
+      "kind" : "variable",
+      "line" : 415,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "true"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 432,
+    "char" : 1,
+    "name" : "isRefcounted",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isRefcounted",
+      "kind" : "variable",
+      "line" : 434,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "true"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 443,
+    "char" : 1,
+    "name" : "isInnerClass",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(T == class)",
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 445,
+      "char" : 9,
+      "name" : "hasOuterMember",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "tuple"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "hasOuterMember",
+        "kind" : "variable",
+        "line" : 447,
+        "char" : 22,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "false"
+       }
+      ]
+     },
+     {
+      "name" : "isInnerClass",
+      "kind" : "variable",
+      "line" : 452,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "__traits(isSame, typeof(T.outer), __traits(parent, T)) && !hasOuterMember!(__traits(allMembers, T))"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 459,
+    "char" : 1,
+    "name" : "hasElaborateMove",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasElaborateMove",
+      "kind" : "variable",
+      "line" : 461,
+      "char" : 19,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "false"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 477,
+    "char" : 1,
+    "name" : "hasElaborateAssign",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasElaborateAssign",
+      "kind" : "variable",
+      "line" : 479,
+      "char" : 19,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "false"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 495,
+    "char" : 1,
+    "name" : "hasElaborateCopyConstructor",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasElaborateCopyConstructor",
+      "kind" : "variable",
+      "line" : 497,
+      "char" : 19,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "false"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 509,
+    "char" : 1,
+    "name" : "hasElaborateDestructor",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "hasElaborateDestructor",
+      "kind" : "variable",
+      "line" : 511,
+      "char" : 19,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "T.sizeof && hasElaborateDestructor!(BaseElemOf!T)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 522,
+    "char" : 1,
+    "name" : "hasAnyDestructor",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 525,
+      "char" : 5,
+      "name" : "isNotSelf",
+      "parameters" : [
+       {
+        "name" : "U",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "isNotSelf",
+        "kind" : "variable",
+        "line" : 526,
+        "char" : 14,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "!is(Unref!U == Unref!T)"
+       }
+      ]
+     },
+     {
+      "name" : "hasAnyDestructor",
+      "kind" : "variable",
+      "line" : 530,
+      "char" : 19,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "false"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 553,
+    "char" : 11,
+    "name" : "isSomeFunction",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isSomeFunction",
+      "kind" : "variable",
+      "line" : 553,
+      "char" : 11,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "is(T == return) || is(typeof(T) == return) || is(typeof(&T) == return)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 562,
+    "char" : 1,
+    "name" : "isCallable",
+    "parameters" : [
+     {
+      "name" : "callable",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isCallable",
+      "kind" : "variable",
+      "line" : 565,
+      "char" : 19,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "b",
+      "init" : "true"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 594,
+    "char" : 1,
+    "name" : "FunctionTypeOf",
+    "parameters" : [
+     {
+      "name" : "func",
+      "kind" : "alias"
+     }
+    ],
+    "constraint" : "isCallable!func",
+    "members" : [
+     {
+      "name" : "FunctionTypeOf",
+      "kind" : "alias",
+      "line" : 598,
+      "char" : 9,
+      "type" : "Fsym"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 638,
+    "char" : 1,
+    "name" : "ReturnType",
+    "parameters" : [
+     {
+      "name" : "func",
+      "kind" : "alias"
+     }
+    ],
+    "constraint" : "isCallable!func",
+    "members" : [
+     {
+      "name" : "ReturnType",
+      "kind" : "alias",
+      "line" : 641,
+      "char" : 9,
+      "type" : "R"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 651,
+    "char" : 1,
+    "name" : "Parameters",
+    "parameters" : [
+     {
+      "name" : "func",
+      "kind" : "alias"
+     }
+    ],
+    "constraint" : "isCallable!func",
+    "members" : [
+     {
+      "name" : "Parameters",
+      "kind" : "alias",
+      "line" : 654,
+      "char" : 9,
+      "type" : "P"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.core.types",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\core\\types.d",
+  "members" : [
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 26,
+    "char" : 1,
+    "name" : "OpaqueHandle",
+    "parameters" : [
+     {
+      "name" : "name",
+      "kind" : "value",
+      "deco" : "Aya"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 27,
+      "char" : 5,
+      "name" : "OpaqueHandleT",
+      "parameters" : [
+       {
+        "name" : "name",
+        "kind" : "value",
+        "type" : "string"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "OpaqueHandleT",
+        "kind" : "struct",
+        "protection" : "public",
+        "line" : 27,
+        "char" : 5
+       }
+      ]
+     },
+     {
+      "name" : "OpaqueHandle",
+      "kind" : "alias",
+      "line" : 28,
+      "char" : 5,
+      "type" : "OpaqueHandleT!name*"
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L32_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 32,
+    "char" : 1,
+    "endline" : 54,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 54,
+    "char" : 1,
+    "name" : "TypeDef",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "name",
+      "kind" : "value",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "init",
+      "kind" : "value",
+      "type" : "T",
+      "defaultValue" : "T.init"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "std.format",
+      "kind" : "import",
+      "line" : 55,
+      "char" : 12,
+      "protection" : "private",
+      "selective" : [
+       "format"
+      ]
+     },
+     {
+      "name" : "TypeDef",
+      "kind" : "alias",
+      "line" : 75,
+      "char" : 5,
+      "type" : "mixin(name)"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 81,
+    "char" : 1,
+    "name" : "TypeDefBase",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "TypeDefBase",
+      "kind" : "alias",
+      "line" : 83,
+      "char" : 9,
+      "type" : "T.BaseType"
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L90_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 90,
+    "char" : 1,
+    "endline" : 102,
+    "endchar" : 2
+   }
+  ]
+ },
+ {
+  "name" : "numem.casting",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\casting.d",
+  "members" : [
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 19,
+    "char" : 12,
+    "name" : "dynamic_cast",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "U",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(T : U)",
+    "members" : [
+     {
+      "name" : "dynamic_cast",
+      "kind" : "function",
+      "line" : 19,
+      "char" : 12,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "ref @trusted T(auto ref U from)",
+      "parameters" : [
+       {
+        "name" : "from",
+        "type" : "U",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 21,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 30,
+    "char" : 12,
+    "name" : "reinterpret_cast",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "U",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "T.sizeof == U.sizeof",
+    "members" : [
+     {
+      "name" : "reinterpret_cast",
+      "kind" : "function",
+      "line" : 30,
+      "char" : 12,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "ref @trusted T(auto ref U from)",
+      "parameters" : [
+       {
+        "name" : "from",
+        "type" : "U",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 33,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 47,
+    "char" : 12,
+    "name" : "const_cast",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "U",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isAnyCompatible!(T, U)",
+    "members" : [
+     {
+      "name" : "const_cast",
+      "kind" : "function",
+      "line" : 47,
+      "char" : 12,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "ref @trusted T(auto ref U from)",
+      "parameters" : [
+       {
+        "name" : "from",
+        "type" : "U",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 49,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.compiler",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\compiler.d",
+  "members" : [
+   {
+    "name" : "ldc.intrinsics",
+    "kind" : "import",
+    "line" : 30,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "NU_COMPILER_STRICT_TYPES",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 37,
+    "char" : 15,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   }
+  ]
+ },
+ {
+  "name" : "numem.heap",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\heap.d",
+  "members" : [
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "NuHeap",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 20,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "alloc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 32,
+      "char" : 20,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNimZPv",
+      "originalType" : "@nogc void*(size_t bytes)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ]
+     },
+     {
+      "name" : "realloc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 44,
+      "char" : 20,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNiPvmZQe",
+      "originalType" : "@nogc void*(void* allocation, size_t bytes)",
+      "parameters" : [
+       {
+        "name" : "allocation",
+        "deco" : "Pv"
+       },
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ]
+     },
+     {
+      "name" : "free",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 53,
+      "char" : 19,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNiPvZv",
+      "parameters" : [
+       {
+        "name" : "allocation",
+        "deco" : "Pv"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "NuMallocHeap",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 59,
+    "char" : 1,
+    "base" : "numem.heap.NuHeap",
+    "members" : [
+     {
+      "name" : "alloc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 72,
+      "char" : 11,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNimZPv",
+      "originalType" : "@nogc void*(size_t bytes)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 74,
+      "endchar" : 5,
+      "overrides" : [
+       "numem.heap.NuHeap.alloc"
+      ]
+     },
+     {
+      "name" : "realloc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 87,
+      "char" : 11,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNiPvmZQe",
+      "originalType" : "@nogc void*(void* allocation, size_t bytes)",
+      "parameters" : [
+       {
+        "name" : "allocation",
+        "deco" : "Pv"
+       },
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 89,
+      "endchar" : 5,
+      "overrides" : [
+       "numem.heap.NuHeap.realloc"
+      ]
+     },
+     {
+      "name" : "free",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 98,
+      "char" : 10,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNiPvZv",
+      "parameters" : [
+       {
+        "name" : "allocation",
+        "deco" : "Pv"
+       }
+      ],
+      "endline" : 100,
+      "endchar" : 5,
+      "overrides" : [
+       "numem.heap.NuHeap.free"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.lifetime",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\lifetime.d",
+  "members" : [
+   {
+    "name" : "numem.core.exception",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.lifetime",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 23,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.memory",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.math",
+    "kind" : "import",
+    "line" : 25,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.cpp",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.casting",
+    "kind" : "import",
+    "line" : 27,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.heap",
+    "kind" : "import",
+    "line" : 28,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.memory",
+    "kind" : "import",
+    "line" : 31,
+    "char" : 15,
+    "selective" : [
+     "nu_dup",
+     "nu_idup",
+     "nu_resize",
+     "nu_malloca",
+     "nu_freea",
+     "nu_cleara",
+     "nu_terminate",
+     "nu_swap"
+    ]
+   },
+   {
+    "name" : "numem.core.lifetime",
+    "kind" : "import",
+    "line" : 32,
+    "char" : 15,
+    "selective" : [
+     "nu_destroywith",
+     "nu_autoreleasewith"
+    ]
+   },
+   {
+    "name" : "autoreleasepool_scope",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 42,
+    "char" : 6,
+    "storageClass" : [
+     "auto"
+    ],
+    "deco" : "FNiZS5numem8lifetime21autoreleasepool_scopeFNiZ18nu_arpool_stackctx",
+    "originalType" : "@nogc ()",
+    "endline" : 57,
+    "endchar" : 1
+   },
+   {
+    "name" : "autoreleasepool",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 65,
+    "char" : 6,
+    "deco" : "FNiNeDFNiNlZvZv",
+    "parameters" : [
+     {
+      "name" : "scope_",
+      "deco" : "DFNiNlZv"
+     }
+    ],
+    "endline" : 69,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 76,
+    "char" : 6,
+    "name" : "nogc_construct",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_construct",
+      "kind" : "function",
+      "line" : 76,
+      "char" : 6,
+      "type" : "@trusted void(ref T object, Args args)",
+      "parameters" : [
+       {
+        "name" : "object",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "args",
+        "type" : "Args"
+       }
+      ],
+      "endline" : 81,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 90,
+    "char" : 7,
+    "name" : "nogc_new",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_new",
+      "kind" : "function",
+      "line" : 90,
+      "char" : 7,
+      "type" : "@trusted Ref!T(auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 102,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 115,
+    "char" : 7,
+    "name" : "nogc_new",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_new",
+      "kind" : "function",
+      "line" : 115,
+      "char" : 7,
+      "type" : "@trusted Ref!T(NuHeap heap, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "heap",
+        "type" : "NuHeap"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 125,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 141,
+    "char" : 7,
+    "name" : "nogc_trynew",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_trynew",
+      "kind" : "function",
+      "line" : 141,
+      "char" : 7,
+      "type" : "nothrow @trusted Ref!T(auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 156,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 169,
+    "char" : 7,
+    "name" : "nogc_trynew",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_trynew",
+      "kind" : "function",
+      "line" : 169,
+      "char" : 7,
+      "type" : "nothrow @trusted Ref!T(NuHeap heap, auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "heap",
+        "type" : "NuHeap"
+       },
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 184,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 196,
+    "char" : 6,
+    "name" : "nogc_delete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_delete",
+      "kind" : "function",
+      "line" : 196,
+      "char" : 6,
+      "type" : "@trusted void(ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 213,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 227,
+    "char" : 6,
+    "name" : "nogc_delete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_delete",
+      "kind" : "function",
+      "line" : 227,
+      "char" : 6,
+      "type" : "@trusted void(NuHeap heap, ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "heap",
+        "type" : "NuHeap"
+       },
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 240,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 254,
+    "char" : 6,
+    "name" : "nogc_delete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_delete",
+      "kind" : "function",
+      "line" : 254,
+      "char" : 6,
+      "type" : "@trusted void(T[] objects)",
+      "parameters" : [
+       {
+        "name" : "objects",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 257,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 271,
+    "char" : 6,
+    "name" : "nogc_trydelete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_trydelete",
+      "kind" : "function",
+      "line" : 271,
+      "char" : 6,
+      "type" : "nothrow @trusted bool(ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 282,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 299,
+    "char" : 6,
+    "name" : "nogc_trydelete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_trydelete",
+      "kind" : "function",
+      "line" : 299,
+      "char" : 6,
+      "type" : "nothrow @trusted bool(NuHeap heap, ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "heap",
+        "type" : "NuHeap"
+       },
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 312,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 329,
+    "char" : 6,
+    "name" : "nogc_trydelete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_trydelete",
+      "kind" : "function",
+      "line" : 329,
+      "char" : 6,
+      "type" : "@trusted bool(T[] objects)",
+      "parameters" : [
+       {
+        "name" : "objects",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 335,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 348,
+    "char" : 7,
+    "name" : "cpp_new",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXCtor",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "cpp_new",
+      "kind" : "function",
+      "line" : 348,
+      "char" : 7,
+      "type" : "@trusted Ref!T(auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 350,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 363,
+    "char" : 7,
+    "name" : "cpp_trynew",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXCtor",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "cpp_trynew",
+      "kind" : "function",
+      "line" : 363,
+      "char" : 7,
+      "type" : "nothrow @trusted Ref!T(auto ref Args args)",
+      "parameters" : [
+       {
+        "name" : "args",
+        "type" : "Args",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 365,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 380,
+    "char" : 6,
+    "name" : "cpp_delete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXDtor",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "constraint" : "isCPP!T",
+    "members" : [
+     {
+      "name" : "cpp_delete",
+      "kind" : "function",
+      "line" : 380,
+      "char" : 6,
+      "type" : "@trusted void(ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 382,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 398,
+    "char" : 6,
+    "name" : "cpp_delete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXDtor",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "constraint" : "isCPP!T",
+    "members" : [
+     {
+      "name" : "cpp_delete",
+      "kind" : "function",
+      "line" : 398,
+      "char" : 6,
+      "type" : "@trusted void(T[] objects)",
+      "parameters" : [
+       {
+        "name" : "objects",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 401,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 420,
+    "char" : 6,
+    "name" : "cpp_trydelete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doFree",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "cpp_trydelete",
+      "kind" : "function",
+      "line" : 420,
+      "char" : 6,
+      "type" : "@trusted bool(T[] objects)",
+      "parameters" : [
+       {
+        "name" : "objects",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 426,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 444,
+    "char" : 6,
+    "name" : "cpp_trydelete",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "doXDtor",
+      "kind" : "value",
+      "deco" : "b",
+      "defaultValue" : "true"
+     }
+    ],
+    "constraint" : "isCPP!T",
+    "members" : [
+     {
+      "name" : "cpp_trydelete",
+      "kind" : "function",
+      "line" : 444,
+      "char" : 6,
+      "type" : "nothrow @trusted bool(ref T obj_)",
+      "parameters" : [
+       {
+        "name" : "obj_",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 455,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 472,
+    "char" : 3,
+    "name" : "nogc_initialize",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_initialize",
+      "kind" : "function",
+      "line" : 472,
+      "char" : 3,
+      "type" : "@trusted T(void[] dst)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "type" : "void[]"
+       }
+      ],
+      "endline" : 479,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 491,
+    "char" : 7,
+    "name" : "nogc_initialize",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_initialize",
+      "kind" : "function",
+      "line" : 491,
+      "char" : 7,
+      "type" : "ref @trusted T(ref T element)",
+      "parameters" : [
+       {
+        "name" : "element",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 494,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 506,
+    "char" : 5,
+    "name" : "nogc_initialize",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_initialize",
+      "kind" : "function",
+      "line" : 506,
+      "char" : 5,
+      "type" : "@trusted T[](T[] elements)",
+      "parameters" : [
+       {
+        "name" : "elements",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 511,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 516,
+    "char" : 6,
+    "name" : "nogc_zeroinit",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_zeroinit",
+      "kind" : "function",
+      "line" : 516,
+      "char" : 6,
+      "type" : "pure nothrow @trusted void(ref T element)",
+      "parameters" : [
+       {
+        "name" : "element",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 518,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 523,
+    "char" : 6,
+    "name" : "nogc_zeroinit",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_zeroinit",
+      "kind" : "function",
+      "line" : 523,
+      "char" : 6,
+      "type" : "pure nothrow @trusted void(T[] elements)",
+      "parameters" : [
+       {
+        "name" : "elements",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 525,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 531,
+    "char" : 6,
+    "name" : "nogc_emplace",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_emplace",
+      "kind" : "function",
+      "line" : 531,
+      "char" : 6,
+      "type" : "@trusted void(auto ref T dest, Args args)",
+      "parameters" : [
+       {
+        "name" : "dest",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       },
+       {
+        "name" : "args",
+        "type" : "Args"
+       }
+      ],
+      "endline" : 533,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 544,
+    "char" : 6,
+    "name" : "nogc_move",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_move",
+      "kind" : "function",
+      "line" : 544,
+      "char" : 6,
+      "type" : "@trusted void(T[] dst, T[] src)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "type" : "T[]"
+       },
+       {
+        "name" : "src",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 549,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 556,
+    "char" : 6,
+    "name" : "nogc_copy",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nogc_copy",
+      "kind" : "function",
+      "line" : 556,
+      "char" : 6,
+      "type" : "@trusted void(T[] dst, T[] src)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "type" : "T[]"
+       },
+       {
+        "name" : "src",
+        "type" : "T[]"
+       }
+      ],
+      "endline" : 561,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 576,
+    "char" : 6,
+    "name" : "moveTo",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "line" : 576,
+      "char" : 6,
+      "type" : "@trusted void(ref T from, ref T to)",
+      "parameters" : [
+       {
+        "name" : "from",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "to",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 578,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 591,
+    "char" : 3,
+    "name" : "move",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "move",
+      "kind" : "function",
+      "line" : 591,
+      "char" : 3,
+      "type" : "@trusted T(return ref scope T from)",
+      "parameters" : [
+       {
+        "name" : "from",
+        "type" : "T",
+        "storageClass" : [
+         "scope",
+         "ref",
+         "return"
+        ]
+       }
+      ],
+      "endline" : 593,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 604,
+    "char" : 6,
+    "name" : "copyTo",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "copyTo",
+      "kind" : "function",
+      "line" : 604,
+      "char" : 6,
+      "type" : "@trusted void(ref T from, ref T to)",
+      "parameters" : [
+       {
+        "name" : "from",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "to",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 606,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.object",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\object.d",
+  "members" : [
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.exception",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.lifetime",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "nu_autorelease"
+    ]
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "NuObject",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "getClassInfo",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 32,
+      "char" : 20,
+      "deco" : "FNiZC14TypeInfo_Class",
+      "endline" : 34,
+      "endchar" : 5
+     },
+     {
+      "name" : "toString",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 45,
+      "char" : 12,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNiZAya",
+      "endline" : 47,
+      "endchar" : 5,
+      "overrides" : [
+       "object.Object.toString"
+      ]
+     },
+     {
+      "name" : "opEquals",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 56,
+      "char" : 10,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "xFNbNixC6ObjectZb",
+      "originalType" : "const nothrow @nogc bool(const Object other)",
+      "parameters" : [
+       {
+        "name" : "other",
+        "deco" : "xC6Object"
+       }
+      ],
+      "endline" : 58,
+      "endchar" : 5,
+      "overrides" : [
+       "object.Object.opEquals"
+      ]
+     },
+     {
+      "name" : "opCmp",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 75,
+      "char" : 9,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "xFNbNixC6ObjectZi",
+      "originalType" : "const nothrow @nogc int(const Object other)",
+      "parameters" : [
+       {
+        "name" : "other",
+        "deco" : "xC6Object"
+       }
+      ],
+      "endline" : 77,
+      "endchar" : 5,
+      "overrides" : [
+       "object.Object.opCmp"
+      ]
+     },
+     {
+      "name" : "toHash",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 83,
+      "char" : 12,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNbNiNeZm",
+      "originalType" : "nothrow @nogc @trusted size_t()",
+      "endline" : 96,
+      "endchar" : 5,
+      "overrides" : [
+       "object.Object.toHash"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "NuRefCounted",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 121,
+    "char" : 1,
+    "base" : "numem.object.NuObject",
+    "members" : [
+     {
+      "name" : "refcount",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 124,
+      "char" : 10,
+      "storageClass" : [
+       "@nogc"
+      ],
+      "deco" : "k",
+      "init" : "0u",
+      "offset" : 16
+     },
+     {
+      "name" : "refs",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 131,
+      "char" : 26,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNdNiZk",
+      "endline" : 131,
+      "endchar" : 63
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 137,
+      "char" : 5,
+      "deco" : "FNiNfZC5numem6object12NuRefCounted",
+      "originalType" : "@nogc @safe ()",
+      "endline" : 139,
+      "endchar" : 5
+     },
+     {
+      "name" : "retain",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 151,
+      "char" : 18,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNbNiNeZC5numem6object12NuRefCounted",
+      "endline" : 156,
+      "endchar" : 5
+     },
+     {
+      "name" : "release",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 172,
+      "char" : 18,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNiNeZC5numem6object12NuRefCounted",
+      "endline" : 185,
+      "endchar" : 5
+     },
+     {
+      "name" : "autorelease",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 194,
+      "char" : 18,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNiNeZC5numem6object12NuRefCounted",
+      "endline" : 197,
+      "endchar" : 5
+     },
+     {
+      "name" : "isValid",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 212,
+      "char" : 10,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNbNiNeZb",
+      "endline" : 214,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 227,
+    "char" : 3,
+    "name" : "retained",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isRefcounted!T",
+    "members" : [
+     {
+      "name" : "retained",
+      "kind" : "function",
+      "line" : 227,
+      "char" : 3,
+      "type" : "@nogc @trusted T(T elem)",
+      "parameters" : [
+       {
+        "name" : "elem",
+        "type" : "T"
+       }
+      ],
+      "endline" : 230,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 233,
+    "char" : 3,
+    "name" : "released",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isRefcounted!T",
+    "members" : [
+     {
+      "name" : "released",
+      "kind" : "function",
+      "line" : 233,
+      "char" : 3,
+      "type" : "@nogc @trusted T(T elem)",
+      "parameters" : [
+       {
+        "name" : "elem",
+        "type" : "T"
+       }
+      ],
+      "endline" : 236,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 239,
+    "char" : 3,
+    "name" : "autoreleased",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(T : NuRefCounted)",
+    "members" : [
+     {
+      "name" : "autoreleased",
+      "kind" : "function",
+      "line" : 239,
+      "char" : 3,
+      "type" : "@nogc @trusted T(T elem)",
+      "parameters" : [
+       {
+        "name" : "elem",
+        "type" : "T"
+       }
+      ],
+      "endline" : 241,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.optional",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\optional.d",
+  "members" : [
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 33,
+    "char" : 1,
+    "name" : "Option",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Option",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 33,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "value_",
+        "kind" : "variable",
+        "line" : 37,
+        "char" : 11,
+        "type" : "T",
+        "init" : "T.init"
+       },
+       {
+        "kind" : "template",
+        "line" : 44,
+        "char" : 5,
+        "name" : "this",
+        "parameters" : [
+         {
+          "name" : "Y",
+          "kind" : "type"
+         }
+        ],
+        "members" : [
+         {
+          "name" : "this",
+          "kind" : "constructor",
+          "line" : 44,
+          "char" : 5,
+          "type" : "nothrow (Y value)",
+          "parameters" : [
+           {
+            "name" : "value",
+            "type" : "Y"
+           }
+          ],
+          "endline" : 53,
+          "endchar" : 5
+         }
+        ]
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 57,
+        "char" : 14,
+        "storageClass" : [
+         "@disable"
+        ],
+        "type" : "()"
+       },
+       {
+        "name" : "some",
+        "kind" : "function",
+        "line" : 68,
+        "char" : 21,
+        "storageClass" : [
+         "static"
+        ],
+        "type" : "nothrow @trusted Option!T(T value)",
+        "parameters" : [
+         {
+          "name" : "value",
+          "type" : "T"
+         }
+        ],
+        "endline" : 70,
+        "endchar" : 5
+       },
+       {
+        "name" : "none",
+        "kind" : "function",
+        "line" : 78,
+        "char" : 21,
+        "storageClass" : [
+         "static"
+        ],
+        "type" : "Option!T()",
+        "endline" : 80,
+        "endchar" : 5
+       },
+       {
+        "name" : "hasValue",
+        "kind" : "function",
+        "line" : 85,
+        "char" : 20,
+        "type" : "pure nothrow @property @trusted bool()",
+        "endline" : 90,
+        "endchar" : 5
+       },
+       {
+        "name" : "reset",
+        "kind" : "function",
+        "line" : 95,
+        "char" : 10,
+        "type" : "nothrow @trusted void()",
+        "endline" : 108,
+        "endchar" : 5
+       },
+       {
+        "name" : "get",
+        "kind" : "function",
+        "line" : 117,
+        "char" : 7,
+        "type" : "@trusted T()",
+        "endline" : 122,
+        "endchar" : 5
+       },
+       {
+        "name" : "getOr",
+        "kind" : "function",
+        "line" : 135,
+        "char" : 7,
+        "type" : "nothrow @trusted T(T value = T.init)",
+        "parameters" : [
+         {
+          "name" : "value",
+          "type" : "T",
+          "default" : "T.init"
+         }
+        ],
+        "endline" : 137,
+        "endchar" : 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 150,
+    "char" : 19,
+    "name" : "some",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "some",
+      "kind" : "function",
+      "line" : 150,
+      "char" : 19,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "nothrow @nogc ref @trusted Option!T(auto ref T value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 152,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 160,
+    "char" : 10,
+    "name" : "none",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "none",
+      "kind" : "function",
+      "line" : 160,
+      "char" : 10,
+      "type" : "nothrow @nogc @trusted Option!T()",
+      "endline" : 162,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 167,
+    "char" : 1,
+    "name" : "Result",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Result",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 167,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "error_",
+        "kind" : "variable",
+        "line" : 170,
+        "char" : 12,
+        "type" : "string",
+        "init" : "\"Generic error\""
+       },
+       {
+        "name" : "value_",
+        "kind" : "variable",
+        "line" : 171,
+        "char" : 7,
+        "type" : "T",
+        "init" : "T.init"
+       },
+       {
+        "name" : "isOK",
+        "kind" : "function",
+        "line" : 179,
+        "char" : 20,
+        "type" : "pure nothrow @property @trusted bool()",
+        "endline" : 179,
+        "endchar" : 70
+       },
+       {
+        "name" : "error",
+        "kind" : "function",
+        "line" : 184,
+        "char" : 22,
+        "type" : "@property string()",
+        "endline" : 184,
+        "endchar" : 39
+       },
+       {
+        "name" : "makeOk",
+        "kind" : "function",
+        "line" : 195,
+        "char" : 25,
+        "storageClass" : [
+         "static"
+        ],
+        "type" : "nothrow @trusted typeof(this)(T value)",
+        "parameters" : [
+         {
+          "name" : "value",
+          "type" : "T"
+         }
+        ],
+        "endline" : 197,
+        "endchar" : 5
+       },
+       {
+        "name" : "makeError",
+        "kind" : "function",
+        "line" : 208,
+        "char" : 25,
+        "storageClass" : [
+         "static"
+        ],
+        "type" : "nothrow @trusted typeof(this)(string message)",
+        "parameters" : [
+         {
+          "name" : "message",
+          "type" : "string"
+         }
+        ],
+        "endline" : 210,
+        "endchar" : 5
+       },
+       {
+        "name" : "get",
+        "kind" : "function",
+        "line" : 219,
+        "char" : 7,
+        "type" : "nothrow @trusted T()",
+        "endline" : 224,
+        "endchar" : 5
+       },
+       {
+        "name" : "getOr",
+        "kind" : "function",
+        "line" : 237,
+        "char" : 7,
+        "type" : "nothrow @trusted T(T value = T.init)",
+        "parameters" : [
+         {
+          "name" : "value",
+          "type" : "T",
+          "default" : "T.init"
+         }
+        ],
+        "endline" : 239,
+        "endchar" : 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 251,
+    "char" : 19,
+    "name" : "ok",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "ok",
+      "kind" : "function",
+      "line" : 251,
+      "char" : 19,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "nothrow @nogc ref @trusted Result!T(auto ref T value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "T",
+        "storageClass" : [
+         "auto",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 253,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 264,
+    "char" : 10,
+    "name" : "error",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "error",
+      "kind" : "function",
+      "line" : 264,
+      "char" : 10,
+      "type" : "nothrow @nogc @trusted Result!T(string message)",
+      "parameters" : [
+       {
+        "name" : "message",
+        "type" : "string"
+       }
+      ],
+      "endline" : 266,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\package.d",
+  "members" : [
+   {
+    "name" : "numem.core.exception",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 15
+   },
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 15
+   },
+   {
+    "name" : "numem.core.math",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 15
+   },
+   {
+    "name" : "numem.casting",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 15
+   },
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 15
+   },
+   {
+    "name" : "numem.optional",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 15
+   },
+   {
+    "name" : "numem.rc",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 15
+   },
+   {
+    "name" : "nu_version",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 25,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "major",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 28,
+      "char" : 10,
+      "storageClass" : [
+       "@nogc"
+      ],
+      "deco" : "k",
+      "offset" : 0
+     },
+     {
+      "name" : "minor",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 29,
+      "char" : 10,
+      "storageClass" : [
+       "@nogc"
+      ],
+      "deco" : "k",
+      "offset" : 4
+     },
+     {
+      "name" : "patch",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 30,
+      "char" : 10,
+      "storageClass" : [
+       "@nogc"
+      ],
+      "deco" : "k",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "__nu_version",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 37,
+    "char" : 28,
+    "storageClass" : [
+     "const",
+     "__gshared"
+    ],
+    "deco" : "xS5numem10nu_version",
+    "originalType" : "nu_version",
+    "init" : "nu_version(1u, 0u, 0u)"
+   },
+   {
+    "name" : "nu_get_version",
+    "kind" : "function",
+    "protection" : "export",
+    "line" : 48,
+    "char" : 12,
+    "linkage" : "c",
+    "deco" : "UNaNbNiNfZS5numem10nu_version",
+    "endline" : 50,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "numem.rc",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\rc.d",
+  "members" : [
+   {
+    "name" : "numem.core.lifetime",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.hooks",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.core.traits",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "numem.lifetime",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 20,
+    "char" : 1,
+    "name" : "Rc",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Rc",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 20,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "RCT",
+        "kind" : "alias",
+        "line" : 23,
+        "char" : 5,
+        "type" : "__rc!T"
+       },
+       {
+        "name" : "rc",
+        "kind" : "variable",
+        "line" : 24,
+        "char" : 10,
+        "type" : "RCT*"
+       },
+       {
+        "name" : "__retain",
+        "kind" : "function",
+        "line" : 27,
+        "char" : 10,
+        "type" : "@trusted void()",
+        "endline" : 31,
+        "endchar" : 5
+       },
+       {
+        "name" : "__release",
+        "kind" : "function",
+        "line" : 34,
+        "char" : 10,
+        "type" : "@trusted void()",
+        "endline" : 43,
+        "endchar" : 5
+       },
+       {
+        "name" : "isValid",
+        "kind" : "function",
+        "line" : 51,
+        "char" : 20,
+        "type" : "inout nothrow @property @safe bool()",
+        "endline" : 51,
+        "endchar" : 64
+       },
+       {
+        "name" : "value",
+        "kind" : "function",
+        "line" : 56,
+        "char" : 28,
+        "type" : "inout nothrow @property ref @safe inout(T)()",
+        "endline" : 56,
+        "endchar" : 81
+       },
+       {
+        "name" : "~this",
+        "kind" : "destructor",
+        "line" : 59,
+        "char" : 5,
+        "endline" : 61,
+        "endchar" : 5
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 70,
+        "char" : 5,
+        "type" : "@trusted (in inout(T) value)",
+        "parameters" : [
+         {
+          "name" : "value",
+          "type" : "inout(T)",
+          "storageClass" : [
+           "in"
+          ]
+         }
+        ],
+        "endline" : 76,
+        "endchar" : 5
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 81,
+        "char" : 5,
+        "type" : "@trusted (ref return scope inout(typeof(this)) rhs)",
+        "parameters" : [
+         {
+          "name" : "rhs",
+          "type" : "inout(typeof(this))",
+          "storageClass" : [
+           "scope",
+           "ref",
+           "return"
+          ]
+         }
+        ],
+        "endline" : 84,
+        "endchar" : 5
+       },
+       {
+        "kind" : "template",
+        "line" : 89,
+        "char" : 14,
+        "name" : "retain",
+        "parameters" : [],
+        "members" : [
+         {
+          "name" : "retain",
+          "kind" : "function",
+          "line" : 89,
+          "char" : 14,
+          "storageClass" : [
+           "auto"
+          ],
+          "type" : "ref @trusted ()",
+          "endline" : 92,
+          "endchar" : 5
+         }
+        ]
+       },
+       {
+        "kind" : "template",
+        "line" : 98,
+        "char" : 14,
+        "name" : "release",
+        "parameters" : [],
+        "members" : [
+         {
+          "name" : "release",
+          "kind" : "function",
+          "line" : 98,
+          "char" : 14,
+          "storageClass" : [
+           "auto"
+          ],
+          "type" : "ref @trusted ()",
+          "endline" : 101,
+          "endchar" : 5
+         }
+        ]
+       },
+       {
+        "kind" : "template",
+        "line" : 106,
+        "char" : 7,
+        "name" : "opCast",
+        "parameters" : [
+         {
+          "name" : "T",
+          "kind" : "type",
+          "deco" : "b"
+         }
+        ],
+        "members" : [
+         {
+          "name" : "opCast",
+          "kind" : "function",
+          "line" : 106,
+          "char" : 7,
+          "type" : "inout nothrow @safe T()",
+          "endline" : 106,
+          "endchar" : 58
+         }
+        ]
+       },
+       {
+        "kind" : "template",
+        "line" : 111,
+        "char" : 11,
+        "name" : "opCast",
+        "parameters" : [
+         {
+          "name" : "T",
+          "kind" : "type",
+          "type" : "typeof(this)"
+         }
+        ],
+        "members" : [
+         {
+          "name" : "opCast",
+          "kind" : "function",
+          "line" : 111,
+          "char" : 11,
+          "type" : "inout nothrow ref T()",
+          "endline" : 113,
+          "endchar" : 5
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 121,
+    "char" : 1,
+    "name" : "__rc",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "__rc",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 121,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "refs",
+        "kind" : "variable",
+        "line" : 124,
+        "char" : 10,
+        "deco" : "k"
+       },
+       {
+        "name" : "value",
+        "kind" : "variable",
+        "line" : 125,
+        "char" : 7,
+        "type" : "T"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.sorting",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\sorting.d",
+  "members" : [
+   {
+    "name" : "numem.core.memory",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 27,
+    "char" : 6,
+    "name" : "nu_sort",
+    "parameters" : [
+     {
+      "name" : "pred",
+      "kind" : "alias"
+     },
+     {
+      "name" : "R",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "nu_sort",
+      "kind" : "function",
+      "line" : 27,
+      "char" : 6,
+      "type" : "nothrow @nogc void(R range)",
+      "parameters" : [
+       {
+        "name" : "range",
+        "type" : "R"
+       }
+      ],
+      "endline" : 29,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 45,
+    "char" : 1,
+    "name" : "TimSortImpl",
+    "parameters" : [
+     {
+      "name" : "pred",
+      "kind" : "alias"
+     },
+     {
+      "name" : "R",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "numem.core.math",
+      "kind" : "import",
+      "line" : 47,
+      "char" : 12,
+      "protection" : "private",
+      "selective" : [
+       "nu_min",
+       "nu_bsr"
+      ]
+     },
+     {
+      "name" : "numem.core.traits",
+      "kind" : "import",
+      "line" : 48,
+      "char" : 12,
+      "protection" : "private"
+     },
+     {
+      "name" : "numem.lifetime",
+      "kind" : "import",
+      "line" : 49,
+      "char" : 12,
+      "protection" : "private"
+     },
+     {
+      "kind" : "template",
+      "line" : 51,
+      "char" : 10,
+      "name" : "hasLvalueElements",
+      "parameters" : [
+       {
+        "name" : "X",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "hasLvalueElements",
+        "kind" : "variable",
+        "line" : 51,
+        "char" : 10,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "is(lvalueOf!(ElementType!X))"
+       }
+      ]
+     },
+     {
+      "name" : "T",
+      "kind" : "alias",
+      "line" : 53,
+      "char" : 5,
+      "type" : "ElementType!R"
+     },
+     {
+      "kind" : "template",
+      "line" : 55,
+      "char" : 10,
+      "name" : "less",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "less",
+        "kind" : "function",
+        "line" : 55,
+        "char" : 10,
+        "type" : "bool(auto ref T a, auto ref T b)",
+        "parameters" : [
+         {
+          "name" : "a",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         },
+         {
+          "name" : "b",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 57,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 59,
+      "char" : 10,
+      "name" : "greater",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "greater",
+        "kind" : "function",
+        "line" : 59,
+        "char" : 10,
+        "type" : "bool(auto ref T a, auto ref T b)",
+        "parameters" : [
+         {
+          "name" : "a",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         },
+         {
+          "name" : "b",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 61,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 63,
+      "char" : 10,
+      "name" : "greaterEqual",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "greaterEqual",
+        "kind" : "function",
+        "line" : 63,
+        "char" : 10,
+        "type" : "bool(auto ref T a, auto ref T b)",
+        "parameters" : [
+         {
+          "name" : "a",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         },
+         {
+          "name" : "b",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 65,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 67,
+      "char" : 10,
+      "name" : "lessEqual",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "lessEqual",
+        "kind" : "function",
+        "line" : 67,
+        "char" : 10,
+        "type" : "bool(auto ref T a, auto ref T b)",
+        "parameters" : [
+         {
+          "name" : "a",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         },
+         {
+          "name" : "b",
+          "type" : "T",
+          "storageClass" : [
+           "auto",
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 69,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "minimalMerge",
+      "kind" : "variable",
+      "line" : 71,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "128"
+     },
+     {
+      "name" : "minimalGallop",
+      "kind" : "variable",
+      "line" : 72,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "7"
+     },
+     {
+      "name" : "minimalStorage",
+      "kind" : "variable",
+      "line" : 73,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "256"
+     },
+     {
+      "name" : "stackSize",
+      "kind" : "variable",
+      "line" : 74,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "40"
+     },
+     {
+      "name" : "Slice",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 76,
+      "char" : 5,
+      "members" : [
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "line" : 77,
+        "char" : 16,
+        "type" : "size_t"
+       },
+       {
+        "name" : "length",
+        "kind" : "variable",
+        "line" : 77,
+        "char" : 22,
+        "type" : "size_t"
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 80,
+      "char" : 10,
+      "name" : "sort",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "sort",
+        "kind" : "function",
+        "line" : 80,
+        "char" : 10,
+        "type" : "void(R range, T[] temp)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         },
+         {
+          "name" : "temp",
+          "type" : "T[]"
+         }
+        ],
+        "endline" : 144,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 148,
+      "char" : 12,
+      "name" : "minRunLength",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "minRunLength",
+        "kind" : "function",
+        "line" : 148,
+        "char" : 12,
+        "type" : "size_t(size_t n)",
+        "parameters" : [
+         {
+          "name" : "n",
+          "type" : "size_t"
+         }
+        ],
+        "endline" : 152,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 155,
+      "char" : 12,
+      "name" : "firstRun",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "firstRun",
+        "kind" : "function",
+        "line" : 155,
+        "char" : 12,
+        "type" : "size_t(R range)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         }
+        ],
+        "endline" : 169,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "moveAt",
+      "kind" : "function",
+      "line" : 171,
+      "char" : 19,
+      "type" : "ElementType!R(R range, size_t offset)",
+      "parameters" : [
+       {
+        "name" : "range",
+        "type" : "R"
+       },
+       {
+        "name" : "offset",
+        "type" : "size_t"
+       }
+      ],
+      "endline" : 173,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "line" : 176,
+      "char" : 10,
+      "name" : "binaryInsertionSort",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "binaryInsertionSort",
+        "kind" : "function",
+        "line" : 176,
+        "char" : 10,
+        "type" : "void(R range, size_t sortedLen = 1)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         },
+         {
+          "name" : "sortedLen",
+          "type" : "size_t",
+          "default" : "1"
+         }
+        ],
+        "endline" : 205,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 208,
+      "char" : 10,
+      "name" : "mergeAt",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "mergeAt",
+        "kind" : "function",
+        "line" : 208,
+        "char" : 10,
+        "type" : "void(R range, Slice[] stack, immutable size_t at, ref size_t minGallop, ref T[] temp)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         },
+         {
+          "name" : "stack",
+          "type" : "Slice[]"
+         },
+         {
+          "name" : "at",
+          "type" : "size_t",
+          "storageClass" : [
+           "immutable"
+          ]
+         },
+         {
+          "name" : "minGallop",
+          "type" : "size_t",
+          "storageClass" : [
+           "ref"
+          ]
+         },
+         {
+          "name" : "temp",
+          "type" : "T[]",
+          "storageClass" : [
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 220,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 224,
+      "char" : 10,
+      "name" : "merge",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "merge",
+        "kind" : "function",
+        "line" : 224,
+        "char" : 10,
+        "type" : "void(R range, size_t mid, ref size_t minGallop, ref T[] temp)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         },
+         {
+          "name" : "mid",
+          "type" : "size_t"
+         },
+         {
+          "name" : "minGallop",
+          "type" : "size_t",
+          "storageClass" : [
+           "ref"
+          ]
+         },
+         {
+          "name" : "temp",
+          "type" : "T[]",
+          "storageClass" : [
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 245,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 248,
+      "char" : 9,
+      "name" : "ensureCapacity",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "ensureCapacity",
+        "kind" : "function",
+        "line" : 248,
+        "char" : 9,
+        "type" : "T[](size_t minCapacity, T[] temp)",
+        "parameters" : [
+         {
+          "name" : "minCapacity",
+          "type" : "size_t"
+         },
+         {
+          "name" : "temp",
+          "type" : "T[]"
+         }
+        ],
+        "endline" : 258,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 262,
+      "char" : 12,
+      "name" : "mergeLo",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "mergeLo",
+        "kind" : "function",
+        "line" : 262,
+        "char" : 12,
+        "type" : "size_t(R range, immutable size_t mid, size_t minGallop, T[] temp)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         },
+         {
+          "name" : "mid",
+          "type" : "size_t",
+          "storageClass" : [
+           "immutable"
+          ]
+         },
+         {
+          "name" : "minGallop",
+          "type" : "size_t"
+         },
+         {
+          "name" : "temp",
+          "type" : "T[]"
+         }
+        ],
+        "endline" : 332,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 336,
+      "char" : 12,
+      "name" : "mergeHi",
+      "parameters" : [],
+      "members" : [
+       {
+        "name" : "mergeHi",
+        "kind" : "function",
+        "line" : 336,
+        "char" : 12,
+        "type" : "size_t(R range, immutable size_t mid, size_t minGallop, T[] temp)",
+        "parameters" : [
+         {
+          "name" : "range",
+          "type" : "R"
+         },
+         {
+          "name" : "mid",
+          "type" : "size_t",
+          "storageClass" : [
+           "immutable"
+          ]
+         },
+         {
+          "name" : "minGallop",
+          "type" : "size_t"
+         },
+         {
+          "name" : "temp",
+          "type" : "T[]"
+         }
+        ],
+        "endline" : 420,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 423,
+      "char" : 5,
+      "name" : "gallopSearch",
+      "parameters" : [
+       {
+        "name" : "forwardReverse",
+        "kind" : "value",
+        "deco" : "b"
+       },
+       {
+        "name" : "lowerUpper",
+        "kind" : "value",
+        "deco" : "b"
+       }
+      ],
+      "members" : [
+       {
+        "kind" : "template",
+        "line" : 425,
+        "char" : 16,
+        "name" : "gallopSearch",
+        "parameters" : [
+         {
+          "name" : "R",
+          "kind" : "type"
+         }
+        ],
+        "members" : [
+         {
+          "name" : "gallopSearch",
+          "kind" : "function",
+          "line" : 425,
+          "char" : 16,
+          "type" : "size_t(R range, T value)",
+          "parameters" : [
+           {
+            "name" : "range",
+            "type" : "R"
+           },
+           {
+            "name" : "value",
+            "type" : "T"
+           }
+          ],
+          "endline" : 482,
+          "endchar" : 9
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "gallopForwardLower",
+      "kind" : "alias",
+      "line" : 485,
+      "char" : 5,
+      "type" : "gallopSearch!(false, false)"
+     },
+     {
+      "name" : "gallopForwardUpper",
+      "kind" : "alias",
+      "line" : 486,
+      "char" : 5,
+      "type" : "gallopSearch!(false, true)"
+     },
+     {
+      "name" : "gallopReverseLower",
+      "kind" : "alias",
+      "line" : 487,
+      "char" : 5,
+      "type" : "gallopSearch!(true, false)"
+     },
+     {
+      "name" : "gallopReverseUpper",
+      "kind" : "alias",
+      "line" : 488,
+      "char" : 5,
+      "type" : "gallopSearch!(true, true)"
+     },
+     {
+      "kind" : "template",
+      "line" : 492,
+      "char" : 10,
+      "name" : "moveEntry",
+      "parameters" : [
+       {
+        "name" : "X",
+        "kind" : "type"
+       },
+       {
+        "name" : "Y",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "moveEntry",
+        "kind" : "function",
+        "line" : 492,
+        "char" : 10,
+        "type" : "void(ref X from, const size_t fIdx, ref Y to, const size_t tIdx)",
+        "parameters" : [
+         {
+          "name" : "from",
+          "type" : "X",
+          "storageClass" : [
+           "ref"
+          ]
+         },
+         {
+          "name" : "fIdx",
+          "type" : "size_t",
+          "storageClass" : [
+           "const"
+          ]
+         },
+         {
+          "name" : "to",
+          "type" : "Y",
+          "storageClass" : [
+           "ref"
+          ]
+         },
+         {
+          "name" : "tIdx",
+          "type" : "size_t",
+          "storageClass" : [
+           "const"
+          ]
+         }
+        ],
+        "endline" : 499,
+        "endchar" : 5
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "numem.volatile",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\numem\\1.6.5\\numem\\source\\numem\\volatile.d",
+  "members" : [
+   {
+    "name" : "volatileLoad",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 40,
+    "char" : 8,
+    "deco" : "FNbNiNfPhZh",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Ph"
+     }
+    ]
+   },
+   {
+    "name" : "volatileLoad",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 41,
+    "char" : 8,
+    "deco" : "FNbNiNfPtZt",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pt"
+     }
+    ]
+   },
+   {
+    "name" : "volatileLoad",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 42,
+    "char" : 8,
+    "deco" : "FNbNiNfPkZk",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "volatileLoad",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 43,
+    "char" : 8,
+    "deco" : "FNbNiNfPmZm",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pm"
+     }
+    ]
+   },
+   {
+    "name" : "volatileStore",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 45,
+    "char" : 6,
+    "deco" : "FNbNiNfPhhZv",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "value",
+      "deco" : "h"
+     }
+    ]
+   },
+   {
+    "name" : "volatileStore",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 46,
+    "char" : 6,
+    "deco" : "FNbNiNfPttZv",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pt"
+     },
+     {
+      "name" : "value",
+      "deco" : "t"
+     }
+    ]
+   },
+   {
+    "name" : "volatileStore",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 47,
+    "char" : 6,
+    "deco" : "FNbNiNfPkkZv",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "value",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "volatileStore",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 48,
+    "char" : 6,
+    "deco" : "FNbNiNfPmmZv",
+    "parameters" : [
+     {
+      "name" : "ptr",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "value",
+      "deco" : "m"
+     }
+    ]
+   }
+  ]
+ }
+]

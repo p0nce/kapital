@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>dplug.graphics.stb_truetype</title>
+    <style type="text/css" media="screen">
+      html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+      blockquote, pre, a, abbr, address, cite, code, del, dfn, em, figure,
+      img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, u, i, dl,
+      dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+      tbody, tfoot, thead, tr, th, td {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        font-size: 100%;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      h1 { font-size: 200%; }
+      h2 { font-size: 160%; }
+      h3 { font-size: 120%; }
+      h4 { font-size: 100%; }
+      h5 { font-size: 80%; }
+      h6 { font-size: 80%; font-weight: normal; }
+
+      ul, ol {
+        margin: 1.4em 0;
+      }
+      ul ul, ol ol, ul ol, ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      ul, ol {
+        margin-left: 2.8em;
+      }
+
+      ol {
+        list-style: decimal;
+      }
+      ol ol {
+        list-style: lower-alpha;
+      }
+      ol ol ol {
+        list-style: lower-roman;
+      }
+      ol ol ol ol {
+        list-style: decimal;
+      }
+
+      blockquote {
+        margin: 0.1em;
+        margin-left: 1em;
+        border-left: 2px solid #cccccc;
+        padding-left: 0.7em;
+      }
+
+      .color_red { color: #dc322f; }
+      .color_blue { color: #268bd2; }
+      .color_green { color: #859901; }
+      .color_yellow { color: #b58901; }
+      .color_black { color: black; }
+      .color_white { color: white; }
+
+      .font_big {
+        font-size: 1.2em;
+      }
+
+      .ddoc_section_h {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19.5px;
+        margin-top: 11px;
+        display: block;
+      }
+
+      body.dlang .dlang {
+        display: inline-block;
+      }
+
+      body.dlang .declaration .dlang {
+          display: block;
+      }
+
+      body.dlang .ddoc_header_anchor a.dlang {
+        display: block;
+        color: rgba(0, 136, 204, 1);
+        text-decoration: none;
+      }
+
+      body.dlang .ddoc_header_anchor .code {
+        color: rgba(0, 136, 204, 1);
+      }
+
+      #ddoc_main .module {
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          overflow-x: hidden;
+          padding: 15px;
+      }
+
+      #ddoc_main .section .section {
+        margin-top: 0;
+      }
+
+      #ddoc_main .ddoc_module_members_section {
+          padding: 1px 0 0;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members section.intro {
+          background: #fff none repeat scroll 0 0;
+          list-style-type: none;
+          width: 100%;
+      }
+
+      #ddoc_main .ddoc_header_anchor {
+          font-size: 1.4em;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_header_anchor > .code {
+          display: inline-block;
+
+      }
+
+      #ddoc_main .ddoc_decl {
+        background-color: transparent;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0;
+        padding-left: 15px;
+      }
+
+      #ddoc_main .ddoc_decl .section, #ddoc_main .section.ddoc_sections {
+        background: white none repeat scroll 0 0;
+        margin: 0;
+        padding: 5px;
+        position: relative;
+        border-radius: 5px;
+      }
+
+      #ddoc_main .ddoc_decl .section h4:first-of-type, #ddoc_main .section.ddoc_sections h4:first-of-type {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration {
+          margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration .code {
+          color: rgba(0, 0, 0, 1);
+          margin-bottom: 15px;
+          padding-bottom: 6px;
+      }
+
+      #ddoc_main .declaration div .para {
+          margin-bottom: 0;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr td:first-of-type {
+        padding: 7px;
+        text-align: right;
+        vertical-align: top;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      #ddoc_main .ddoc_params .graybox {
+        border: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox td {
+        border-color: rgba(214, 214, 214, 1);
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:first-child > td {
+        border-top: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:last-child > td {
+        border-bottom: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:first-child {
+        border-left: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:last-child {
+        border-right: 0 none;
+        width: 100%;
+      }
+
+      #ddoc_main em.term, #ddoc_main em.term .code {
+        color: rgba(65, 65, 65, 1);
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      #ddoc_main .see-also {
+        cursor: pointer;
+        font-family: Menlo,monospace;
+      }
+
+      #ddoc_main .ddoc_decl .section > div:last-of-type {
+        margin-bottom: 15px;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members {
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .code_sample {
+        background: inherit;
+      }
+
+      #ddoc_main .declaration .code-line {
+          display: block;
+          font: 1em Menlo,monospace;
+      }
+
+      #ddoc_main a[name] {
+        margin: -112px 0 0;
+        padding-top: 112px;
+      }
+
+      #ddoc_main .ddoc_decl td {
+        max-width: inherit;
+      }
+
+      #ddoc_main .declaration a {
+        color: inherit;
+      }
+
+      #ddoc_main .declaration a:hover {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: underline;
+      }
+
+      body.ddoc {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-family: Helvetica,Arial,sans-serif;
+        font-size: 62.5%;
+        margin: 0;
+        border: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+      }
+
+      .ddoc a[name] {
+        display: block;
+        height: 0;
+        margin: -85px 0 0;
+        padding-top: 85px;
+        width: 0;
+      }
+
+      .ddoc .module {
+          border-color: transparent;
+          background-color: rgba(255, 255, 255, 1);
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-image: none;
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.07);
+          display: block;
+          margin-left: 0;
+          min-height: calc(100% - 173px);
+          overflow: auto;
+          padding-bottom: 100px;
+      }
+
+      .ddoc .content_wrapper {
+          background-color: rgba(242, 242, 242, 1);
+          margin: 0 auto;
+          max-width: 980px;
+      }
+
+      .ddoc .section {
+        padding: 15px 25px 30px;
+      }
+
+      .ddoc .section .section {
+        margin: 30px 0 0;
+        padding: 0;
+      }
+
+      .ddoc .para {
+        color: rgba(65, 65, 65, 1);
+        font-size: 1.4em;
+        line-height: 145%;
+        margin-bottom: 15px;
+      }
+
+      .ddoc .ddoc_examples .para {
+        margin-bottom: 0;
+      }
+
+      .ddoc .module_name {
+          color: rgba(0, 0, 0, 1);
+          display: block;
+          font-family: Helvetica;
+          font-size: 2.8em;
+          font-weight: 100;
+          margin-bottom: 0;
+          padding: 15px 0;
+      }
+
+      .ddoc .module a {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: none;
+      }
+
+      .ddoc .code {
+        color: rgba(128, 128, 128, 1);
+        font-family: Menlo,monospace;
+        font-size: 0.85em;
+        word-wrap: break-word;
+      }
+
+      .ddoc .code i {
+        font-style: normal;
+      }
+
+      .ddoc .code .code {
+        font-size: 1em;
+      }
+
+      .ddoc .code_sample {
+        background-clip: padding-box;
+        margin: 1px 0;
+        text-align: left;
+      }
+
+      .ddoc .code_sample {
+        display: block;
+        font-size: 1.4em;
+        margin-left: 21px;
+      }
+
+      .ddoc ol .code_sample {
+        font-size: 1em;
+      }
+
+      .ddoc .code_lines {
+        counter-reset: li;
+        line-height: 1.6em;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ddoc .code_listing .code_sample div {
+        margin-left: 13px;
+        width: 93%;
+      }
+
+      .ddoc .code_listing .code_sample div .code_lines li {
+        list-style-type: none;
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .ddoc .code_sample div .code_lines li::before {
+        margin-left: -33px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+10)::before {
+        margin-left: -39px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+100)::before {
+        margin-left: -46px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample .code_lines .code {
+        color: #000;
+      }
+
+      .ddoc div.dlang {
+        margin: 10px 0 21px;
+        padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+          margin: 10px 0 21px;
+          padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+        border-left: 5px solid rgba(0, 155, 51, 0.2);
+      }
+
+      .ddoc .code_lines li::before {
+        color: rgba(128, 128, 128, 1);
+        content: counter(li, decimal);
+        counter-increment: li;
+        font-family: Menlo,monospace;
+        font-size: 0.9em;
+        margin-right: 16px;
+      }
+
+      .ddoc .code_lines li {
+        padding-left: 0;
+        white-space: pre-wrap;
+      }
+
+      .ddoc .code_lines pre {
+        display: contents;
+      }
+
+      .ddoc .code_lines li:only-of-type::before {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:only-of-type {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:nth-child(n+10) {
+        text-indent: -17px;
+      }
+
+      .ddoc .code_lines li:nth-child(n+10)::before {
+        margin-right: 12px;
+      }
+
+      .ddoc .graybox {
+        border: 1px solid rgba(233, 233, 233, 1);
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: hide;
+        margin: 20px 0 36px;
+        text-align: left;
+      }
+
+      .ddoc .graybox p {
+        margin: 0;
+        min-width: 50px;
+      }
+
+      .ddoc th {
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: bottom;
+      }
+
+      .ddoc td {
+        border: 1px solid rgba(233, 233, 233, 1);
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: middle;
+      }
+
+      .punctuation {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .comment {
+        color: rgba(0, 131, 18, 1);
+      }
+
+      .operator {
+        color: #000;
+      }
+
+      .keyword {
+        color: rgba(170, 13, 145, 1);
+      }
+
+      .keyword_type {
+        color: rgba(170, 51, 145, 1);
+      }
+
+      .string_literal {
+        color: rgba(196, 26, 22, 1);
+      }
+
+      .ddoc_psuper_symbol {
+        color: rgba(92, 38, 153, 1);
+      }
+
+      .param {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .psymbol {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .ddoc_member_header .ddoc_header_anchor .code {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body id="ddoc_main" class="ddoc dlang">
+    <div class="content_wrapper">
+      <article class="module">
+        <h1 class="module_name">dplug.graphics.stb_truetype</h1>
+        <section id="module_content"><section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    D translation of <code class="code">stb_truetype</code> v0.7 by Sean Barrett
+More information on <a href="http://nothings.org/stb/stb_truetype.h">http://nothings.org/stb/stb_truetype.h</a>
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Removed:</span>
+
+<ul><li>texture baking API</li>
+<li>font finding in the TTF itself. Make sure there is only one font in the TTF.</li>
+</ul>
+  </p>
+</div>
+
+</section>
+<section class="section ddoc_module_members_section">
+  <div class="ddoc_module_members">
+    <ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_fontinfo" id="stbtt_fontinfo"><code class="code">stbtt_fontinfo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_fontinfo"></span>struct <code class="code">stbtt_fontinfo</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    The following structure is defined publically so you can declare one on
+the stack or as a global or etc, but you should treat it as opaque.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetFontOffsetForIndex" id="stbtt_GetFontOffsetForIndex"><code class="code">stbtt_GetFontOffsetForIndex</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetFontOffsetForIndex"></span>nothrow @nogc int <code class="code">stbtt_GetFontOffsetForIndex</code>(const(ubyte)* <code class="code">font_collection</code>, int <code class="code">index</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Each .ttf/.ttc file may have more than one font. Each font has a sequential
+<code class="code">index</code> number starting from 0. Call this function to get the font offset for
+a given <code class="code">index</code>; it returns -1 if the <code class="code">index</code> is out of range. A regular .ttf
+file will only define one font and it always be at offset 0, so it will
+return '0' for <code class="code">index</code> 0, and -1 for all other indices. You can just skip
+this step if you know it's that kind of font.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_InitFont" id="stbtt_InitFont"><code class="code">stbtt_InitFont</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_InitFont"></span>nothrow @nogc int <code class="code">stbtt_InitFont</code>(stbtt_fontinfo* <code class="code">info</code>, const(ubyte)* <code class="code">data2</code>, int <code class="code">fontstart</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Given an offset into the file that defines a font, this function builds
+the necessary cached <code class="code">info</code> for the rest of the system. You must allocate
+the stbtt_fontinfo yourself, and <code class="code">stbtt_InitFont</code> will fill it out.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_FindGlyphIndex" id="stbtt_FindGlyphIndex"><code class="code">stbtt_FindGlyphIndex</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_FindGlyphIndex"></span>nothrow @nogc int <code class="code">stbtt_FindGlyphIndex</code>(const(stbtt_fontinfo)* <code class="code">info</code>, int <code class="code">unicode_codepoint</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    If you're going to perform multiple operations on the same character
+and you want a speed-up, call this function with the character you're
+going to process, then use glyph-based functions instead of the
+codepoint-based functions.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetCodepointShape" id="stbtt_GetCodepointShape"><code class="code">stbtt_GetCodepointShape</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetCodepointShape"></span>nothrow @nogc int <code class="code">stbtt_GetCodepointShape</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">unicode_codepoint</code>, stbtt_vertex** <code class="code">vertices</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_returns">
+  <h4>Return Value</h4>
+  <p class="para">
+    Number of <code class="code">vertices</code> and fills *<code class="code">vertices</code> with the pointer to them.
+         These are expressed in "unscaled" coordinates.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetGlyphBox" id="stbtt_GetGlyphBox"><code class="code">stbtt_GetGlyphBox</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetGlyphBox"></span>nothrow @nogc int <code class="code">stbtt_GetGlyphBox</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">glyph_index</code>, int* <code class="code">x0</code>, int* <code class="code">y0</code>, int* <code class="code">x1</code>, int* <code class="code">y1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    As above, but takes one or more glyph indices for greater efficiency
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetCodepointBox" id="stbtt_GetCodepointBox"><code class="code">stbtt_GetCodepointBox</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetCodepointBox"></span>nothrow @nogc int <code class="code">stbtt_GetCodepointBox</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">codepoint</code>, int* <code class="code">x0</code>, int* <code class="code">y0</code>, int* <code class="code">x1</code>, int* <code class="code">y1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Gets the bounding box of the visible part of the glyph, in unscaled coordinates
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_IsGlyphEmpty" id="stbtt_IsGlyphEmpty"><code class="code">stbtt_IsGlyphEmpty</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_IsGlyphEmpty"></span>nothrow @nogc int <code class="code">stbtt_IsGlyphEmpty</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">glyph_index</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_returns">
+  <h4>Return Value</h4>
+  <p class="para">
+    non-zero if nothing is drawn for this glyph
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetGlyphShape" id="stbtt_GetGlyphShape"><code class="code">stbtt_GetGlyphShape</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetGlyphShape"></span>nothrow @nogc int <code class="code">stbtt_GetGlyphShape</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">glyph_index</code>, stbtt_vertex** <code class="code">pvertices</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_returns">
+  <h4>Return Value</h4>
+  <p class="para">
+    Number of vertices and fills *vertices with the pointer to them.
+         These are expressed in "unscaled" coordinates.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetCodepointKernAdvance" id="stbtt_GetCodepointKernAdvance"><code class="code">stbtt_GetCodepointKernAdvance</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetCodepointKernAdvance"></span>nothrow @nogc int <code class="code">stbtt_GetCodepointKernAdvance</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">ch1</code>, int <code class="code">ch2</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    an additional amount to add to the 'advance' value between <code class="code">ch1</code> and <code class="code">ch2</code>
+@TODO; for now always returns 0!
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetCodepointHMetrics" id="stbtt_GetCodepointHMetrics"><code class="code">stbtt_GetCodepointHMetrics</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetCodepointHMetrics"></span>nothrow @nogc void <code class="code">stbtt_GetCodepointHMetrics</code>(const stbtt_fontinfo* <code class="code">info</code>, int <code class="code">codepoint</code>, int* <code class="code">advanceWidth</code>, int* <code class="code">leftSideBearing</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    <code class="code">leftSideBearing</code> is the offset from the current horizontal position to the left edge of the character
+<code class="code">advanceWidth</code> is the offset from the current horizontal position to the next horizontal position
+  these are expressed in unscaled coordinates
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetFontVMetrics" id="stbtt_GetFontVMetrics"><code class="code">stbtt_GetFontVMetrics</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetFontVMetrics"></span>nothrow @nogc void <code class="code">stbtt_GetFontVMetrics</code>(const stbtt_fontinfo* <code class="code">info</code>, int* <code class="code">ascent</code>, int* <code class="code">descent</code>, int* <code class="code">lineGap</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Ascent is the coordinate above the baseline the font extends; <code class="code">descent</code>
+is the coordinate below the baseline the font extends (i.e. it is typically negative)
+<code class="code">lineGap</code> is the spacing between one row's <code class="code">descent</code> and the next row's <code class="code">ascent</code>...
+so you should advance the vertical position by "*<code class="code">ascent</code> - *<code class="code">descent</code> + *<code class="code">lineGap</code>"
+  these are expressed in unscaled coordinates, so you must multiply by
+  the scale factor for a given size
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetFontBoundingBox" id="stbtt_GetFontBoundingBox"><code class="code">stbtt_GetFontBoundingBox</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetFontBoundingBox"></span>nothrow @nogc void <code class="code">stbtt_GetFontBoundingBox</code>(const stbtt_fontinfo* <code class="code">info</code>, int* <code class="code">x0</code>, int* <code class="code">y0</code>, int* <code class="code">x1</code>, int* <code class="code">y1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    the bounding box around all possible characters
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_ScaleForPixelHeight" id="stbtt_ScaleForPixelHeight"><code class="code">stbtt_ScaleForPixelHeight</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_ScaleForPixelHeight"></span>nothrow @nogc float <code class="code">stbtt_ScaleForPixelHeight</code>(const stbtt_fontinfo* <code class="code">info</code>, float <code class="code">height</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Computes a scale factor to produce a font whose "<code class="code">height</code>" is 'pixels' tall.
+Height is measured as the distance from the highest ascender to the lowest
+descender; in other words, it's equivalent to calling stbtt_GetFontVMetrics
+and computing:
+      scale = pixels / (ascent - descent)
+so if you prefer to measure <code class="code">height</code> by the ascent only, use a similar calculation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_ScaleForMappingEmToPixels" id="stbtt_ScaleForMappingEmToPixels"><code class="code">stbtt_ScaleForMappingEmToPixels</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_ScaleForMappingEmToPixels"></span>nothrow @nogc float <code class="code">stbtt_ScaleForMappingEmToPixels</code>(const stbtt_fontinfo* <code class="code">info</code>, float <code class="code">pixels</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    computes a scale factor to produce a font whose EM size is mapped to
+'<code class="code">pixels</code>' tall. This is probably what traditional APIs compute, but
+I'm not positive.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_FreeShape" id="stbtt_FreeShape"><code class="code">stbtt_FreeShape</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_FreeShape"></span>nothrow @nogc void <code class="code">stbtt_FreeShape</code>(const stbtt_fontinfo* <code class="code">info</code>, stbtt_vertex* <code class="code">v</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetGlyphBitmapBoxSubpixel" id="stbtt_GetGlyphBitmapBoxSubpixel"><code class="code">stbtt_GetGlyphBitmapBoxSubpixel</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetGlyphBitmapBoxSubpixel"></span>nothrow @nogc void <code class="code">stbtt_GetGlyphBitmapBoxSubpixel</code>(const stbtt_fontinfo* <code class="code">font</code>, int <code class="code">glyph</code>, float <code class="code">scale_x</code>, float <code class="code">scale_y</code>, float <code class="code">shift_x</code>, float <code class="code">shift_y</code>, int* <code class="code">ix0</code>, int* <code class="code">iy0</code>, int* <code class="code">ix1</code>, int* <code class="code">iy1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetCodepointBitmapBoxSubpixel" id="stbtt_GetCodepointBitmapBoxSubpixel"><code class="code">stbtt_GetCodepointBitmapBoxSubpixel</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetCodepointBitmapBoxSubpixel"></span>nothrow @nogc void <code class="code">stbtt_GetCodepointBitmapBoxSubpixel</code>(const stbtt_fontinfo* <code class="code">font</code>, int <code class="code">codepoint</code>, float <code class="code">scale_x</code>, float <code class="code">scale_y</code>, float <code class="code">shift_x</code>, float <code class="code">shift_y</code>, int* <code class="code">ix0</code>, int* <code class="code">iy0</code>, int* <code class="code">ix1</code>, int* <code class="code">iy1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Same as stbtt_GetCodepointBitmapBox, but you can specify a subpixel
+shift for the character.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_GetCodepointBitmapBox" id="stbtt_GetCodepointBitmapBox"><code class="code">stbtt_GetCodepointBitmapBox</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_GetCodepointBitmapBox"></span>nothrow @nogc void <code class="code">stbtt_GetCodepointBitmapBox</code>(const stbtt_fontinfo* <code class="code">font</code>, int <code class="code">codepoint</code>, float <code class="code">scale_x</code>, float <code class="code">scale_y</code>, int* <code class="code">ix0</code>, int* <code class="code">iy0</code>, int* <code class="code">ix1</code>, int* <code class="code">iy1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Gets the bbox of the bitmap centered around the glyph origin; so the
+bitmap width is <code class="code">ix1</code>-<code class="code">ix0</code>, height is <code class="code">iy1</code>-<code class="code">iy0</code>, and location to place
+the bitmap top left is (leftSideBearing*scale,<code class="code">iy0</code>).
+(Note that the bitmap uses y-increases-down, but the shape uses
+y-increases-up, so CodepointBitmapBox and CodepointBox are inverted.)
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_FreeBitmap" id="stbtt_FreeBitmap"><code class="code">stbtt_FreeBitmap</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_FreeBitmap"></span>nothrow @nogc void <code class="code">stbtt_FreeBitmap</code>(ubyte* <code class="code">bitmap</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Frees the allocated <code class="code">bitmap</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#stbtt_MakeCodepointBitmapSubpixel" id="stbtt_MakeCodepointBitmapSubpixel"><code class="code">stbtt_MakeCodepointBitmapSubpixel</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="stbtt_MakeCodepointBitmapSubpixel"></span>nothrow @nogc void <code class="code">stbtt_MakeCodepointBitmapSubpixel</code>(stbtt_fontinfo* <code class="code">info</code>, ubyte* <code class="code">output</code>, int <code class="code">out_w</code>, int <code class="code">out_h</code>, int <code class="code">out_stride</code>, float <code class="code">scale_x</code>, float <code class="code">scale_y</code>, float <code class="code">shift_x</code>, float <code class="code">shift_y</code>, int <code class="code">codepoint</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Same as stbtt_MakeCodepointBitmap, but you can specify a subpixel
+shift for the character.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+  </div>
+</section>
+</section>
+      </article>
+    </div>
+  </body>
+</html>

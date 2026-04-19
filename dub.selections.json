@@ -1,0 +1,17 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"bindbc-common": "1.0.5",
+		"bindbc-loader": "1.1.5",
+		"bindbc-sdl": "2.2.2",
+		"canvasity": "1.0.5",
+		"colors": "0.0.4",
+		"dplug": "15.3.0",
+		"gamut": "3.3.3",
+		"intel-intrinsics": "1.12.1",
+		"miniz": "0.0.2",
+		"stb_image_resize2-d": "1.0.1",
+		"text-mode": "1.1.1",
+		"turtle": "0.1.1"
+	}
+}

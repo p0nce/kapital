@@ -1,0 +1,717 @@
+[
+ {
+  "name" : "bindbc.loader.codegen",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-loader\\1.1.5\\bindbc-loader\\source\\bindbc\\loader\\codegen.d",
+  "members" : [
+   {
+    "name" : "makeLibPaths",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 9,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNfAAyaHQeQhQfZQl",
+    "init" : "(string[] names, string[][string] platformNames = cast(string[][string])null, string[][string] platformPaths = cast(string[][string])null) pure nothrow @safe => joined ~ \"\\\"\" ~ ret[$ - 1LU] ~ \"\\\"]\""
+   },
+   {
+    "name" : "__unittest_L60_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 60,
+    "char" : 1,
+    "endline" : 84,
+    "endchar" : 1
+   },
+   {
+    "name" : "makeDynloadFns",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 84,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNfAyaQdAQgZQj",
+    "init" : "(string name, string libNames, string[] bindModules) pure nothrow @safe => dynloadFns"
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.loader",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-loader\\1.1.5\\bindbc-loader\\source\\bindbc\\loader\\package.d",
+  "members" : [
+   {
+    "name" : "bindbc.loader.sharedlib",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 2
+   },
+   {
+    "name" : "bindbc.loader.codegen",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 2
+   },
+   {
+    "name" : "bindbc.loader.system",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 2
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.loader.sharedlib",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-loader\\1.1.5\\bindbc-loader\\source\\bindbc\\loader\\sharedlib.d",
+  "members" : [
+   {
+    "name" : "core.stdc.stdlib",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "LoadMsg",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "success",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 23,
+      "char" : 2
+     },
+     {
+      "name" : "noLibrary",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 24,
+      "char" : 2
+     },
+     {
+      "name" : "badLibrary",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 25,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "SharedLib",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 29,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "_handle",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 30,
+      "char" : 16,
+      "deco" : "Pv",
+      "offset" : 0
+     }
+    ]
+   },
+   {
+    "name" : "invalidHandle",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 34,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "S6bindbc6loader9sharedlib9SharedLib",
+    "init" : "SharedLib(null)"
+   },
+   {
+    "name" : "ErrorInfo",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 37,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "_error",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 39,
+      "char" : 9,
+      "deco" : "Pa",
+      "offset" : 0
+     },
+     {
+      "name" : "_message",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 40,
+      "char" : 9,
+      "deco" : "Pa",
+      "offset" : 8
+     },
+     {
+      "name" : "error",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 48,
+      "char" : 25,
+      "deco" : "xFNbNdNiNjZPxa",
+      "endline" : 48,
+      "endchar" : 62
+     },
+     {
+      "name" : "message",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 54,
+      "char" : 25,
+      "deco" : "xFNbNdNiNjZPxa",
+      "endline" : 54,
+      "endchar" : 66
+     }
+    ]
+   },
+   {
+    "name" : "_errors",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 62,
+    "char" : 14,
+    "deco" : "AS6bindbc6loader9sharedlib9ErrorInfo"
+   },
+   {
+    "name" : "_errorCount",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 63,
+    "char" : 9,
+    "deco" : "m",
+    "originalType" : "size_t"
+   },
+   {
+    "name" : "errors",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 72,
+    "char" : 20,
+    "deco" : "FNbNiZAxS6bindbc6loader9sharedlib9ErrorInfo",
+    "endline" : 74,
+    "endchar" : 1
+   },
+   {
+    "name" : "errorCount",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 80,
+    "char" : 8,
+    "deco" : "FNbNiZm",
+    "originalType" : "nothrow @nogc size_t()",
+    "endline" : 82,
+    "endchar" : 1
+   },
+   {
+    "name" : "resetErrors",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 88,
+    "char" : 6,
+    "deco" : "FNbNiZv",
+    "endline" : 91,
+    "endchar" : 1
+   },
+   {
+    "name" : "bindSymbol",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 110,
+    "char" : 6,
+    "deco" : "FNbNiS6bindbc6loader9sharedlib9SharedLibPPvPxaZv",
+    "parameters" : [
+     {
+      "name" : "lib",
+      "deco" : "S6bindbc6loader9sharedlib9SharedLib"
+     },
+     {
+      "name" : "ptr",
+      "deco" : "PPv"
+     },
+     {
+      "name" : "symbolName",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 120,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 133,
+    "char" : 6,
+    "name" : "bindSymbol_stdcall",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "bindSymbol_stdcall",
+      "kind" : "function",
+      "line" : 133,
+      "char" : 6,
+      "type" : "void(SharedLib lib, ref T ptr, const(char)* symbolName)",
+      "parameters" : [
+       {
+        "name" : "lib",
+        "type" : "SharedLib"
+       },
+       {
+        "name" : "ptr",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "symbolName",
+        "type" : "const(char)*"
+       }
+      ],
+      "endline" : 160,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "load",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 171,
+    "char" : 11,
+    "deco" : "FNbNiPxaZS6bindbc6loader9sharedlib9SharedLib",
+    "parameters" : [
+     {
+      "name" : "libName",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 179,
+    "endchar" : 1
+   },
+   {
+    "name" : "unload",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 189,
+    "char" : 6,
+    "deco" : "FNbNiKS6bindbc6loader9sharedlib9SharedLibZv",
+    "parameters" : [
+     {
+      "name" : "lib",
+      "deco" : "S6bindbc6loader9sharedlib9SharedLib",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 194,
+    "endchar" : 1
+   },
+   {
+    "name" : "allocErrs",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 197,
+    "char" : 6,
+    "deco" : "FNbNiZv",
+    "endline" : 208,
+    "endchar" : 1
+   },
+   {
+    "name" : "copyString",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 210,
+    "char" : 6,
+    "deco" : "FNbNiPPaPxaZv",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "PPa"
+     },
+     {
+      "name" : "src",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 213,
+    "endchar" : 1
+   },
+   {
+    "name" : "addErr",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 215,
+    "char" : 6,
+    "deco" : "FNbNiPxaQdZv",
+    "parameters" : [
+     {
+      "name" : "errstr",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "message",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 229,
+    "endchar" : 1
+   },
+   {
+    "name" : "core.sys.windows.winbase",
+    "kind" : "import",
+    "line" : 232,
+    "char" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.sys.windows.winnt",
+    "kind" : "import",
+    "line" : 233,
+    "char" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "BOOL",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 234,
+    "char" : 10,
+    "deco" : "i"
+   },
+   {
+    "name" : "HMODULE",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 235,
+    "char" : 10,
+    "deco" : "Pv"
+   },
+   {
+    "name" : "pSetDLLDirectory",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 236,
+    "char" : 32,
+    "deco" : "PWNbNiPxaZi",
+    "originalType" : "extern (Windows) BOOL function(const(char)*)"
+   },
+   {
+    "name" : "setDLLDirectory",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 237,
+    "char" : 19,
+    "storageClass" : [
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "PWNbNiPxaZi",
+    "originalType" : "pSetDLLDirectory"
+   },
+   {
+    "name" : "loadLib",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 239,
+    "char" : 10,
+    "deco" : "FNbNiPxaZPv",
+    "originalType" : "nothrow @nogc HMODULE(const(char)* name)",
+    "parameters" : [
+     {
+      "name" : "name",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 241,
+    "endchar" : 2
+   },
+   {
+    "name" : "unloadLib",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 243,
+    "char" : 7,
+    "deco" : "FNbNiPvZv",
+    "parameters" : [
+     {
+      "name" : "lib",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 245,
+    "endchar" : 2
+   },
+   {
+    "name" : "loadSymbol",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 247,
+    "char" : 8,
+    "deco" : "FNbNiPvPxaZQg",
+    "parameters" : [
+     {
+      "name" : "lib",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "symbolName",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 249,
+    "endchar" : 2
+   },
+   {
+    "name" : "wstringToString",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 251,
+    "char" : 7,
+    "deco" : "FNbNiPPaPxuZv",
+    "parameters" : [
+     {
+      "name" : "dst",
+      "deco" : "PPa"
+     },
+     {
+      "name" : "src",
+      "deco" : "Pxu"
+     }
+    ],
+    "endline" : 266,
+    "endchar" : 2
+   },
+   {
+    "name" : "sysError",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 268,
+    "char" : 7,
+    "deco" : "FNbNiPS6bindbc6loader9sharedlib9ErrorInfoZv",
+    "parameters" : [
+     {
+      "name" : "pinfo",
+      "deco" : "PS6bindbc6loader9sharedlib9ErrorInfo"
+     }
+    ],
+    "endline" : 290,
+    "endchar" : 2
+   },
+   {
+    "name" : "setCustomLoaderSearchPath",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 331,
+    "char" : 14,
+    "deco" : "FNbNiPxaZb",
+    "parameters" : [
+     {
+      "name" : "path",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 339,
+    "endchar" : 2
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.loader.system",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-loader\\1.1.5\\bindbc-loader\\source\\bindbc\\loader\\system.d",
+  "members" : [
+   {
+    "name" : "bind64",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 11,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "bind32",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 13,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindWindows",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 16,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "bindMac",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindLinux",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindPosix",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 34,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindAndroid",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 40,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindIOS",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 46,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindWinRT",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 49,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindOpenBSD",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 52,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindFreeBSD",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 58,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindBSD",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 64,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated",
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   }
+  ]
+ }
+]

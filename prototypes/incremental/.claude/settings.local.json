@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where love *)",
+      "Bash(love --version)",
+      "Bash(C:/Users/guill/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Read(//d D:/kapital/prototypes/**)",
+      "Bash(timeout 3 love .)",
+      "Bash(git commit *)",
+      "Bash(lua *)"
+    ]
+  }
+}

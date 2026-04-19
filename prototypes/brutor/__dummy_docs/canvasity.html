@@ -1,0 +1,4539 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>canvasity</title>
+    <style type="text/css" media="screen">
+      html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+      blockquote, pre, a, abbr, address, cite, code, del, dfn, em, figure,
+      img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, u, i, dl,
+      dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+      tbody, tfoot, thead, tr, th, td {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        font-size: 100%;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      h1 { font-size: 200%; }
+      h2 { font-size: 160%; }
+      h3 { font-size: 120%; }
+      h4 { font-size: 100%; }
+      h5 { font-size: 80%; }
+      h6 { font-size: 80%; font-weight: normal; }
+
+      ul, ol {
+        margin: 1.4em 0;
+      }
+      ul ul, ol ol, ul ol, ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      ul, ol {
+        margin-left: 2.8em;
+      }
+
+      ol {
+        list-style: decimal;
+      }
+      ol ol {
+        list-style: lower-alpha;
+      }
+      ol ol ol {
+        list-style: lower-roman;
+      }
+      ol ol ol ol {
+        list-style: decimal;
+      }
+
+      blockquote {
+        margin: 0.1em;
+        margin-left: 1em;
+        border-left: 2px solid #cccccc;
+        padding-left: 0.7em;
+      }
+
+      .color_red { color: #dc322f; }
+      .color_blue { color: #268bd2; }
+      .color_green { color: #859901; }
+      .color_yellow { color: #b58901; }
+      .color_black { color: black; }
+      .color_white { color: white; }
+
+      .font_big {
+        font-size: 1.2em;
+      }
+
+      .ddoc_section_h {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19.5px;
+        margin-top: 11px;
+        display: block;
+      }
+
+      body.dlang .dlang {
+        display: inline-block;
+      }
+
+      body.dlang .declaration .dlang {
+          display: block;
+      }
+
+      body.dlang .ddoc_header_anchor a.dlang {
+        display: block;
+        color: rgba(0, 136, 204, 1);
+        text-decoration: none;
+      }
+
+      body.dlang .ddoc_header_anchor .code {
+        color: rgba(0, 136, 204, 1);
+      }
+
+      #ddoc_main .module {
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          overflow-x: hidden;
+          padding: 15px;
+      }
+
+      #ddoc_main .section .section {
+        margin-top: 0;
+      }
+
+      #ddoc_main .ddoc_module_members_section {
+          padding: 1px 0 0;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members section.intro {
+          background: #fff none repeat scroll 0 0;
+          list-style-type: none;
+          width: 100%;
+      }
+
+      #ddoc_main .ddoc_header_anchor {
+          font-size: 1.4em;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_header_anchor > .code {
+          display: inline-block;
+
+      }
+
+      #ddoc_main .ddoc_decl {
+        background-color: transparent;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0;
+        padding-left: 15px;
+      }
+
+      #ddoc_main .ddoc_decl .section, #ddoc_main .section.ddoc_sections {
+        background: white none repeat scroll 0 0;
+        margin: 0;
+        padding: 5px;
+        position: relative;
+        border-radius: 5px;
+      }
+
+      #ddoc_main .ddoc_decl .section h4:first-of-type, #ddoc_main .section.ddoc_sections h4:first-of-type {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration {
+          margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration .code {
+          color: rgba(0, 0, 0, 1);
+          margin-bottom: 15px;
+          padding-bottom: 6px;
+      }
+
+      #ddoc_main .declaration div .para {
+          margin-bottom: 0;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr td:first-of-type {
+        padding: 7px;
+        text-align: right;
+        vertical-align: top;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      #ddoc_main .ddoc_params .graybox {
+        border: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox td {
+        border-color: rgba(214, 214, 214, 1);
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:first-child > td {
+        border-top: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:last-child > td {
+        border-bottom: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:first-child {
+        border-left: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:last-child {
+        border-right: 0 none;
+        width: 100%;
+      }
+
+      #ddoc_main em.term, #ddoc_main em.term .code {
+        color: rgba(65, 65, 65, 1);
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      #ddoc_main .see-also {
+        cursor: pointer;
+        font-family: Menlo,monospace;
+      }
+
+      #ddoc_main .ddoc_decl .section > div:last-of-type {
+        margin-bottom: 15px;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members {
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .code_sample {
+        background: inherit;
+      }
+
+      #ddoc_main .declaration .code-line {
+          display: block;
+          font: 1em Menlo,monospace;
+      }
+
+      #ddoc_main a[name] {
+        margin: -112px 0 0;
+        padding-top: 112px;
+      }
+
+      #ddoc_main .ddoc_decl td {
+        max-width: inherit;
+      }
+
+      #ddoc_main .declaration a {
+        color: inherit;
+      }
+
+      #ddoc_main .declaration a:hover {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: underline;
+      }
+
+      body.ddoc {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-family: Helvetica,Arial,sans-serif;
+        font-size: 62.5%;
+        margin: 0;
+        border: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+      }
+
+      .ddoc a[name] {
+        display: block;
+        height: 0;
+        margin: -85px 0 0;
+        padding-top: 85px;
+        width: 0;
+      }
+
+      .ddoc .module {
+          border-color: transparent;
+          background-color: rgba(255, 255, 255, 1);
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-image: none;
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.07);
+          display: block;
+          margin-left: 0;
+          min-height: calc(100% - 173px);
+          overflow: auto;
+          padding-bottom: 100px;
+      }
+
+      .ddoc .content_wrapper {
+          background-color: rgba(242, 242, 242, 1);
+          margin: 0 auto;
+          max-width: 980px;
+      }
+
+      .ddoc .section {
+        padding: 15px 25px 30px;
+      }
+
+      .ddoc .section .section {
+        margin: 30px 0 0;
+        padding: 0;
+      }
+
+      .ddoc .para {
+        color: rgba(65, 65, 65, 1);
+        font-size: 1.4em;
+        line-height: 145%;
+        margin-bottom: 15px;
+      }
+
+      .ddoc .ddoc_examples .para {
+        margin-bottom: 0;
+      }
+
+      .ddoc .module_name {
+          color: rgba(0, 0, 0, 1);
+          display: block;
+          font-family: Helvetica;
+          font-size: 2.8em;
+          font-weight: 100;
+          margin-bottom: 0;
+          padding: 15px 0;
+      }
+
+      .ddoc .module a {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: none;
+      }
+
+      .ddoc .code {
+        color: rgba(128, 128, 128, 1);
+        font-family: Menlo,monospace;
+        font-size: 0.85em;
+        word-wrap: break-word;
+      }
+
+      .ddoc .code i {
+        font-style: normal;
+      }
+
+      .ddoc .code .code {
+        font-size: 1em;
+      }
+
+      .ddoc .code_sample {
+        background-clip: padding-box;
+        margin: 1px 0;
+        text-align: left;
+      }
+
+      .ddoc .code_sample {
+        display: block;
+        font-size: 1.4em;
+        margin-left: 21px;
+      }
+
+      .ddoc ol .code_sample {
+        font-size: 1em;
+      }
+
+      .ddoc .code_lines {
+        counter-reset: li;
+        line-height: 1.6em;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ddoc .code_listing .code_sample div {
+        margin-left: 13px;
+        width: 93%;
+      }
+
+      .ddoc .code_listing .code_sample div .code_lines li {
+        list-style-type: none;
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .ddoc .code_sample div .code_lines li::before {
+        margin-left: -33px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+10)::before {
+        margin-left: -39px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+100)::before {
+        margin-left: -46px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample .code_lines .code {
+        color: #000;
+      }
+
+      .ddoc div.dlang {
+        margin: 10px 0 21px;
+        padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+          margin: 10px 0 21px;
+          padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+        border-left: 5px solid rgba(0, 155, 51, 0.2);
+      }
+
+      .ddoc .code_lines li::before {
+        color: rgba(128, 128, 128, 1);
+        content: counter(li, decimal);
+        counter-increment: li;
+        font-family: Menlo,monospace;
+        font-size: 0.9em;
+        margin-right: 16px;
+      }
+
+      .ddoc .code_lines li {
+        padding-left: 0;
+        white-space: pre-wrap;
+      }
+
+      .ddoc .code_lines pre {
+        display: contents;
+      }
+
+      .ddoc .code_lines li:only-of-type::before {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:only-of-type {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:nth-child(n+10) {
+        text-indent: -17px;
+      }
+
+      .ddoc .code_lines li:nth-child(n+10)::before {
+        margin-right: 12px;
+      }
+
+      .ddoc .graybox {
+        border: 1px solid rgba(233, 233, 233, 1);
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: hide;
+        margin: 20px 0 36px;
+        text-align: left;
+      }
+
+      .ddoc .graybox p {
+        margin: 0;
+        min-width: 50px;
+      }
+
+      .ddoc th {
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: bottom;
+      }
+
+      .ddoc td {
+        border: 1px solid rgba(233, 233, 233, 1);
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: middle;
+      }
+
+      .punctuation {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .comment {
+        color: rgba(0, 131, 18, 1);
+      }
+
+      .operator {
+        color: #000;
+      }
+
+      .keyword {
+        color: rgba(170, 13, 145, 1);
+      }
+
+      .keyword_type {
+        color: rgba(170, 51, 145, 1);
+      }
+
+      .string_literal {
+        color: rgba(196, 26, 22, 1);
+      }
+
+      .ddoc_psuper_symbol {
+        color: rgba(92, 38, 153, 1);
+      }
+
+      .param {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .psymbol {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .ddoc_member_header .ddoc_header_anchor .code {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body id="ddoc_main" class="ddoc dlang">
+    <div class="content_wrapper">
+      <article class="module">
+        <h1 class="module_name">canvasity</h1>
+        <section id="module_content"><section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    D Port of canvas_ity.h
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Modifications:</span>
+
+<ul><li>some SIMD</li>
+<li>buffer is passed and external instead of owned, it can be any
+  format</li>
+<li>removal of text, gradients, patterns, TODO add them back</li>
+<li>integration with <code class="code">gamut</code> and <code class="code">colors</code></li>
+</ul>
+  </p>
+</div>
+
+</section>
+<section class="section ddoc_module_members_section">
+  <div class="ddoc_module_members">
+    <ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp" id="CanvasCompositeOp"><code class="code">CanvasCompositeOp</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp"></span>enum <code class="code">CanvasCompositeOp</code>: int;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Compositing operation for blending new drawing and old pixels.
+    The sourceCopy, sourceIn, sourceOut, destinationAtop, and
+    destinationIn operations may clear parts of the canvas outside
+    the new drawing but within the clip region. Defaults to:
+    <code class="code">sourceOver</code>.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.sourceIn" id="CanvasCompositeOp.sourceIn"><code class="code">sourceIn</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.sourceIn"></span><code class="code">sourceIn</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Replace old with new where old was opaque.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.sourceCopy" id="CanvasCompositeOp.sourceCopy"><code class="code">sourceCopy</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.sourceCopy"></span><code class="code">sourceCopy</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Replace old with new.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.sourceOut" id="CanvasCompositeOp.sourceOut"><code class="code">sourceOut</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.sourceOut"></span><code class="code">sourceOut</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Replace old with new where old is transparent.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.destinationIn" id="CanvasCompositeOp.destinationIn"><code class="code">destinationIn</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.destinationIn"></span><code class="code">destinationIn</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Clear old where new is transparent.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.destinationAtop" id="CanvasCompositeOp.destinationAtop"><code class="code">destinationAtop</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.destinationAtop"></span><code class="code">destinationAtop</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Show old over new where new is opaque.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.add" id="CanvasCompositeOp.add"><code class="code">add</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.add"></span><code class="code">add</code><br>
+<span class="ddoc_anchor" id="CanvasCompositeOp.lighter"></span><code class="code">lighter</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Sum old with new.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.destinationOver" id="CanvasCompositeOp.destinationOver"><code class="code">destinationOver</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.destinationOver"></span><code class="code">destinationOver</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Show new under old.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.destinationOut" id="CanvasCompositeOp.destinationOut"><code class="code">destinationOut</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.destinationOut"></span><code class="code">destinationOut</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Clear old where new is opaque.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.sourceAtop" id="CanvasCompositeOp.sourceAtop"><code class="code">sourceAtop</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.sourceAtop"></span><code class="code">sourceAtop</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Show new over old where old is opaque.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.sourceOver" id="CanvasCompositeOp.sourceOver"><code class="code">sourceOver</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.sourceOver"></span><code class="code">sourceOver</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Show new over old.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasCompositeOp.exclusiveOr" id="CanvasCompositeOp.exclusiveOr"><code class="code">exclusiveOr</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasCompositeOp.exclusiveOr"></span><code class="code">exclusiveOr</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Show new and old, clear where both are opaque.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineCap" id="CanvasLineCap"><code class="code">CanvasLineCap</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineCap"></span>enum <code class="code">CanvasLineCap</code>: int;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    The shape used to draw the end points of lines.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The actual shape may be affected by the current transform at the
+    time of drawing. Only affects stroking.
+<br><br>
+    Defaults to <code class="code">LineCap.butt</code>.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineCap.butt" id="CanvasLineCap.butt"><code class="code">butt</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineCap.butt"></span><code class="code">butt</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Use a flat cap flush to the end of the line.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineCap.square" id="CanvasLineCap.square"><code class="code">square</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineCap.square"></span><code class="code">square</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Use a half-<code class="code">square</code> cap that extends past the end of the
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineCap.circle" id="CanvasLineCap.circle"><code class="code">circle</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineCap.circle"></span><code class="code">circle</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    line.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Use a semicircular cap.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineJoin" id="CanvasLineJoin"><code class="code">CanvasLineJoin</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineJoin"></span>enum <code class="code">CanvasLineJoin</code>: int;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    The shape used to join two line segments where they meet.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The actual shape may be affected by the current transform at the
+    time of drawing. Only affects stroking.
+<br><br>
+    Defaults to <code class="code">LineJoin.miter</code>.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineJoin.miter" id="CanvasLineJoin.miter"><code class="code">miter</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineJoin.miter"></span><code class="code">miter</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Continue the ends until they intersect, if within <code class="code">miter</code>
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineJoin.bevel" id="CanvasLineJoin.bevel"><code class="code">bevel</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineJoin.bevel"></span><code class="code">bevel</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    limit.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Connect the ends with a flat triangle.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasLineJoin.round" id="CanvasLineJoin.round"><code class="code">round</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasLineJoin.round"></span><code class="code">round</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Join the ends with a circular arc.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasGammaCurve" id="CanvasGammaCurve"><code class="code">CanvasGammaCurve</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasGammaCurve"></span>enum <code class="code">CanvasGammaCurve</code>: int;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    The gamma space where colors are manipulated.
+    Proper sRGB conversion to linear and back is very expensive.
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+alpha itself is always kept as is and considered linear.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasGammaCurve.none" id="CanvasGammaCurve.none"><code class="code">none</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasGammaCurve.none"></span><code class="code">none</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Colors are blended in storage space
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasGammaCurve.pow2" id="CanvasGammaCurve.pow2"><code class="code">pow2</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasGammaCurve.pow2"></span><code class="code">pow2</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    without gamma-conversion beyond going float(fastest).
+It can look way worse than the other modes.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Colors are squared/sqrt to fake linear space.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasGammaCurve.linear" id="CanvasGammaCurve.linear"><code class="code">linear</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasGammaCurve.linear"></span><code class="code">linear</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    without accounting for sRGB <code class="code">linear</code> part.
+Essentially nearly the quality of <code class="code">linear</code> at much
+cheaper cost.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Colors converted to <code class="code">linear</code> space before blend (slow).
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasOptions" id="CanvasOptions"><code class="code">CanvasOptions</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasOptions"></span>struct <code class="code">CanvasOptions</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Options you can give while initializing a <code class="code">Canvasity</code>.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasOptions.gammaCurve" id="CanvasOptions.gammaCurve"><code class="code">gammaCurve</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasOptions.gammaCurve"></span>CanvasGammaCurve <code class="code">gammaCurve</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Default:</span>
+medium quality.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity" id="Canvasity"><code class="code">Canvasity</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity"></span>struct <code class="code">Canvasity</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Main canvas API.
+    Given an image buffer, a <code class="code"><code class="code">Canvasity</code></code> can draw 2D shapes without
+    any GPU usage.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.this" id="Canvasity.this"><code class="code">this</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.this"></span>nothrow @nogc this(ref Image <code class="code">buffer</code>, CanvasOptions <code class="code">options</code> = CanvasOptions.init);
+<br>
+<span class="ddoc_anchor" id="Canvasity.initialize"></span>nothrow @nogc void <code class="code">initialize</code>(ref Image <code class="code">buffer</code>, CanvasOptions <code class="code">options</code> = CanvasOptions.init);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Construct a new canvas. Reset to default state.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The <code class="code">buffer</code> is provided externally and will NOT be cleared to
+        transparent black. It MUST outlive the Canvasity.
+<br><br>
+        Initially, the visible coordinates will run from (0,0) in the
+        upper-left to (width, height) in the lower-right and with
+        pixel centers offset (0.5, 0.5) from the integer grid, though
+        all this may be changed by transforms.
+<br><br>
+        The sizes must be between 1 and 32768, inclusive.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+internal allocated memory is reused if you keep
+        reusing the same instance with <code class="code">.<code class="code">initialize</code></code>.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Warning:</span>
+this does NOT clear the image. If you reuse the same
+         Canvasity struct, all allocations will be reused eventually,
+         leading to zero allocation per frame.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.scale" id="Canvasity.scale"><code class="code">scale</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.scale"></span>nothrow @nogc void <code class="code">scale</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Scale the current transform.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Negative scaling factors will flip or mirror it in that
+        direction. The scaling factors must be non-zero.
+        If either is zero, most drawing operations will do nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal scaling factor.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical scaling factor.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.rotate" id="Canvasity.rotate"><code class="code">rotate</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.rotate"></span>nothrow @nogc void <code class="code">rotate</code>(float <code class="code">angle</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Rotate the current transform.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The rotation is applied clockwise in a direction around the
+        origin.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+To <code class="code">rotate</code> around another point, first translate that
+              point to the origin, then do the rotation, and then
+              translate back.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">angle</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Clockwise <code class="code">angle</code> in radians.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.translate" id="Canvasity.translate"><code class="code">translate</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.translate"></span>nothrow @nogc void <code class="code">translate</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Translate the current transform.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    By default, positive <code class="code">x</code> values shift that many pixels to the
+        right, while negative <code class="code">y</code> values shift left, positive <code class="code">y</code> values
+        shift up, and negative <code class="code">y</code> values shift down.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Amount to shift horizontally.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Amount to shift vertically.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.transform" id="Canvasity.transform"><code class="code">transform</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.transform"></span>nothrow @nogc void <code class="code">transform</code>(float <code class="code">a</code>, float <code class="code">b</code>, float <code class="code">c</code>, float <code class="code">d</code>, float <code class="code">e</code>, float <code class="code">f</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add an arbitrary <code class="code">transform</code> to the current <code class="code">transform</code>.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    This takes six values for the upper two rows of <code class="code">a</code> homogenous
+        3x3 matrix (i.<code class="code">e</code>., {{<code class="code">a</code>, <code class="code">c</code>, <code class="code">e</code>}, {<code class="code">b</code>, <code class="code">d</code>, <code class="code">f</code>}, {0.0, 0.0, 1.0}})
+        describing an arbitrary affine <code class="code">transform</code> and appends it to
+        the current <code class="code">transform</code>. The values can represent any affine
+        <code class="code">transform</code> such as scaling,  rotation, translation, or skew,
+        or any composition of affine transforms.
+        The matrix must be invertible.  If it is not, most drawing
+        operations will do nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">a</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal scaling factor (m11).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">b</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical skewing (m12).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">c</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal skewing (m21).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">d</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      vertical scaling factor (m22).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">e</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal translation (m31).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">f</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical translation (m32).
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.setTransform" id="Canvasity.setTransform"><code class="code">setTransform</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.setTransform"></span>nothrow @nogc void <code class="code">setTransform</code>(float <code class="code">a</code>, float <code class="code">b</code>, float <code class="code">c</code>, float <code class="code">d</code>, float <code class="code">e</code>, float <code class="code">f</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Replace the current transform.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    This takes six values for the upper two rows of <code class="code">a</code> homogenous
+        3x3 matrix (i.<code class="code">e</code>., {{<code class="code">a</code>, <code class="code">c</code>, <code class="code">e</code>}, {<code class="code">b</code>, <code class="code">d</code>, <code class="code">f</code>}, {0.0, 0.0, 1.0}})
+        describing an arbitrary affine transform and replaces the
+        current transform with it. The values can represent any affine
+        transform such as scaling, rotation, translation, or skew, or
+        any composition of affine transforms.
+<br><br>
+        The matrix must be invertible. <code class="code">f</code> it is not, most drawing
+        operations will do nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+to reset the current transform back to the default, use
+              1.0, 0.0, 0.0, 1.0, 0.0, 0.0.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">a</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal scaling factor (m11).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">b</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical skewing (m12).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">c</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal skewing (m21).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">d</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical scaling factor (m22).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">e</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal translation (m31).
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">f</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical translation (m32).
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.globalCompositeOperation" id="Canvasity.globalCompositeOperation"><code class="code">globalCompositeOperation</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.globalCompositeOperation"></span>nothrow @nogc void <code class="code">globalCompositeOperation</code>(CanvasCompositeOp <code class="code">op</code>);
+<br>
+nothrow @nogc void <code class="code">globalCompositeOperation</code>(const(char)[] <code class="code">compositeOp</code>);
+<br>
+nothrow @nogc CanvasCompositeOp <code class="code">globalCompositeOperation</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set/get the compositing operation for blending new drawing
+        and old pixels.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.globalAlpha" id="Canvasity.globalAlpha"><code class="code">globalAlpha</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.globalAlpha"></span>nothrow @nogc void <code class="code">globalAlpha</code>(float <code class="code">alpha</code>);
+<br>
+nothrow @nogc float <code class="code">globalAlpha</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set/get the opacity applied to all drawing operations.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    If an operation already uses a transparent color, this can
+        make it yet more transparent.
+<br><br>
+        <code class="code"><code class="code">alpha</code></code> must be in the range 0.0 for fully transparent
+                                  to 1.0 for fully opaque.
+<br><br>
+        Defaults to 1.0 (opaque).
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.shadowColor" id="Canvasity.shadowColor"><code class="code">shadowColor</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.shadowColor"></span>nothrow @nogc void <code class="code">shadowColor</code>(Color <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">shadowColor</code>(const(char)[] <code class="code">cssColor</code>);
+<br>
+nothrow @nogc void <code class="code">shadowColor</code>(RGBAf <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">shadowColor</code>(RGBA8 <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">shadowColor</code>(RGBA16 <code class="code">col</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set the color and opacity of the shadow.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Shadows will only be drawn if the shadow color has any
+        opacity and the shadow is either offset or blurred.
+<br><br>
+        Defaults to transparent black.
+<br><br>
+        Can give:
+<ul><li>a <code class="code">Color</code>, such as one obtained by the <code class="code">colors</code> package</li>
+<li>a CSS string,</li>
+<li>a <code class="code">RGBA8</code> 8-bit sRGB ubyte quadruplet</li>
+<li>a <code class="code">RGBA16</code> 16-bit sRGB ubyte quadruplet</li>
+<li>a <code class="code">RGBAf</code> 32-bit sRGB ubyte quadruplet</li>
+</ul>
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.shadowBlur" id="Canvasity.shadowBlur"><code class="code">shadowBlur</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.shadowBlur"></span>nothrow @nogc void <code class="code">shadowBlur</code>(float <code class="code">level</code>);
+<br>
+nothrow @nogc float <code class="code">shadowBlur</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set/get the <code class="code">level</code> of gaussian blurring on the shadow.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Zero produces no blur, while larger values will blur the
+        shadow more strongly. This is not affected by the current
+        transform. Must be non-negative. If it is not, this does
+        nothing.
+<br><br>
+        Defaults to 0.0 (no blur).
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.shadowOffsetX" id="Canvasity.shadowOffsetX"><code class="code">shadowOffsetX</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.shadowOffsetX"></span>nothrow @nogc void <code class="code">shadowOffsetX</code>(float <code class="code">offsetX</code>);
+<br>
+nothrow @nogc float <code class="code">shadowOffsetX</code>();
+<br>
+<span class="ddoc_anchor" id="Canvasity.shadowOffsetY"></span>nothrow @nogc void <code class="code">shadowOffsetY</code>(float <code class="code">offsetY</code>);
+<br>
+nothrow @nogc float <code class="code">shadowOffsetY</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set/get offset of the shadow in pixels.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Negative shifts left/top, positive shifts right/bottom.
+        Not affected by the current transform.
+        Defaults to 0 (no offset).
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.lineWidth" id="Canvasity.lineWidth"><code class="code">lineWidth</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.lineWidth"></span>nothrow @nogc void <code class="code">lineWidth</code>(float <code class="code">width</code>);
+<br>
+nothrow @nogc float <code class="code">lineWidth</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set/get the <code class="code">width</code> of the lines when stroking.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Initially this is measured in pixels, though the current
+        transform at the time of drawing can affect this.
+        Must be positive. If it is not, this does nothing.
+        Defaults to 1.0.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.lineCap" id="Canvasity.lineCap"><code class="code">lineCap</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.lineCap"></span>nothrow @nogc void <code class="code">lineCap</code>(CanvasLineCap <code class="code">capStyle</code>);
+<br>
+nothrow @nogc void <code class="code">lineCap</code>(const(char)[] <code class="code">capStyle</code>);
+<br>
+nothrow @nogc CanvasLineCap <code class="code">lineCap</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.lineJoin" id="Canvasity.lineJoin"><code class="code">lineJoin</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.lineJoin"></span>nothrow @nogc void <code class="code">lineJoin</code>(CanvasLineJoin <code class="code">joinStyle</code>);
+<br>
+nothrow @nogc void <code class="code">lineJoin</code>(const(char)[] <code class="code">joinStyle</code>);
+<br>
+nothrow @nogc CanvasLineJoin <code class="code">lineJoin</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.miterLimit" id="Canvasity.miterLimit"><code class="code">miterLimit</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.miterLimit"></span>nothrow @nogc void <code class="code">miterLimit</code>(float <code class="code">limit</code>);
+<br>
+nothrow @nogc float <code class="code">miterLimit</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set/get the <code class="code">limit</code> on maximum pointiness allowed for miter
+        joins.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    If the distance from the point where the lines intersect to
+        the point where the outside edges of the join intersect
+        exceeds this ratio relative to the line width, then a bevel
+        join will be used instead, and the miter will be lopped off.
+        Larger values allow pointier miters.  Only affects stroking
+        and only when the line join style is miter. Must be positive.
+        If it is not, this does nothing.
+<br><br>
+        Defaults to 10.0.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.setLineDash" id="Canvasity.setLineDash"><code class="code">setLineDash</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.setLineDash"></span>nothrow @nogc void <code class="code">setLineDash</code>(const(float)* <code class="code">segments</code>, int <code class="code">count</code>);
+<br>
+nothrow @nogc void <code class="code">setLineDash</code>(const(float)[] <code class="code">segments</code>);
+<br>
+nothrow @nogc void <code class="code">setLineDash</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set or clear the line dash pattern.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Takes an array with entries alternately giving the lengths of
+        dash and gap <code class="code">segments</code>. All must be non-negative; if any are
+        not, this does nothing. These will be used to draw with dashed
+        lines when stroking, with each subpath starting at the length
+        along the dash pattern indicated by the line dash offset.
+        Initially these lengths are measured in pixels, though the
+        current transform at the time of drawing can affect this.
+        The <code class="code">count</code> must be non-negative. If it is odd, the array will
+        be appended to itself to make an even <code class="code">count</code>. If it is zero,
+        or the pointer is <code class="code">null</code>, the dash pattern will be cleared and
+        strokes will be drawn as solid lines. The array is copied and
+        it is safe to change or destroy it after this call.
+        Defaults to solid lines.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.lineDashOffset" id="Canvasity.lineDashOffset"><code class="code">lineDashOffset</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.lineDashOffset"></span>nothrow @nogc void <code class="code">lineDashOffset</code>(float <code class="code">offset</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Offset where each subpath starts the dash pattern.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Changing this shifts the location of the dashes along the path
+        and animating it will produce a marching ants effect. Only
+        affects stroking and only when a dash pattern is set. May be
+        negative or exceed the length of the dash pattern, in which
+        case it will wrap.
+        Defaults to 0.0.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.fillStyle" id="Canvasity.fillStyle"><code class="code">fillStyle</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.fillStyle"></span>nothrow @nogc void <code class="code">fillStyle</code>(Color <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(const(char)[] <code class="code">cssColor</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(RGBAf <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(RGBA8 <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(RGBA16 <code class="code">col</code>);
+<br>
+void <code class="code">fillStyle</code>(T)(T <code class="code">col</code>) if (isLikeRGBA8!T);
+<br>
+<span class="ddoc_anchor" id="Canvasity.strokeStyle"></span>nothrow @nogc void <code class="code">strokeStyle</code>(Color <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">strokeStyle</code>(const(char)[] <code class="code">cssColor</code>);
+<br>
+nothrow @nogc void <code class="code">strokeStyle</code>(RGBAf <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">strokeStyle</code>(RGBA8 <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">strokeStyle</code>(RGBA16 <code class="code">col</code>);
+<br>
+void <code class="code">strokeStyle</code>(T)(T <code class="code">rgba</code>) if (isLikeRGBA8!T);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set filling or stroking to use a constant color and opacity.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Can give:
+<ul><li>a <code class="code">Color</code>, such as one obtained by the <code class="code">colors</code> package</li>
+<li>a CSS string,</li>
+<li>a <code class="code">RGBA8</code> 8-bit sRGB ubyte quadruplet</li>
+<li>a <code class="code">RGBA16</code> 16-bit sRGB ubyte quadruplet</li>
+<li>a <code class="code">RGBAf</code> 32-bit sRGB ubyte quadruplet</li>
+</ul>
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.beginPath" id="Canvasity.beginPath"><code class="code">beginPath</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.beginPath"></span>nothrow @nogc void <code class="code">beginPath</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Reset the current path.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The current path and all subpaths will be cleared after this,
+        and a new path can be built.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.moveTo" id="Canvasity.moveTo"><code class="code">moveTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.moveTo"></span>nothrow @nogc void <code class="code">moveTo</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+void <code class="code">moveTo</code>(T)(T <code class="code">v</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Create a new subpath.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The given point will become the first point of the new subpath
+        and is subject to the current transform at the time this is
+        called.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.closePath" id="Canvasity.closePath"><code class="code">closePath</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.closePath"></span>nothrow @nogc void <code class="code">closePath</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Close the current subpath.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Adds a straight line from the end of the current subpath back
+        to its first point and marks the subpath as closed so that
+        this line will join with the beginning of the path at this
+        point. A new, empty subpath will be started beginning with the
+        same first point. If the current path is empty, this does
+        nothing.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.lineTo" id="Canvasity.lineTo"><code class="code">lineTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.lineTo"></span>nothrow @nogc void <code class="code">lineTo</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+void <code class="code">lineTo</code>(T)(T <code class="code">v</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extend the current subpath with a straight line.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The line will go from the current end point (if the current
+        path is not empty) to the given point, which will become the
+        new end point. Its position is affected by the current
+        transform at the time that this is called. If the current path
+        was empty, this is equivalent to just a move.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.quadraticCurveYo" id="Canvasity.quadraticCurveYo"><code class="code">quadraticCurveYo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.quadraticCurveYo"></span>nothrow @nogc void <code class="code">quadraticCurveYo</code>(float <code class="code">cx</code>, float <code class="code">cy</code>, float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+void <code class="code">quadraticCurveYo</code>(T)(T <code class="code">c</code>, T <code class="code">p</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extend the current subpath with a quadratic Bezier curve.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The curve will go from the current end point (or the control
+        point if the current path is empty) to the given point, which
+        will become the new end point. The curve will be tangent
+        toward the control point at both ends. The current transform
+        at the time that this is called will affect both points passed
+        in.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Tip:</span>
+to make multiple curves join smoothly, ensure that each
+             new end point is on a line between the adjacent control
+             points.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.bezierCurveTo" id="Canvasity.bezierCurveTo"><code class="code">bezierCurveTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.bezierCurveTo"></span>nothrow @nogc void <code class="code">bezierCurveTo</code>(float <code class="code">c1_x</code>, float <code class="code">c1_y</code>, float <code class="code">c2_x</code>, float <code class="code">c2_y</code>, float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+void <code class="code">bezierCurveTo</code>(T)(T <code class="code">c1</code>, T <code class="code">c2</code>, T <code class="code">p</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extend the current subpath with a cubic Bezier curve.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The curve will go from the current end point (or the first
+        control point if the current path is empty) to the given
+        point, which will become the new end point. The curve will be
+        tangent toward the first control point at the beginning and
+        tangent toward the second control point at the end. The
+        current transform at the time that this is called will affect
+        all points passed in.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Tip:</span>
+to make multiple curves join smoothly, ensure that each
+             new end point is on a line between the adjacent control
+             points.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.arcTo" id="Canvasity.arcTo"><code class="code">arcTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.arcTo"></span>nothrow @nogc void <code class="code">arcTo</code>(float <code class="code">v_x</code>, float <code class="code">v_y</code>, float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">r</code>);
+<br>
+void <code class="code">arcTo</code>(T)(T <code class="code">v</code>, T <code class="code">p</code>, float <code class="code">r</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extend the current subpath with an arc tangent to two lines.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The arc is from the circle with the given radius tangent to
+        both the line from the current end point to the vertex, and to
+        the line from the vertex to the given point. A straight line
+        will be added from the current end point to the first tangent
+        point (unless the current path is empty), then the shortest
+        arc from the first to the second tangent points will be added.
+        The second tangent point will become the new end point.
+        If the radius is large, these tangent points may fall outside
+        the line segments. The current transform at the time that this
+        is called will affect the passed in points and the arc.
+        If the current path was empty, this is equivalent to a move.
+        If the arc would be degenerate, it is equivalent to a line to
+        the vertex point. The radius must be non-negative.
+        If it is not, or if the current transform is not invertible,
+        this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+To draw a polygon with rounded corners, call this once
+             for each vertex and pass the midpoint of the adjacent
+             edge as the second point; this works especially well for
+             rounded boxes.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.arc" id="Canvasity.arc"><code class="code">arc</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.arc"></span>nothrow @nogc void <code class="code">arc</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">radius</code>, float <code class="code">start_angle</code>, float <code class="code">end_angle</code>, bool <code class="code">counter_clockwise</code> = false);
+<br>
+void <code class="code">arc</code>(T)(T <code class="code">p</code>, float <code class="code">radius</code>, float <code class="code">start_angle</code>, float <code class="code">end_angle</code>, bool <code class="code">counter_clockwise</code> = false);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Extend the current subpath with an <code class="code">arc</code> between two angles.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The <code class="code">arc</code> is from the circle centered at the given point and
+        with the given <code class="code">radius</code>.  A straight line will be added from the
+        current end point to the starting point of the <code class="code">arc</code> (unless the
+        current path is empty), then the <code class="code">arc</code> along the circle from the
+        starting angle to the ending angle in the given direction will
+        be added.
+<br><br>
+        If they are more than two pi radians apart in the given
+        direction, the <code class="code">arc</code> will stop after one full circle. The point
+        at the ending angle will become the new end point of the path.
+        Initially, the angles are clockwise relative to the <code class="code">x</code>-axis.
+        The current transform at the time that this is called will
+        affect the passed in point, angles, and <code class="code">arc</code>.
+        The <code class="code">radius</code> must be non-negative else it does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.rect" id="Canvasity.rect"><code class="code">rect</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.rect"></span>nothrow @nogc void <code class="code">rect</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">width</code>, float <code class="code">height</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add a closed subpath in the shape of a rectangle.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The rectangle has one corner at the given point and then goes
+        in the direction along the <code class="code">width</code> before going in the direction
+        of the <code class="code">height</code> towards the opposite corner.  The current
+        transform at the time that this is called will affect the
+        given point and rectangle. The <code class="code">width</code> and/or the <code class="code">height</code> may be
+        negative or zero, and this can affect the winding direction.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of a rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of a rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">width</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Width of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">height</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Height of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.fill" id="Canvasity.fill"><code class="code">fill</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.fill"></span>nothrow @nogc void <code class="code">fill</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Draw the interior of the current path using the <code class="code">fill</code> style.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Interior pixels are determined by the non-zero winding rule,
+        with all open subpaths implicitly closed by a straight line
+        beforehand. If shadows have been enabled by setting the shadow
+        color with any opacity and either offsetting or blurring the
+        shadows, then the shadows of the filled areas will be drawn
+        first, followed by the filled areas themselves. Both will be
+        blended into the canvas according to the global alpha, the
+        global compositing operation, and the clip region. If the <code class="code">fill</code>
+        style is a gradient or a pattern, it will be affected by the
+        current transform. The current path is left unchanged by
+        filling; begin a new path to clear it. If the current
+        transform is not invertible, this does nothing.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.stroke" id="Canvasity.stroke"><code class="code">stroke</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.stroke"></span>nothrow @nogc void <code class="code">stroke</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Draw the edges of the current path using the <code class="code">stroke</code> style.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Edges of the path will be expanded into strokes according to
+        the current dash pattern, dash offset, line width, line join
+        style (and possibly miter limit), line cap, and transform.
+        If shadows have been enabled by setting the shadow color with
+        any opacity and either offsetting or blurring the shadows,
+        then the shadow will be drawn for the stroked lines first,
+        then the stroked lines themselves. Both will be blended into
+        the canvas according to the global alpha, the global
+        compositing operation, and the clip region. If the <code class="code">stroke</code>
+        style is a gradient or a pattern, it will be affected by the
+        current transform. The current path is left unchanged by
+        stroking; begin a new path to clear it. If the current
+        transform is not invertible, this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+to draw with a calligraphy-like angled brush effect, add
+              a non-uniform scale transform just before stroking.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.clip" id="Canvasity.clip"><code class="code">clip</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.clip"></span>nothrow @nogc void <code class="code">clip</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Restrict the <code class="code">clip</code> region by the current path.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Intersects the current <code class="code">clip</code> region with the interior of the
+        current path (the region that would be filled), and replaces
+        the current <code class="code">clip</code> region with this intersection.  Subsequent
+        calls to <code class="code">clip</code> can only reduce this further. When filling or
+        stroking, only pixels within the current <code class="code">clip</code> region will
+        change. The current path is left unchanged by updating the
+        <code class="code">clip</code> region; begin a new path to clear it.  Defaults to the
+        entire canvas.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Tip:</span>
+to be able to reset the current <code class="code">clip</code> region, save the
+            canvas state first before clipping then restore the state
+            to reset it.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.isPointInPath" id="Canvasity.isPointInPath"><code class="code">isPointInPath</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.isPointInPath"></span>nothrow @nogc bool <code class="code">isPointInPath</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+bool <code class="code">isPointInPath</code>(T)(T <code class="code">p</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Tests whether a point is in or on the current path.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    Interior areas are determined by the non-zero winding rule,
+        with all open subpaths treated as implicitly closed by a
+        straight line beforehand. Points exactly on the boundary are
+        also considered inside. The point to test is interpreted
+        without being affected by the current transform, nor is the
+        clip region considered. The current path is left unchanged by
+        this test.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of the point to test.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of the point to test.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="ddoc_returns">
+  <h4>Return Value</h4>
+  <p class="para">
+    <code class="code">true</code> if the point is in or on the current path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.clearRect" id="Canvasity.clearRect"><code class="code">clearRect</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.clearRect"></span>nothrow @nogc void <code class="code">clearRect</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">width</code>, float <code class="code">height</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Clear a rectangular area back to transparent black.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The clip region may limit the area cleared. The current path
+        is not affected by this clearing. The current transform at the
+        time that this is called will affect the given point and
+        rectangle. The <code class="code">width</code> and/or the <code class="code">height</code> may be negative or
+        zero. If either is zero, or the current transform is not
+        invertible, this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">width</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Width of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">height</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Height of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.fillRect" id="Canvasity.fillRect"><code class="code">fillRect</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.fillRect"></span>nothrow @nogc void <code class="code">fillRect</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">w</code>, float <code class="code">h</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fill a rectangular area.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    This behaves as though the current path were reset to a single
+        rectangle and then filled as usual. However, the current path
+        is not actually changed. The current transform at the time
+        that this is called will affect the given point and rectangle.
+        The width and/or the height may be negative but not zero.
+        If either is zero, or the current transform is not invertible,
+        this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of a rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of a rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">w</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Width of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">h</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Height of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.strokeRect" id="Canvasity.strokeRect"><code class="code">strokeRect</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.strokeRect"></span>nothrow @nogc void <code class="code">strokeRect</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">w</code>, float <code class="code">h</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Stroke a rectangular area.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    This behaves as though the current path were reset to a single
+        rectangle and then stroked as usual.  However, the current
+        path is not actually changed. The current transform at the
+        time that this is called will affect the given point and
+        rectangle. The width and/or the height may be negative or
+        zero. If both are zero, or the current transform is not
+        invertible, this does nothing. If only one is zero, this
+        behaves as though it strokes a single horizontal or vertical
+        line.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of a rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of a rectangle corner.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">w</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Width of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">h</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Height of the rectangle.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.setFont" id="Canvasity.setFont"><code class="code">setFont</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.setFont"></span>nothrow @nogc bool <code class="code">setFont</code>(const(ubyte)* <code class="code">font</code>, int <code class="code">bytes</code>, float <code class="code">size</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set the <code class="code">font</code> to use for text drawing.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The <code class="code">font</code> must be a TrueType <code class="code">font</code> (TTF) file which has been
+        loaded or mapped into memory.  Following some basic
+        validation, the relevant sections of the <code class="code">font</code> file contents
+        are copied, and it is safe to change or destroy after this
+        call. As an optimization, calling this with either a <code class="code">null</code>
+        pointer or zero for the number of <code class="code">bytes</code> will allow for
+        changing the <code class="code">size</code> of the previous <code class="code">font</code> without recopying from
+        the file.  Note that the <code class="code">font</code> parsing is not meant to be
+        secure; only use this with trusted TTF files!
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">const(ubyte)* <code class="code">font</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Contents of a TrueType <code class="code">font</code> (TTF) file.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">int <code class="code">bytes</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Number of <code class="code">bytes</code> in the <code class="code">font</code> file.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">size</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Size in pixels per em to draw at.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="ddoc_returns">
+  <h4>Return Value</h4>
+  <p class="para">
+    <code class="code">true</code> if the <code class="code">font</code> was set successfully.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.fillText" id="Canvasity.fillText"><code class="code">fillText</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.fillText"></span>nothrow @nogc void <code class="code">fillText</code>(const(char)* <code class="code">text</code>, float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">maxWidth</code> = 1e+30F);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Draw a line of <code class="code">text</code> by filling its outline.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    This behaves as though the current path were reset to the
+        outline of the given <code class="code">text</code> in the current font and size,
+        positioned relative to the given anchor point according to the
+        current alignment and baseline, and then filled as usual.
+        However, the current path is not actually changed. The current
+        transform at the time that this is called will affect the
+        given anchor point and the <code class="code">text</code> outline. However, the
+        comparison to the maximum width in pixels and the condensing
+        if needed is done before applying the current transform.
+        The maximum width (if given) must be positive.
+        If it is not, or the <code class="code">text</code> pointer is <code class="code">null</code>, or the font has not
+        been set yet, or the last setting of it was unsuccessful, or
+        the current transform is not invertible, this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">const(char)* <code class="code">text</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Null-terminated UTF-8 string of <code class="code">text</code> to fill.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of the anchor point.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of the anchor point.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">maxWidth</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal width to condense wider <code class="code">text</code> to.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.stroke_text" id="Canvasity.stroke_text"><code class="code">stroke_text</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.stroke_text"></span>nothrow @nogc void <code class="code">stroke_text</code>(const(char)* <code class="code">text</code>, float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">maxWidth</code> = 1e+30F);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Draw a line of <code class="code">text</code> by stroking its outline.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    This behaves as though the current path were reset to the
+        outline of the given <code class="code">text</code> in the current font and size,
+        positioned relative to the given anchor point according to the
+        current alignment and baseline, and then stroked as usual.
+        However, the current path is not actually changed. The current
+        transform at the time that this is called will affect the
+        given anchor point and the <code class="code">text</code> outline.
+        However, the comparison to the maximum width in pixels and the
+        condensing if needed is done before applying the current
+        transform. The maximum width (if given) must be positive.
+        If it is not, or the <code class="code">text</code> pointer is <code class="code">null</code>, or the font has not
+        been set yet, or the last setting of it was unsuccessful, or
+        the current transform is not invertible, this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">const(char)* <code class="code">text</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Null-terminated UTF-8 string to stroke.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate of the anchor point.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate of the anchor point.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">maxWidth</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal width to condense wider <code class="code">text</code> to.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.measure_text" id="Canvasity.measure_text"><code class="code">measure_text</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.measure_text"></span>nothrow @nogc float <code class="code">measure_text</code>(const(char)* <code class="code">text</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Measure the width in pixels of a line of <code class="code">text</code>.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The measured width is the advance width, which includes the
+        side bearings of the first and last glyphs.  However, <code class="code">text</code> as
+        drawn may go outside this (e.g., due to glyphs that spill
+        beyond their nominal widths or stroked <code class="code">text</code> with wide lines).
+        Measurements ignore the current transform.  If the <code class="code">text</code>
+        pointer is <code class="code">null</code>, or the font has not been set yet, or the last
+        setting of it was unsuccessful, this returns zero.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">const(char)* <code class="code">text</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Null-terminated UTF-8 string to measure.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="ddoc_returns">
+  <h4>Return Value</h4>
+  <p class="para">
+    Width of the <code class="code">text</code> in pixels.
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">FUTURE:</span>
+more metrics, use a font API in another package
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.drawImage" id="Canvasity.drawImage"><code class="code">drawImage</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.drawImage"></span>nothrow @nogc void <code class="code">drawImage</code>(const(ubyte)* <code class="code">image</code>, int <code class="code">width</code>, int <code class="code">height</code>, int <code class="code">stride</code>, float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">to_width</code>, float <code class="code">to_height</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Draw an <code class="code">image</code> onto the canvas.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The position of the rectangle that the <code class="code">image</code> is drawn to is
+        affected by the current transform at the time of drawing, and
+        the <code class="code">image</code> will be resampled as needed (with the filtering
+        always clamping to the edges of the <code class="code">image</code>). The drawing is
+        also affected by the shadow, global alpha, global compositing
+        operation settings, and by the clip region. The current path
+        is not affected by drawing an <code class="code">image</code>. The <code class="code">image</code> data, which
+        should be in top to bottom rows of contiguous pixels from left
+        to right, is not retained and it is safe to change or destroy
+        it after this call. The <code class="code">width</code> and <code class="code">height</code> must both be positive
+        and the <code class="code">width</code> and/or the <code class="code">height</code> to scale to may be negative
+        but not zero. Otherwise, or if the <code class="code">image</code> pointer is <code class="code">null</code>, or
+        the current transform is not invertible, this does nothing.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+to use a small piece of a larger <code class="code">image</code>, reduce the <code class="code">width</code>
+              and <code class="code">height</code>, and offset the <code class="code">image</code> pointer while keeping
+              the <code class="code">stride</code>.
+
+
+  </p>
+</div>
+<div class="ddoc_params">
+  <h4>Parameters</h4>
+  <table cellspacing="0" cellpadding="5" border="0" class="graybox">
+    <tbody>
+      <tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">const(ubyte)* <code class="code">image</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Unpremultiplied sRGB RGBA8 <code class="code">image</code> data.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">int <code class="code">width</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Width of the <code class="code">image</code> in pixels.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">int <code class="code">height</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Height of the <code class="code">image</code> in pixels.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">int <code class="code">stride</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Bytes between the start of each <code class="code">image</code> row.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">x</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Horizontal coordinate to draw the corner at.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">y</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Vertical coordinate to draw the corner at.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">to_width</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Width to scale the <code class="code">image</code> to.
+    </p>
+  </div>
+</td>
+</tr>
+<tr class="ddoc_param_row">
+  <td scope="ddoc_param_id">
+  <code class="code">
+    <em class="term">float <code class="code">to_height</code></em>
+  </code>
+</td>
+<td>
+  <div class="ddoc_param_desc">
+    <p class="para">
+      Height to scale the <code class="code">image</code> to.
+    </p>
+  </div>
+</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.save" id="Canvasity.save"><code class="code">save</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.save"></span>nothrow @nogc void <code class="code">save</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Save the current state as though to a stack.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    The full state of the canvas is saved, except for the pixels
+        in the canvas buffer, and the current path.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">TODO:</span>
+this isn't strictly <code class="code">true</code>, as the pattern image isn't
+              saved.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Tip:</span>
+to be able to reset the current clip region, <code class="code">save</code> the
+             canvas state first before clipping then restore the state
+             to reset it.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvasity.restore" id="Canvasity.restore"><code class="code">restore</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvasity.restore"></span>nothrow @nogc void <code class="code">restore</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Restore a previously saved state as though from a stack.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li>
+</ul>
+  </div>
+</section>
+</section>
+      </article>
+    </div>
+  </body>
+</html>

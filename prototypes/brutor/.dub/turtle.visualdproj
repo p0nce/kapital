@@ -1,0 +1,117 @@
+<DProject>
+  <ProjectGuid>{39787F1F-0BEF-489A-A2BF-FBAB288C1875}</ProjectGuid>
+  <Config name="debug" platform="x64">
+    <symdebug>1</symdebug>
+    <optimize>0</optimize>
+    <useInline>0</useInline>
+    <release>0</release>
+    <lib>1</lib>
+    <exefile>lib/turtle.lib</exefile>
+    <imppath>"C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source" "C:\Users\guill\AppData\Local\dub\packages\bindbc-sdl\2.3.4\bindbc-sdl\source" "C:\Users\guill\AppData\Local\dub\packages\bindbc-common\1.0.5\bindbc-common\source" "C:\Users\guill\AppData\Local\dub\packages\bindbc-loader\1.1.5\bindbc-loader\source" "C:\Users\guill\AppData\Local\dub\packages\canvasity\1.0.7\canvasity\source" "C:\Users\guill\AppData\Local\dub\packages\colors\0.0.4\colors\source" "C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core" "C:\Users\guill\AppData\Local\dub\packages\intel-intrinsics\1.14.2\intel-intrinsics\source" "C:\Users\guill\AppData\Local\dub\packages\numem\1.6.5\numem\source" "C:\Users\guill\AppData\Local\dub\packages\gamut\3.3.5\gamut\source" "C:\Users\guill\AppData\Local\dub\packages\miniz\0.0.3\miniz\source" "C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\canvas" "C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\graphics" "C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\math" "C:\Users\guill\AppData\Local\dub\packages\stb_image_resize2-d\1.0.1\stb_image_resize2-d\source" "C:\Users\guill\AppData\Local\dub\packages\godot-math\0.0.5\godot-math\source" "C:\Users\guill\AppData\Local\dub\packages\text-mode\1.1.16\text-mode\source" </imppath>
+    <fileImppath>"C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\resources"</fileImppath>
+    <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+    <additionalOptions></additionalOptions>
+    <versionids>Have_turtle Have_bindbc_sdl Have_canvasity Have_colors Have_dplug_canvas Have_godot_math Have_text_mode Have_bindbc_common Have_bindbc_loader Have_dplug_core Have_gamut Have_intel_intrinsics Have_numem encodePNG decodeJPEG decodePNG decodeQOI decodeQOIX decodeSQZ Have_miniz Have_dplug_graphics Have_dplug_math Have_stb_image_resize2_d</versionids>
+    <useUnitTests>0</useUnitTests>
+    <betterC>0</betterC>
+    <obj>0</obj>
+    <link>0</link>
+    <subsystem>0</subsystem>
+    <multiobj>0</multiobj>
+    <singleFileCompilation>2</singleFileCompilation>
+    <mscoff>0</mscoff>    <oneobj>0</oneobj>
+    <trace>0</trace>
+    <quiet>0</quiet>
+    <verbose>0</verbose>
+    <vtls>0</vtls>
+    <cpu>0</cpu>
+    <isX86_64>1</isX86_64>
+    <isLinux>0</isLinux>
+    <isOSX>0</isOSX>
+    <isWindows>0</isWindows>
+    <isFreeBSD>0</isFreeBSD>
+    <isSolaris>0</isSolaris>
+    <isDragonFlyBSD>0</isDragonFlyBSD>
+    <scheduler>0</scheduler>
+    <useDeprecated>0</useDeprecated>
+    <useAssert>0</useAssert>
+    <useInvariants>0</useInvariants>
+    <useIn>0</useIn>
+    <useOut>0</useOut>
+    <useArrayBounds>0</useArrayBounds>
+    <noboundscheck>0</noboundscheck>
+    <useSwitchError>0</useSwitchError>
+    <preservePaths>1</preservePaths>
+    <warnings>1</warnings>
+    <infowarnings>0</infowarnings>
+    <checkProperty>0</checkProperty>
+    <genStackFrame>0</genStackFrame>
+    <pic>0</pic>
+    <cov>0</cov>
+    <nofloat>0</nofloat>
+    <Dversion>2</Dversion>
+    <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+    <compiler>2</compiler>
+    <otherDMD>0</otherDMD>
+    <outdir>lib/</outdir>
+    <objdir>obj/debug/turtle</objdir>
+    <objname />
+    <libname />
+    <doDocComments>0</doDocComments>
+    <docdir />
+    <docname />
+    <modules_ddoc />
+    <ddocfiles />
+    <doHdrGeneration>0</doHdrGeneration>
+    <hdrdir />
+    <hdrname />
+    <doXGeneration>1</doXGeneration>
+    <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+    <debuglevel>0</debuglevel>
+    <versionlevel>0</versionlevel>
+    <debugids />
+    <dump_source>0</dump_source>
+    <mapverbosity>0</mapverbosity>
+    <createImplib>0</createImplib>
+    <defaultlibname />
+    <debuglibname />
+    <moduleDepsFile />
+    <run>0</run>
+    <runargs />
+    <runCv2pdb>1</runCv2pdb>
+    <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+    <cv2pdbPre2043>0</cv2pdbPre2043>
+    <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+    <cv2pdbEnumType>0</cv2pdbEnumType>
+    <cv2pdbOptions />
+    <objfiles />
+    <linkswitches />
+    <libpaths />
+    <deffile />
+    <resfile />
+    <debugworkingdir>..\</debugworkingdir>
+    <preBuildCommand />
+    <postBuildCommand />
+    <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
+  </Config>
+  <Folder name="turtle">
+    <Folder name="turtle">
+    <Folder name="resources">
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\resources\Lato-Semibold-stripped.ttf" tool="None" />
+    </Folder>
+    <Folder name="source">
+    <Folder name="turtle">
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\game.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\graphics.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\keyboard.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\mouse.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\package.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\random.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\renderer.d" />
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source\turtle\ui.d" />
+    </Folder>
+    </Folder>
+      <File path="C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\dub.json" tool="None" />
+    </Folder>
+  </Folder>
+</DProject>

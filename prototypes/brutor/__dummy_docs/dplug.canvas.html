@@ -1,0 +1,2253 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>dplug.canvas</title>
+    <style type="text/css" media="screen">
+      html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+      blockquote, pre, a, abbr, address, cite, code, del, dfn, em, figure,
+      img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, u, i, dl,
+      dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+      tbody, tfoot, thead, tr, th, td {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        font-size: 100%;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      h1 { font-size: 200%; }
+      h2 { font-size: 160%; }
+      h3 { font-size: 120%; }
+      h4 { font-size: 100%; }
+      h5 { font-size: 80%; }
+      h6 { font-size: 80%; font-weight: normal; }
+
+      ul, ol {
+        margin: 1.4em 0;
+      }
+      ul ul, ol ol, ul ol, ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      ul, ol {
+        margin-left: 2.8em;
+      }
+
+      ol {
+        list-style: decimal;
+      }
+      ol ol {
+        list-style: lower-alpha;
+      }
+      ol ol ol {
+        list-style: lower-roman;
+      }
+      ol ol ol ol {
+        list-style: decimal;
+      }
+
+      blockquote {
+        margin: 0.1em;
+        margin-left: 1em;
+        border-left: 2px solid #cccccc;
+        padding-left: 0.7em;
+      }
+
+      .color_red { color: #dc322f; }
+      .color_blue { color: #268bd2; }
+      .color_green { color: #859901; }
+      .color_yellow { color: #b58901; }
+      .color_black { color: black; }
+      .color_white { color: white; }
+
+      .font_big {
+        font-size: 1.2em;
+      }
+
+      .ddoc_section_h {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19.5px;
+        margin-top: 11px;
+        display: block;
+      }
+
+      body.dlang .dlang {
+        display: inline-block;
+      }
+
+      body.dlang .declaration .dlang {
+          display: block;
+      }
+
+      body.dlang .ddoc_header_anchor a.dlang {
+        display: block;
+        color: rgba(0, 136, 204, 1);
+        text-decoration: none;
+      }
+
+      body.dlang .ddoc_header_anchor .code {
+        color: rgba(0, 136, 204, 1);
+      }
+
+      #ddoc_main .module {
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          overflow-x: hidden;
+          padding: 15px;
+      }
+
+      #ddoc_main .section .section {
+        margin-top: 0;
+      }
+
+      #ddoc_main .ddoc_module_members_section {
+          padding: 1px 0 0;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members section.intro {
+          background: #fff none repeat scroll 0 0;
+          list-style-type: none;
+          width: 100%;
+      }
+
+      #ddoc_main .ddoc_header_anchor {
+          font-size: 1.4em;
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .ddoc_header_anchor > .code {
+          display: inline-block;
+
+      }
+
+      #ddoc_main .ddoc_decl {
+        background-color: transparent;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0;
+        padding-left: 15px;
+      }
+
+      #ddoc_main .ddoc_decl .section, #ddoc_main .section.ddoc_sections {
+        background: white none repeat scroll 0 0;
+        margin: 0;
+        padding: 5px;
+        position: relative;
+        border-radius: 5px;
+      }
+
+      #ddoc_main .ddoc_decl .section h4:first-of-type, #ddoc_main .section.ddoc_sections h4:first-of-type {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration {
+          margin-top: 21px;
+      }
+
+      #ddoc_main .section .declaration .code {
+          color: rgba(0, 0, 0, 1);
+          margin-bottom: 15px;
+          padding-bottom: 6px;
+      }
+
+      #ddoc_main .declaration div .para {
+          margin-bottom: 0;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr td:first-of-type {
+        padding: 7px;
+        text-align: right;
+        vertical-align: top;
+        word-break: normal;
+        white-space: nowrap;
+      }
+
+      #ddoc_main .ddoc_params .graybox {
+        border: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox td {
+        border-color: rgba(214, 214, 214, 1);
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:first-child > td {
+        border-top: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr:last-child > td {
+        border-bottom: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:first-child {
+        border-left: 0 none;
+      }
+
+      #ddoc_main .ddoc_params .graybox tr > td:last-child {
+        border-right: 0 none;
+        width: 100%;
+      }
+
+      #ddoc_main em.term, #ddoc_main em.term .code {
+        color: rgba(65, 65, 65, 1);
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.5;
+      }
+
+      #ddoc_main .see-also {
+        cursor: pointer;
+        font-family: Menlo,monospace;
+      }
+
+      #ddoc_main .ddoc_decl .section > div:last-of-type {
+        margin-bottom: 15px;
+      }
+
+      #ddoc_main .ddoc_member, #ddoc_main .ddoc_module_members {
+          transition: transform 0.3s ease 0s;
+      }
+
+      #ddoc_main .code_sample {
+        background: inherit;
+      }
+
+      #ddoc_main .declaration .code-line {
+          display: block;
+          font: 1em Menlo,monospace;
+      }
+
+      #ddoc_main a[name] {
+        margin: -112px 0 0;
+        padding-top: 112px;
+      }
+
+      #ddoc_main .ddoc_decl td {
+        max-width: inherit;
+      }
+
+      #ddoc_main .declaration a {
+        color: inherit;
+      }
+
+      #ddoc_main .declaration a:hover {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: underline;
+      }
+
+      body.ddoc {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 1);
+        font-family: Helvetica,Arial,sans-serif;
+        font-size: 62.5%;
+        margin: 0;
+        border: 0;
+        left: 0;
+        top: 0;
+        padding: 0;
+      }
+
+      .ddoc a[name] {
+        display: block;
+        height: 0;
+        margin: -85px 0 0;
+        padding-top: 85px;
+        width: 0;
+      }
+
+      .ddoc .module {
+          border-color: transparent;
+          background-color: rgba(255, 255, 255, 1);
+          border-color: currentColor rgba(233, 233, 233, 1) rgba(233, 233, 233, 1);
+          border-image: none;
+          border-style: none solid solid;
+          border-width: 0 1px 1px;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.07);
+          display: block;
+          margin-left: 0;
+          min-height: calc(100% - 173px);
+          overflow: auto;
+          padding-bottom: 100px;
+      }
+
+      .ddoc .content_wrapper {
+          background-color: rgba(242, 242, 242, 1);
+          margin: 0 auto;
+          max-width: 980px;
+      }
+
+      .ddoc .section {
+        padding: 15px 25px 30px;
+      }
+
+      .ddoc .section .section {
+        margin: 30px 0 0;
+        padding: 0;
+      }
+
+      .ddoc .para {
+        color: rgba(65, 65, 65, 1);
+        font-size: 1.4em;
+        line-height: 145%;
+        margin-bottom: 15px;
+      }
+
+      .ddoc .ddoc_examples .para {
+        margin-bottom: 0;
+      }
+
+      .ddoc .module_name {
+          color: rgba(0, 0, 0, 1);
+          display: block;
+          font-family: Helvetica;
+          font-size: 2.8em;
+          font-weight: 100;
+          margin-bottom: 0;
+          padding: 15px 0;
+      }
+
+      .ddoc .module a {
+          color: rgba(0, 136, 204, 1);
+          text-decoration: none;
+      }
+
+      .ddoc .code {
+        color: rgba(128, 128, 128, 1);
+        font-family: Menlo,monospace;
+        font-size: 0.85em;
+        word-wrap: break-word;
+      }
+
+      .ddoc .code i {
+        font-style: normal;
+      }
+
+      .ddoc .code .code {
+        font-size: 1em;
+      }
+
+      .ddoc .code_sample {
+        background-clip: padding-box;
+        margin: 1px 0;
+        text-align: left;
+      }
+
+      .ddoc .code_sample {
+        display: block;
+        font-size: 1.4em;
+        margin-left: 21px;
+      }
+
+      .ddoc ol .code_sample {
+        font-size: 1em;
+      }
+
+      .ddoc .code_lines {
+        counter-reset: li;
+        line-height: 1.6em;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ddoc .code_listing .code_sample div {
+        margin-left: 13px;
+        width: 93%;
+      }
+
+      .ddoc .code_listing .code_sample div .code_lines li {
+        list-style-type: none;
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .ddoc .code_sample div .code_lines li::before {
+        margin-left: -33px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+10)::before {
+        margin-left: -39px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample div .code_lines li:nth-child(n+100)::before {
+        margin-left: -46px;
+        margin-right: 25px;
+      }
+
+      .ddoc .code_sample .code_lines .code {
+        color: #000;
+      }
+
+      .ddoc div.dlang {
+        margin: 10px 0 21px;
+        padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+          margin: 10px 0 21px;
+          padding: 4px 0 2px 10px;
+      }
+
+      .ddoc div.dlang {
+        border-left: 5px solid rgba(0, 155, 51, 0.2);
+      }
+
+      .ddoc .code_lines li::before {
+        color: rgba(128, 128, 128, 1);
+        content: counter(li, decimal);
+        counter-increment: li;
+        font-family: Menlo,monospace;
+        font-size: 0.9em;
+        margin-right: 16px;
+      }
+
+      .ddoc .code_lines li {
+        padding-left: 0;
+        white-space: pre-wrap;
+      }
+
+      .ddoc .code_lines pre {
+        display: contents;
+      }
+
+      .ddoc .code_lines li:only-of-type::before {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:only-of-type {
+        color: rgba(255, 255, 255, 1);
+        content: " ";
+      }
+
+      .ddoc .code_lines li:nth-child(n+10) {
+        text-indent: -17px;
+      }
+
+      .ddoc .code_lines li:nth-child(n+10)::before {
+        margin-right: 12px;
+      }
+
+      .ddoc .graybox {
+        border: 1px solid rgba(233, 233, 233, 1);
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: hide;
+        margin: 20px 0 36px;
+        text-align: left;
+      }
+
+      .ddoc .graybox p {
+        margin: 0;
+        min-width: 50px;
+      }
+
+      .ddoc th {
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: bottom;
+      }
+
+      .ddoc td {
+        border: 1px solid rgba(233, 233, 233, 1);
+        margin: 0;
+        max-width: 260px;
+        padding: 5px 10px 5px 10px;
+        vertical-align: middle;
+      }
+
+      .punctuation {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .comment {
+        color: rgba(0, 131, 18, 1);
+      }
+
+      .operator {
+        color: #000;
+      }
+
+      .keyword {
+        color: rgba(170, 13, 145, 1);
+      }
+
+      .keyword_type {
+        color: rgba(170, 51, 145, 1);
+      }
+
+      .string_literal {
+        color: rgba(196, 26, 22, 1);
+      }
+
+      .ddoc_psuper_symbol {
+        color: rgba(92, 38, 153, 1);
+      }
+
+      .param {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .psymbol {
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .ddoc_member_header .ddoc_header_anchor .code {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body id="ddoc_main" class="ddoc dlang">
+    <div class="content_wrapper">
+      <article class="module">
+        <h1 class="module_name">dplug.canvas</h1>
+        <section id="module_content"><section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fast 2D software renderer.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    See an example of a Canvas-enabled UIElement in:
+      <code class="code">dplug.flatwidgets.windowresizer.UIWindowResizer</code>
+<br><br>
+  This is a DPlug-specific rework of dg2d by Cerjones.
+  <a href="https://github.com/cerjones/dg2d">https://github.com/cerjones/dg2d</a>
+<ul><li>removal of truetype functionnality (since covered by dplug:graphics)</li>
+<li>nothrow @nogc</li>
+<li>rework of the Canvas itself, to resemble more the HTML5 Canvas API</li>
+<li>Blitter delegate made explicit with a userData pointer</li>
+<li>added html color parsing</li>
+<li>no alignment requirements</li>
+<li>clipping is done with the ImageRef input</li>
+<li>added a few blendmodes</li>
+</ul>
+  However a failure of this fork is that for transforms and stroke() support
+  you do need path abstraction in the end.
+<br><br>
+  dplug:<code class="code">canvas</code> is pretty fast and writes 4 pixels at once.
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Bug:</span>
+you can't use it on a widget that is full-size in your plugin.
+
+
+  </p>
+</div>
+<div class="ddoc_copyright">
+  <h4>Copyright</h4>
+  <p class="para">
+    Copyright Chris Jones 2020.
+
+  </p>
+</div>
+<div class="ddoc_license">
+  <h4>License</h4>
+  <p class="para">
+    <a href="http://www.boost.org/LICENSE_1_0.txt">Boost License 1.0</a>
+  </p>
+</div>
+
+</section>
+<section class="section ddoc_module_members_section">
+  <div class="ddoc_module_members">
+    <ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#ImageDest" id="ImageDest"><code class="code">ImageDest</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="ImageDest"></span>alias <code class="code">ImageDest</code> = dplug.graphics.image.ImageRef!(DefColor!(ubyte, "r", "g", "b", "a")).ImageRef;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    <code class="code">dplug:canvas</code> operates on RGBA 8-bit buffers.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#FillRule" id="FillRule"><code class="code">FillRule</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="FillRule"></span>enum <code class="code">FillRule</code>: int;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    How to fill pixels.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#FillRule.nonZero" id="FillRule.nonZero"><code class="code">nonZero</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="FillRule.nonZero"></span><code class="code">nonZero</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fill pixels whose scanline intersects a non-zero number of edges.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#FillRule.evenOdd" id="FillRule.evenOdd"><code class="code">evenOdd</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="FillRule.evenOdd"></span><code class="code">evenOdd</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fill pixels whose scanline intersects an odd number of edges.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CompositeOperation" id="CompositeOperation"><code class="code">CompositeOperation</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CompositeOperation"></span>enum <code class="code">CompositeOperation</code>: int;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    How to composite against background (background is always considered opaque in dplug:canvas).
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CompositeOperation.sourceOver" id="CompositeOperation.sourceOver"><code class="code">sourceOver</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CompositeOperation.sourceOver"></span><code class="code">sourceOver</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    (default) Fastest mode, blend source over the background.
+Note that this goes considerable faster than other blend modes.
+This is because this mode skips holes instead of compositing it,
+And traverse pixels only once.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CompositeOperation.add" id="CompositeOperation.add"><code class="code">add</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CompositeOperation.add"></span><code class="code">add</code><br>
+<span class="ddoc_anchor" id="CompositeOperation.lighter"></span><code class="code">lighter</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add source color (weighted by alpha) to background.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CompositeOperation.subtract" id="CompositeOperation.subtract"><code class="code">subtract</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CompositeOperation.subtract"></span><code class="code">subtract</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Subtract source color (weighted by alpha) from background.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CompositeOperation.lighten" id="CompositeOperation.lighten"><code class="code">lighten</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CompositeOperation.lighten"></span><code class="code">lighten</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Choose maximum of color values. Do not mistake for "lighter" which is an add, not a max.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CompositeOperation.darken" id="CompositeOperation.darken"><code class="code">darken</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CompositeOperation.darken"></span><code class="code">darken</code>
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Choose minimum of color values.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas" id="Canvas"><code class="code">Canvas</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas"></span>struct <code class="code">Canvas</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    A 2D <code class="code">Canvas</code> able to render complex pathes into an <code class="code">ImageRef!RGBA</code> buffer.
+<code class="code"><code class="code">Canvas</code></code> tries to follow loosely the HTML 5 <code class="code">Canvas</code> API.
+
+  </p>
+</div>
+<div class="ddoc_see_also">
+  <h4>See Also</h4>
+  <p class="para">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement">https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement</a>
+
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Important:</span>
+
+<ul><li>Only works on RGBA output.</li>
+<li>There need at least 12 extra bytes between lines (<code class="code">trailingSamples = 3</code> in <code class="code">OwnedImage</code>).
+      You can use OwnedImage to have that guarantee. See <a href="https://github.com/AuburnSounds/Dplug/issues/563">https://github.com/AuburnSounds/Dplug/issues/563</a>
+      For now, avoid full-UI controls that use a <code class="code">Canvas</code>.</li>
+</ul>
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.initialize" id="Canvas.initialize"><code class="code">initialize</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.initialize"></span>nothrow @nogc void <code class="code">initialize</code>(ImageRef!RGBA <code class="code">imageDest</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Initialize the Canvas object with this target.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.fillStyle" id="Canvas.fillStyle"><code class="code">fillStyle</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.fillStyle"></span>nothrow @nogc void <code class="code">fillStyle</code>(RGBA <code class="code">color</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(Color <code class="code">col</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(const(char)[] <code class="code">htmlColorString</code>);
+<br>
+nothrow @nogc void <code class="code">fillStyle</code>(CanvasGradient <code class="code">gradient</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set the fill style. The fill style can be a plain <code class="code">color</code> fill, a <code class="code">CanvasGradient</code>,
+or an HTML-compatible text string.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.fillRule" id="Canvas.fillRule"><code class="code">fillRule</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.fillRule"></span>nothrow @nogc void <code class="code">fillRule</code>(FillRule <code class="code">rule</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set current fill <code class="code">rule</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.fillRule" id="Canvas.fillRule"><code class="code">fillRule</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.fillRule.2"></span>nothrow @nogc FillRule <code class="code">fillRule</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Get current fill rule.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.globalCompositeOperation" id="Canvas.globalCompositeOperation"><code class="code">globalCompositeOperation</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.globalCompositeOperation"></span>nothrow @nogc void <code class="code">globalCompositeOperation</code>(CompositeOperation <code class="code">op</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Set global composite operation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.globalCompositeOperation" id="Canvas.globalCompositeOperation"><code class="code">globalCompositeOperation</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.globalCompositeOperation.2"></span>nothrow @nogc CompositeOperation <code class="code">globalCompositeOperation</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Get global composite operation.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.beginPath" id="Canvas.beginPath"><code class="code">beginPath</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.beginPath"></span>nothrow @nogc void <code class="code">beginPath</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Starts a new path by emptying the list of sub-paths. Call this method when you want to create a new path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.closePath" id="Canvas.closePath"><code class="code">closePath</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.closePath"></span>nothrow @nogc void <code class="code">closePath</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a straight line to the path, going to the start of the current sub-path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.moveTo" id="Canvas.moveTo"><code class="code">moveTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.moveTo"></span>nothrow @nogc void <code class="code">moveTo</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+nothrow @nogc void <code class="code">moveTo</code>(vec2f <code class="code">point</code>);
+<br>
+nothrow @nogc void <code class="code">moveTo</code>(Vector2 <code class="code">point</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Moves the starting <code class="code">point</code> of a new sub-path to the (<code class="code">x</code>, <code class="code">y</code>) coordinates.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.lineTo" id="Canvas.lineTo"><code class="code">lineTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.lineTo"></span>nothrow @nogc void <code class="code">lineTo</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+nothrow @nogc void <code class="code">lineTo</code>(vec2f <code class="code">point</code>);
+<br>
+nothrow @nogc void <code class="code">lineTo</code>(Vector2 <code class="code">point</code>);
+<br>
+nothrow @nogc void <code class="code">lineTo</code>(vec2f[] <code class="code">points</code>...);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Connects the last <code class="code">point</code> in the current sub-path to the specified (<code class="code">x</code>, <code class="code">y</code>) coordinates with a straight line.
+If several <code class="code">points</code> are provided, it is equivalent to consecutive single-<code class="code">point</code> <code class="code"><code class="code">lineTo</code></code> calls.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.bezierCurveTo" id="Canvas.bezierCurveTo"><code class="code">bezierCurveTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.bezierCurveTo"></span>nothrow @nogc void <code class="code">bezierCurveTo</code>(float <code class="code">cp1x</code>, float <code class="code">cp1y</code>, float <code class="code">cp2x</code>, float <code class="code">cp2y</code>, float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+nothrow @nogc void <code class="code">bezierCurveTo</code>(vec2f <code class="code">controlPoint1</code>, vec2f <code class="code">controlPoint2</code>, vec2f <code class="code">dest</code>);
+<br>
+nothrow @nogc void <code class="code">bezierCurveTo</code>(Vector2 <code class="code">controlPoint1</code>, Vector2 <code class="code">controlPoint2</code>, Vector2 <code class="code">dest</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a cubic Bezier curve to the current path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.quadraticCurveTo" id="Canvas.quadraticCurveTo"><code class="code">quadraticCurveTo</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.quadraticCurveTo"></span>nothrow @nogc void <code class="code">quadraticCurveTo</code>(float <code class="code">cpx</code>, float <code class="code">cpy</code>, float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+nothrow @nogc void <code class="code">quadraticCurveTo</code>(vec2f <code class="code">controlPoint</code>, vec2f <code class="code">dest</code>);
+<br>
+nothrow @nogc void <code class="code">quadraticCurveTo</code>(Vector2 <code class="code">controlPoint</code>, Vector2 <code class="code">dest</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a quadratic Bézier curve to the current path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.rect" id="Canvas.rect"><code class="code">rect</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.rect"></span>nothrow @nogc void <code class="code">rect</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">width</code>, float <code class="code">height</code>);
+<br>
+nothrow @nogc void <code class="code">rect</code>(vec2f <code class="code">topLeftPoint</code>, vec2f <code class="code">dimension</code>);
+<br>
+nothrow @nogc void <code class="code">rect</code>(Vector2 <code class="code">topLeftPoint</code>, Vector2 <code class="code">dimension</code>);
+<br>
+nothrow @nogc void <code class="code">rect</code>(box2f <code class="code">rectangle</code>);
+<br>
+nothrow @nogc void <code class="code">rect</code>(box2i <code class="code">rectangle</code>);
+<br>
+nothrow @nogc void <code class="code">rect</code>(Rect2 <code class="code">rectangle</code>);
+<br>
+nothrow @nogc void <code class="code">rect</code>(Rect2i <code class="code">rectangle</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Add a <code class="code">rect</code> to the current path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.arc" id="Canvas.arc"><code class="code">arc</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.arc"></span>nothrow @nogc void <code class="code">arc</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">radius</code>, float <code class="code">startAngle</code>, float <code class="code">endAngle</code>, bool <code class="code">anticlockwise</code> = false);
+<br>
+nothrow @nogc void <code class="code">arc</code>(vec2f <code class="code">center</code>, float <code class="code">radius</code>, float <code class="code">startAngle</code>, float <code class="code">endAngle</code>, bool <code class="code">anticlockwise</code> = false);
+<br>
+nothrow @nogc void <code class="code">arc</code>(Vector2 <code class="code">center</code>, float <code class="code">radius</code>, float <code class="code">startAngle</code>, float <code class="code">endAngle</code>, bool <code class="code">anticlockwise</code> = false);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds an <code class="code">arc</code> to the current path (used to create circles, or parts of circles).
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.fill" id="Canvas.fill"><code class="code">fill</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.fill"></span>nothrow @nogc void <code class="code">fill</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fills all subpaths of the current path using the current <code class="code">fillStyle</code>.
+Open subpaths are implicitly closed when being filled.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.fillRect" id="Canvas.fillRect"><code class="code">fillRect</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.fillRect"></span>nothrow @nogc void <code class="code">fillRect</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">width</code>, float <code class="code">height</code>);
+<br>
+nothrow @nogc void <code class="code">fillRect</code>(vec2f <code class="code">topLeft</code>, vec2f <code class="code">dimension</code>);
+<br>
+nothrow @nogc void <code class="code">fillRect</code>(Vector2 <code class="code">topLeft</code>, Vector2 <code class="code">dimension</code>);
+<br>
+nothrow @nogc void <code class="code">fillRect</code>(box2f <code class="code">rect</code>);
+<br>
+nothrow @nogc void <code class="code">fillRect</code>(box2i <code class="code">rect</code>);
+<br>
+nothrow @nogc void <code class="code">fillRect</code>(Rect2 <code class="code">rect</code>);
+<br>
+nothrow @nogc void <code class="code">fillRect</code>(Rect2i <code class="code">rect</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fill a rectangle using the current <code class="code">fillStyle</code>.
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+affects the current path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.fillCircle" id="Canvas.fillCircle"><code class="code">fillCircle</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.fillCircle"></span>nothrow @nogc void <code class="code">fillCircle</code>(float <code class="code">x</code>, float <code class="code">y</code>, float <code class="code">radius</code>);
+<br>
+nothrow @nogc void <code class="code">fillCircle</code>(vec2f <code class="code">center</code>, float <code class="code">radius</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Fill a disc using the current <code class="code">fillStyle</code>.
+
+  </p>
+</div>
+<div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Note:</span>
+affects the current path.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.createLinearGradient" id="Canvas.createLinearGradient"><code class="code">createLinearGradient</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.createLinearGradient"></span>nothrow @nogc CanvasGradient <code class="code">createLinearGradient</code>(float <code class="code">x0</code>, float <code class="code">y0</code>, float <code class="code">x1</code>, float <code class="code">y1</code>);
+<br>
+nothrow @nogc CanvasGradient <code class="code">createLinearGradient</code>(vec2f <code class="code">pt0</code>, vec2f <code class="code">pt1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Creates a linear gradient along the line given by the coordinates
+represented by the parameters.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.createCircularGradient" id="Canvas.createCircularGradient"><code class="code">createCircularGradient</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.createCircularGradient"></span>nothrow @nogc CanvasGradient <code class="code">createCircularGradient</code>(float <code class="code">centerX</code>, float <code class="code">centerY</code>, float <code class="code">endRadius</code>);
+<br>
+nothrow @nogc CanvasGradient <code class="code">createCircularGradient</code>(vec2f <code class="code">center</code>, float <code class="code">endRadius</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Creates a circular gradient, centered in (x, y) and going from 0 to <code class="code">endRadius</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.createEllipticalGradient" id="Canvas.createEllipticalGradient"><code class="code">createEllipticalGradient</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.createEllipticalGradient"></span>nothrow @nogc CanvasGradient <code class="code">createEllipticalGradient</code>(float <code class="code">x0</code>, float <code class="code">y0</code>, float <code class="code">x1</code>, float <code class="code">y1</code>, float <code class="code">r2</code>);
+<br>
+nothrow @nogc CanvasGradient <code class="code">createEllipticalGradient</code>(vec2f <code class="code">pt0</code>, vec2f <code class="code">pt1</code>, float <code class="code">r2</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Creates an elliptical gradient.
+First radius is given by (<code class="code">x1</code>, <code class="code">y1</code>), second radius with a radius at 90° with the first one.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.createAngularGradient" id="Canvas.createAngularGradient"><code class="code">createAngularGradient</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.createAngularGradient"></span>nothrow @nogc CanvasGradient <code class="code">createAngularGradient</code>(float <code class="code">x0</code>, float <code class="code">y0</code>, float <code class="code">x1</code>, float <code class="code">y1</code>);
+<br>
+nothrow @nogc CanvasGradient <code class="code">createAngularGradient</code>(vec2f <code class="code">pt0</code>, vec2f <code class="code">pt1</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Angular Gradient.
+Specify the orientation in terms of a circle,
+for that we need two points,
+(<code class="code">x0</code>,<code class="code">y0</code>) is the center of the circle
+(<code class="code">x1</code>,<code class="code">y1</code>) is radius at 0 degrees
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.createAngularGradient" id="Canvas.createAngularGradient"><code class="code">createAngularGradient</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.createAngularGradient.2"></span>nothrow @nogc CanvasGradient <code class="code">createAngularGradient</code>(float <code class="code">x0</code>, float <code class="code">y0</code>, float <code class="code">x1</code>, float <code class="code">y1</code>, float <code class="code">x2</code>, float <code class="code">y2</code>);
+<br>
+nothrow @nogc CanvasGradient <code class="code">createAngularGradient</code>(vec2f <code class="code">pt0</code>, vec2f <code class="code">pt1</code>, vec2f <code class="code">pt2</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Angular Gradient.
+Specify the orientation in terms of an ellipse, for that we need 3 points.
+(<code class="code">x0</code>,<code class="code">y0</code>) is the center of the ellipse
+(<code class="code">x1</code>,<code class="code">y1</code>) is radius at 0 degrees
+(<code class="code">x2</code>,<code class="code">y2</code>) is radius at 90 degrees
+The radii don't need to be at right angles, so it can handle
+ellipse that has been through any affine transform.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.save" id="Canvas.save"><code class="code">save</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.save"></span>nothrow @nogc void <code class="code">save</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_section">
+  <p class="para">
+    <span class="ddoc_section_h">Save:</span>
+
+<ul><li>current transform</li>
+</ul>
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.restore" id="Canvas.restore"><code class="code">restore</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.restore"></span>nothrow @nogc void <code class="code">restore</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Restores state corresponding to <code class="code">save()</code>.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.currentTransform" id="Canvas.currentTransform"><code class="code">currentTransform</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.currentTransform"></span>nothrow @nogc Transform2D <code class="code">currentTransform</code>();
+<br>
+<span class="ddoc_anchor" id="Canvas.getTransform"></span>alias <code class="code">getTransform</code> = currentTransform;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Retrieves the current transformation matrix.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.rotate" id="Canvas.rotate"><code class="code">rotate</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.rotate"></span>nothrow @nogc void <code class="code">rotate</code>(float <code class="code">angle</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a rotation to the transformation matrix. The <code class="code">angle</code> argument represents
+a clockwise rotation <code class="code">angle</code> and is expressed in radians.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.scale" id="Canvas.scale"><code class="code">scale</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.scale"></span>nothrow @nogc void <code class="code">scale</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+nothrow @nogc void <code class="code">scale</code>(vec2f <code class="code">xy</code>);
+<br>
+nothrow @nogc void <code class="code">scale</code>(float <code class="code">xy</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a scaling transformation to the canvas units by <code class="code">x</code> horizontally and by <code class="code">y</code> vertically.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.translate" id="Canvas.translate"><code class="code">translate</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.translate"></span>nothrow @nogc void <code class="code">translate</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+<br>
+nothrow @nogc void <code class="code">translate</code>(vec2f <code class="code">position</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a translation transformation by moving the canvas and its origin <code class="code"><code class="code">x</code></code>
+horizontally and <code class="code"><code class="code">y</code></code> vertically on the grid.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.transform" id="Canvas.transform"><code class="code">transform</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.transform"></span>nothrow @nogc void <code class="code">transform</code>(float <code class="code">a</code>, float <code class="code">b</code>, float <code class="code">c</code>, float <code class="code">d</code>, float <code class="code">e</code>, float <code class="code">f</code>);
+<br>
+<span class="ddoc_anchor" id="Canvas.setTransform"></span>nothrow @nogc void <code class="code">setTransform</code>(Transform2D <code class="code">transform</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Multiplies the current transformation matrix with the matrix described by its arguments.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Canvas.resetTransform" id="Canvas.resetTransform"><code class="code">resetTransform</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Canvas.resetTransform"></span>nothrow @nogc void <code class="code">resetTransform</code>();
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Changes the current transformation matrix to the identity matrix.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasGradient" id="CanvasGradient"><code class="code">CanvasGradient</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasGradient"></span>class <code class="code">CanvasGradient</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Holds both gradient data/table and positioning information.
+
+  </p>
+</div>
+<div class="ddoc_description">
+  <h4>Discussion</h4>
+  <p class="para">
+    You can create a gradient with:
+<ul><li><code class="code">createLinearGradient</code>,</li>
+<li><code class="code">createCircularGradient</code>,</li>
+<li><code class="code">createEllipticalGradient</code>,</li>
+<li><code class="code">createAngularGradient</code>,</li>
+</ul>
+every frame.
+Then use <code class="code">addColorStop</code> to set the color information.
+<br><br>
+The gradient data is managed by the <code class="code">Canvas</code> object itself. All gradients are invalidated once
+<code class="code">initialize</code> has been called.
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#CanvasGradient.addColorStop" id="CanvasGradient.addColorStop"><code class="code">addColorStop</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="CanvasGradient.addColorStop"></span>nothrow @nogc void <code class="code">addColorStop</code>(float <code class="code">offset</code>, RGBA <code class="code">color</code>);
+<br>
+nothrow @nogc void <code class="code">addColorStop</code>(float <code class="code">offset</code>, Color <code class="code">color</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Adds a new <code class="code">color</code> stop, defined by an <code class="code">offset</code> and a <code class="code">color</code>, to a given canvas gradient.
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Transform2D" id="Transform2D"><code class="code">Transform2D</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Transform2D"></span>struct <code class="code">Transform2D</code>;
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    The transform type used by dplug:canvas. It's a 3x3 float matrix
+with the form:
+(a b c)
+(d e f)
+(0 0 1)
+  </p>
+</div>
+
+</section>
+<ul class="ddoc_members">
+  <li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Transform2D.translateMulOpt" id="Transform2D.translateMulOpt"><code class="code">translateMulOpt</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Transform2D.translateMulOpt"></span>pure nothrow @nogc Transform2D <code class="code">translateMulOpt</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Return this * Transform2D(1, 0, <code class="code">x</code>,
+                          0, 1, <code class="code">y</code>);
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Transform2D.scaleMulOpt" id="Transform2D.scaleMulOpt"><code class="code">scaleMulOpt</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Transform2D.scaleMulOpt"></span>pure nothrow @nogc Transform2D <code class="code">scaleMulOpt</code>(float <code class="code">x</code>, float <code class="code">y</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Return this * Transform2D(<code class="code">x</code>, 0, 0,
+                          0, <code class="code">y</code>, 0);
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li><li class="ddoc_member">
+  <div class="ddoc_member_header">
+  <div class="ddoc_header_anchor">
+  <a href="#Transform2D.scaleMulRot" id="Transform2D.scaleMulRot"><code class="code">scaleMulRot</code></a>
+</div>
+</div><div class="ddoc_decl">
+  <section class="section">
+    <div class="declaration">
+      <h4>Declaration</h4>
+      <div class="dlang">
+        <p class="para">
+          <code class="code">
+            <span class="ddoc_anchor" id="Transform2D.scaleMulRot"></span>pure nothrow @nogc Transform2D <code class="code">scaleMulRot</code>(float <code class="code">cosa</code>, float <code class="code">sina</code>);
+
+          </code>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="ddoc_decl">
+  <section class="section ddoc_sections">
+  <div class="ddoc_summary">
+  <p class="para">
+    Return this * Transform2D(<code class="code">cosa</code>, -<code class="code">sina</code>, 0,
+                          <code class="code">sina</code>, <code class="code">cosa</code>, 0)
+  </p>
+</div>
+
+</section>
+
+</div>
+
+</li>
+</ul>
+
+</div>
+
+</li>
+</ul>
+  </div>
+</section>
+</section>
+      </article>
+    </div>
+  </body>
+</html>

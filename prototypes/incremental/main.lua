@@ -13,9 +13,15 @@ local log_pile = require("src/buildings/log_pile")
 local stone_pile = require("src/buildings/stone_pile")
 local lumberyard = require("src/buildings/lumberyard")
 local dormitory = require("src/buildings/dormitory")
+local compactor = require("src/buildings/compactor")
+local assembler = require("src/buildings/assembler")
+local loading_dock = require("src/buildings/loading_dock")
+local play_zone = require("src/buildings/play_zone")
+local minesweeper = require("src/minesweeper")
 
 function love.load()
   world.init(state)
+  world.init_modules()
   sprites.load()
   tree.init(state)
   rock.init(state)
@@ -23,6 +29,11 @@ function love.load()
   stone_pile.init(state)
   lumberyard.init(state)
   dormitory.init(state)
+  compactor.init(state)
+  assembler.init(state)
+  loading_dock.init(state)
+  play_zone.init(state)
+  minesweeper.init(state)
 end
 
 function love.update(dt)
@@ -31,6 +42,10 @@ function love.update(dt)
   workers.update(dt, state)
   tree.update(dt, state)
   rock.update(dt, state)
+  compactor.update(dt, state)
+  assembler.update(dt, state)
+  loading_dock.update(dt, state)
+  minesweeper.update(dt, state)
 end
 
 function love.draw()
@@ -44,7 +59,8 @@ function love.draw()
 
   hud.draw(state)
 
-  if menu.get_open_building(state) == "dormitory" then
+  local open = menu.get_open_building(state)
+  if open == "dormitory" then
     menu.draw_header("Dormitory")
     local items = dormitory.menu_items(state)
     local y = 40

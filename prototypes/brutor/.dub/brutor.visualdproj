@@ -1,0 +1,144 @@
+<DProject>
+ <ProjectGuid>{7FEB6ACA-365C-4001-B1A8-633C35590C1F}</ProjectGuid>
+ <Config platform="x64" name="debug">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>0</lib>
+  <subsystem>0</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>2</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>1</symdebug>
+  <symdebugref>1</symdebugref>
+  <optimize>0</optimize>
+  <cpu>0</cpu>
+  <isX86_64>1</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>0</useInline>
+  <release>0</release>
+  <preservePaths>1</preservePaths>
+  <warnings>1</warnings>
+  <infowarnings>0</infowarnings>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <dip1021>0</dip1021>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <preview_rvaluerefparam>0</preview_rvaluerefparam>
+  <preview_nosharedaccess>0</preview_nosharedaccess>
+  <preview_in>0</preview_in>
+  <preview_inclincontracts>0</preview_inclincontracts>
+  <preview_shortenedMethods>0</preview_shortenedMethods>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>2</compiler>
+  <otherDMD>0</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+  <imppath>&quot;..\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\bindbc-sdl\2.3.4\bindbc-sdl\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\bindbc-common\1.0.5\bindbc-common\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\bindbc-loader\1.1.5\bindbc-loader\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\canvasity\1.0.7\canvasity\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\colors\0.0.4\colors\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\core&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\intel-intrinsics\1.14.2\intel-intrinsics\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\numem\1.6.5\numem\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\gamut\3.3.5\gamut\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\miniz\0.0.3\miniz\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\canvas&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\graphics&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\dplug\16.4.6\dplug\math&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\stb_image_resize2-d\1.0.1\stb_image_resize2-d\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\godot-math\0.0.5\godot-math\source&quot; &quot;C:\Users\guill\AppData\Local\dub\packages\text-mode\1.1.16\text-mode\source&quot; </imppath>
+  <fileImppath>&quot;C:\Users\guill\AppData\Local\dub\packages\turtle\0.1.4\turtle\resources&quot;</fileImppath>
+  <outdir>D:\kapital\prototypes\brutor\</outdir>
+  <objdir>obj/debug/dummy/brutor</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids>Have_brutor Have_turtle Have_bindbc_sdl Have_canvasity Have_colors Have_dplug_canvas Have_godot_math Have_text_mode Have_bindbc_common Have_bindbc_loader Have_dplug_core Have_gamut Have_intel_intrinsics Have_numem encodePNG decodeJPEG decodePNG decodeQOI decodeQOIX decodeSQZ Have_miniz Have_dplug_graphics Have_dplug_math Have_stb_image_resize2_d</versionids>
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>1</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles> </libfiles>
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>D:\kapital\prototypes\brutor\brutor.exe</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
+ </Config>
+ <Folder name="brutor">
+  <Folder name="brutor">
+   <Folder name="source">
+    <Folder name="brutor">
+     <File path="..\source\brutor\avatar.d" />
+     <File path="..\source\brutor\combat.d" />
+     <File path="..\source\brutor\dice.d" />
+     <File path="..\source\brutor\game.d" />
+     <File path="..\source\brutor\package.d" />
+    </Folder>
+    <File path="..\source\main.d" />
+   </Folder>
+   <File path="..\dub.json" tool="None" />
+  </Folder>
+ </Folder>
+</DProject>

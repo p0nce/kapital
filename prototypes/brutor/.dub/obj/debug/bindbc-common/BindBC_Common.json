@@ -1,0 +1,811 @@
+[
+ {
+  "name" : "bindbc.common.codegen",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-common\\1.0.5\\bindbc-common\\source\\bindbc\\common\\codegen.d",
+  "members" : [
+   {
+    "name" : "bindbc.common.versions",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "FnBind",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 26,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "retn",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 34,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 0
+     },
+     {
+      "name" : "iden",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 41,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 16
+     },
+     {
+      "name" : "params",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 49,
+      "char" : 9,
+      "deco" : "Aya",
+      "init" : "\"\"",
+      "offset" : 32
+     },
+     {
+      "name" : "ext",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 63,
+      "char" : 9,
+      "deco" : "Aya",
+      "init" : "\"C\"",
+      "offset" : 48
+     },
+     {
+      "name" : "isStatic",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 68,
+      "char" : 7,
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 64
+     },
+     {
+      "name" : "attr",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 73,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 72
+     },
+     {
+      "name" : "pubIden",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 78,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 88
+     },
+     {
+      "name" : "memAttr",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 83,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 104
+     },
+     {
+      "name" : "pfix",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 89,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 120
+     },
+     {
+      "name" : "aliases",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 94,
+      "char" : 11,
+      "deco" : "AAya",
+      "offset" : 136
+     }
+    ]
+   },
+   {
+    "name" : "makeFnBindFns",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 104,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNfbS6bindbc6common8versions7VersionZAya",
+    "init" : "(bool staticBinding, Version version_ = Version(0, 1, 1)) pure nothrow @safe\r\n{\r\nif (version_.opCmp(Version(0, 1, 1)) >= 0 && (version_.opCmp(Version(1, 0, 0)) <= 0))\r\n{\r\nreturn \"alias joinFnBinds = bindbc.common.codegen.joinFnBinds!\" ~ (staticBinding ? \"true\" : \"false\") ~ \";\\nalias FnBind = bindbc.common.codegen.FnBind;\";\r\n}\r\nelse\r\nassert(0, \"Invalid version supplied.\");\r\n}\r\n"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 118,
+    "char" : 6,
+    "name" : "joinFnBinds",
+    "parameters" : [
+     {
+      "name" : "staticBinding",
+      "kind" : "value",
+      "deco" : "b"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "joinFnBinds",
+      "kind" : "variable",
+      "line" : 118,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "(FnBind[] fns, string membersWithFns = null) pure nothrow @safe\r\n{\r\nstring ret;\r\nstatic if (staticBinding)\r\n{\r\nret ~= \"nothrow @nogc{\\n\";\r\nforeach (fn; fns)\r\n{\r\nstring pfix = (fn.pfix.length ? fn.pfix ~ \" \" : \"\") ~ (fn.pubIden.length ? \"package \" : \"\") ~ \"extern(\" ~ fn.ext ~ \") \";\r\nif (fn.isStatic)\r\n{\r\npfix ~= \"static \";\r\n}\r\nstring attr = fn.attr.length ? \" \" ~ fn.attr : \"\";\r\nstring memAttr = fn.memAttr.length ? \" \" ~ fn.memAttr : \"\";\r\nif (fn.iden == \"this\")\r\n{\r\nif (fn.params.length)\r\n{\r\nret ~= \"\\t\" ~ pfix ~ \"this(\" ~ fn.params ~ \")\" ~ memAttr ~ attr ~ \";\\n\";\r\n}\r\nelse\r\n{\r\nret ~= \"\\t\\timport bindbc.common.codegen: mangleofCppDefaultCtor;\\n\";\r\nret ~= \"\\t\" ~ pfix ~ \"pragma(mangle, [__traits(getCppNamespaces, typeof(this)), __traits(identifier, typeof(this))].mangleofCppDefaultCtor()) this(int _)\" ~ (fn.memAttr.length ? \" \" ~ fn.memAttr : \"\") ~ \";\\n\";\r\n}\r\n}\r\nelse\r\n{\r\nret ~= \"\\t\" ~ pfix ~ fn.retn ~ \" \" ~ fn.iden ~ \"(\" ~ fn.params ~ \")\" ~ memAttr ~ attr ~ \";\\n\";\r\n}\r\nif (fn.pubIden.length)\r\n{\r\nret ~= \"\\talias \" ~ fn.pubIden ~ \" = \" ~ fn.iden ~ \";\\n\";\r\n}\r\nforeach (alias_; fn.aliases)\r\n{\r\nret ~= \"\\talias \" ~ alias_ ~ \" = \" ~ fn.iden ~ \";\\n\";\r\n}\r\n}\r\nret ~= \"}\";\r\n}\r\nelse\r\n{\r\nstring types = \"private nothrow @nogc{\\n\";\r\nstring ptrs = \"__gshared nothrow @nogc{\\n\";\r\nstring dyn = \"import bindbc.loader: SharedLib, bindSymbol;\\nstatic void bindModuleSymbols(SharedLib lib) nothrow @nogc{\\n\\talias here = \" ~ makeOuterScope() ~ \";\";\r\nuint[string] usedIdens;\r\nforeach (fn; fns)\r\n{\r\nif (fn.ext != \"C\")\r\n{\r\nif (auto num = fn.iden in usedIdens)\r\n{\r\n*num = 1;\r\n}\r\nelse\r\n{\r\nusedIdens[fn.iden] = 0;\r\n}\r\n}\r\n}\r\nforeach (fn; fns)\r\n{\r\nuint overload = 0;\r\nif (fn.ext != \"C\")\r\n{\r\nif (auto num = fn.iden in usedIdens)\r\n{\r\noverload = *num;\r\n(*num)++;\r\n}\r\n}\r\nstring ext = \"extern(\" ~ fn.ext ~ \") \";\r\nstring pfix = (fn.pfix.length ? fn.pfix ~ \" \" : \"\") ~ (fn.pubIden.length ? \"package \" : \"\") ~ ext;\r\nif (fn.isStatic)\r\n{\r\npfix ~= \"static \";\r\n}\r\nstring memAttr = fn.memAttr.length ? \" \" ~ fn.memAttr : \"\";\r\nstring attr = fn.attr.length ? \" \" ~ fn.attr : \"\";\r\nstring wrapAttr = attr;\r\nif (fn.attr.length >= 4)\r\n{\r\nforeach (ind; 0 .. fn.attr.length - 3)\r\n{\r\nif (fn.attr[ind..ind + 4] == \"pure\")\r\n{\r\nwrapAttr = \" \" ~ fn.attr[0..ind] ~ fn.attr[ind + 4..__dollar];\r\nbreak;\r\n}\r\n}\r\n}\r\nbool variadic = fn.params.length > 3 && (fn.params[__dollar - 3..__dollar] == \"...\");\r\nbool memberFn = membersWithFns is null && (fn.ext != \"C\");\r\nstring iden = ()\r\n{\r\nswitch (fn.iden)\r\n{\r\ncase \"this\":\r\n{\r\nreturn \"__ctor\";\r\n}\r\ncase \"~this\":\r\n{\r\nreturn \"__dtor\";\r\n}\r\ndefault:\r\n{\r\nreturn fn.iden;\r\n}\r\n}\r\n}\r\n();\r\nstring ptrParams = fn.params;\r\nstring ptrCall = \"__traits(parameters)\";\r\nif (memberFn && !fn.isStatic)\r\n{\r\nif (fn.params.length)\r\n{\r\nptrParams = \"ref inout(typeof(this)) this_, \" ~ ptrParams;\r\nptrCall = \"this, \" ~ ptrCall;\r\n}\r\nelse\r\n{\r\nptrParams = \"ref inout(typeof(this)) this_\";\r\nptrCall = \"this\";\r\n}\r\nptrParams = (fn.memAttr.length ? fn.memAttr ~ \" \" : \"\") ~ ptrParams;\r\n}\r\nstring ptrIden = \"_\" ~ iden;\r\nstring typeIden = \"_p\" ~ iden;\r\nstring typeExt = \"extern(\" ~ (fn.ext.length > 3 && (fn.ext[0..3] == \"C++\") ? \"C++\" : fn.ext) ~ \") \";\r\nif (overload)\r\n{\r\nstring overloadStr = overload.toStrCT();\r\nptrIden ~= overloadStr;\r\ntypeIden ~= overloadStr;\r\n}\r\nelse if (variadic)\r\n{\r\ntypes ~= \"\\talias \" ~ typeIden ~ \" = \" ~ typeExt ~ fn.retn ~ \" function(\" ~ ptrParams ~ \")\" ~ attr ~ \";\\n\";\r\nptrs ~= \"\\t\" ~ typeIden ~ \" \" ~ iden ~ \";\\n\";\r\n}\r\nptrCall = ptrIden ~ \"(\" ~ ptrCall ~ \");\";\r\nif (overload)\r\n{\r\ndyn ~= \"\\n\\t{\\n\\t\\talias FnCmp = void(\" ~ fn.params ~ \");\\n\\t\\tstatic if(is(FnCmp ArgsCmp == function)){\\n\\t\\t\\tstatic foreach(Fn; __traits(getOverloads, here, \\\"\" ~ iden ~ \"\\\")){{\\n\\t\\t\\t\\tstatic if(is(typeof(Fn) Args == function)){\\n\\t\\t\\t\\t\\tstatic if(is(Args == ArgsCmp)){\\n\\t\\t\\t\\t\\t\\tlib.bindSymbol(cast(void**)&\" ~ ptrIden ~ \", Fn.mangleof);\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t}else static assert(0);\\n\\t\\t\\t}}\\n\\t\\t}else static assert(0);\\n\\t}\";\r\n}\r\nelse if (variadic)\r\n{\r\nif (fn.ext.length >= 3 && (fn.ext[0..3] == \"C++\") || fn.ext == \"Objective-C\")\r\n{\r\ndyn ~= \"\\n\\t{\\n\\t\\talias FnCmp = void(\" ~ fn.params ~ \");\\n\\t\\tstatic if(is(FnCmp ArgsCmp == function)){\\n\\t\\t\\tstatic foreach(Fn; __traits(getOverloads, here, \\\"\" ~ iden ~ \"\\\")){{\\n\\t\\t\\t\\tstatic if(is(typeof(Fn) Args == function)){\\n\\t\\t\\t\\t\\tstatic if(is(Args == ArgsCmp)){\\n\\t\\t\\t\\t\\t\\tlib.bindSymbol(cast(void**)&\" ~ iden ~ \", Fn.mangleof);\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t}else static assert(0);\\n\\t\\t\\t}}\\n\\t\\t}else static assert(0);\\n\\t}\";\r\n}\r\nelse\r\n{\r\ndyn ~= \"\\n\\tlib.bindSymbol(cast(void**)&\" ~ iden ~ \", \\\"\" ~ iden ~ \"\\\");\";\r\n}\r\ncontinue;\r\n}\r\nelse\r\n{\r\ndyn ~= \"\\n\\tlib.bindSymbol(cast(void**)&\" ~ ptrIden ~ \", here.\" ~ iden ~ \".mangleof);\";\r\n}\r\ntypes ~= \"\\talias \" ~ typeIden ~ \" = \" ~ typeExt ~ fn.retn ~ \" function(\" ~ ptrParams ~ \")\" ~ attr ~ \";\\n\";\r\nptrs ~= \"\\tpackage \" ~ typeIden ~ \" \" ~ ptrIden ~ \";\\n\";\r\nstring fnParams = fn.params;\r\nif (variadic && overload)\r\n{\r\nfnParams = \"T...)(\" ~ fnParams[0..__dollar - 3] ~ \"T _variadics\";\r\n}\r\nif (fn.iden == \"this\")\r\n{\r\nif (fn.params.length)\r\n{\r\nptrs ~= \"\\t\" ~ pfix ~ \"this(\" ~ fnParams ~ \")\" ~ memAttr ~ wrapAttr ~ \"{ \" ~ ptrCall ~ \" }\\n\";\r\n}\r\nelse if (fn.ext.length >= 3 && (fn.ext[0..3] == \"C++\"))\r\n{\r\nptrs ~= \"\\timport bindbc.common.codegen: mangleofCppDefaultCtor;\\n\";\r\nptrs ~= \"\\t\" ~ pfix ~ \"pragma(mangle, [__traits(getCppNamespaces, typeof(this)), __traits(identifier, typeof(this))].mangleofCppDefaultCtor()) this(int _)\" ~ memAttr ~ attr ~ \"{ \" ~ ptrCall ~ \" }\\n\";\r\n}\r\nelse\r\nassert(0, \"Default constructor mangling for extern(\" ~ fn.ext ~ \") is unknown.\");\r\n}\r\nelse if (fn.iden == \"~this\")\r\n{\r\nptrs ~= \"\\t\" ~ pfix ~ \"~this(\" ~ fnParams ~ \")\" ~ memAttr ~ wrapAttr ~ \"{ \" ~ ptrCall ~ \" }\\n\";\r\n}\r\nelse\r\n{\r\nif (fn.retn != \"void\")\r\n{\r\nptrCall = \"return \" ~ ptrCall;\r\n}\r\nptrs ~= \"\\t\" ~ pfix ~ fn.retn ~ \" \" ~ fn.iden ~ \"(\" ~ fnParams ~ \")\" ~ memAttr ~ wrapAttr ~ \"{ \" ~ ptrCall ~ \" }\\n\";\r\n}\r\nif (fn.pubIden.length)\r\n{\r\nptrs ~= \"\\talias \" ~ fn.pubIden ~ \" = \" ~ iden ~ \";\\n\";\r\n}\r\nforeach (aliasIden; fn.aliases)\r\n{\r\nptrs ~= \"\\talias \" ~ aliasIden ~ \" = \" ~ iden ~ \";\";\r\n}\r\n}\r\nif (membersWithFns.length)\r\n{\r\ndyn ~= \"\\n\\talias AliasSeq(T...) = T;\\n\\tstatic foreach(item; AliasSeq!(\" ~ membersWithFns ~ \")){ \\n\\t\\tstatic assert((is(item == struct) || is(item == class)) && (__traits(getLinkage, item) == \\\"C++\\\" || __traits(getLinkage, item) == \\\"Objective-C\\\") && __traits(hasMember, item, \\\"bindModuleSymbols\\\"));\\n\\t\\tmixin(__traits(fullyQualifiedName, item),\\\".bindModuleSymbols(lib);\\\");\\n\\t}\";\r\n}\r\nret = types ~ \"}\\n\" ~ ptrs ~ \"}\\n\\n\" ~ dyn ~ \"\\n}\";\r\n}\r\nreturn ret;\r\n}\r\n"
+     }
+    ]
+   },
+   {
+    "name" : "makeIsMember",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 393,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNiNfZAya",
+    "init" : "() pure nothrow @nogc @safe => \"__traits(compiles, typeof(this))\""
+   },
+   {
+    "name" : "__unittest_L396_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 396,
+    "char" : 1,
+    "endline" : 404,
+    "endchar" : 1
+   },
+   {
+    "name" : "makeOuterScope",
+    "kind" : "variable",
+    "protection" : "package",
+    "line" : 404,
+    "char" : 14,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNiNfZAya",
+    "init" : "() pure nothrow @nogc @safe => \"mixin((string mod=__MODULE__){\\n\\tstatic if(__traits(compiles, typeof(this))) return __traits(identifier, typeof(this));\\n\\telse return mod;\\n}())\""
+   },
+   {
+    "name" : "__unittest_L411_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 411,
+    "char" : 1,
+    "endline" : 419,
+    "endchar" : 1
+   },
+   {
+    "name" : "mangleofCppDefaultCtor",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 419,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNfAAyaZQe",
+    "init" : "(string[] syms) pure nothrow @safe => ret ~ \"@QEAA@XZ\""
+   },
+   {
+    "name" : "__unittest_L448_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 448,
+    "char" : 1,
+    "endline" : 472,
+    "endchar" : 1
+   },
+   {
+    "name" : "badHash",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 472,
+    "char" : 8,
+    "deco" : "FNaNbNfAyaZm",
+    "originalType" : "pure nothrow @safe size_t(string s)",
+    "parameters" : [
+     {
+      "name" : "s",
+      "deco" : "Aya"
+     }
+    ],
+    "endline" : 478,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L479_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 479,
+    "char" : 1,
+    "endline" : 487,
+    "endchar" : 1
+   },
+   {
+    "name" : "toStrCT",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 487,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNfmZAya",
+    "init" : "(ulong val) pure nothrow @safe => ret"
+   },
+   {
+    "name" : "__unittest_L499_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 499,
+    "char" : 1,
+    "endline" : 514,
+    "endchar" : 1
+   },
+   {
+    "name" : "EnumMember",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 514,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "iden",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 515,
+      "char" : 11,
+      "deco" : "S6bindbc6common7codegen8EnumIden",
+      "offset" : 0
+     },
+     {
+      "name" : "val",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 520,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 32
+     },
+     {
+      "name" : "aliases",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 525,
+      "char" : 13,
+      "deco" : "AS6bindbc6common7codegen8EnumIden",
+      "offset" : 48
+     }
+    ]
+   },
+   {
+    "name" : "EnumIden",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 528,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "d",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 534,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 0
+     },
+     {
+      "name" : "c",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 541,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "makeEnumBindFns",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 551,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "PFNaNbNfbbZAya",
+    "init" : "(bool cStyle, bool dStyle) pure nothrow @safe => \"alias makeEnumBind = bindbc.common.codegen.makeEnumBind!(\" ~ (cStyle ? \"true\" : \"false\") ~ \", \" ~ (dStyle ? \"true\" : \"false\") ~ \");\\nalias EnumMember = bindbc.common.codegen.EnumMember;\\nalias EnumIden = bindbc.common.codegen.EnumIden;\""
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 573,
+    "char" : 6,
+    "name" : "makeEnumBind",
+    "parameters" : [
+     {
+      "name" : "cStyle",
+      "kind" : "value",
+      "deco" : "b"
+     },
+     {
+      "name" : "dStyle",
+      "kind" : "value",
+      "deco" : "b"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "makeEnumBind",
+      "kind" : "variable",
+      "line" : 573,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "(string dIden, string baseType = null, string[] aliases = null, EnumMember[] members, string fullModule = __MODULE__) pure nothrow @safe\r\n{\r\nstring dRet;\r\nstatic if (!dStyle)\r\n{\r\ndRet ~= \"package \";\r\n}\r\n\r\ndRet ~= \"enum \" ~ dIden;\r\nif (baseType)\r\ndRet ~= \": \" ~ baseType;\r\ndRet ~= \"{\\n\";\r\nstring cRet;\r\nstatic if (cStyle)\r\n{\r\ncRet ~= \"enum: \" ~ fullModule ~ \".\" ~ dIden ~ \"{\\n\";\r\n}\r\n\r\nforeach (member; members)\r\n{\r\ndRet ~= \"\\t\" ~ member.iden.d;\r\nif (member.val)\r\ndRet ~= \" = \" ~ member.val;\r\ndRet ~= \",\\n\";\r\nstatic if (cStyle)\r\n{\r\nif (member.iden.c)\r\n{\r\ncRet ~= \"\\t\" ~ member.iden.c ~ \" = \" ~ fullModule ~ \".\" ~ dIden ~ \".\" ~ member.iden.d;\r\ncRet ~= \",\\n\";\r\n}\r\n}\r\n\r\nforeach (aliasIden; member.aliases)\r\n{\r\nif (aliasIden.d)\r\ndRet ~= \"\\t\" ~ aliasIden.d ~ \" = \" ~ member.iden.d ~ \",\\n\";\r\nstatic if (cStyle)\r\n{\r\nif (aliasIden.c)\r\ncRet ~= \"\\t\" ~ aliasIden.c ~ \" = \" ~ member.iden.c ~ \",\\n\";\r\n}\r\n\r\n}\r\n}\r\ndRet ~= \"}\\n\";\r\nforeach (dAlias; aliases)\r\n{\r\nstatic if (!dStyle)\r\n{\r\ndRet ~= \"package \";\r\n}\r\n\r\ndRet ~= \"alias \" ~ dAlias ~ \" = \" ~ fullModule ~ \".\" ~ dIden ~ \";\\n\";\r\n}\r\nreturn dRet ~ cRet ~ \"}\";\r\n}\r\n"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 625,
+    "char" : 6,
+    "name" : "makeExpandedEnum",
+    "parameters" : [
+     {
+      "name" : "Enum",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "makeExpandedEnum",
+      "kind" : "variable",
+      "line" : 625,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "() pure nothrow @safe\r\n{\r\nstring ret;\r\nforeach (member; __traits(allMembers, Enum))\r\n{\r\nret ~= \"\\nenum \" ~ member ~ \" = \" ~ Enum.stringof ~ \".\" ~ member ~ \";\";\r\n}\r\nreturn ret;\r\n}\r\n()"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.common",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-common\\1.0.5\\bindbc-common\\source\\bindbc\\common\\package.d",
+  "members" : [
+   {
+    "name" : "bindbc.common.codegen",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 2
+   },
+   {
+    "name" : "bindbc.common.types",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 2
+   },
+   {
+    "name" : "bindbc.common.value_class",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 2
+   },
+   {
+    "name" : "bindbc.common.versions",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 2
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.common.types",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-common\\1.0.5\\bindbc-common\\source\\bindbc\\common\\types.d",
+  "members" : [
+   {
+    "name" : "core.stdc.config",
+    "kind" : "static import",
+    "line" : 23,
+    "char" : 16,
+    "protection" : "private"
+   },
+   {
+    "name" : "c_long",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 2,
+    "deco" : "i",
+    "originalType" : "core.stdc.config.c_long"
+   },
+   {
+    "name" : "c_ulong",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 25,
+    "char" : 2,
+    "deco" : "k",
+    "originalType" : "core.stdc.config.c_ulong"
+   },
+   {
+    "name" : "__c_longlong",
+    "kind" : "enum",
+    "protection" : "private",
+    "line" : 29,
+    "char" : 9,
+    "baseDeco" : "l"
+   },
+   {
+    "name" : "__c_ulonglong",
+    "kind" : "enum",
+    "protection" : "private",
+    "line" : 30,
+    "char" : 9,
+    "baseDeco" : "m"
+   },
+   {
+    "name" : "c_longlong",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 31,
+    "char" : 1,
+    "deco" : "E6bindbc6common5types12__c_longlong"
+   },
+   {
+    "name" : "c_ulonglong",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 32,
+    "char" : 1,
+    "deco" : "E6bindbc6common5types13__c_ulonglong"
+   },
+   {
+    "name" : "core.stdc.stdint",
+    "kind" : "static import",
+    "line" : 39,
+    "char" : 16,
+    "protection" : "private"
+   },
+   {
+    "name" : "c_int64",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 40,
+    "char" : 2,
+    "deco" : "l",
+    "originalType" : "core.stdc.stdint.int64_t"
+   },
+   {
+    "name" : "c_uint64",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 41,
+    "char" : 2,
+    "deco" : "m",
+    "originalType" : "core.stdc.stdint.uint64_t"
+   },
+   {
+    "name" : "core.stdc.stdarg",
+    "kind" : "static import",
+    "line" : 48,
+    "char" : 16,
+    "protection" : "private"
+   },
+   {
+    "name" : "va_list",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 49,
+    "char" : 2,
+    "deco" : "Pa",
+    "originalType" : "core.stdc.stdarg.va_list"
+   },
+   {
+    "name" : "wchar_t",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 65,
+    "char" : 2,
+    "deco" : "u"
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.common.value_class",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-common\\1.0.5\\bindbc-common\\source\\bindbc\\common\\value_class.d",
+  "members" : [
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 9,
+    "char" : 1,
+    "name" : "ValueClass",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "is(T == class)",
+    "members" : [
+     {
+      "name" : "ValueClass",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 9,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "data",
+        "kind" : "variable",
+        "line" : 11,
+        "char" : 39,
+        "type" : "void[__traits(classInstanceSize, T)]"
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 13,
+        "char" : 11,
+        "storageClass" : [
+         "@disable"
+        ],
+        "type" : "()"
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 15,
+        "char" : 2,
+        "type" : "pure nothrow @nogc @trusted (int)",
+        "parameters" : [
+         {
+          "deco" : "i"
+         }
+        ],
+        "endline" : 17,
+        "endchar" : 2
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 19,
+        "char" : 2,
+        "type" : "pure nothrow @nogc (scope const T val)",
+        "parameters" : [
+         {
+          "name" : "val",
+          "type" : "T",
+          "storageClass" : [
+           "scope",
+           "const"
+          ]
+         }
+        ],
+        "endline" : 21,
+        "endchar" : 2
+       },
+       {
+        "name" : "get",
+        "kind" : "function",
+        "line" : 25,
+        "char" : 4,
+        "type" : "pure nothrow @nogc T() return scope",
+        "endline" : 26,
+        "endchar" : 15
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L28_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 1,
+    "endline" : 51,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "bindbc.common.versions",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\bindbc-common\\1.0.5\\bindbc-common\\source\\bindbc\\common\\versions.d",
+  "members" : [
+   {
+    "name" : "Version",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 9,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "major",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 10,
+      "char" : 6,
+      "deco" : "i",
+      "offset" : 0
+     },
+     {
+      "name" : "minor",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 11,
+      "char" : 6,
+      "deco" : "i",
+      "offset" : 4
+     },
+     {
+      "name" : "patch",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 12,
+      "char" : 6,
+      "deco" : "i",
+      "offset" : 8
+     },
+     {
+      "name" : "none",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 14,
+      "char" : 7,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "S6bindbc6common8versions7Version",
+      "init" : "Version(-2147483648, 0, 0)"
+     },
+     {
+      "name" : "bad",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 15,
+      "char" : 7,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "S6bindbc6common8versions7Version",
+      "init" : "Version(-1, 0, 0)"
+     },
+     {
+      "name" : "opCmp",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 17,
+      "char" : 6,
+      "deco" : "xFNaNbNiNfS6bindbc6common8versions7VersionZi",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "S6bindbc6common8versions7Version"
+       }
+      ],
+      "endline" : 25,
+      "endchar" : 2
+     },
+     {
+      "name" : "__unittest_L26_C2",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 26,
+      "char" : 2,
+      "endline" : 32,
+      "endchar" : 2
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 32,
+      "char" : 10,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya",
+        "specValue" : "\"+\""
+       }
+      ],
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 32,
+        "char" : 10,
+        "type" : "const pure nothrow @nogc @safe Version(Version rhs)",
+        "parameters" : [
+         {
+          "name" : "rhs",
+          "type" : "Version"
+         }
+        ],
+        "endline" : 41,
+        "endchar" : 2
+       }
+      ]
+     },
+     {
+      "name" : "__unittest_L42_C2",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 42,
+      "char" : 2,
+      "endline" : 49,
+      "endchar" : 2
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 49,
+      "char" : 7,
+      "name" : "opCast",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type",
+        "deco" : "b"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "opCast",
+        "kind" : "function",
+        "line" : 49,
+        "char" : 7,
+        "type" : "const pure nothrow @nogc @safe bool()",
+        "endline" : 51,
+        "endchar" : 2
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "bindBCCommonVersion",
+    "kind" : "variable",
+    "protection" : "package",
+    "line" : 55,
+    "char" : 14,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "S6bindbc6common8versions7Version",
+    "init" : "Version(1, 0, 0)"
+   }
+  ]
+ }
+]

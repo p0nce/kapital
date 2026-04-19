@@ -1,0 +1,6271 @@
+[
+ {
+  "name" : "turtle.game",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\game.d",
+  "members" : [
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "strlen"
+    ]
+   },
+   {
+    "name" : "core.stdc.stdlib",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "malloc",
+     "free"
+    ]
+   },
+   {
+    "name" : "bindbc.sdl",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.nogc",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.font",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.image",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.draw",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "textmode",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle.graphics",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle.renderer",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle.keyboard",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle.mouse",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "canvasity",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle.ui",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "runGame",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 6,
+    "deco" : "FC6turtle4game10TurtleGameZv",
+    "parameters" : [
+     {
+      "name" : "game",
+      "deco" : "C6turtle4game10TurtleGame"
+     }
+    ],
+    "endline" : 26,
+    "endchar" : 1
+   },
+   {
+    "name" : "TurtleGame",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 31,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "load",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 37,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 39,
+      "endchar" : 5
+     },
+     {
+      "name" : "update",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 43,
+      "char" : 10,
+      "deco" : "FdZv",
+      "parameters" : [
+       {
+        "name" : "dt",
+        "deco" : "d"
+       }
+      ],
+      "endline" : 45,
+      "endchar" : 5
+     },
+     {
+      "name" : "draw",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 48,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 51,
+      "endchar" : 5
+     },
+     {
+      "name" : "gui",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 54,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 57,
+      "endchar" : 5
+     },
+     {
+      "name" : "resized",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 60,
+      "char" : 10,
+      "deco" : "FffZv",
+      "parameters" : [
+       {
+        "name" : "width",
+        "deco" : "f"
+       },
+       {
+        "name" : "height",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 63,
+      "endchar" : 5
+     },
+     {
+      "name" : "mouseMoved",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 69,
+      "char" : 10,
+      "deco" : "FffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "dx",
+        "deco" : "f"
+       },
+       {
+        "name" : "dy",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 71,
+      "endchar" : 5
+     },
+     {
+      "name" : "mousePressed",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 74,
+      "char" : 10,
+      "deco" : "FffE6turtle5mouse11MouseButtoniZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "button",
+        "deco" : "E6turtle5mouse11MouseButton"
+       },
+       {
+        "name" : "repeat",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 76,
+      "endchar" : 5
+     },
+     {
+      "name" : "mouseReleased",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 79,
+      "char" : 10,
+      "deco" : "FffE6turtle5mouse11MouseButtonZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "button",
+        "deco" : "E6turtle5mouse11MouseButton"
+       }
+      ],
+      "endline" : 81,
+      "endchar" : 5
+     },
+     {
+      "name" : "mouseWheel",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 84,
+      "char" : 10,
+      "deco" : "FffZv",
+      "parameters" : [
+       {
+        "name" : "wheelX",
+        "deco" : "f"
+       },
+       {
+        "name" : "wheelY",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 86,
+      "endchar" : 5
+     },
+     {
+      "name" : "keyPressed",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 90,
+      "char" : 10,
+      "deco" : "FAyaZv",
+      "originalType" : "void(KeyConstant key)",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 92,
+      "endchar" : 5
+     },
+     {
+      "name" : "canvas",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 103,
+      "char" : 13,
+      "deco" : "FZPS5dplug6canvas6Canvas",
+      "endline" : 106,
+      "endchar" : 5
+     },
+     {
+      "name" : "canvasity",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 110,
+      "char" : 16,
+      "deco" : "FZPS9canvasity9Canvasity",
+      "endline" : 113,
+      "endchar" : 5
+     },
+     {
+      "name" : "console",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 117,
+      "char" : 17,
+      "deco" : "FZPS8textmode10TM_Console",
+      "endline" : 120,
+      "endchar" : 5
+     },
+     {
+      "name" : "framebuffer",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 124,
+      "char" : 19,
+      "deco" : "FZS5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx",
+      "originalType" : "ImageRef!RGBA()",
+      "endline" : 127,
+      "endchar" : 5
+     },
+     {
+      "name" : "keyboard",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 132,
+      "char" : 14,
+      "deco" : "FZC6turtle8keyboard8Keyboard",
+      "endline" : 135,
+      "endchar" : 5
+     },
+     {
+      "name" : "mouse",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 140,
+      "char" : 11,
+      "deco" : "FZC6turtle5mouse5Mouse",
+      "endline" : 143,
+      "endchar" : 5
+     },
+     {
+      "name" : "ui",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 147,
+      "char" : 13,
+      "deco" : "FZC6turtle2ui7MicroUI",
+      "endline" : 150,
+      "endchar" : 5
+     },
+     {
+      "name" : "windowWidth",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 153,
+      "char" : 12,
+      "deco" : "FZd",
+      "endline" : 156,
+      "endchar" : 5
+     },
+     {
+      "name" : "windowHeight",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 159,
+      "char" : 12,
+      "deco" : "FZd",
+      "endline" : 162,
+      "endchar" : 5
+     },
+     {
+      "name" : "elapsedTime",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 165,
+      "char" : 12,
+      "deco" : "FZd",
+      "endline" : 168,
+      "endchar" : 5
+     },
+     {
+      "name" : "exitGame",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 171,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 174,
+      "endchar" : 5
+     },
+     {
+      "name" : "setBackgroundColor",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 177,
+      "char" : 10,
+      "deco" : "FS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 180,
+      "endchar" : 5
+     },
+     {
+      "name" : "setBackgroundColor",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 182,
+      "char" : 10,
+      "deco" : "FS5dplug8graphics5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZv",
+      "originalType" : "void(RGBA col)",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S5dplug8graphics5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBt"
+       }
+      ],
+      "endline" : 186,
+      "endchar" : 5
+     },
+     {
+      "name" : "setBackgroundColor",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 188,
+      "char" : 10,
+      "deco" : "FAxaZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 191,
+      "endchar" : 5
+     },
+     {
+      "name" : "setTitle",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 194,
+      "char" : 10,
+      "deco" : "FAxaZv",
+      "parameters" : [
+       {
+        "name" : "title",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 197,
+      "endchar" : 5
+     },
+     {
+      "name" : "_frameCanvas",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 202,
+      "char" : 13,
+      "deco" : "PS5dplug6canvas6Canvas",
+      "init" : "null",
+      "offset" : 16
+     },
+     {
+      "name" : "_frameCanvasity",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 203,
+      "char" : 16,
+      "deco" : "PS9canvasity9Canvasity",
+      "init" : "null",
+      "offset" : 24
+     },
+     {
+      "name" : "_framebuffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 205,
+      "char" : 19,
+      "deco" : "S5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx",
+      "originalType" : "ImageRef!RGBA",
+      "offset" : 32
+     },
+     {
+      "name" : "_windowWidth",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 206,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 56
+     },
+     {
+      "name" : "_windowHeight",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 207,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 60
+     },
+     {
+      "name" : "_gameShouldExit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 209,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 64
+     },
+     {
+      "name" : "_ticksSinceBeginning",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 211,
+      "char" : 11,
+      "deco" : "m",
+      "init" : "0LU",
+      "offset" : 72
+     },
+     {
+      "name" : "_elapsedTime",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 213,
+      "char" : 12,
+      "deco" : "d",
+      "init" : "0.0",
+      "offset" : 80
+     },
+     {
+      "name" : "_deltaTime",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 213,
+      "char" : 30,
+      "deco" : "d",
+      "init" : "0.0",
+      "offset" : 88
+     },
+     {
+      "name" : "_backgroundColor",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 215,
+      "char" : 11,
+      "deco" : "S6colors10colorspace5RGBA8",
+      "init" : "RGBA8(cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)255u)",
+      "offset" : 96,
+      "align" : 1
+     },
+     {
+      "name" : "_keyboard",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 217,
+      "char" : 14,
+      "deco" : "C6turtle8keyboard8Keyboard",
+      "originalType" : "Keyboard",
+      "offset" : 104
+     },
+     {
+      "name" : "_mouse",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 218,
+      "char" : 11,
+      "deco" : "C6turtle5mouse5Mouse",
+      "originalType" : "Mouse",
+      "offset" : 112
+     },
+     {
+      "name" : "_graphics",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 219,
+      "char" : 15,
+      "deco" : "C6turtle8graphics9IGraphics",
+      "originalType" : "IGraphics",
+      "offset" : 120
+     },
+     {
+      "name" : "_console",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 220,
+      "char" : 16,
+      "deco" : "S8textmode10TM_Console",
+      "offset" : 128
+     },
+     {
+      "name" : "_mui",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 221,
+      "char" : 13,
+      "deco" : "C6turtle2ui7MicroUI",
+      "originalType" : "MicroUI",
+      "offset" : 1624
+     },
+     {
+      "name" : "run",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 223,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 429,
+      "endchar" : 5
+     },
+     {
+      "name" : "updateKeyboard",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 431,
+      "char" : 10,
+      "deco" : "FxPS3sdl6events17SDL_KeyboardEventZv",
+      "parameters" : [
+       {
+        "name" : "event",
+        "deco" : "xPS3sdl6events17SDL_KeyboardEvent"
+       }
+      ],
+      "endline" : 452,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 31,
+      "char" : 1,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNbNiNlNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   },
+   {
+    "name" : "convertSDLButtonToMouseButton",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 472,
+    "char" : 13,
+    "deco" : "FNbNiiZE6turtle5mouse11MouseButton",
+    "parameters" : [
+     {
+      "name" : "button",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 484,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "turtle.graphics",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\graphics.d",
+  "members" : [
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.sys.windows.windef",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.sys.windows.winuser",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.sys.windows.winbase",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "EMULATE_SDL",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 14,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "bindbc.sdl",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "bindbc.loader",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle.renderer",
+    "kind" : "import",
+    "line" : 23,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "gamut",
+    "kind" : "import",
+    "line" : 25,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "canvasity",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "createGraphics",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 11,
+    "deco" : "FZC6turtle8graphics9IGraphics",
+    "endline" : 31,
+    "endchar" : 1
+   },
+   {
+    "name" : "IGraphics",
+    "kind" : "interface",
+    "protection" : "public",
+    "line" : 33,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "nextEvent",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 36,
+      "char" : 10,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FPS3sdl6events9SDL_EventZb",
+      "parameters" : [
+       {
+        "name" : "event",
+        "deco" : "PS3sdl6events9SDL_Event"
+       }
+      ]
+     },
+     {
+      "name" : "getRenderer",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 39,
+      "char" : 15,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FZC6turtle8renderer9IRenderer"
+     },
+     {
+      "name" : "getTicks",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 41,
+      "char" : 9,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FZi"
+     },
+     {
+      "name" : "getWindowID",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 44,
+      "char" : 10,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FZk"
+     },
+     {
+      "name" : "getWindowObject",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 47,
+      "char" : 11,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FZPv"
+     },
+     {
+      "name" : "setTitle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 49,
+      "char" : 10,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FAxaZv",
+      "parameters" : [
+       {
+        "name" : "title",
+        "deco" : "Axa"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "RENDERER",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 52,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "Graphics",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 55,
+    "char" : 1,
+    "interfaces" : [
+     "turtle.graphics.IGraphics",
+     "turtle.renderer.IRenderer"
+    ],
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 57,
+      "char" : 5,
+      "deco" : "FZC6turtle8graphics8Graphics",
+      "originalType" : "()",
+      "endline" : 93,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 95,
+      "char" : 5,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNlZv",
+      "endline" : 114,
+      "endchar" : 5
+     },
+     {
+      "name" : "setTitle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 118,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FAxaZv",
+      "parameters" : [
+       {
+        "name" : "title",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 121,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.graphics.IGraphics.setTitle"
+      ]
+     },
+     {
+      "name" : "nextEvent",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 123,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FPS3sdl6events9SDL_EventZb",
+      "parameters" : [
+       {
+        "name" : "event",
+        "deco" : "PS3sdl6events9SDL_Event"
+       }
+      ],
+      "endline" : 171,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.graphics.IGraphics.nextEvent"
+      ]
+     },
+     {
+      "name" : "getRenderer",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 173,
+      "char" : 24,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FZC6turtle8renderer9IRenderer",
+      "endline" : 176,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.graphics.IGraphics.getRenderer"
+      ]
+     },
+     {
+      "name" : "getTicks",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 178,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FZi",
+      "endline" : 181,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.graphics.IGraphics.getTicks"
+      ]
+     },
+     {
+      "name" : "getWindowID",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 183,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FZk",
+      "endline" : 186,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.graphics.IGraphics.getWindowID"
+      ]
+     },
+     {
+      "name" : "getWindowObject",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 188,
+      "char" : 20,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FZPv",
+      "endline" : 191,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.graphics.IGraphics.getWindowObject"
+      ]
+     },
+     {
+      "name" : "beginFrame",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 196,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FS6colors10colorspace5RGBA8PPS5dplug6canvas6CanvasPPS9canvasity9CanvasityPSQBt8graphics5image__T8ImageRefTSQCzQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCxZv",
+      "originalType" : "void(RGBA8 clearColor, Canvas** canvas, Canvasity** canvasity, ImageRef!RGBA* framebuffer)",
+      "parameters" : [
+       {
+        "name" : "clearColor",
+        "deco" : "S6colors10colorspace5RGBA8"
+       },
+       {
+        "name" : "canvas",
+        "deco" : "PPS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "canvasity",
+        "deco" : "PPS9canvasity9Canvasity"
+       },
+       {
+        "name" : "framebuffer",
+        "deco" : "PS5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx"
+       }
+      ],
+      "endline" : 259,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.renderer.IRenderer.beginFrame"
+      ]
+     },
+     {
+      "name" : "fillWithClearColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 261,
+      "char" : 10,
+      "deco" : "FS6colors10colorspace5RGBA8Zv",
+      "parameters" : [
+       {
+        "name" : "clearColor",
+        "deco" : "S6colors10colorspace5RGBA8"
+       }
+      ],
+      "endline" : 273,
+      "endchar" : 5
+     },
+     {
+      "name" : "getFrameSize",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 275,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FPiQcZv",
+      "parameters" : [
+       {
+        "name" : "width",
+        "deco" : "Pi"
+       },
+       {
+        "name" : "height",
+        "deco" : "Pi"
+       }
+      ],
+      "endline" : 279,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.renderer.IRenderer.getFrameSize"
+      ]
+     },
+     {
+      "name" : "endFrame",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 282,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 312,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.renderer.IRenderer.endFrame"
+      ]
+     },
+     {
+      "name" : "_window",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 315,
+      "char" : 17,
+      "deco" : "PS3sdl5video10SDL_Window",
+      "offset" : 32
+     },
+     {
+      "name" : "_renderer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 316,
+      "char" : 19,
+      "deco" : "PS3sdl6render12SDL_Renderer",
+      "offset" : 40
+     },
+     {
+      "name" : "_texture",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 317,
+      "char" : 18,
+      "deco" : "PS3sdl6render11SDL_Texture",
+      "offset" : 48
+     },
+     {
+      "name" : "_canvas",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 318,
+      "char" : 12,
+      "deco" : "S5dplug6canvas6Canvas",
+      "offset" : 56
+     },
+     {
+      "name" : "_canvasity",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 319,
+      "char" : 15,
+      "deco" : "S9canvasity9Canvasity",
+      "offset" : 464
+     },
+     {
+      "name" : "_buffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 320,
+      "char" : 21,
+      "deco" : "C5dplug8graphics5image__T10OwnedImageTSQBmQBj5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQDa",
+      "originalType" : "OwnedImage!RGBA",
+      "offset" : 1152
+     },
+     {
+      "name" : "_lastKnownWidth",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 322,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 1160
+     },
+     {
+      "name" : "_lastKnownHeight",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 323,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 1164
+     },
+     {
+      "name" : "_isFullscreen",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 325,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 1168
+     },
+     {
+      "name" : "memset32",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 327,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPvimZv",
+      "originalType" : "void(void* dest, int value, size_t count)",
+      "parameters" : [
+       {
+        "name" : "dest",
+        "deco" : "Pv"
+       },
+       {
+        "name" : "value",
+        "deco" : "i"
+       },
+       {
+        "name" : "count",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 331,
+      "endchar" : 5
+     },
+     {
+      "name" : "toggleFullscreen",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 333,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 348,
+      "endchar" : 5
+     },
+     {
+      "name" : "SetProcessDPIAware_t",
+      "kind" : "alias",
+      "protection" : "private",
+      "line" : 354,
+      "char" : 13,
+      "deco" : "PWZi"
+     },
+     {
+      "name" : "user32_module_",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 356,
+      "char" : 17,
+      "deco" : "Pv",
+      "originalType" : "HMODULE",
+      "offset" : 1176
+     },
+     {
+      "name" : "SetProcessDPIAware_",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 357,
+      "char" : 30,
+      "deco" : "PWZi",
+      "originalType" : "SetProcessDPIAware_t",
+      "offset" : 1184
+     },
+     {
+      "name" : "loadSDLLibrary",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 360,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 381,
+      "endchar" : 5
+     },
+     {
+      "name" : "makeProcessDPIAware",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 385,
+      "char" : 14,
+      "deco" : "FZv",
+      "endline" : 394,
+      "endchar" : 9
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 95,
+      "char" : 5,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNbNiNlZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 95,
+      "char" : 5,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNlZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "turtle.keyboard",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\keyboard.d",
+  "members" : [
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "bindbc.sdl",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "KeyConstant",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 6,
+    "char" : 1,
+    "deco" : "Aya"
+   },
+   {
+    "name" : "Keyboard",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 13,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 15,
+      "char" : 5,
+      "deco" : "FZC6turtle8keyboard8Keyboard",
+      "originalType" : "()",
+      "endline" : 18,
+      "endchar" : 5
+     },
+     {
+      "name" : "isDown",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 21,
+      "char" : 10,
+      "deco" : "FAyaZb",
+      "originalType" : "bool(KeyConstant key)",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 27,
+      "endchar" : 5
+     },
+     {
+      "name" : "isPressed",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 29,
+      "char" : 5,
+      "originalType" : "isDown"
+     },
+     {
+      "name" : "isUp",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 32,
+      "char" : 10,
+      "deco" : "FAyaZb",
+      "originalType" : "bool(KeyConstant key)",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 35,
+      "endchar" : 5
+     },
+     {
+      "name" : "isUnpressed",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 37,
+      "char" : 5,
+      "originalType" : "isUp"
+     },
+     {
+      "name" : "isDownOnce",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 41,
+      "char" : 10,
+      "deco" : "FAyaZb",
+      "originalType" : "bool(KeyConstant key)",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 49,
+      "endchar" : 5
+     },
+     {
+      "name" : "getSDLKeycodeFromKey",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 53,
+      "char" : 24,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FAyaZE3sdl7keycode11SDL_KeyCode",
+      "originalType" : "SDL_Keycode(KeyConstant key)",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 59,
+      "endchar" : 5
+     },
+     {
+      "name" : "getKeyFromSDLKeycode",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 61,
+      "char" : 24,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FE3sdl7keycode11SDL_KeyCodeZAya",
+      "originalType" : "KeyConstant(SDL_Keycode code)",
+      "parameters" : [
+       {
+        "name" : "code",
+        "deco" : "E3sdl7keycode11SDL_KeyCode"
+       }
+      ],
+      "endline" : 67,
+      "endchar" : 5
+     },
+     {
+      "name" : "markKeyAsPressed",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 70,
+      "char" : 10,
+      "deco" : "FE3sdl8scancode12SDL_ScancodeZb",
+      "parameters" : [
+       {
+        "name" : "scancode",
+        "deco" : "E3sdl8scancode12SDL_Scancode"
+       }
+      ],
+      "endline" : 75,
+      "endchar" : 5
+     },
+     {
+      "name" : "markKeyAsReleased",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 78,
+      "char" : 10,
+      "deco" : "FE3sdl8scancode12SDL_ScancodeZb",
+      "parameters" : [
+       {
+        "name" : "scancode",
+        "deco" : "E3sdl8scancode12SDL_Scancode"
+       }
+      ],
+      "endline" : 83,
+      "endchar" : 5
+     },
+     {
+      "name" : "SDL_NUM_SCANCODES",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 85,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "512"
+     },
+     {
+      "name" : "_state",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 86,
+      "char" : 29,
+      "deco" : "G512b",
+      "originalType" : "bool[SDL_NUM_SCANCODES]",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "KeyData",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 91,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "tcon",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 93,
+      "char" : 17,
+      "deco" : "Aya",
+      "originalType" : "KeyConstant",
+      "offset" : 0
+     },
+     {
+      "name" : "sdlk",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 94,
+      "char" : 17,
+      "deco" : "E3sdl7keycode11SDL_KeyCode",
+      "originalType" : "SDL_Keycode",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "allKeys",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 98,
+    "char" : 28,
+    "storageClass" : [
+     "static",
+     "immutable"
+    ],
+    "deco" : "yAS6turtle8keyboard7KeyData",
+    "originalType" : "KeyData[]",
+    "init" : "[KeyData(\"escape\", SDL_KeyCode.escape), KeyData(\"return\", SDL_KeyCode.enter), KeyData(\"left\", SDL_KeyCode.left), KeyData(\"right\", SDL_KeyCode.right), KeyData(\"up\", SDL_KeyCode.up), KeyData(\"down\", SDL_KeyCode.down), KeyData(\"space\", SDL_KeyCode.space), KeyData(\"KP_0\", SDL_KeyCode.kp0), KeyData(\"KP_1\", SDL_KeyCode.kp1), KeyData(\"KP_2\", SDL_KeyCode.kp2), KeyData(\"KP_3\", SDL_KeyCode.kp3), KeyData(\"KP_4\", SDL_KeyCode.kp4), KeyData(\"KP_5\", SDL_KeyCode.kp5), KeyData(\"KP_6\", SDL_KeyCode.kp6), KeyData(\"KP_7\", SDL_KeyCode.kp7), KeyData(\"KP_8\", SDL_KeyCode.kp8), KeyData(\"KP_9\", SDL_KeyCode.kp9), KeyData(\"a\", SDL_KeyCode.a), KeyData(\"b\", SDL_KeyCode.b), KeyData(\"c\", SDL_KeyCode.c), KeyData(\"d\", SDL_KeyCode.d), KeyData(\"e\", SDL_KeyCode.e), KeyData(\"f\", SDL_KeyCode.f), KeyData(\"g\", SDL_KeyCode.g), KeyData(\"h\", SDL_KeyCode.h), KeyData(\"i\", SDL_KeyCode.i), KeyData(\"j\", SDL_KeyCode.j), KeyData(\"k\", SDL_KeyCode.k), KeyData(\"l\", SDL_KeyCode.l), KeyData(\"m\", SDL_KeyCode.m), KeyData(\"n\", SDL_KeyCode.n), KeyData(\"o\", SDL_KeyCode.o), KeyData(\"p\", SDL_KeyCode.p), KeyData(\"q\", SDL_KeyCode.q), KeyData(\"r\", SDL_KeyCode.r), KeyData(\"s\", SDL_KeyCode.s), KeyData(\"t\", SDL_KeyCode.t), KeyData(\"u\", SDL_KeyCode.u), KeyData(\"v\", SDL_KeyCode.v), KeyData(\"w\", SDL_KeyCode.w), KeyData(\"x\", SDL_KeyCode.x), KeyData(\"y\", SDL_KeyCode.y), KeyData(\"z\", SDL_KeyCode.z)]"
+   }
+  ]
+ },
+ {
+  "name" : "turtle.mouse",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\mouse.d",
+  "members" : [
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "bindbc.sdl",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "MouseButton",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 7,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "left",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 9,
+      "char" : 5
+     },
+     {
+      "name" : "right",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 10,
+      "char" : 5
+     },
+     {
+      "name" : "middle",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 11,
+      "char" : 5
+     },
+     {
+      "name" : "x1",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 12,
+      "char" : 5
+     },
+     {
+      "name" : "x2",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 13,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "Mouse",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 18,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 20,
+      "char" : 5,
+      "deco" : "FZC6turtle5mouse5Mouse",
+      "originalType" : "()",
+      "endline" : 22,
+      "endchar" : 5
+     },
+     {
+      "name" : "positionX",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 25,
+      "char" : 11,
+      "deco" : "FZf",
+      "endline" : 28,
+      "endchar" : 5
+     },
+     {
+      "name" : "x",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 30,
+      "char" : 5,
+      "originalType" : "positionX"
+     },
+     {
+      "name" : "positionY",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 33,
+      "char" : 11,
+      "deco" : "FZf",
+      "endline" : 36,
+      "endchar" : 5
+     },
+     {
+      "name" : "y",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 38,
+      "char" : 5,
+      "originalType" : "positionY"
+     },
+     {
+      "name" : "left",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 41,
+      "char" : 10,
+      "deco" : "FZb",
+      "endline" : 44,
+      "endchar" : 5
+     },
+     {
+      "name" : "right",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 47,
+      "char" : 10,
+      "deco" : "FZb",
+      "endline" : 50,
+      "endchar" : 5
+     },
+     {
+      "name" : "middle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 53,
+      "char" : 10,
+      "deco" : "FZb",
+      "endline" : 56,
+      "endchar" : 5
+     },
+     {
+      "name" : "isPressed",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 59,
+      "char" : 10,
+      "deco" : "FE6turtle5mouse11MouseButtonZb",
+      "parameters" : [
+       {
+        "name" : "button",
+        "deco" : "E6turtle5mouse11MouseButton"
+       }
+      ],
+      "endline" : 62,
+      "endchar" : 5
+     },
+     {
+      "name" : "hide",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 65,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 68,
+      "endchar" : 5
+     },
+     {
+      "name" : "show",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 71,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 74,
+      "endchar" : 5
+     },
+     {
+      "name" : "_x",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 77,
+      "char" : 11,
+      "deco" : "f",
+      "offset" : 16
+     },
+     {
+      "name" : "_y",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 77,
+      "char" : 15,
+      "deco" : "f",
+      "offset" : 20
+     },
+     {
+      "name" : "markAsPressed",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 79,
+      "char" : 10,
+      "deco" : "FE6turtle5mouse11MouseButtonZv",
+      "parameters" : [
+       {
+        "name" : "button",
+        "deco" : "E6turtle5mouse11MouseButton"
+       }
+      ],
+      "endline" : 82,
+      "endchar" : 5
+     },
+     {
+      "name" : "markAsReleased",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 84,
+      "char" : 10,
+      "deco" : "FE6turtle5mouse11MouseButtonZv",
+      "parameters" : [
+       {
+        "name" : "button",
+        "deco" : "E6turtle5mouse11MouseButton"
+       }
+      ],
+      "endline" : 87,
+      "endchar" : 5
+     },
+     {
+      "name" : "pressed",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 89,
+      "char" : 31,
+      "deco" : "G5b",
+      "originalType" : "bool[MouseButton.max + 1]",
+      "offset" : 24
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "turtle",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\package.d",
+  "members" : [
+   {
+    "name" : "std.math",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 15
+   },
+   {
+    "name" : "dplug.math.vector",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 15
+   },
+   {
+    "name" : "dplug.math.matrix",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 15
+   },
+   {
+    "name" : "dplug.graphics",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 15
+   },
+   {
+    "name" : "colors",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.graphics",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.renderer",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.random",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.game",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.keyboard",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.mouse",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 15
+   },
+   {
+    "name" : "turtle.ui",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 15
+   },
+   {
+    "name" : "textmode",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 15
+   }
+  ]
+ },
+ {
+  "name" : "turtle.random",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\random.d",
+  "members" : [
+   {
+    "name" : "std.random",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 15
+   },
+   {
+    "name" : "std.math",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "randInt",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 15,
+    "char" : 5,
+    "deco" : "FiiZi",
+    "parameters" : [
+     {
+      "name" : "min",
+      "deco" : "i"
+     },
+     {
+      "name" : "max",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 18,
+    "endchar" : 1
+   },
+   {
+    "name" : "randNormal",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "mean",
+      "deco" : "d",
+      "default" : "0.0"
+     },
+     {
+      "name" : "standardDeviation",
+      "deco" : "d",
+      "default" : "1.0"
+     }
+    ],
+    "endline" : 35,
+    "endchar" : 1
+   },
+   {
+    "name" : "randExponential",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 38,
+    "char" : 8,
+    "deco" : "FdZd",
+    "parameters" : [
+     {
+      "name" : "mean",
+      "deco" : "d",
+      "default" : "1.0"
+     }
+    ],
+    "endline" : 42,
+    "endchar" : 1
+   },
+   {
+    "name" : "randGamma",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 48,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "shape",
+      "deco" : "d"
+     },
+     {
+      "name" : "scale",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 78,
+    "endchar" : 1
+   },
+   {
+    "name" : "randChiSquare",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 81,
+    "char" : 8,
+    "deco" : "FdZd",
+    "parameters" : [
+     {
+      "name" : "degreesOfFreedom",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 86,
+    "endchar" : 1
+   },
+   {
+    "name" : "randInverseGamma",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 89,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "shape",
+      "deco" : "d"
+     },
+     {
+      "name" : "scale",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 94,
+    "endchar" : 1
+   },
+   {
+    "name" : "randWeibull",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 97,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "shape",
+      "deco" : "d"
+     },
+     {
+      "name" : "scale",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 101,
+    "endchar" : 1
+   },
+   {
+    "name" : "randCauchy",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 104,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "median",
+      "deco" : "d"
+     },
+     {
+      "name" : "scale",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 111,
+    "endchar" : 1
+   },
+   {
+    "name" : "randStudentT",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 115,
+    "char" : 8,
+    "deco" : "FdZd",
+    "parameters" : [
+     {
+      "name" : "degreesOfFreedom",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 121,
+    "endchar" : 1
+   },
+   {
+    "name" : "randLaplace",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 124,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "mean",
+      "deco" : "d"
+     },
+     {
+      "name" : "scale",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 129,
+    "endchar" : 1
+   },
+   {
+    "name" : "randLogNormal",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 132,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "mu",
+      "deco" : "d"
+     },
+     {
+      "name" : "sigma",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 135,
+    "endchar" : 1
+   },
+   {
+    "name" : "randBeta",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 138,
+    "char" : 8,
+    "deco" : "FddZd",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "d"
+     },
+     {
+      "name" : "b",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 150,
+    "endchar" : 1
+   },
+   {
+    "name" : "randPoisson",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 153,
+    "char" : 5,
+    "deco" : "FdZi",
+    "parameters" : [
+     {
+      "name" : "lambda",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 156,
+    "endchar" : 1
+   },
+   {
+    "name" : "poissonSmall",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 160,
+    "char" : 9,
+    "deco" : "FdZi",
+    "parameters" : [
+     {
+      "name" : "lambda",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 172,
+    "endchar" : 5
+   },
+   {
+    "name" : "poissonLarge",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 174,
+    "char" : 9,
+    "deco" : "FdZi",
+    "parameters" : [
+     {
+      "name" : "lambda",
+      "deco" : "d"
+     }
+    ],
+    "endline" : 200,
+    "endchar" : 5
+   },
+   {
+    "name" : "logFactorial",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 202,
+    "char" : 12,
+    "deco" : "FNbiZd",
+    "parameters" : [
+     {
+      "name" : "n",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 214,
+    "endchar" : 5
+   },
+   {
+    "name" : "LOG_FACTORIAL",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 217,
+    "char" : 38,
+    "storageClass" : [
+     "static",
+     "immutable"
+    ],
+    "deco" : "yG255d",
+    "originalType" : "double[255]",
+    "init" : "[0.0, 0.0, 0.693147, 1.79176, 3.17805, 4.78749, 6.57925, 8.52516, 10.6046, 12.8018, 15.1044, 17.5023, 19.9872, 22.5522, 25.1912, 27.8993, 30.6719, 33.5051, 36.3954, 39.3399, 42.3356, 45.3801, 48.4712, 51.6067, 54.7847, 58.0036, 61.2617, 64.5575, 67.8897, 71.257, 74.6582, 78.0922, 81.558, 85.0545, 88.5808, 92.1362, 95.7197, 99.3306, 102.968, 106.632, 110.321, 114.034, 117.772, 121.533, 125.317, 129.124, 132.953, 136.803, 140.674, 144.566, 148.478, 152.41, 156.361, 160.331, 164.32, 168.327, 172.353, 176.396, 180.456, 184.534, 188.628, 192.739, 196.866, 201.009, 205.168, 209.343, 213.532, 217.737, 221.956, 226.191, 230.439, 234.702, 238.978, 243.269, 247.573, 251.89, 256.221, 260.565, 264.922, 269.291, 273.673, 278.068, 282.474, 286.893, 291.324, 295.767, 300.221, 304.687, 309.164, 313.653, 318.153, 322.663, 327.185, 331.718, 336.261, 340.815, 345.379, 349.954, 354.539, 359.134, 363.739, 368.354, 372.979, 377.614, 382.259, 386.913, 391.576, 396.249, 400.931, 405.622, 410.323, 415.032, 419.751, 424.478, 429.214, 433.959, 438.713, 443.475, 448.246, 453.025, 457.812, 462.608, 467.412, 472.224, 477.045, 481.873, 486.709, 491.553, 496.405, 501.265, 506.133, 511.008, 515.891, 520.781, 525.679, 530.584, 535.497, 540.417, 545.344, 550.279, 555.22, 560.169, 565.125, 570.088, 575.058, 580.034, 585.018, 590.008, 595.006, 600.009, 605.02, 610.037, 615.061, 620.092, 625.129, 630.172, 635.222, 640.278, 645.341, 650.41, 655.485, 660.566, 665.654, 670.748, 675.847, 680.953, 686.065, 691.183, 696.307, 701.437, 706.573, 711.715, 716.862, 722.016, 727.175, 732.339, 737.51, 742.686, 747.868, 753.055, 758.248, 763.447, 768.651, 773.86, 779.075, 784.295, 789.521, 794.752, 799.989, 805.23, 810.477, 815.73, 820.987, 826.25, 831.518, 836.791, 842.069, 847.352, 852.64, 857.934, 863.232, 868.535, 873.844, 879.157, 884.475, 889.798, 895.126, 900.458, 905.796, 911.138, 916.485, 921.837, 927.194, 932.555, 937.921, 943.292, 948.667, 954.047, 959.431, 964.821, 970.214, 975.612, 981.015, 986.422, 991.834, 997.25, 1002.67, 1008.1, 1013.52, 1018.96, 1024.4, 1029.84, 1035.29, 1040.74, 1046.19, 1051.65, 1057.12, 1062.58, 1068.06, 1073.53, 1079.01, 1084.5, 1089.99, 1095.48, 1100.98, 1106.48, 1111.98, 1117.49, 1123.01, 1128.52, 1134.05, 1139.57, 1145.1, 1150.63, 1156.17]"
+   }
+  ]
+ },
+ {
+  "name" : "turtle.renderer",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\renderer.d",
+  "members" : [
+   {
+    "name" : "dplug.canvas",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 15
+   },
+   {
+    "name" : "canvasity",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.color",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 15
+   },
+   {
+    "name" : "dplug.graphics.image",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 15
+   },
+   {
+    "name" : "colors",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 15
+   },
+   {
+    "name" : "IRenderer",
+    "kind" : "interface",
+    "protection" : "public",
+    "line" : 10,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "beginFrame",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 13,
+      "char" : 10,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FS6colors10colorspace5RGBA8PPS5dplug6canvas6CanvasPPS9canvasity9CanvasityPSQBt8graphics5image__T8ImageRefTSQCzQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCxZv",
+      "originalType" : "void(RGBA8 clearColor, Canvas** canvas, Canvasity** canvasity, ImageRef!RGBA* framebuffer)",
+      "parameters" : [
+       {
+        "name" : "clearColor",
+        "deco" : "S6colors10colorspace5RGBA8"
+       },
+       {
+        "name" : "canvas",
+        "deco" : "PPS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "canvasity",
+        "deco" : "PPS9canvasity9Canvasity"
+       },
+       {
+        "name" : "framebuffer",
+        "deco" : "PS5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx"
+       }
+      ]
+     },
+     {
+      "name" : "endFrame",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 19,
+      "char" : 10,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FZv"
+     },
+     {
+      "name" : "getFrameSize",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 22,
+      "char" : 10,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FPiQcZv",
+      "parameters" : [
+       {
+        "name" : "width",
+        "deco" : "Pi"
+       },
+       {
+        "name" : "height",
+        "deco" : "Pi"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "turtle.ui",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\turtle\\0.1.4\\turtle\\source\\turtle\\ui.d",
+  "members" : [
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 30,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "memset",
+     "strlen",
+     "memcpy"
+    ]
+   },
+   {
+    "name" : "core.stdc.stdlib",
+    "kind" : "import",
+    "line" : 31,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "strtod",
+     "qsort"
+    ]
+   },
+   {
+    "name" : "core.stdc.stdio",
+    "kind" : "import",
+    "line" : 32,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "sprintf"
+    ]
+   },
+   {
+    "name" : "colors",
+    "kind" : "import",
+    "line" : 34,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.font",
+    "kind" : "import",
+    "line" : 35,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.nogc",
+    "kind" : "import",
+    "line" : 36,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.image",
+    "kind" : "import",
+    "line" : 37,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.draw",
+    "kind" : "import",
+    "line" : 38,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.math",
+    "kind" : "import",
+    "line" : 39,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas",
+    "kind" : "import",
+    "line" : 40,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "MU_VERSION",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 69,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "Aya",
+    "init" : "\"2.02\""
+   },
+   {
+    "name" : "mu_Real",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 70,
+    "char" : 1,
+    "deco" : "d"
+   },
+   {
+    "name" : "mu_Font",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 71,
+    "char" : 1,
+    "deco" : "C5dplug8graphics4font4Font",
+    "originalType" : "Font"
+   },
+   {
+    "name" : "MU_COLOR_TEXT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 76,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BORDER",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 77,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_WINDOWBG",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 78,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_TITLEBG",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 79,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_TITLETEXT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 80,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_PANELBG",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "5",
+    "line" : 81,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BUTTON",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "6",
+    "line" : 82,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BUTTONHOVER",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "7",
+    "line" : 83,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BUTTONFOCUS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "8",
+    "line" : 84,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BASE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "9",
+    "line" : 85,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BASEHOVER",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "10",
+    "line" : 86,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_BASEFOCUS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "11",
+    "line" : 87,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_SCROLLBASE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "12",
+    "line" : 88,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_SCROLLTHUMB",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "13",
+    "line" : 89,
+    "char" : 5
+   },
+   {
+    "name" : "MU_COLOR_MAX",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "14",
+    "line" : 90,
+    "char" : 5
+   },
+   {
+    "name" : "MU_ICON_CLOSE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 95,
+    "char" : 5
+   },
+   {
+    "name" : "MU_ICON_CHECK",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 96,
+    "char" : 5
+   },
+   {
+    "name" : "MU_ICON_COLLAPSED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 97,
+    "char" : 5
+   },
+   {
+    "name" : "MU_ICON_EXPANDED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 98,
+    "char" : 5
+   },
+   {
+    "name" : "MU_ICON_MAX",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "5",
+    "line" : 99,
+    "char" : 5
+   },
+   {
+    "name" : "MU_RES_ACTIVE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 105,
+    "char" : 5
+   },
+   {
+    "name" : "MU_RES_SUBMIT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 106,
+    "char" : 5
+   },
+   {
+    "name" : "MU_RES_CHANGE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 107,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_ALIGNCENTER",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 112,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_ALIGNRIGHT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 113,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_NOINTERACT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 114,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_NOFRAME",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "8",
+    "line" : 115,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_NORESIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "16",
+    "line" : 116,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_NOSCROLL",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "32",
+    "line" : 117,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_NOCLOSE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "64",
+    "line" : 118,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_NOTITLE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "128",
+    "line" : 119,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_HOLDFOCUS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "256",
+    "line" : 120,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_AUTOSIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "512",
+    "line" : 121,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_POPUP",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1024",
+    "line" : 122,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_CLOSED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2048",
+    "line" : 123,
+    "char" : 5
+   },
+   {
+    "name" : "MU_OPT_EXPANDED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4096",
+    "line" : 124,
+    "char" : 5
+   },
+   {
+    "name" : "MicroUI",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 140,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "setFont",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 150,
+      "char" : 17,
+      "deco" : "FNbNiAxvZv",
+      "parameters" : [
+       {
+        "name" : "fontBinary",
+        "deco" : "Axv"
+       }
+      ],
+      "endline" : 159,
+      "endchar" : 5
+     },
+     {
+      "name" : "mu_Id",
+      "kind" : "alias",
+      "protection" : "private",
+      "line" : 164,
+      "char" : 13,
+      "deco" : "k"
+     },
+     {
+      "name" : "fontSizePx",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 168,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 171,
+      "endchar" : 5
+     },
+     {
+      "name" : "fontSizePx",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 174,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "fontSizePx",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 177,
+      "endchar" : 5
+     },
+     {
+      "name" : "text",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 188,
+      "char" : 17,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 224,
+      "endchar" : 5
+     },
+     {
+      "name" : "label",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 229,
+      "char" : 17,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 232,
+      "endchar" : 5
+     },
+     {
+      "name" : "button",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 237,
+      "char" : 16,
+      "deco" : "FNbNiAxaiiZi",
+      "originalType" : "nothrow @nogc int(const(char)[] label, int icon = 0, int opt = MU_OPT_ALIGNCENTER)",
+      "parameters" : [
+       {
+        "name" : "label",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "icon",
+        "deco" : "i",
+        "default" : "0"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "1"
+       }
+      ],
+      "endline" : 253,
+      "endchar" : 5
+     },
+     {
+      "name" : "checkbox",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 255,
+      "char" : 16,
+      "deco" : "FNbNiAxaPiZi",
+      "parameters" : [
+       {
+        "name" : "label",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "state",
+        "deco" : "Pi"
+       }
+      ],
+      "endline" : 277,
+      "endchar" : 5
+     },
+     {
+      "name" : "textbox",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 279,
+      "char" : 16,
+      "deco" : "FNbNiAaiiZi",
+      "parameters" : [
+       {
+        "name" : "buf",
+        "deco" : "Aa"
+       },
+       {
+        "name" : "bufsz",
+        "deco" : "i"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "0"
+       }
+      ],
+      "endline" : 284,
+      "endchar" : 5
+     },
+     {
+      "name" : "slider",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 287,
+      "char" : 16,
+      "deco" : "FNbNiPddddPxaiZi",
+      "originalType" : "nothrow @nogc int(mu_Real* value, mu_Real low, mu_Real high, mu_Real step = 0, const(char)* fmt = MU_SLIDER_FMT, int opt = MU_OPT_ALIGNCENTER)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "deco" : "Pd"
+       },
+       {
+        "name" : "low",
+        "deco" : "d"
+       },
+       {
+        "name" : "high",
+        "deco" : "d"
+       },
+       {
+        "name" : "step",
+        "deco" : "d",
+        "default" : "0.0"
+       },
+       {
+        "name" : "fmt",
+        "deco" : "Pxa",
+        "default" : "\"%.2f\""
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "1"
+       }
+      ],
+      "endline" : 332,
+      "endchar" : 5
+     },
+     {
+      "name" : "number",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 335,
+      "char" : 9,
+      "deco" : "FNbNiPddPxaiZi",
+      "originalType" : "nothrow @nogc int(mu_Real* value, mu_Real step, const(char)* fmt = MU_SLIDER_FMT, int opt = MU_OPT_ALIGNCENTER)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "deco" : "Pd"
+       },
+       {
+        "name" : "step",
+        "deco" : "d"
+       },
+       {
+        "name" : "fmt",
+        "deco" : "Pxa",
+        "default" : "\"%.2f\""
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "1"
+       }
+      ],
+      "endline" : 364,
+      "endchar" : 5
+     },
+     {
+      "name" : "beginTreenode",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 367,
+      "char" : 16,
+      "deco" : "FNbNiAxaiZi",
+      "parameters" : [
+       {
+        "name" : "label",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "0"
+       }
+      ],
+      "endline" : 375,
+      "endchar" : 5
+     },
+     {
+      "name" : "endTreenode",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 378,
+      "char" : 17,
+      "deco" : "FNbNiZv",
+      "endline" : 382,
+      "endchar" : 5
+     },
+     {
+      "name" : "header",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 387,
+      "char" : 16,
+      "deco" : "FNbNiAxaiZi",
+      "parameters" : [
+       {
+        "name" : "label",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "0"
+       }
+      ],
+      "endline" : 390,
+      "endchar" : 5
+     },
+     {
+      "name" : "beginWindow",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 397,
+      "char" : 16,
+      "deco" : "FNbNiAxaS5dplug4math3box__T3BoxTiVii2ZQliZi",
+      "originalType" : "nothrow @nogc int(const(char)[] title, box2i rect, int opt = 0)",
+      "parameters" : [
+       {
+        "name" : "title",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "0"
+       }
+      ],
+      "endline" : 488,
+      "endchar" : 5
+     },
+     {
+      "name" : "endWindow",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 491,
+      "char" : 17,
+      "deco" : "FNbNiZv",
+      "endline" : 495,
+      "endchar" : 5
+     },
+     {
+      "name" : "begin_panel",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 497,
+      "char" : 10,
+      "deco" : "FNbNiAxaiZv",
+      "parameters" : [
+       {
+        "name" : "name",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "0"
+       }
+      ],
+      "endline" : 510,
+      "endchar" : 5
+     },
+     {
+      "name" : "end_panel",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 512,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 516,
+      "endchar" : 5
+     },
+     {
+      "name" : "openPopup",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 521,
+      "char" : 17,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "name",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 530,
+      "endchar" : 5
+     },
+     {
+      "name" : "beginPopup",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 532,
+      "char" : 16,
+      "deco" : "FNbNiAxaZi",
+      "parameters" : [
+       {
+        "name" : "name",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 542,
+      "endchar" : 5
+     },
+     {
+      "name" : "endPopup",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 544,
+      "char" : 17,
+      "deco" : "FNbNiZv",
+      "endline" : 547,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 557,
+      "char" : 17,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlS6colors5types5ColorZv",
+      "originalType" : "nothrow @nogc void(box2i rect, Color color)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "color",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 567,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawBox",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 572,
+      "char" : 17,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlS6colors5types5ColorZv",
+      "originalType" : "nothrow @nogc void(box2i r, Color color)",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "color",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 578,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawText",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 583,
+      "char" : 17,
+      "deco" : "FNbNiC5dplug8graphics4font4FontAxaSQBd4math6vector__T6VectorTiVii2ZQoS6colors5types5ColorZv",
+      "originalType" : "nothrow @nogc void(mu_Font font, const(char)[] str, vec2i pos, Color color)",
+      "parameters" : [
+       {
+        "name" : "font",
+        "deco" : "C5dplug8graphics4font4Font"
+       },
+       {
+        "name" : "str",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "pos",
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo"
+       },
+       {
+        "name" : "color",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 610,
+      "endchar" : 5
+     },
+     {
+      "name" : "draw_icon",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 613,
+      "char" : 18,
+      "deco" : "FNbNiiS5dplug4math3box__T3BoxTiVii2ZQlS6colors5types5ColorZv",
+      "originalType" : "nothrow @nogc void(int id, box2i rect, Color color)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "i"
+       },
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "color",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 633,
+      "endchar" : 5
+     },
+     {
+      "name" : "get_id",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 641,
+      "char" : 19,
+      "deco" : "FNbNiPxviZk",
+      "originalType" : "nothrow @nogc mu_Id(const(void)* data, int size)",
+      "parameters" : [
+       {
+        "name" : "data",
+        "deco" : "Pxv"
+       },
+       {
+        "name" : "size",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 659,
+      "endchar" : 5
+     },
+     {
+      "name" : "push_id",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 661,
+      "char" : 18,
+      "deco" : "FNbNiPxviZv",
+      "parameters" : [
+       {
+        "name" : "data",
+        "deco" : "Pxv"
+       },
+       {
+        "name" : "size",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 664,
+      "endchar" : 5
+     },
+     {
+      "name" : "pop_id",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 666,
+      "char" : 18,
+      "deco" : "FNbNiZv",
+      "endline" : 669,
+      "endchar" : 5
+     },
+     {
+      "name" : "set_focus",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 671,
+      "char" : 18,
+      "deco" : "FNbNikZv",
+      "originalType" : "nothrow @nogc void(mu_Id id)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 675,
+      "endchar" : 5
+     },
+     {
+      "name" : "bring_to_front",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 677,
+      "char" : 18,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI12mu_ContainerZv",
+      "parameters" : [
+       {
+        "name" : "cnt",
+        "deco" : "PS6turtle2ui7MicroUI12mu_Container"
+       }
+      ],
+      "endline" : 680,
+      "endchar" : 5
+     },
+     {
+      "name" : "push_clip_rect",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 686,
+      "char" : 18,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(box2i rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 690,
+      "endchar" : 5
+     },
+     {
+      "name" : "pop_clip_rect",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 692,
+      "char" : 18,
+      "deco" : "FNbNiZv",
+      "endline" : 695,
+      "endchar" : 5
+     },
+     {
+      "name" : "get_clip_rect",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 697,
+      "char" : 19,
+      "deco" : "FNbNiZS5dplug4math3box__T3BoxTiVii2ZQl",
+      "originalType" : "nothrow @nogc box2i()",
+      "endline" : 701,
+      "endchar" : 5
+     },
+     {
+      "name" : "MU_CLIP_PART",
+      "kind" : "enum member",
+      "protection" : "private",
+      "value" : "1",
+      "line" : 705,
+      "char" : 9
+     },
+     {
+      "name" : "MU_CLIP_ALL",
+      "kind" : "enum member",
+      "protection" : "private",
+      "value" : "2",
+      "line" : 706,
+      "char" : 9
+     },
+     {
+      "name" : "check_clip",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 709,
+      "char" : 17,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlZi",
+      "originalType" : "nothrow @nogc int(box2i r)",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 723,
+      "endchar" : 5
+     },
+     {
+      "name" : "set_clip",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 725,
+      "char" : 18,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(box2i rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 730,
+      "endchar" : 5
+     },
+     {
+      "name" : "get_current_container",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 741,
+      "char" : 27,
+      "deco" : "FNbNiZPS6turtle2ui7MicroUI12mu_Container",
+      "endline" : 745,
+      "endchar" : 5
+     },
+     {
+      "name" : "get_container",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 747,
+      "char" : 27,
+      "deco" : "FNbNiAxaZPS6turtle2ui7MicroUI12mu_Container",
+      "parameters" : [
+       {
+        "name" : "name",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 751,
+      "endchar" : 5
+     },
+     {
+      "name" : "minSize",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 756,
+      "char" : 17,
+      "deco" : "FNbNiiiZv",
+      "parameters" : [
+       {
+        "name" : "w",
+        "deco" : "i"
+       },
+       {
+        "name" : "h",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 764,
+      "endchar" : 5
+     },
+     {
+      "name" : "currentContainerRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 769,
+      "char" : 18,
+      "deco" : "FNbNiZS5dplug4math3box__T3BoxTiVii2ZQl",
+      "originalType" : "nothrow @nogc box2i()",
+      "endline" : 772,
+      "endchar" : 5
+     },
+     {
+      "name" : "layoutRow",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 781,
+      "char" : 17,
+      "deco" : "FNbNiiPxiiZv",
+      "parameters" : [
+       {
+        "name" : "items",
+        "deco" : "i"
+       },
+       {
+        "name" : "widths",
+        "deco" : "Pxi"
+       },
+       {
+        "name" : "height",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 793,
+      "endchar" : 5
+     },
+     {
+      "name" : "layout_width",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 797,
+      "char" : 17,
+      "deco" : "FNbNiiZv",
+      "parameters" : [
+       {
+        "name" : "width",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 800,
+      "endchar" : 5
+     },
+     {
+      "name" : "layout_height",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 803,
+      "char" : 17,
+      "deco" : "FNbNiiZv",
+      "parameters" : [
+       {
+        "name" : "height",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 806,
+      "endchar" : 5
+     },
+     {
+      "name" : "layoutBeginColumn",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 809,
+      "char" : 17,
+      "deco" : "FNbNiZv",
+      "endline" : 812,
+      "endchar" : 5
+     },
+     {
+      "name" : "layoutEndColumn",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 815,
+      "char" : 17,
+      "deco" : "FNbNiZv",
+      "endline" : 826,
+      "endchar" : 5
+     },
+     {
+      "name" : "layout_set_next",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 828,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQliZv",
+      "originalType" : "nothrow @nogc void(box2i r, int relative)",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "relative",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 833,
+      "endchar" : 5
+     },
+     {
+      "name" : "layoutNext",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 838,
+      "char" : 18,
+      "deco" : "FNbNiZS5dplug4math3box__T3BoxTiVii2ZQl",
+      "originalType" : "nothrow @nogc box2i()",
+      "endline" : 893,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawControlText",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 898,
+      "char" : 17,
+      "deco" : "FNbNiAxaS5dplug4math3box__T3BoxTiVii2ZQliiZv",
+      "originalType" : "nothrow @nogc void(const(char)[] str, box2i rect, int colorid, int opt)",
+      "parameters" : [
+       {
+        "name" : "str",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "colorid",
+        "deco" : "i"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 917,
+      "endchar" : 5
+     },
+     {
+      "name" : "DEFAULT_UI_FONT_SIZE_PX",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 921,
+      "char" : 10,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "init" : "30"
+     },
+     {
+      "name" : "_uiFont",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 923,
+      "char" : 10,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "C5dplug8graphics4font4Font",
+      "originalType" : "Font",
+      "init" : "null",
+      "offset" : 16
+     },
+     {
+      "name" : "_uiFontsizePx",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 924,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "30.0F",
+      "offset" : 24
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 929,
+      "char" : 12,
+      "deco" : "FNbNiZC6turtle2ui7MicroUI",
+      "originalType" : "nothrow @nogc ()",
+      "endline" : 931,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 933,
+      "char" : 12,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNbNiNlZv",
+      "endline" : 936,
+      "endchar" : 5
+     },
+     {
+      "name" : "renderOnFramebuf",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 939,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCxZv",
+      "originalType" : "nothrow @nogc void(ImageRef!RGBA framebuffer)",
+      "parameters" : [
+       {
+        "name" : "framebuffer",
+        "deco" : "S5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx"
+       }
+      ],
+      "endline" : 1061,
+      "endchar" : 5
+     },
+     {
+      "name" : "begin",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1067,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1077,
+      "endchar" : 5
+     },
+     {
+      "name" : "end",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1082,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1149,
+      "endchar" : 5
+     },
+     {
+      "name" : "MU_MOUSE_LEFT",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 0",
+      "line" : 1158,
+      "char" : 9
+     },
+     {
+      "name" : "MU_MOUSE_RIGHT",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 1",
+      "line" : 1159,
+      "char" : 9
+     },
+     {
+      "name" : "MU_MOUSE_MIDDLE",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 2",
+      "line" : 1160,
+      "char" : 9
+     },
+     {
+      "name" : "MU_KEY_SHIFT",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 0",
+      "line" : 1165,
+      "char" : 9
+     },
+     {
+      "name" : "MU_KEY_CTRL",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 1",
+      "line" : 1166,
+      "char" : 9
+     },
+     {
+      "name" : "MU_KEY_ALT",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 2",
+      "line" : 1167,
+      "char" : 9
+     },
+     {
+      "name" : "MU_KEY_BACKSPACE",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 3",
+      "line" : 1168,
+      "char" : 9
+     },
+     {
+      "name" : "MU_KEY_RETURN",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1 << 4",
+      "line" : 1169,
+      "char" : 9
+     },
+     {
+      "name" : "input_mousemove",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1172,
+      "char" : 10,
+      "deco" : "FNbNiiiZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "i"
+       },
+       {
+        "name" : "y",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1175,
+      "endchar" : 5
+     },
+     {
+      "name" : "input_mousedown",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1177,
+      "char" : 10,
+      "deco" : "FNbNiiiiZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "i"
+       },
+       {
+        "name" : "y",
+        "deco" : "i"
+       },
+       {
+        "name" : "btn",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1182,
+      "endchar" : 5
+     },
+     {
+      "name" : "input_mouseup",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1185,
+      "char" : 10,
+      "deco" : "FNbNiiiiZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "i"
+       },
+       {
+        "name" : "y",
+        "deco" : "i"
+       },
+       {
+        "name" : "btn",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1189,
+      "endchar" : 5
+     },
+     {
+      "name" : "input_scroll",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1191,
+      "char" : 10,
+      "deco" : "FNbNiiiZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "i"
+       },
+       {
+        "name" : "y",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1195,
+      "endchar" : 5
+     },
+     {
+      "name" : "input_keydown",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1197,
+      "char" : 10,
+      "deco" : "FNbNiiZv",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1201,
+      "endchar" : 5
+     },
+     {
+      "name" : "input_keyup",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1203,
+      "char" : 10,
+      "deco" : "FNbNiiZv",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1206,
+      "endchar" : 5
+     },
+     {
+      "name" : "input_text",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1208,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 1214,
+      "endchar" : 5
+     },
+     {
+      "name" : "MU_COMMAND_JUMP",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "1",
+      "line" : 1218,
+      "char" : 9
+     },
+     {
+      "name" : "MU_COMMAND_CLIP",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "2",
+      "line" : 1219,
+      "char" : 9
+     },
+     {
+      "name" : "MU_COMMAND_RECT",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "3",
+      "line" : 1220,
+      "char" : 9
+     },
+     {
+      "name" : "MU_COMMAND_TEXT",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "4",
+      "line" : 1221,
+      "char" : 9
+     },
+     {
+      "name" : "MU_COMMAND_ICON",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "5",
+      "line" : 1222,
+      "char" : 9
+     },
+     {
+      "name" : "MU_COMMAND_MAX",
+      "kind" : "enum member",
+      "protection" : "package",
+      "value" : "6",
+      "line" : 1223,
+      "char" : 9
+     },
+     {
+      "name" : "text_width",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1227,
+      "char" : 9,
+      "deco" : "FNbNiC5dplug8graphics4font4FontAxaZi",
+      "originalType" : "nothrow @nogc int(mu_Font font, const(char)[] str)",
+      "parameters" : [
+       {
+        "name" : "font",
+        "deco" : "C5dplug8graphics4font4Font"
+       },
+       {
+        "name" : "str",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 1234,
+      "endchar" : 5
+     },
+     {
+      "name" : "text_height",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1236,
+      "char" : 9,
+      "deco" : "FNbNiC5dplug8graphics4font4FontZi",
+      "originalType" : "nothrow @nogc int(mu_Font font)",
+      "parameters" : [
+       {
+        "name" : "font",
+        "deco" : "C5dplug8graphics4font4Font"
+       }
+      ],
+      "endline" : 1242,
+      "endchar" : 5
+     },
+     {
+      "name" : "push_command",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1248,
+      "char" : 17,
+      "deco" : "FNbNiiiZPS6turtle2ui7MicroUI10mu_Command",
+      "parameters" : [
+       {
+        "name" : "type",
+        "deco" : "i"
+       },
+       {
+        "name" : "size",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1256,
+      "endchar" : 5
+     },
+     {
+      "name" : "next_command",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1259,
+      "char" : 9,
+      "deco" : "FNbNiPPS6turtle2ui7MicroUI10mu_CommandZi",
+      "parameters" : [
+       {
+        "name" : "cmd",
+        "deco" : "PPS6turtle2ui7MicroUI10mu_Command"
+       }
+      ],
+      "endline" : 1272,
+      "endchar" : 5
+     },
+     {
+      "name" : "push_jump",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 1274,
+      "char" : 17,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI10mu_CommandZQBh",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "PS6turtle2ui7MicroUI10mu_Command"
+       }
+      ],
+      "endline" : 1280,
+      "endchar" : 5
+     },
+     {
+      "name" : "MU_COMMANDLIST_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1284,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "262144LU"
+     },
+     {
+      "name" : "MU_ROOTLIST_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1285,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "32LU"
+     },
+     {
+      "name" : "MU_CONTAINERSTACK_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1286,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "32LU"
+     },
+     {
+      "name" : "MU_CLIPSTACK_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1287,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "32LU"
+     },
+     {
+      "name" : "MU_IDSTACK_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1288,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "32LU"
+     },
+     {
+      "name" : "MU_LAYOUTSTACK_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1289,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "16LU"
+     },
+     {
+      "name" : "MU_CONTAINERPOOL_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1290,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "48LU"
+     },
+     {
+      "name" : "MU_TREENODEPOOL_SIZE",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1291,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "48LU"
+     },
+     {
+      "name" : "MU_REAL",
+      "kind" : "alias",
+      "protection" : "private",
+      "line" : 1292,
+      "char" : 5,
+      "deco" : "f"
+     },
+     {
+      "name" : "MU_REAL_FMT",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1293,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "Aya",
+      "init" : "\"%.3g\""
+     },
+     {
+      "name" : "MU_SLIDER_FMT",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1294,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "Aya",
+      "init" : "\"%.2f\""
+     },
+     {
+      "name" : "MU_MAX_FMT",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1295,
+      "char" : 17,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "127LU"
+     },
+     {
+      "name" : "unclipped_rect",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1297,
+      "char" : 10,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+      "init" : "Box(Vector([0, 0], , ), Vector([16777216, 16777216], , ))"
+     },
+     {
+      "name" : "expand_rect",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1299,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQliZQBi",
+      "originalType" : "nothrow @nogc box2i(box2i rect, int n)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "n",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1302,
+      "endchar" : 5
+     },
+     {
+      "name" : "intersect_rects",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1304,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlQBgZQBk",
+      "originalType" : "nothrow @nogc box2i(box2i r1, box2i r2)",
+      "parameters" : [
+       {
+        "name" : "r1",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "r2",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 1313,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect_overlaps_vec2",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1315,
+      "char" : 16,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlSQBgQBd6vector__T6VectorTiVii2ZQoZi",
+      "originalType" : "nothrow @nogc int(box2i r, vec2i p)",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "p",
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo"
+       }
+      ],
+      "endline" : 1319,
+      "endchar" : 5
+     },
+     {
+      "name" : "RELATIVE",
+      "kind" : "enum member",
+      "protection" : "private",
+      "value" : "1",
+      "line" : 1324,
+      "char" : 9
+     },
+     {
+      "name" : "ABSOLUTE",
+      "kind" : "enum member",
+      "protection" : "private",
+      "value" : "2",
+      "line" : 1325,
+      "char" : 9
+     },
+     {
+      "name" : "_style",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1329,
+      "char" : 14,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui7MicroUI8mu_Style",
+      "offset" : 32
+     },
+     {
+      "name" : "style",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1330,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "PS6turtle2ui7MicroUI8mu_Style",
+      "init" : "null",
+      "offset" : 352
+     },
+     {
+      "name" : "hover",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1331,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "k",
+      "originalType" : "mu_Id",
+      "init" : "0u",
+      "offset" : 360
+     },
+     {
+      "name" : "focus",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1332,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "k",
+      "originalType" : "mu_Id",
+      "init" : "0u",
+      "offset" : 364
+     },
+     {
+      "name" : "last_id",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1333,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "k",
+      "originalType" : "mu_Id",
+      "init" : "0u",
+      "offset" : 368
+     },
+     {
+      "name" : "last_rect",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1334,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+      "originalType" : "box2i",
+      "offset" : 372
+     },
+     {
+      "name" : "last_zindex",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1335,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 388
+     },
+     {
+      "name" : "updated_focus",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1336,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 392
+     },
+     {
+      "name" : "frame",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1337,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 396
+     },
+     {
+      "name" : "hover_root",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1338,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "PS6turtle2ui7MicroUI12mu_Container",
+      "init" : "null",
+      "offset" : 400
+     },
+     {
+      "name" : "next_hover_root",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1339,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "PS6turtle2ui7MicroUI12mu_Container",
+      "init" : "null",
+      "offset" : 408
+     },
+     {
+      "name" : "scroll_target",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1340,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "PS6turtle2ui7MicroUI12mu_Container",
+      "init" : "null",
+      "offset" : 416
+     },
+     {
+      "name" : "number_edit_buf",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1341,
+      "char" : 22,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G127a",
+      "originalType" : "char[MU_MAX_FMT]",
+      "offset" : 424
+     },
+     {
+      "name" : "number_edit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1342,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "k",
+      "originalType" : "mu_Id",
+      "init" : "0u",
+      "offset" : 552
+     },
+     {
+      "name" : "command_list",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1344,
+      "char" : 42,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui__T8mu_stackTaVmi262144ZQv",
+      "originalType" : "mu_stack!(char, MU_COMMANDLIST_SIZE)",
+      "offset" : 556
+     },
+     {
+      "name" : "root_list",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1345,
+      "char" : 48,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui__T8mu_stackTPSQzQu7MicroUI12mu_ContainerVmi32ZQBs",
+      "originalType" : "mu_stack!(mu_Container*, MU_ROOTLIST_SIZE)",
+      "offset" : 262704
+     },
+     {
+      "name" : "container_stack",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1346,
+      "char" : 54,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui__T8mu_stackTPSQzQu7MicroUI12mu_ContainerVmi32ZQBs",
+      "originalType" : "mu_stack!(mu_Container*, MU_CONTAINERSTACK_SIZE)",
+      "offset" : 262968
+     },
+     {
+      "name" : "clip_stack",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1347,
+      "char" : 41,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui__T8mu_stackTS5dplug4math3box__T3BoxTiVii2ZQlVmi32ZQBw",
+      "originalType" : "mu_stack!(box2i, MU_CLIPSTACK_SIZE)",
+      "offset" : 263232
+     },
+     {
+      "name" : "id_stack",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1348,
+      "char" : 39,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui__T8mu_stackTkVmi32ZQr",
+      "originalType" : "mu_stack!(mu_Id, MU_IDSTACK_SIZE)",
+      "offset" : 263748
+     },
+     {
+      "name" : "layout_stack",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1349,
+      "char" : 47,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S6turtle2ui__T8mu_stackTSQyQt7MicroUI9mu_LayoutVmi16ZQBn",
+      "originalType" : "mu_stack!(mu_Layout, MU_LAYOUTSTACK_SIZE)",
+      "offset" : 263880
+     },
+     {
+      "name" : "container_pool",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1351,
+      "char" : 40,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G48S6turtle2ui7MicroUI11mu_PoolItem",
+      "originalType" : "mu_PoolItem[MU_CONTAINERPOOL_SIZE]",
+      "offset" : 266124
+     },
+     {
+      "name" : "containers",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1352,
+      "char" : 41,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G48S6turtle2ui7MicroUI12mu_Container",
+      "originalType" : "mu_Container[MU_CONTAINERPOOL_SIZE]",
+      "offset" : 266512
+     },
+     {
+      "name" : "treenode_pool",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1353,
+      "char" : 39,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G48S6turtle2ui7MicroUI11mu_PoolItem",
+      "originalType" : "mu_PoolItem[MU_TREENODEPOOL_SIZE]",
+      "offset" : 269968
+     },
+     {
+      "name" : "mouse_pos",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1355,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+      "originalType" : "vec2i",
+      "offset" : 270352
+     },
+     {
+      "name" : "last_mouse_pos",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1356,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+      "originalType" : "vec2i",
+      "offset" : 270360
+     },
+     {
+      "name" : "mouse_delta",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1357,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+      "originalType" : "vec2i",
+      "offset" : 270368
+     },
+     {
+      "name" : "scroll_delta",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1358,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+      "originalType" : "vec2i",
+      "offset" : 270376
+     },
+     {
+      "name" : "mouse_down",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1359,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 270384
+     },
+     {
+      "name" : "mouse_pressed",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1360,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 270388
+     },
+     {
+      "name" : "key_down",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1361,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 270392
+     },
+     {
+      "name" : "key_pressed",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1362,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 270396
+     },
+     {
+      "name" : "input_text_buf",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1363,
+      "char" : 14,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G32a",
+      "offset" : 270400
+     },
+     {
+      "name" : "_canvasIcon",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1365,
+      "char" : 12,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas6Canvas",
+      "offset" : 270432
+     },
+     {
+      "name" : "mu_Layout",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1367,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "body",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1369,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 0
+       },
+       {
+        "name" : "next",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1370,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 16
+       },
+       {
+        "name" : "position",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1371,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "offset" : 32
+       },
+       {
+        "name" : "size",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1372,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "offset" : 40
+       },
+       {
+        "name" : "max",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1373,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "offset" : 48
+       },
+       {
+        "name" : "widths",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1374,
+        "char" : 28,
+        "deco" : "G16i",
+        "originalType" : "int[MU_MAX_WIDTHS]",
+        "offset" : 56
+       },
+       {
+        "name" : "items",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1375,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 120
+       },
+       {
+        "name" : "item_index",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1376,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 124
+       },
+       {
+        "name" : "next_row",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1377,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 128
+       },
+       {
+        "name" : "next_type",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1378,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 132
+       },
+       {
+        "name" : "indent",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1379,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 136
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1367,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI9mu_LayoutZQBe",
+        "originalType" : "ref mu_Layout(mu_Layout p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI9mu_Layout"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "mu_PoolItem",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1382,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "id",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1384,
+        "char" : 15,
+        "deco" : "k",
+        "originalType" : "mu_Id",
+        "offset" : 0
+       },
+       {
+        "name" : "last_update",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1385,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 4
+       }
+      ]
+     },
+     {
+      "name" : "mu_BaseCommand",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1388,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "type",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1390,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 0
+       },
+       {
+        "name" : "size",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1390,
+        "char" : 19,
+        "deco" : "i",
+        "offset" : 4
+       }
+      ]
+     },
+     {
+      "name" : "mu_JumpCommand",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1393,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1395,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_BaseCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "dst",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1396,
+        "char" : 15,
+        "deco" : "Pv",
+        "offset" : 8
+       }
+      ]
+     },
+     {
+      "name" : "mu_ClipCommand",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1399,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1401,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_BaseCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "rect",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1402,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 8
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1399,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI14mu_ClipCommandZQBk",
+        "originalType" : "ref mu_ClipCommand(mu_ClipCommand p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI14mu_ClipCommand"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "mu_RectCommand",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1405,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1407,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_BaseCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "rect",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1408,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 8
+       },
+       {
+        "name" : "color",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1409,
+        "char" : 15,
+        "deco" : "S6colors5types5Color",
+        "offset" : 24
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1405,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI14mu_RectCommandZQBk",
+        "originalType" : "ref mu_RectCommand(mu_RectCommand p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI14mu_RectCommand"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "mu_TextCommand",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1412,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1414,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_BaseCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "font",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1415,
+        "char" : 17,
+        "deco" : "C5dplug8graphics4font4Font",
+        "originalType" : "mu_Font",
+        "offset" : 8
+       },
+       {
+        "name" : "pos",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1416,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "offset" : 16
+       },
+       {
+        "name" : "color",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1417,
+        "char" : 15,
+        "deco" : "S6colors5types5Color",
+        "offset" : 24
+       },
+       {
+        "name" : "str",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1418,
+        "char" : 17,
+        "deco" : "G1a",
+        "offset" : 44
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1412,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI14mu_TextCommandZQBk",
+        "originalType" : "ref mu_TextCommand(mu_TextCommand p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI14mu_TextCommand"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "mu_IconCommand",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1421,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1423,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_BaseCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "rect",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1424,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 8
+       },
+       {
+        "name" : "id",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1425,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 24
+       },
+       {
+        "name" : "color",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1426,
+        "char" : 15,
+        "deco" : "S6colors5types5Color",
+        "offset" : 28
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1421,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI14mu_IconCommandZQBk",
+        "originalType" : "ref mu_IconCommand(mu_IconCommand p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI14mu_IconCommand"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "mu_Command",
+      "kind" : "union",
+      "protection" : "private",
+      "line" : 1429,
+      "char" : 5,
+      "members" : [
+       {
+        "name" : "type",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1431,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 0
+       },
+       {
+        "name" : "base",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1432,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_BaseCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "jump",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1433,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_JumpCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "clip",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1434,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_ClipCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "rect",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1435,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_RectCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "text",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1436,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_TextCommand",
+        "offset" : 0
+       },
+       {
+        "name" : "icon",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1437,
+        "char" : 24,
+        "deco" : "S6turtle2ui7MicroUI14mu_IconCommand",
+        "offset" : 0
+       }
+      ]
+     },
+     {
+      "name" : "mu_Container",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1442,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "head",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1444,
+        "char" : 21,
+        "deco" : "PS6turtle2ui7MicroUI10mu_Command",
+        "offset" : 0
+       },
+       {
+        "name" : "tail",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1444,
+        "char" : 27,
+        "deco" : "PS6turtle2ui7MicroUI10mu_Command",
+        "offset" : 8
+       },
+       {
+        "name" : "rect",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1445,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 16
+       },
+       {
+        "name" : "body",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1446,
+        "char" : 15,
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl",
+        "originalType" : "box2i",
+        "offset" : 32
+       },
+       {
+        "name" : "content_size",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1447,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "offset" : 48
+       },
+       {
+        "name" : "scroll",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1448,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "offset" : 56
+       },
+       {
+        "name" : "zindex",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1449,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 64
+       },
+       {
+        "name" : "open",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1450,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 68
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1442,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI12mu_ContainerZQBi",
+        "originalType" : "ref mu_Container(mu_Container p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI12mu_Container"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "mu_Style",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 1453,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "font",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1455,
+        "char" : 17,
+        "deco" : "C5dplug8graphics4font4Font",
+        "originalType" : "mu_Font",
+        "init" : "null",
+        "offset" : 0
+       },
+       {
+        "name" : "size",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1456,
+        "char" : 15,
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo",
+        "originalType" : "vec2i",
+        "init" : "Vector([0, 0], , )",
+        "offset" : 8
+       },
+       {
+        "name" : "padding",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1457,
+        "char" : 13,
+        "deco" : "i",
+        "init" : "0",
+        "offset" : 16
+       },
+       {
+        "name" : "spacing",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1458,
+        "char" : 13,
+        "deco" : "i",
+        "init" : "0",
+        "offset" : 20
+       },
+       {
+        "name" : "indent",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1459,
+        "char" : 13,
+        "deco" : "i",
+        "init" : "0",
+        "offset" : 24
+       },
+       {
+        "name" : "title_height",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1460,
+        "char" : 13,
+        "deco" : "i",
+        "init" : "0",
+        "offset" : 28
+       },
+       {
+        "name" : "scrollbar_size",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1461,
+        "char" : 13,
+        "deco" : "i",
+        "init" : "0",
+        "offset" : 32
+       },
+       {
+        "name" : "thumb_size",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1462,
+        "char" : 13,
+        "deco" : "i",
+        "init" : "0",
+        "offset" : 36
+       },
+       {
+        "name" : "colors",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 1463,
+        "char" : 29,
+        "deco" : "G14S6colors5types5Color",
+        "originalType" : "Color[MU_COLOR_MAX]",
+        "offset" : 40
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "generated function",
+        "protection" : "public",
+        "line" : 1453,
+        "char" : 12,
+        "deco" : "FNaNbNcNiNjNfS6turtle2ui7MicroUI8mu_StyleZQBd",
+        "originalType" : "ref mu_Style(mu_Style p) return",
+        "parameters" : [
+         {
+          "name" : "p",
+          "deco" : "S6turtle2ui7MicroUI8mu_Style"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "draw_frame",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1466,
+      "char" : 18,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQliZv",
+      "originalType" : "nothrow @nogc void(box2i rect, int colorid)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "colorid",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1482,
+      "endchar" : 5
+     },
+     {
+      "name" : "pool_init",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1488,
+      "char" : 17,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI11mu_PoolItemikZi",
+      "originalType" : "nothrow @nogc int(mu_PoolItem* items, int len, mu_Id id)",
+      "parameters" : [
+       {
+        "name" : "items",
+        "deco" : "PS6turtle2ui7MicroUI11mu_PoolItem"
+       },
+       {
+        "name" : "len",
+        "deco" : "i"
+       },
+       {
+        "name" : "id",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 1501,
+      "endchar" : 5
+     },
+     {
+      "name" : "pool_get",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1503,
+      "char" : 17,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI11mu_PoolItemikZi",
+      "originalType" : "nothrow @nogc int(mu_PoolItem* items, int len, mu_Id id)",
+      "parameters" : [
+       {
+        "name" : "items",
+        "deco" : "PS6turtle2ui7MicroUI11mu_PoolItem"
+       },
+       {
+        "name" : "len",
+        "deco" : "i"
+       },
+       {
+        "name" : "id",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 1512,
+      "endchar" : 5
+     },
+     {
+      "name" : "pool_update",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1514,
+      "char" : 18,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI11mu_PoolItemiZv",
+      "parameters" : [
+       {
+        "name" : "items",
+        "deco" : "PS6turtle2ui7MicroUI11mu_PoolItem"
+       },
+       {
+        "name" : "idx",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1517,
+      "endchar" : 5
+     },
+     {
+      "name" : "default_style",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1525,
+      "char" : 14,
+      "deco" : "FNbNiC5dplug8graphics4font4FontZS6turtle2ui7MicroUI8mu_Style",
+      "parameters" : [
+       {
+        "name" : "font",
+        "deco" : "C5dplug8graphics4font4Font"
+       }
+      ],
+      "endline" : 1550,
+      "endchar" : 5
+     },
+     {
+      "name" : "push_layout",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1556,
+      "char" : 18,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlSQBgQBd6vector__T6VectorTiVii2ZQoZv",
+      "originalType" : "nothrow @nogc void(box2i body, vec2i scroll)",
+      "parameters" : [
+       {
+        "name" : "body",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "scroll",
+        "deco" : "S5dplug4math6vector__T6VectorTiVii2ZQo"
+       }
+      ],
+      "endline" : 1565,
+      "endchar" : 5
+     },
+     {
+      "name" : "get_layout",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1567,
+      "char" : 24,
+      "deco" : "FNbNiZPS6turtle2ui7MicroUI9mu_Layout",
+      "endline" : 1570,
+      "endchar" : 5
+     },
+     {
+      "name" : "get_container_internal",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1575,
+      "char" : 27,
+      "deco" : "FNbNikiZPS6turtle2ui7MicroUI12mu_Container",
+      "originalType" : "nothrow @nogc mu_Container*(mu_Id id, int opt)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "k"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1596,
+      "endchar" : 5
+     },
+     {
+      "name" : "pop_container",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1598,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1608,
+      "endchar" : 5
+     },
+     {
+      "name" : "begin_root_container",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1610,
+      "char" : 10,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI12mu_ContainerZv",
+      "parameters" : [
+       {
+        "name" : "cnt",
+        "deco" : "PS6turtle2ui7MicroUI12mu_Container"
+       }
+      ],
+      "endline" : 1627,
+      "endchar" : 5
+     },
+     {
+      "name" : "end_root_container",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1630,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1640,
+      "endchar" : 5
+     },
+     {
+      "name" : "draw_control_frame",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1646,
+      "char" : 10,
+      "deco" : "FNbNikS5dplug4math3box__T3BoxTiVii2ZQliiZv",
+      "originalType" : "nothrow @nogc void(mu_Id id, box2i rect, int colorid, int opt)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "k"
+       },
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "colorid",
+        "deco" : "i"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1652,
+      "endchar" : 5
+     },
+     {
+      "name" : "mouse_over",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1654,
+      "char" : 9,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlZi",
+      "originalType" : "nothrow @nogc int(box2i rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 1659,
+      "endchar" : 5
+     },
+     {
+      "name" : "in_hover_root",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1661,
+      "char" : 9,
+      "deco" : "FNbNiZi",
+      "endline" : 1671,
+      "endchar" : 5
+     },
+     {
+      "name" : "update_control",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1673,
+      "char" : 10,
+      "deco" : "FNbNikS5dplug4math3box__T3BoxTiVii2ZQliZv",
+      "originalType" : "nothrow @nogc void(mu_Id id, box2i rect, int opt)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "k"
+       },
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1693,
+      "endchar" : 5
+     },
+     {
+      "name" : "textbox_raw",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1696,
+      "char" : 9,
+      "deco" : "FNbNiPaikS5dplug4math3box__T3BoxTiVii2ZQliZi",
+      "originalType" : "nothrow @nogc int(char* buf, int bufsz, mu_Id id, box2i r, int opt = 0)",
+      "parameters" : [
+       {
+        "name" : "buf",
+        "deco" : "Pa"
+       },
+       {
+        "name" : "bufsz",
+        "deco" : "i"
+       },
+       {
+        "name" : "id",
+        "deco" : "k"
+       },
+       {
+        "name" : "r",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i",
+        "default" : "0"
+       }
+      ],
+      "endline" : 1749,
+      "endchar" : 5
+     },
+     {
+      "name" : "number_textbox",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1751,
+      "char" : 9,
+      "deco" : "FNbNiPdS5dplug4math3box__T3BoxTiVii2ZQlkZi",
+      "originalType" : "nothrow @nogc int(mu_Real* value, box2i r, mu_Id id)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "deco" : "Pd"
+       },
+       {
+        "name" : "r",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "id",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 1771,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "private",
+      "line" : 1773,
+      "char" : 18,
+      "name" : "scrollbar",
+      "parameters" : [
+       {
+        "name" : "VERT",
+        "kind" : "value",
+        "deco" : "b"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "scrollbar",
+        "kind" : "function",
+        "line" : 1773,
+        "char" : 18,
+        "type" : "void(mu_Container* cnt, box2i* b, vec2i cs)",
+        "parameters" : [
+         {
+          "name" : "cnt",
+          "type" : "mu_Container*"
+         },
+         {
+          "name" : "b",
+          "type" : "box2i*"
+         },
+         {
+          "name" : "cs",
+          "type" : "vec2i"
+         }
+        ],
+        "endline" : 1860,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "scrollbars",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1862,
+      "char" : 18,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI12mu_ContainerPS5dplug4math3box__T3BoxTiVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(mu_Container* cnt, box2i* body)",
+      "parameters" : [
+       {
+        "name" : "cnt",
+        "deco" : "PS6turtle2ui7MicroUI12mu_Container"
+       },
+       {
+        "name" : "body",
+        "deco" : "PS5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 1877,
+      "endchar" : 5
+     },
+     {
+      "name" : "push_container_body",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1879,
+      "char" : 18,
+      "deco" : "FNbNiPS6turtle2ui7MicroUI12mu_ContainerS5dplug4math3box__T3BoxTiVii2ZQliZv",
+      "originalType" : "nothrow @nogc void(mu_Container* cnt, box2i body, int opt)",
+      "parameters" : [
+       {
+        "name" : "cnt",
+        "deco" : "PS6turtle2ui7MicroUI12mu_Container"
+       },
+       {
+        "name" : "body",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1884,
+      "endchar" : 5
+     },
+     {
+      "name" : "header_internal",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 1886,
+      "char" : 17,
+      "deco" : "FNbNiAxaiiZi",
+      "parameters" : [
+       {
+        "name" : "label",
+        "deco" : "Axa"
+       },
+       {
+        "name" : "istreenode",
+        "deco" : "i"
+       },
+       {
+        "name" : "opt",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1935,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 933,
+      "char" : 12,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNbNiNlZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 933,
+      "char" : 12,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNbNiNlZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 1944,
+    "char" : 1,
+    "name" : "mu_stack",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "N",
+      "kind" : "value",
+      "deco" : "m"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "mu_stack",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 1944,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "idx",
+        "kind" : "variable",
+        "line" : 1946,
+        "char" : 9,
+        "deco" : "i"
+       },
+       {
+        "name" : "items",
+        "kind" : "variable",
+        "line" : 1947,
+        "char" : 10,
+        "type" : "T[N]"
+       },
+       {
+        "name" : "push",
+        "kind" : "function",
+        "line" : 1949,
+        "char" : 10,
+        "type" : "void(T val)",
+        "parameters" : [
+         {
+          "name" : "val",
+          "type" : "T"
+         }
+        ],
+        "endline" : 1952,
+        "endchar" : 5
+       },
+       {
+        "name" : "pop",
+        "kind" : "function",
+        "line" : 1954,
+        "char" : 10,
+        "type" : "void()",
+        "endline" : 1958,
+        "endchar" : 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "istrlen",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1962,
+    "char" : 5,
+    "deco" : "FNbNiAxaZi",
+    "parameters" : [
+     {
+      "name" : "s",
+      "deco" : "Axa"
+     }
+    ],
+    "endline" : 1965,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 1968,
+    "char" : 6,
+    "name" : "isizeof",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isizeof",
+      "kind" : "variable",
+      "line" : 1968,
+      "char" : 6,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "T.sizeof"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 1970,
+    "char" : 3,
+    "name" : "mu_min",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "mu_min",
+      "kind" : "function",
+      "line" : 1970,
+      "char" : 3,
+      "type" : "T(T a, T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T"
+       },
+       {
+        "name" : "b",
+        "type" : "T"
+       }
+      ],
+      "endline" : 1970,
+      "endchar" : 47
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 1971,
+    "char" : 3,
+    "name" : "mu_max",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "mu_max",
+      "kind" : "function",
+      "line" : 1971,
+      "char" : 3,
+      "type" : "T(T a, T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T"
+       },
+       {
+        "name" : "b",
+        "type" : "T"
+       }
+      ],
+      "endline" : 1971,
+      "endchar" : 47
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 1972,
+    "char" : 3,
+    "name" : "mu_clamp",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "mu_clamp",
+      "kind" : "function",
+      "line" : 1972,
+      "char" : 3,
+      "type" : "T(T x, T a, T b)",
+      "parameters" : [
+       {
+        "name" : "x",
+        "type" : "T"
+       },
+       {
+        "name" : "a",
+        "type" : "T"
+       },
+       {
+        "name" : "b",
+        "type" : "T"
+       }
+      ],
+      "endline" : 1972,
+      "endchar" : 64
+     }
+    ]
+   },
+   {
+    "name" : "MU_MAX_WIDTHS",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 1975,
+    "char" : 13,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "m",
+    "originalType" : "size_t",
+    "init" : "16LU"
+   },
+   {
+    "name" : "compare_zindex",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1979,
+    "char" : 9,
+    "linkage" : "c",
+    "deco" : "UNbNiPxvQdZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "Pxv"
+     },
+     {
+      "name" : "b",
+      "deco" : "Pxv"
+     }
+    ],
+    "endline" : 1982,
+    "endchar" : 5
+   }
+  ]
+ }
+]

@@ -1,0 +1,4492 @@
+[
+ {
+  "name" : "miniz",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\miniz\\0.0.3\\miniz\\source\\miniz.d",
+  "members" : [
+   {
+    "name" : "core.stdc.stdlib",
+    "kind" : "import",
+    "line" : 134,
+    "char" : 12,
+    "protection" : "private",
+    "selective" : [
+     "malloc",
+     "free",
+     "realloc"
+    ]
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 135,
+    "char" : 12,
+    "protection" : "private",
+    "selective" : [
+     "memset",
+     "memcpy"
+    ]
+   },
+   {
+    "name" : "core.stdc.config",
+    "kind" : "import",
+    "line" : 136,
+    "char" : 12,
+    "protection" : "private",
+    "selective" : [
+     "c_long",
+     "c_ulong"
+    ]
+   },
+   {
+    "name" : "MINIZ_LITTLE_ENDIAN",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 142,
+    "char" : 10,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "mz_ulong",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 150,
+    "char" : 1,
+    "deco" : "k",
+    "originalType" : "c_ulong"
+   },
+   {
+    "name" : "mz_free",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 154,
+    "char" : 1,
+    "originalType" : "free"
+   },
+   {
+    "name" : "MZ_ADLER32_INIT",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 156,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "MZ_CRC32_INIT",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 157,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "MZ_DEFAULT_STRATEGY",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 162,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_FILTERED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 163,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_HUFFMAN_ONLY",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 164,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_RLE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 165,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_FIXED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 166,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_DEFLATED",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 170,
+    "char" : 13,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "8"
+   },
+   {
+    "name" : "mz_alloc_func",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 175,
+    "char" : 1,
+    "deco" : "PFNbNiPvmmZQf",
+    "originalType" : "void* function(void* opaque, size_t items, size_t size)"
+   },
+   {
+    "name" : "mz_free_func",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 176,
+    "char" : 1,
+    "deco" : "PFNbNiPvQcZv",
+    "originalType" : "void function(void* opaque, void* address)"
+   },
+   {
+    "name" : "mz_realloc_func",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 177,
+    "char" : 1,
+    "deco" : "PFNbNiPvQcmmZQh",
+    "originalType" : "void* function(void* opaque, void* address, size_t items, size_t size)"
+   },
+   {
+    "name" : "MZ_MAX_voidp",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 179,
+    "char" : 7,
+    "deco" : "FNbNiPvQcZQf",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "b",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 182,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_MAX_int",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 184,
+    "char" : 5,
+    "deco" : "FNbNiiiZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "i"
+     },
+     {
+      "name" : "b",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 187,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_MAX_size_t",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 189,
+    "char" : 8,
+    "deco" : "FNbNimmZm",
+    "originalType" : "nothrow @nogc size_t(size_t a, size_t b)",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "m"
+     },
+     {
+      "name" : "b",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 192,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_MAX_mz_ulong",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 195,
+    "char" : 10,
+    "deco" : "FNbNikkZk",
+    "originalType" : "nothrow @nogc mz_ulong(mz_ulong a, mz_ulong b)",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "k"
+     },
+     {
+      "name" : "b",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 198,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_MIN_int",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 200,
+    "char" : 5,
+    "deco" : "FNbNiiiZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "i"
+     },
+     {
+      "name" : "b",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 203,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_MIN_uint",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 205,
+    "char" : 6,
+    "deco" : "FNbNikkZk",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "k"
+     },
+     {
+      "name" : "b",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 208,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_MIN_size_t",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 210,
+    "char" : 8,
+    "deco" : "FNbNimmZm",
+    "originalType" : "nothrow @nogc size_t(size_t a, size_t b)",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "m"
+     },
+     {
+      "name" : "b",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 213,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_NO_COMPRESSION",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 219,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_BEST_SPEED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 220,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_BEST_COMPRESSION",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "9",
+    "line" : 221,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_UBER_COMPRESSION",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "10",
+    "line" : 222,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_DEFAULT_LEVEL",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "6",
+    "line" : 223,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_DEFAULT_COMPRESSION",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-1",
+    "line" : 224,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_VERSION",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 227,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "Aya",
+    "init" : "\"11.0.2\""
+   },
+   {
+    "name" : "MZ_VERNUM",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 228,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "45058"
+   },
+   {
+    "name" : "MZ_VER_MAJOR",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 229,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "11"
+   },
+   {
+    "name" : "MZ_VER_MINOR",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 230,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "2"
+   },
+   {
+    "name" : "MZ_VER_REVISION",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 231,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "MZ_VER_SUBREVISION",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 232,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "MZ_NO_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 238,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_PARTIAL_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 239,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_SYNC_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 240,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_FULL_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 241,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_FINISH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 242,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_BLOCK",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "5",
+    "line" : 243,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_OK",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 249,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_STREAM_END",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 250,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_NEED_DICT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 251,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_ERRNO",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-1",
+    "line" : 252,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_STREAM_ERROR",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-2",
+    "line" : 253,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_DATA_ERROR",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-3",
+    "line" : 254,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_MEM_ERROR",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-4",
+    "line" : 255,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_BUF_ERROR",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-5",
+    "line" : 256,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_VERSION_ERROR",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-6",
+    "line" : 257,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_PARAM_ERROR",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-10000",
+    "line" : 258,
+    "char" : 5
+   },
+   {
+    "name" : "MZ_DEFAULT_WINDOW_BITS",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 262,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "15"
+   },
+   {
+    "name" : "mz_internal_state",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 264,
+    "char" : 1
+   },
+   {
+    "name" : "mz_stream",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 267,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "next_in",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 269,
+      "char" : 19,
+      "deco" : "Pxh",
+      "offset" : 0
+     },
+     {
+      "name" : "avail_in",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 270,
+      "char" : 10,
+      "deco" : "k",
+      "offset" : 8
+     },
+     {
+      "name" : "total_in",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 271,
+      "char" : 14,
+      "deco" : "k",
+      "originalType" : "mz_ulong",
+      "offset" : 12
+     },
+     {
+      "name" : "next_out",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 273,
+      "char" : 12,
+      "deco" : "Ph",
+      "offset" : 16
+     },
+     {
+      "name" : "avail_out",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 274,
+      "char" : 10,
+      "deco" : "k",
+      "offset" : 24
+     },
+     {
+      "name" : "total_out",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 275,
+      "char" : 14,
+      "deco" : "k",
+      "originalType" : "mz_ulong",
+      "offset" : 28
+     },
+     {
+      "name" : "msg",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 277,
+      "char" : 12,
+      "deco" : "Ph",
+      "offset" : 32
+     },
+     {
+      "name" : "state",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 278,
+      "char" : 24,
+      "deco" : "PS5miniz17mz_internal_state",
+      "offset" : 40
+     },
+     {
+      "name" : "zalloc",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 280,
+      "char" : 19,
+      "deco" : "PFNbNiPvmmZQf",
+      "originalType" : "mz_alloc_func",
+      "offset" : 48
+     },
+     {
+      "name" : "zfree",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 281,
+      "char" : 18,
+      "deco" : "PFNbNiPvQcZv",
+      "originalType" : "mz_free_func",
+      "offset" : 56
+     },
+     {
+      "name" : "opaque",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 282,
+      "char" : 11,
+      "deco" : "Pv",
+      "offset" : 64
+     },
+     {
+      "name" : "data_type",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 284,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 72
+     },
+     {
+      "name" : "adler",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 285,
+      "char" : 14,
+      "deco" : "k",
+      "originalType" : "mz_ulong",
+      "offset" : 76
+     },
+     {
+      "name" : "reserved",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 286,
+      "char" : 14,
+      "deco" : "k",
+      "originalType" : "mz_ulong",
+      "offset" : 80
+     }
+    ]
+   },
+   {
+    "name" : "mz_uint8",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 296,
+    "char" : 1,
+    "deco" : "h"
+   },
+   {
+    "name" : "mz_int16",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 297,
+    "char" : 1,
+    "deco" : "s"
+   },
+   {
+    "name" : "mz_uint16",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 298,
+    "char" : 1,
+    "deco" : "t"
+   },
+   {
+    "name" : "mz_uint32",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 299,
+    "char" : 1,
+    "deco" : "k"
+   },
+   {
+    "name" : "mz_uint",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 300,
+    "char" : 1,
+    "deco" : "k"
+   },
+   {
+    "name" : "mz_int64",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 301,
+    "char" : 1,
+    "deco" : "l"
+   },
+   {
+    "name" : "mz_uint64",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 302,
+    "char" : 1,
+    "deco" : "m"
+   },
+   {
+    "name" : "mz_bool",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 303,
+    "char" : 1,
+    "deco" : "i"
+   },
+   {
+    "name" : "MZ_FALSE",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 305,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "MZ_TRUE",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 306,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "MZ_MALLOC",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 308,
+    "char" : 1,
+    "originalType" : "malloc"
+   },
+   {
+    "name" : "MZ_FREE",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 309,
+    "char" : 1,
+    "originalType" : "free"
+   },
+   {
+    "name" : "MZ_REALLOC",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 310,
+    "char" : 1,
+    "originalType" : "realloc"
+   },
+   {
+    "name" : "MZ_READ_LE16",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 314,
+    "char" : 12,
+    "deco" : "FNbNiPxvZt",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pxv"
+     }
+    ],
+    "endline" : 317,
+    "endchar" : 5
+   },
+   {
+    "name" : "MZ_READ_LE32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 319,
+    "char" : 10,
+    "deco" : "FNbNiPxvZk",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pxv"
+     }
+    ],
+    "endline" : 322,
+    "endchar" : 5
+   },
+   {
+    "name" : "MZ_READ_LE64",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 340,
+    "char" : 7,
+    "deco" : "FNbNiPxvZm",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pxv"
+     }
+    ],
+    "endline" : 343,
+    "endchar" : 1
+   },
+   {
+    "name" : "MZ_UINT16_MAX",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 345,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "k",
+    "init" : "65535u"
+   },
+   {
+    "name" : "MZ_UINT32_MAX",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 346,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "k",
+    "init" : "4294967295u"
+   },
+   {
+    "name" : "mz_adler32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 358,
+    "char" : 10,
+    "deco" : "FNbNikPxhmZk",
+    "originalType" : "nothrow @nogc mz_ulong(mz_ulong adler, const(ubyte)* ptr, size_t buf_len)",
+    "parameters" : [
+     {
+      "name" : "adler",
+      "deco" : "k"
+     },
+     {
+      "name" : "ptr",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "buf_len",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 384,
+    "endchar" : 1
+   },
+   {
+    "name" : "compactCRC32",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 386,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "mz_crc32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 417,
+    "char" : 14,
+    "deco" : "FNbNikxPhmZk",
+    "originalType" : "nothrow @nogc mz_ulong(mz_ulong crc, const mz_uint8* ptr, size_t buf_len)",
+    "parameters" : [
+     {
+      "name" : "crc",
+      "deco" : "k"
+     },
+     {
+      "name" : "ptr",
+      "deco" : "xPh"
+     },
+     {
+      "name" : "buf_len",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 481,
+    "endchar" : 5
+   },
+   {
+    "name" : "mz_free",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 484,
+    "char" : 6,
+    "deco" : "FNbNiPvZv",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 487,
+    "endchar" : 1
+   },
+   {
+    "name" : "miniz_def_alloc_func",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 489,
+    "char" : 7,
+    "deco" : "FNbNiPvmmZQf",
+    "originalType" : "nothrow @nogc void*(void* opaque, size_t items, size_t size)",
+    "parameters" : [
+     {
+      "name" : "opaque",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "items",
+      "deco" : "m"
+     },
+     {
+      "name" : "size",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 492,
+    "endchar" : 1
+   },
+   {
+    "name" : "miniz_def_free_func",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 494,
+    "char" : 6,
+    "deco" : "FNbNiPvQcZv",
+    "parameters" : [
+     {
+      "name" : "opaque",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "address",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 497,
+    "endchar" : 1
+   },
+   {
+    "name" : "miniz_def_realloc_func",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 499,
+    "char" : 7,
+    "deco" : "FNbNiPvQcmmZQh",
+    "originalType" : "nothrow @nogc void*(void* opaque, void* address, size_t items, size_t size)",
+    "parameters" : [
+     {
+      "name" : "opaque",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "address",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "items",
+      "deco" : "m"
+     },
+     {
+      "name" : "size",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 502,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_version",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 505,
+    "char" : 14,
+    "deco" : "FNbNiZPxa",
+    "endline" : 508,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_deflateInit",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 521,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamiZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "level",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 524,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_deflateInit2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 532,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamiiiiiZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "level",
+      "deco" : "i"
+     },
+     {
+      "name" : "method",
+      "deco" : "i"
+     },
+     {
+      "name" : "window_bits",
+      "deco" : "i"
+     },
+     {
+      "name" : "mem_level",
+      "deco" : "i"
+     },
+     {
+      "name" : "strategy",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 566,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_deflateReset",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 569,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     }
+    ],
+    "endline" : 576,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_deflate",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 588,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamiZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "flush",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 645,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_deflateEnd",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 651,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     }
+    ],
+    "endline" : 661,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_deflateBound",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 664,
+    "char" : 10,
+    "deco" : "FNbNiPS5miniz9mz_streamkZk",
+    "originalType" : "nothrow @nogc mz_ulong(mz_stream* pStream, mz_ulong source_len)",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "source_len",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 668,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_compress2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 672,
+    "char" : 5,
+    "deco" : "FNbNiPhPkPxhkiZi",
+    "originalType" : "nothrow @nogc int(ubyte* pDest, mz_ulong* pDest_len, const(ubyte)* pSource, mz_ulong source_len, int level)",
+    "parameters" : [
+     {
+      "name" : "pDest",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pDest_len",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pSource",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "source_len",
+      "deco" : "k"
+     },
+     {
+      "name" : "level",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 700,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_compress",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 703,
+    "char" : 5,
+    "deco" : "FNbNiPhPkPxhkZi",
+    "originalType" : "nothrow @nogc int(ubyte* pDest, mz_ulong* pDest_len, const(ubyte)* pSource, mz_ulong source_len)",
+    "parameters" : [
+     {
+      "name" : "pDest",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pDest_len",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pSource",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "source_len",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 706,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_compressBound",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 710,
+    "char" : 10,
+    "deco" : "FNbNikZk",
+    "originalType" : "nothrow @nogc mz_ulong(mz_ulong source_len)",
+    "parameters" : [
+     {
+      "name" : "source_len",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 713,
+    "endchar" : 1
+   },
+   {
+    "name" : "inflate_state",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 715,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_decomp",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 717,
+      "char" : 24,
+      "deco" : "S5miniz18tinfl_decompressor",
+      "offset" : 0
+     },
+     {
+      "name" : "m_dict_ofs",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 718,
+      "char" : 13,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 8376
+     },
+     {
+      "name" : "m_dict_avail",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 718,
+      "char" : 25,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 8380
+     },
+     {
+      "name" : "m_first_call",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 718,
+      "char" : 39,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 8384
+     },
+     {
+      "name" : "m_has_flushed",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 718,
+      "char" : 53,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 8388
+     },
+     {
+      "name" : "m_window_bits",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 719,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 8392
+     },
+     {
+      "name" : "m_dict",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 720,
+      "char" : 34,
+      "deco" : "G32768h",
+      "originalType" : "mz_uint8[TINFL_LZ_DICT_SIZE]",
+      "offset" : 8396
+     },
+     {
+      "name" : "m_last_status",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 721,
+      "char" : 18,
+      "deco" : "i",
+      "originalType" : "tinfl_status",
+      "offset" : 41164
+     }
+    ]
+   },
+   {
+    "name" : "mz_inflateInit2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 728,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamiZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "window_bits",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 762,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_inflateInit",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 765,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     }
+    ],
+    "endline" : 768,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_inflateReset",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 772,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     }
+    ],
+    "endline" : 796,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_inflate",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 821,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamiZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "flush",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 824,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_inflate2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 828,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamiiZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     },
+     {
+      "name" : "flush",
+      "deco" : "i"
+     },
+     {
+      "name" : "decomp_flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 940,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_inflateEnd",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 943,
+    "char" : 5,
+    "deco" : "FNbNiPS5miniz9mz_streamZi",
+    "parameters" : [
+     {
+      "name" : "pStream",
+      "deco" : "PS5miniz9mz_stream"
+     }
+    ],
+    "endline" : 953,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_uncompress2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 957,
+    "char" : 5,
+    "deco" : "FNbNiPhPkPxhQfZi",
+    "originalType" : "nothrow @nogc int(ubyte* pDest, mz_ulong* pDest_len, const(ubyte)* pSource, mz_ulong* pSource_len)",
+    "parameters" : [
+     {
+      "name" : "pDest",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pDest_len",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pSource",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "pSource_len",
+      "deco" : "Pk"
+     }
+    ],
+    "endline" : 960,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_uncompress3",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 964,
+    "char" : 5,
+    "deco" : "FNbNiPhPkPxhQfibZi",
+    "originalType" : "nothrow @nogc int(ubyte* pDest, mz_ulong* pDest_len, const(ubyte)* pSource, mz_ulong* pSource_len, int window_bits, bool trusted_input)",
+    "parameters" : [
+     {
+      "name" : "pDest",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pDest_len",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pSource",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "pSource_len",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "window_bits",
+      "deco" : "i"
+     },
+     {
+      "name" : "trusted_input",
+      "deco" : "b"
+     }
+    ],
+    "endline" : 996,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_uncompress",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 1000,
+    "char" : 5,
+    "deco" : "FNbNiPhPkPxhkZi",
+    "originalType" : "nothrow @nogc int(ubyte* pDest, mz_ulong* pDest_len, const(ubyte)* pSource, mz_ulong source_len)",
+    "parameters" : [
+     {
+      "name" : "pDest",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pDest_len",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pSource",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "source_len",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 1003,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_error",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 1006,
+    "char" : 14,
+    "deco" : "FNbNiiZPxa",
+    "parameters" : [
+     {
+      "name" : "err",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1027,
+    "endchar" : 1
+   },
+   {
+    "name" : "ZLIB_COMPATIBLE_NAMES",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1031,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "Byte",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1034,
+    "char" : 5,
+    "deco" : "a"
+   },
+   {
+    "name" : "uInt",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1035,
+    "char" : 5,
+    "deco" : "k"
+   },
+   {
+    "name" : "uLong",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1036,
+    "char" : 5,
+    "deco" : "k",
+    "originalType" : "mz_ulong"
+   },
+   {
+    "name" : "intf",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1037,
+    "char" : 5,
+    "deco" : "i"
+   },
+   {
+    "name" : "voidpf",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1038,
+    "char" : 5,
+    "deco" : "Pv"
+   },
+   {
+    "name" : "uLongf",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1039,
+    "char" : 5,
+    "deco" : "k",
+    "originalType" : "uLong"
+   },
+   {
+    "name" : "voidp",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1040,
+    "char" : 5,
+    "deco" : "Pv"
+   },
+   {
+    "name" : "voidpc",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1041,
+    "char" : 5,
+    "deco" : "Pxv"
+   },
+   {
+    "name" : "Z_null",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1043,
+    "char" : 10,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "Z_NO_FLUSH",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1044,
+    "char" : 5,
+    "originalType" : "MZ_NO_FLUSH"
+   },
+   {
+    "name" : "Z_PARTIAL_FLUSH",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1045,
+    "char" : 5,
+    "originalType" : "MZ_PARTIAL_FLUSH"
+   },
+   {
+    "name" : "Z_SYNC_FLUSH",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1046,
+    "char" : 5,
+    "originalType" : "MZ_SYNC_FLUSH"
+   },
+   {
+    "name" : "Z_FULL_FLUSH",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1047,
+    "char" : 5,
+    "originalType" : "MZ_FULL_FLUSH"
+   },
+   {
+    "name" : "Z_FINISH",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1048,
+    "char" : 5,
+    "originalType" : "MZ_FINISH"
+   },
+   {
+    "name" : "Z_BLOCK",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1049,
+    "char" : 5,
+    "originalType" : "MZ_BLOCK"
+   },
+   {
+    "name" : "Z_OK",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1050,
+    "char" : 5,
+    "originalType" : "MZ_OK"
+   },
+   {
+    "name" : "Z_STREAM_END",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1051,
+    "char" : 5,
+    "originalType" : "MZ_STREAM_END"
+   },
+   {
+    "name" : "Z_NEED_DICT",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1052,
+    "char" : 5,
+    "originalType" : "MZ_NEED_DICT"
+   },
+   {
+    "name" : "Z_ERRNO",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1053,
+    "char" : 5,
+    "originalType" : "MZ_ERRNO"
+   },
+   {
+    "name" : "Z_STREAM_ERROR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1054,
+    "char" : 5,
+    "originalType" : "MZ_STREAM_ERROR"
+   },
+   {
+    "name" : "Z_DATA_ERROR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1055,
+    "char" : 5,
+    "originalType" : "MZ_DATA_ERROR"
+   },
+   {
+    "name" : "Z_MEM_ERROR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1056,
+    "char" : 5,
+    "originalType" : "MZ_MEM_ERROR"
+   },
+   {
+    "name" : "Z_BUF_ERROR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1057,
+    "char" : 5,
+    "originalType" : "MZ_BUF_ERROR"
+   },
+   {
+    "name" : "Z_VERSION_ERROR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1058,
+    "char" : 5,
+    "originalType" : "MZ_VERSION_ERROR"
+   },
+   {
+    "name" : "Z_PARAM_ERROR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1059,
+    "char" : 5,
+    "originalType" : "MZ_PARAM_ERROR"
+   },
+   {
+    "name" : "Z_NO_COMPRESSION",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1060,
+    "char" : 5,
+    "originalType" : "MZ_NO_COMPRESSION"
+   },
+   {
+    "name" : "Z_BEST_SPEED",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1061,
+    "char" : 5,
+    "originalType" : "MZ_BEST_SPEED"
+   },
+   {
+    "name" : "Z_BEST_COMPRESSION",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1062,
+    "char" : 5,
+    "originalType" : "MZ_BEST_COMPRESSION"
+   },
+   {
+    "name" : "Z_DEFAULT_COMPRESSION",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1063,
+    "char" : 5,
+    "originalType" : "MZ_DEFAULT_COMPRESSION"
+   },
+   {
+    "name" : "Z_DEFAULT_STRATEGY",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1064,
+    "char" : 5,
+    "originalType" : "MZ_DEFAULT_STRATEGY"
+   },
+   {
+    "name" : "Z_FILTERED",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1065,
+    "char" : 5,
+    "originalType" : "MZ_FILTERED"
+   },
+   {
+    "name" : "Z_HUFFMAN_ONLY",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1066,
+    "char" : 5,
+    "originalType" : "MZ_HUFFMAN_ONLY"
+   },
+   {
+    "name" : "Z_RLE",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1067,
+    "char" : 5,
+    "originalType" : "MZ_RLE"
+   },
+   {
+    "name" : "Z_FIXED",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1068,
+    "char" : 5,
+    "originalType" : "MZ_FIXED"
+   },
+   {
+    "name" : "Z_DEFLATED",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1069,
+    "char" : 5,
+    "originalType" : "MZ_DEFLATED"
+   },
+   {
+    "name" : "Z_DEFAULT_WINDOW_BITS",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1070,
+    "char" : 5,
+    "originalType" : "MZ_DEFAULT_WINDOW_BITS"
+   },
+   {
+    "name" : "alloc_func",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1071,
+    "char" : 5,
+    "deco" : "PFNbNiPvmmZQf",
+    "originalType" : "mz_alloc_func"
+   },
+   {
+    "name" : "free_func",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1072,
+    "char" : 5,
+    "deco" : "PFNbNiPvQcZv",
+    "originalType" : "mz_free_func"
+   },
+   {
+    "name" : "internal_state",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1073,
+    "char" : 5,
+    "deco" : "S5miniz17mz_internal_state"
+   },
+   {
+    "name" : "z_stream",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1074,
+    "char" : 5,
+    "deco" : "S5miniz9mz_stream"
+   },
+   {
+    "name" : "inflateInit",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1084,
+    "char" : 5,
+    "originalType" : "mz_inflateInit"
+   },
+   {
+    "name" : "inflateInit2",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1085,
+    "char" : 5,
+    "originalType" : "mz_inflateInit2"
+   },
+   {
+    "name" : "inflateReset",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1086,
+    "char" : 5,
+    "originalType" : "mz_inflateReset"
+   },
+   {
+    "name" : "inflate",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1087,
+    "char" : 5,
+    "originalType" : "mz_inflate"
+   },
+   {
+    "name" : "inflateEnd",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1088,
+    "char" : 5,
+    "originalType" : "mz_inflateEnd"
+   },
+   {
+    "name" : "uncompress",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1089,
+    "char" : 5,
+    "originalType" : "mz_uncompress"
+   },
+   {
+    "name" : "uncompress2",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1090,
+    "char" : 5,
+    "originalType" : "mz_uncompress2"
+   },
+   {
+    "name" : "crc32",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1091,
+    "char" : 5,
+    "originalType" : "mz_crc32"
+   },
+   {
+    "name" : "adler32",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1092,
+    "char" : 5,
+    "originalType" : "mz_adler32"
+   },
+   {
+    "name" : "MAX_WBITS",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1093,
+    "char" : 10,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "15"
+   },
+   {
+    "name" : "MAX_MEM_LEVEL",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1094,
+    "char" : 10,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "9"
+   },
+   {
+    "name" : "zError",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1095,
+    "char" : 5,
+    "originalType" : "mz_error"
+   },
+   {
+    "name" : "ZLIB_VERSION",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1096,
+    "char" : 5,
+    "originalType" : "MZ_VERSION"
+   },
+   {
+    "name" : "ZLIB_VERNUM",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1097,
+    "char" : 5,
+    "originalType" : "MZ_VERNUM"
+   },
+   {
+    "name" : "ZLIB_VER_MAJOR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1098,
+    "char" : 5,
+    "originalType" : "MZ_VER_MAJOR"
+   },
+   {
+    "name" : "ZLIB_VER_MINOR",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1099,
+    "char" : 5,
+    "originalType" : "MZ_VER_MINOR"
+   },
+   {
+    "name" : "ZLIB_VER_REVISION",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1100,
+    "char" : 5,
+    "originalType" : "MZ_VER_REVISION"
+   },
+   {
+    "name" : "ZLIB_VER_SUBREVISION",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1101,
+    "char" : 5,
+    "originalType" : "MZ_VER_SUBREVISION"
+   },
+   {
+    "name" : "zlibVersion",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1102,
+    "char" : 5,
+    "originalType" : "mz_version"
+   },
+   {
+    "name" : "zlib_version",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1103,
+    "char" : 10,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "Pxa",
+    "init" : "\"11.0.2\""
+   },
+   {
+    "name" : "TINFL_FLAG_PARSE_ZLIB_HEADER",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 1143,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_FLAG_HAS_MORE_INPUT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 1144,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_FLAG_USING_NON_WRAPPING_OUTPUT_BUF",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 1145,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_FLAG_COMPUTE_ADLER32",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "8",
+    "line" : 1146,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_FLAG_DO_NOT_COMPUTE_ADLER32",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "16",
+    "line" : 1150,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_LZ_DICT_SIZE",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1154,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "32768"
+   },
+   {
+    "name" : "tinfl_status",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1157,
+    "char" : 1,
+    "deco" : "i"
+   },
+   {
+    "name" : "TINFL_STATUS_FAILED_CANNOT_MAKE_PROGRESS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-4",
+    "line" : 1163,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_STATUS_BAD_PARAM",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-3",
+    "line" : 1166,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_STATUS_ADLER32_MISMATCH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-2",
+    "line" : 1169,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_STATUS_FAILED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-1",
+    "line" : 1172,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_STATUS_DONE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 1178,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_STATUS_NEEDS_MORE_INPUT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 1183,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_STATUS_HAS_MORE_OUTPUT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 1189,
+    "char" : 5
+   },
+   {
+    "name" : "tinfl_init",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 1192,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz18tinfl_decompressorZv",
+    "parameters" : [
+     {
+      "name" : "r",
+      "deco" : "PS5miniz18tinfl_decompressor"
+     }
+    ],
+    "endline" : 1195,
+    "endchar" : 1
+   },
+   {
+    "name" : "tinfl_get_adler32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 1197,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz18tinfl_decompressorZk",
+    "parameters" : [
+     {
+      "name" : "r",
+      "deco" : "PS5miniz18tinfl_decompressor"
+     }
+    ],
+    "endline" : 1200,
+    "endchar" : 1
+   },
+   {
+    "name" : "TINFL_MAX_HUFF_TABLES",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 1205,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_MAX_HUFF_SYMBOLS_0",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "288",
+    "line" : 1206,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_MAX_HUFF_SYMBOLS_1",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "32",
+    "line" : 1207,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_MAX_HUFF_SYMBOLS_2",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "19",
+    "line" : 1208,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_FAST_LOOKUP_BITS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "10",
+    "line" : 1209,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_FAST_LOOKUP_SIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1 << TINFL_FAST_LOOKUP_BITS",
+    "line" : 1210,
+    "char" : 5
+   },
+   {
+    "name" : "TINFL_USE_64BIT_BITBUF",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 1213,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "tinfl_bit_buf_t",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1214,
+    "char" : 1,
+    "deco" : "m",
+    "originalType" : "mz_uint64"
+   },
+   {
+    "name" : "tinfl_decompressor",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 1216,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_state",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 15,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 0
+     },
+     {
+      "name" : "m_num_bits",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 24,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 4
+     },
+     {
+      "name" : "m_zhdr0",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 36,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 8
+     },
+     {
+      "name" : "m_zhdr1",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 45,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 12
+     },
+     {
+      "name" : "m_z_adler32",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 54,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 16
+     },
+     {
+      "name" : "m_final",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 67,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 20
+     },
+     {
+      "name" : "m_type",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 76,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 24
+     },
+     {
+      "name" : "m_check_adler32",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 84,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 28
+     },
+     {
+      "name" : "m_dist",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 101,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 32
+     },
+     {
+      "name" : "m_counter",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 109,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 36
+     },
+     {
+      "name" : "m_num_extra",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1218,
+      "char" : 120,
+      "deco" : "k",
+      "originalType" : "mz_uint32",
+      "offset" : 40
+     },
+     {
+      "name" : "m_table_sizes",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1219,
+      "char" : 38,
+      "deco" : "G3k",
+      "originalType" : "mz_uint32[TINFL_MAX_HUFF_TABLES]",
+      "offset" : 44
+     },
+     {
+      "name" : "m_bit_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1220,
+      "char" : 21,
+      "deco" : "m",
+      "originalType" : "tinfl_bit_buf_t",
+      "offset" : 56
+     },
+     {
+      "name" : "m_dist_from_out_buf_start",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1221,
+      "char" : 12,
+      "deco" : "m",
+      "originalType" : "size_t",
+      "offset" : 64
+     },
+     {
+      "name" : "m_look_up",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1222,
+      "char" : 61,
+      "deco" : "G3G1024s",
+      "originalType" : "mz_int16[TINFL_FAST_LOOKUP_SIZE][TINFL_MAX_HUFF_TABLES]",
+      "offset" : 72
+     },
+     {
+      "name" : "m_tree_0",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1223,
+      "char" : 44,
+      "deco" : "G576s",
+      "originalType" : "mz_int16[TINFL_MAX_HUFF_SYMBOLS_0 * 2]",
+      "offset" : 6216
+     },
+     {
+      "name" : "m_tree_1",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1224,
+      "char" : 44,
+      "deco" : "G64s",
+      "originalType" : "mz_int16[TINFL_MAX_HUFF_SYMBOLS_1 * 2]",
+      "offset" : 7368
+     },
+     {
+      "name" : "m_tree_2",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1225,
+      "char" : 44,
+      "deco" : "G38s",
+      "originalType" : "mz_int16[TINFL_MAX_HUFF_SYMBOLS_2 * 2]",
+      "offset" : 7496
+     },
+     {
+      "name" : "m_code_size_0",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1226,
+      "char" : 40,
+      "deco" : "G288h",
+      "originalType" : "mz_uint8[TINFL_MAX_HUFF_SYMBOLS_0]",
+      "offset" : 7572
+     },
+     {
+      "name" : "m_code_size_1",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1227,
+      "char" : 40,
+      "deco" : "G32h",
+      "originalType" : "mz_uint8[TINFL_MAX_HUFF_SYMBOLS_1]",
+      "offset" : 7860
+     },
+     {
+      "name" : "m_code_size_2",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1228,
+      "char" : 40,
+      "deco" : "G19h",
+      "originalType" : "mz_uint8[TINFL_MAX_HUFF_SYMBOLS_2]",
+      "offset" : 7892
+     },
+     {
+      "name" : "m_raw_header",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1229,
+      "char" : 17,
+      "deco" : "G4h",
+      "originalType" : "mz_uint8[4]",
+      "offset" : 7911
+     },
+     {
+      "name" : "m_len_codes",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1230,
+      "char" : 73,
+      "deco" : "G457h",
+      "originalType" : "mz_uint8[TINFL_MAX_HUFF_SYMBOLS_0 + TINFL_MAX_HUFF_SYMBOLS_1 + 137]",
+      "offset" : 7915
+     }
+    ]
+   },
+   {
+    "name" : "TINFL_MEMCPY",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1238,
+    "char" : 1,
+    "originalType" : "memcpy"
+   },
+   {
+    "name" : "TINFL_MEMSET",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 1239,
+    "char" : 1,
+    "originalType" : "memset"
+   },
+   {
+    "name" : "tinfl_clear_tree",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 1242,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz18tinfl_decompressorZv",
+    "parameters" : [
+     {
+      "name" : "r",
+      "deco" : "PS5miniz18tinfl_decompressor"
+     }
+    ],
+    "endline" : 1250,
+    "endchar" : 1
+   },
+   {
+    "name" : "tinfl_decompress",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 1254,
+    "char" : 14,
+    "deco" : "FNbNiPS5miniz18tinfl_decompressorxPhPmPhQcQgxkZi",
+    "originalType" : "nothrow @nogc tinfl_status(tinfl_decompressor* r, const mz_uint8* pIn_buf_next, size_t* pIn_buf_size, mz_uint8* pOut_buf_start, mz_uint8* pOut_buf_next, size_t* pOut_buf_size, const mz_uint32 decomp_flags)",
+    "parameters" : [
+     {
+      "name" : "r",
+      "deco" : "PS5miniz18tinfl_decompressor"
+     },
+     {
+      "name" : "pIn_buf_next",
+      "deco" : "xPh"
+     },
+     {
+      "name" : "pIn_buf_size",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "pOut_buf_start",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pOut_buf_next",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "pOut_buf_size",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "decomp_flags",
+      "deco" : "xk"
+     }
+    ],
+    "endline" : 2254,
+    "endchar" : 1
+   },
+   {
+    "name" : "tinfl_decompress_mem_to_heap",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2265,
+    "char" : 7,
+    "deco" : "FNbNixPvmPmiZPv",
+    "originalType" : "nothrow @nogc void*(const void* pSrc_buf, size_t src_buf_len, size_t* pOut_len, int flags)",
+    "parameters" : [
+     {
+      "name" : "pSrc_buf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "src_buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "pOut_len",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 2301,
+    "endchar" : 1
+   },
+   {
+    "name" : "TINFL_DECOMPRESS_MEM_TO_MEM_FAILED",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2305,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "m",
+    "init" : "18446744073709551615LU"
+   },
+   {
+    "name" : "tinfl_decompress_mem_to_mem",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2306,
+    "char" : 8,
+    "deco" : "FNbNiPvmxPvmiZm",
+    "originalType" : "nothrow @nogc size_t(void* pOut_buf, size_t out_buf_len, const void* pSrc_buf, size_t src_buf_len, int flags)",
+    "parameters" : [
+     {
+      "name" : "pOut_buf",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "out_buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "pSrc_buf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "src_buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 2313,
+    "endchar" : 1
+   },
+   {
+    "name" : "tinfl_put_buf_func_ptr",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 2318,
+    "char" : 1,
+    "deco" : "PFNbNiPxviPvZi",
+    "originalType" : "int function(const(void)* pBuf, int len, void* pUser)"
+   },
+   {
+    "name" : "tinfl_decompress_mem_to_callback",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2319,
+    "char" : 5,
+    "deco" : "FNbNiPxvPmPFNbNiQliPvZiQeiZi",
+    "originalType" : "nothrow @nogc int(const(void)* pIn_buf, size_t* pIn_buf_size, tinfl_put_buf_func_ptr pPut_buf_func, void* pPut_buf_user, int flags)",
+    "parameters" : [
+     {
+      "name" : "pIn_buf",
+      "deco" : "Pxv"
+     },
+     {
+      "name" : "pIn_buf_size",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "pPut_buf_func",
+      "deco" : "PFNbNiPxviPvZi"
+     },
+     {
+      "name" : "pPut_buf_user",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 2350,
+    "endchar" : 1
+   },
+   {
+    "name" : "tinfl_decompressor_alloc",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2355,
+    "char" : 21,
+    "deco" : "FNbNiZPS5miniz18tinfl_decompressor",
+    "endline" : 2361,
+    "endchar" : 1
+   },
+   {
+    "name" : "tinfl_decompressor_free",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2363,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz18tinfl_decompressorZv",
+    "parameters" : [
+     {
+      "name" : "pDecomp",
+      "deco" : "PS5miniz18tinfl_decompressor"
+     }
+    ],
+    "endline" : 2366,
+    "endchar" : 1
+   },
+   {
+    "name" : "TDEFL_LESS_MEMORY",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2379,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "TDEFL_HUFFMAN_ONLY",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 2385,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_DEFAULT_MAX_PROBES",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "128",
+    "line" : 2386,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_MAX_PROBES_MASK",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4095",
+    "line" : 2387,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_WRITE_ZLIB_HEADER",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4096",
+    "line" : 2401,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_COMPUTE_ADLER32",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "8192",
+    "line" : 2402,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_GREEDY_PARSING_FLAG",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "16384",
+    "line" : 2403,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_NONDETERMINISTIC_PARSING_FLAG",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "32768",
+    "line" : 2404,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_RLE_MATCHES",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "65536",
+    "line" : 2405,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_FILTER_MATCHES",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "131072",
+    "line" : 2406,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_FORCE_ALL_STATIC_BLOCKS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "262144",
+    "line" : 2407,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_FORCE_ALL_RAW_BLOCKS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "524288",
+    "line" : 2408,
+    "char" : 5
+   },
+   {
+    "name" : "tdefl_put_buf_func_ptr",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 2430,
+    "char" : 1,
+    "deco" : "PFNbNiPxviPvZi",
+    "originalType" : "mz_bool function(const(void)* pBuf, int len, void* pUser)"
+   },
+   {
+    "name" : "TDEFL_MAX_HUFF_TABLES",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 2434,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_MAX_HUFF_SYMBOLS_0",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "288",
+    "line" : 2435,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_MAX_HUFF_SYMBOLS_1",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "32",
+    "line" : 2436,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_MAX_HUFF_SYMBOLS_2",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "19",
+    "line" : 2437,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_LZ_DICT_SIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "32768",
+    "line" : 2438,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_LZ_DICT_SIZE_MASK",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "TDEFL_LZ_DICT_SIZE - 1",
+    "line" : 2439,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_MIN_MATCH_LEN",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 2440,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_MAX_MATCH_LEN",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "258",
+    "line" : 2441,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_LZ_CODE_BUF_SIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "64 * 1024",
+    "line" : 2462,
+    "char" : 9
+   },
+   {
+    "name" : "TDEFL_OUT_BUF_SIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "TDEFL_LZ_CODE_BUF_SIZE * 13 / 10",
+    "line" : 2463,
+    "char" : 9
+   },
+   {
+    "name" : "TDEFL_MAX_HUFF_SYMBOLS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "288",
+    "line" : 2464,
+    "char" : 9
+   },
+   {
+    "name" : "TDEFL_LZ_HASH_BITS",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "15",
+    "line" : 2465,
+    "char" : 9
+   },
+   {
+    "name" : "TDEFL_LEVEL1_HASH_SIZE_MASK",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4095",
+    "line" : 2466,
+    "char" : 9
+   },
+   {
+    "name" : "TDEFL_LZ_HASH_SHIFT",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "(TDEFL_LZ_HASH_BITS + 2) / 3",
+    "line" : 2467,
+    "char" : 9
+   },
+   {
+    "name" : "TDEFL_LZ_HASH_SIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1 << TDEFL_LZ_HASH_BITS",
+    "line" : 2468,
+    "char" : 9
+   },
+   {
+    "name" : "tdefl_status",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 2473,
+    "char" : 1,
+    "deco" : "i"
+   },
+   {
+    "name" : "TDEFL_STATUS_BAD_PARAM",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-2",
+    "line" : 2476,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_STATUS_PUT_BUF_FAILED",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "-1",
+    "line" : 2477,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_STATUS_OKAY",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 2478,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_STATUS_DONE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "1",
+    "line" : 2479,
+    "char" : 5
+   },
+   {
+    "name" : "tdefl_flush",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 2483,
+    "char" : 1,
+    "deco" : "i"
+   },
+   {
+    "name" : "TDEFL_NO_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "0",
+    "line" : 2486,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_SYNC_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "2",
+    "line" : 2487,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_FULL_FLUSH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "3",
+    "line" : 2488,
+    "char" : 5
+   },
+   {
+    "name" : "TDEFL_FINISH",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "4",
+    "line" : 2489,
+    "char" : 5
+   },
+   {
+    "name" : "tdefl_compressor",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 2493,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_pPut_buf_func",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2495,
+      "char" : 28,
+      "deco" : "PFNbNiPxviPvZi",
+      "originalType" : "tdefl_put_buf_func_ptr",
+      "offset" : 0
+     },
+     {
+      "name" : "m_pPut_buf_user",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2496,
+      "char" : 11,
+      "deco" : "Pv",
+      "offset" : 8
+     },
+     {
+      "name" : "m_flags",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2497,
+      "char" : 13,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 16
+     },
+     {
+      "name" : "m_max_probes",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2498,
+      "char" : 16,
+      "deco" : "G2k",
+      "originalType" : "mz_uint[2]",
+      "offset" : 20
+     },
+     {
+      "name" : "m_greedy_parsing",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2499,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 28
+     },
+     {
+      "name" : "m_adler32",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2500,
+      "char" : 13,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 32
+     },
+     {
+      "name" : "m_lookahead_pos",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2500,
+      "char" : 24,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 36
+     },
+     {
+      "name" : "m_lookahead_size",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2500,
+      "char" : 41,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 40
+     },
+     {
+      "name" : "m_dict_size",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2500,
+      "char" : 59,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 44
+     },
+     {
+      "name" : "m_pLZ_code_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2501,
+      "char" : 15,
+      "deco" : "Ph",
+      "originalType" : "mz_uint8*",
+      "offset" : 48
+     },
+     {
+      "name" : "m_pLZ_flags",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2501,
+      "char" : 31,
+      "deco" : "Ph",
+      "offset" : 56
+     },
+     {
+      "name" : "m_pOutput_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2501,
+      "char" : 44,
+      "deco" : "Ph",
+      "offset" : 64
+     },
+     {
+      "name" : "m_pOutput_buf_end",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2501,
+      "char" : 59,
+      "deco" : "Ph",
+      "offset" : 72
+     },
+     {
+      "name" : "m_num_flags_left",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2502,
+      "char" : 13,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 80
+     },
+     {
+      "name" : "m_total_lz_bytes",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2502,
+      "char" : 31,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 84
+     },
+     {
+      "name" : "m_lz_code_buf_dict_pos",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2502,
+      "char" : 49,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 88
+     },
+     {
+      "name" : "m_bits_in",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2502,
+      "char" : 73,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 92
+     },
+     {
+      "name" : "m_bit_buffer",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2502,
+      "char" : 84,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 96
+     },
+     {
+      "name" : "m_saved_match_dist",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 13,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 100
+     },
+     {
+      "name" : "m_saved_match_len",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 33,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 104
+     },
+     {
+      "name" : "m_saved_lit",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 52,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 108
+     },
+     {
+      "name" : "m_output_flush_ofs",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 65,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 112
+     },
+     {
+      "name" : "m_output_flush_remaining",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 85,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 116
+     },
+     {
+      "name" : "m_finished",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 111,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 120
+     },
+     {
+      "name" : "m_block_index",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 123,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 124
+     },
+     {
+      "name" : "m_wants_to_finish",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2503,
+      "char" : 138,
+      "deco" : "k",
+      "originalType" : "mz_uint",
+      "offset" : 128
+     },
+     {
+      "name" : "m_prev_return_status",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2504,
+      "char" : 18,
+      "deco" : "i",
+      "originalType" : "tdefl_status",
+      "offset" : 132
+     },
+     {
+      "name" : "m_pIn_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2505,
+      "char" : 18,
+      "deco" : "Pxv",
+      "offset" : 136
+     },
+     {
+      "name" : "m_pOut_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2506,
+      "char" : 11,
+      "deco" : "Pv",
+      "offset" : 144
+     },
+     {
+      "name" : "m_pIn_buf_size",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2507,
+      "char" : 13,
+      "deco" : "Pm",
+      "originalType" : "size_t*",
+      "offset" : 152
+     },
+     {
+      "name" : "m_pOut_buf_size",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2507,
+      "char" : 29,
+      "deco" : "Pm",
+      "offset" : 160
+     },
+     {
+      "name" : "m_flush",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2508,
+      "char" : 17,
+      "deco" : "i",
+      "originalType" : "tdefl_flush",
+      "offset" : 168
+     },
+     {
+      "name" : "m_pSrc",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2509,
+      "char" : 22,
+      "deco" : "Pxh",
+      "originalType" : "const(mz_uint8)*",
+      "offset" : 176
+     },
+     {
+      "name" : "m_src_buf_left",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2510,
+      "char" : 12,
+      "deco" : "m",
+      "originalType" : "size_t",
+      "offset" : 184
+     },
+     {
+      "name" : "m_out_buf_ofs",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2510,
+      "char" : 28,
+      "deco" : "m",
+      "originalType" : "size_t",
+      "offset" : 192
+     },
+     {
+      "name" : "m_dict",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2511,
+      "char" : 60,
+      "deco" : "G33025h",
+      "originalType" : "mz_uint8[TDEFL_LZ_DICT_SIZE + TDEFL_MAX_MATCH_LEN - 1]",
+      "offset" : 200
+     },
+     {
+      "name" : "m_huff_count",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2512,
+      "char" : 62,
+      "deco" : "G3G288t",
+      "originalType" : "mz_uint16[TDEFL_MAX_HUFF_SYMBOLS][TDEFL_MAX_HUFF_TABLES]",
+      "offset" : 33226
+     },
+     {
+      "name" : "m_huff_codes",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2513,
+      "char" : 62,
+      "deco" : "G3G288t",
+      "originalType" : "mz_uint16[TDEFL_MAX_HUFF_SYMBOLS][TDEFL_MAX_HUFF_TABLES]",
+      "offset" : 34954
+     },
+     {
+      "name" : "m_huff_code_sizes",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2514,
+      "char" : 61,
+      "deco" : "G3G288h",
+      "originalType" : "mz_uint8[TDEFL_MAX_HUFF_SYMBOLS][TDEFL_MAX_HUFF_TABLES]",
+      "offset" : 36682
+     },
+     {
+      "name" : "m_lz_code_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2515,
+      "char" : 38,
+      "deco" : "G65536h",
+      "originalType" : "mz_uint8[TDEFL_LZ_CODE_BUF_SIZE]",
+      "offset" : 37546
+     },
+     {
+      "name" : "m_next",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2516,
+      "char" : 35,
+      "deco" : "G32768t",
+      "originalType" : "mz_uint16[TDEFL_LZ_DICT_SIZE]",
+      "offset" : 103082
+     },
+     {
+      "name" : "m_hash",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2517,
+      "char" : 35,
+      "deco" : "G32768t",
+      "originalType" : "mz_uint16[TDEFL_LZ_HASH_SIZE]",
+      "offset" : 168618
+     },
+     {
+      "name" : "m_output_buf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2518,
+      "char" : 34,
+      "deco" : "G85196h",
+      "originalType" : "mz_uint8[TDEFL_OUT_BUF_SIZE]",
+      "offset" : 234154
+     }
+    ]
+   },
+   {
+    "name" : "s_tdefl_len_sym",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2527,
+    "char" : 33,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG256t",
+    "originalType" : "mz_uint16[256]",
+    "init" : "[cast(ushort)257u, cast(ushort)258u, cast(ushort)259u, cast(ushort)260u, cast(ushort)261u, cast(ushort)262u, cast(ushort)263u, cast(ushort)264u, cast(ushort)265u, cast(ushort)265u, cast(ushort)266u, cast(ushort)266u, cast(ushort)267u, cast(ushort)267u, cast(ushort)268u, cast(ushort)268u, cast(ushort)269u, cast(ushort)269u, cast(ushort)269u, cast(ushort)269u, cast(ushort)270u, cast(ushort)270u, cast(ushort)270u, cast(ushort)270u, cast(ushort)271u, cast(ushort)271u, cast(ushort)271u, cast(ushort)271u, cast(ushort)272u, cast(ushort)272u, cast(ushort)272u, cast(ushort)272u, cast(ushort)273u, cast(ushort)273u, cast(ushort)273u, cast(ushort)273u, cast(ushort)273u, cast(ushort)273u, cast(ushort)273u, cast(ushort)273u, cast(ushort)274u, cast(ushort)274u, cast(ushort)274u, cast(ushort)274u, cast(ushort)274u, cast(ushort)274u, cast(ushort)274u, cast(ushort)274u, cast(ushort)275u, cast(ushort)275u, cast(ushort)275u, cast(ushort)275u, cast(ushort)275u, cast(ushort)275u, cast(ushort)275u, cast(ushort)275u, cast(ushort)276u, cast(ushort)276u, cast(ushort)276u, cast(ushort)276u, cast(ushort)276u, cast(ushort)276u, cast(ushort)276u, cast(ushort)276u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)277u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)278u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)279u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)280u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)281u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)282u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)283u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)284u, cast(ushort)285u]"
+   },
+   {
+    "name" : "s_tdefl_len_extra",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2539,
+    "char" : 32,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG256h",
+    "originalType" : "mz_uint8[256]",
+    "init" : "[cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)0u]"
+   },
+   {
+    "name" : "s_tdefl_small_dist_sym",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2547,
+    "char" : 32,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG512h",
+    "originalType" : "mz_uint8[512]",
+    "init" : "[cast(ubyte)0u, cast(ubyte)1u, cast(ubyte)2u, cast(ubyte)3u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)14u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)15u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)16u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u, cast(ubyte)17u]"
+   },
+   {
+    "name" : "s_tdefl_small_dist_extra",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2563,
+    "char" : 32,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG512h",
+    "originalType" : "mz_uint8[512]",
+    "init" : "[cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)1u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)2u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)3u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)4u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)5u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)6u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u, cast(ubyte)7u]"
+   },
+   {
+    "name" : "s_tdefl_large_dist_sym",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2575,
+    "char" : 32,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG128h",
+    "originalType" : "mz_uint8[128]",
+    "init" : "[cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)18u, cast(ubyte)19u, cast(ubyte)20u, cast(ubyte)20u, cast(ubyte)21u, cast(ubyte)21u, cast(ubyte)22u, cast(ubyte)22u, cast(ubyte)22u, cast(ubyte)22u, cast(ubyte)23u, cast(ubyte)23u, cast(ubyte)23u, cast(ubyte)23u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)24u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)25u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)26u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)27u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)28u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u, cast(ubyte)29u]"
+   },
+   {
+    "name" : "s_tdefl_large_dist_extra",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2582,
+    "char" : 32,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG128h",
+    "originalType" : "mz_uint8[128]",
+    "init" : "[cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)8u, cast(ubyte)8u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)9u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)10u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)11u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)12u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u, cast(ubyte)13u]"
+   },
+   {
+    "name" : "tdefl_sym_freq",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 2590,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_key",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2592,
+      "char" : 15,
+      "deco" : "t",
+      "originalType" : "mz_uint16",
+      "offset" : 0
+     },
+     {
+      "name" : "m_sym_index",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 2592,
+      "char" : 22,
+      "deco" : "t",
+      "originalType" : "mz_uint16",
+      "offset" : 2
+     }
+    ]
+   },
+   {
+    "name" : "tdefl_radix_sort_syms",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2595,
+    "char" : 24,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNikPS5miniz14tdefl_sym_freqQyZQBb",
+    "originalType" : "nothrow @nogc tdefl_sym_freq*(mz_uint num_syms, tdefl_sym_freq* pSyms0, tdefl_sym_freq* pSyms1)",
+    "parameters" : [
+     {
+      "name" : "num_syms",
+      "deco" : "k"
+     },
+     {
+      "name" : "pSyms0",
+      "deco" : "PS5miniz14tdefl_sym_freq"
+     },
+     {
+      "name" : "pSyms1",
+      "deco" : "PS5miniz14tdefl_sym_freq"
+     }
+    ],
+    "endline" : 2629,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_calculate_minimum_redundancy",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2632,
+    "char" : 13,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz14tdefl_sym_freqiZv",
+    "parameters" : [
+     {
+      "name" : "A",
+      "deco" : "PS5miniz14tdefl_sym_freq"
+     },
+     {
+      "name" : "n",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 2685,
+    "endchar" : 1
+   },
+   {
+    "name" : "TDEFL_MAX_SUPPORTED_HUFF_CODESIZE",
+    "kind" : "enum member",
+    "protection" : "public",
+    "value" : "32",
+    "line" : 2690,
+    "char" : 5
+   },
+   {
+    "name" : "tdefl_huffman_enforce_max_code_size",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2692,
+    "char" : 13,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPiiiZv",
+    "parameters" : [
+     {
+      "name" : "pNum_codes",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "code_list_len",
+      "deco" : "i"
+     },
+     {
+      "name" : "max_code_size",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 2714,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_optimize_huffman_table",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2716,
+    "char" : 13,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz16tdefl_compressoriiiiZv",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "table_num",
+      "deco" : "i"
+     },
+     {
+      "name" : "table_len",
+      "deco" : "i"
+     },
+     {
+      "name" : "code_size_limit",
+      "deco" : "i"
+     },
+     {
+      "name" : "static_table",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 2770,
+    "endchar" : 1
+   },
+   {
+    "name" : "s_tdefl_packed_code_size_syms_swizzle",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2798,
+    "char" : 41,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "__gshared",
+     "@nogc"
+    ],
+    "deco" : "yG19h",
+    "originalType" : "mz_uint8[19]",
+    "init" : "[cast(ubyte)16u, cast(ubyte)17u, cast(ubyte)18u, cast(ubyte)0u, cast(ubyte)8u, cast(ubyte)7u, cast(ubyte)9u, cast(ubyte)6u, cast(ubyte)10u, cast(ubyte)5u, cast(ubyte)11u, cast(ubyte)4u, cast(ubyte)12u, cast(ubyte)3u, cast(ubyte)13u, cast(ubyte)2u, cast(ubyte)14u, cast(ubyte)1u, cast(ubyte)15u]"
+   },
+   {
+    "name" : "tdefl_start_dynamic_block",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2801,
+    "char" : 13,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZv",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 2951,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_start_static_block",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2953,
+    "char" : 13,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZv",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 2989,
+    "endchar" : 1
+   },
+   {
+    "name" : "mz_bitmasks",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 2991,
+    "char" : 40,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "__gshared",
+     "@nogc"
+    ],
+    "deco" : "yG17k",
+    "originalType" : "mz_uint[17]",
+    "init" : "[0u, 1u, 3u, 7u, 15u, 31u, 63u, 127u, 255u, 511u, 1023u, 2047u, 4095u, 8191u, 16383u, 32767u, 65535u]"
+   },
+   {
+    "name" : "tdefl_compress_lz_codes",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 2995,
+    "char" : 16,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZi",
+    "originalType" : "nothrow @nogc mz_bool(tdefl_compressor* d)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3056,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_block",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3058,
+    "char" : 16,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz16tdefl_compressoriZi",
+    "originalType" : "nothrow @nogc mz_bool(tdefl_compressor* d, mz_bool static_block)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "static_block",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3065,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_flush_block",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3067,
+    "char" : 12,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FNbNiPS5miniz16tdefl_compressoriZi",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "flush",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3237,
+    "endchar" : 1
+   },
+   {
+    "name" : "TDEFL_READ_UNALIGNED_WORD",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3239,
+    "char" : 8,
+    "deco" : "FNbNiPxvZt",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pxv"
+     }
+    ],
+    "endline" : 3242,
+    "endchar" : 1
+   },
+   {
+    "name" : "TDEFL_READ_UNALIGNED_WORD2",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 3243,
+    "char" : 1,
+    "originalType" : "TDEFL_READ_UNALIGNED_WORD"
+   },
+   {
+    "name" : "TDEFL_READ_UNALIGNED_WORD32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3247,
+    "char" : 15,
+    "deco" : "FNbNiPxhZk",
+    "originalType" : "nothrow @nogc mz_uint32(const(mz_uint8)* p)",
+    "parameters" : [
+     {
+      "name" : "p",
+      "deco" : "Pxh"
+     }
+    ],
+    "endline" : 3250,
+    "endchar" : 5
+   },
+   {
+    "name" : "tdefl_find_match",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3253,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorkkkPkQcZv",
+    "originalType" : "nothrow @nogc void(tdefl_compressor* d, mz_uint lookahead_pos, mz_uint max_dist, mz_uint max_match_len, mz_uint* pMatch_dist, mz_uint* pMatch_len)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "lookahead_pos",
+      "deco" : "k"
+     },
+     {
+      "name" : "max_dist",
+      "deco" : "k"
+     },
+     {
+      "name" : "max_match_len",
+      "deco" : "k"
+     },
+     {
+      "name" : "pMatch_dist",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pMatch_len",
+      "deco" : "Pk"
+     }
+    ],
+    "endline" : 3316,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_fast",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3320,
+    "char" : 13,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZi",
+    "originalType" : "nothrow @nogc mz_bool(tdefl_compressor* d)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3493,
+    "endchar" : 5
+   },
+   {
+    "name" : "tdefl_record_literal",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3496,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorhZv",
+    "originalType" : "nothrow @nogc void(tdefl_compressor* d, mz_uint8 lit)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "lit",
+      "deco" : "h"
+     }
+    ],
+    "endline" : 3507,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_record_match",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3509,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorkkZv",
+    "originalType" : "nothrow @nogc void(tdefl_compressor* d, mz_uint match_len, mz_uint match_dist)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "match_len",
+      "deco" : "k"
+     },
+     {
+      "name" : "match_dist",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 3535,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_normal",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3537,
+    "char" : 9,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZi",
+    "originalType" : "nothrow @nogc mz_bool(tdefl_compressor* d)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3680,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_flush_output_buffer",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3682,
+    "char" : 14,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZi",
+    "originalType" : "nothrow @nogc tdefl_status(tdefl_compressor* d)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3701,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3704,
+    "char" : 14,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorxPvPmPvQeiZi",
+    "originalType" : "nothrow @nogc tdefl_status(tdefl_compressor* d, const void* pIn_buf, size_t* pIn_buf_size, void* pOut_buf, size_t* pOut_buf_size, tdefl_flush flush)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "pIn_buf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "pIn_buf_size",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "pOut_buf",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "pOut_buf_size",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "flush",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3776,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_buffer",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3780,
+    "char" : 14,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorxPvmiZi",
+    "originalType" : "nothrow @nogc tdefl_status(tdefl_compressor* d, const void* pIn_buf, size_t in_buf_size, tdefl_flush flush)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "pIn_buf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "in_buf_size",
+      "deco" : "m"
+     },
+     {
+      "name" : "flush",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3784,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_init",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3791,
+    "char" : 14,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorPFNbNiPxviPvZiQeiZi",
+    "originalType" : "nothrow @nogc tdefl_status(tdefl_compressor* d, tdefl_put_buf_func_ptr pPut_buf_func, void* pPut_buf_user, int flags)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     },
+     {
+      "name" : "pPut_buf_func",
+      "deco" : "PFNbNiPxviPvZi"
+     },
+     {
+      "name" : "pPut_buf_user",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3829,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_get_prev_return_status",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3831,
+    "char" : 14,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZi",
+    "originalType" : "nothrow @nogc tdefl_status(tdefl_compressor* d)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3834,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_get_adler32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3836,
+    "char" : 11,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZk",
+    "originalType" : "nothrow @nogc mz_uint32(tdefl_compressor* d)",
+    "parameters" : [
+     {
+      "name" : "d",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3839,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_mem_to_output",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3842,
+    "char" : 9,
+    "deco" : "FNbNixPvmPFNbNiPxviPvZiQeiZi",
+    "originalType" : "nothrow @nogc mz_bool(const void* pBuf, size_t buf_len, tdefl_put_buf_func_ptr pPut_buf_func, void* pPut_buf_user, int flags)",
+    "parameters" : [
+     {
+      "name" : "pBuf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "pPut_buf_func",
+      "deco" : "PFNbNiPxviPvZi"
+     },
+     {
+      "name" : "pPut_buf_user",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3855,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_output_buffer",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 3857,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_size",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3859,
+      "char" : 12,
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "0LU",
+      "offset" : 0
+     },
+     {
+      "name" : "m_capacity",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3860,
+      "char" : 12,
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "0LU",
+      "offset" : 8
+     },
+     {
+      "name" : "m_pBuf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3861,
+      "char" : 15,
+      "deco" : "Ph",
+      "originalType" : "mz_uint8*",
+      "init" : "null",
+      "offset" : 16
+     },
+     {
+      "name" : "m_expandable",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3862,
+      "char" : 13,
+      "deco" : "i",
+      "originalType" : "mz_bool",
+      "init" : "0",
+      "offset" : 24
+     }
+    ]
+   },
+   {
+    "name" : "tdefl_output_buffer_putter",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3865,
+    "char" : 9,
+    "deco" : "FNbNixPviPvZi",
+    "originalType" : "nothrow @nogc mz_bool(const void* pBuf, int len, void* pUser)",
+    "parameters" : [
+     {
+      "name" : "pBuf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "len",
+      "deco" : "i"
+     },
+     {
+      "name" : "pUser",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 3888,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_mem_to_heap",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3899,
+    "char" : 7,
+    "deco" : "FNbNixPvmPmiZPv",
+    "originalType" : "nothrow @nogc void*(const void* pSrc_buf, size_t src_buf_len, size_t* pOut_len, int flags)",
+    "parameters" : [
+     {
+      "name" : "pSrc_buf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "src_buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "pOut_len",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3911,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compress_mem_to_mem",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3915,
+    "char" : 8,
+    "deco" : "FNbNiPvmxPvmiZm",
+    "originalType" : "nothrow @nogc size_t(void* pOut_buf, size_t out_buf_len, const void* pSrc_buf, size_t src_buf_len, int flags)",
+    "parameters" : [
+     {
+      "name" : "pOut_buf",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "out_buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "pSrc_buf",
+      "deco" : "xPv"
+     },
+     {
+      "name" : "src_buf_len",
+      "deco" : "m"
+     },
+     {
+      "name" : "flags",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3925,
+    "endchar" : 1
+   },
+   {
+    "name" : "s_tdefl_num_probes",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 3927,
+    "char" : 30,
+    "storageClass" : [
+     "static",
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yG11k",
+    "originalType" : "mz_uint[11]",
+    "init" : "[0u, 1u, 6u, 32u, 16u, 32u, 128u, 256u, 512u, 768u, 1500u]"
+   },
+   {
+    "name" : "tdefl_create_comp_flags_from_zip_params",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3934,
+    "char" : 9,
+    "deco" : "FNbNiiiiZk",
+    "originalType" : "nothrow @nogc mz_uint(int level, int window_bits, int strategy)",
+    "parameters" : [
+     {
+      "name" : "level",
+      "deco" : "i"
+     },
+     {
+      "name" : "window_bits",
+      "deco" : "i"
+     },
+     {
+      "name" : "strategy",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3952,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compressor_alloc",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3955,
+    "char" : 19,
+    "deco" : "FNbNiZPS5miniz16tdefl_compressor",
+    "endline" : 3958,
+    "endchar" : 1
+   },
+   {
+    "name" : "tdefl_compressor_free",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3960,
+    "char" : 6,
+    "deco" : "FNbNiPS5miniz16tdefl_compressorZv",
+    "parameters" : [
+     {
+      "name" : "pComp",
+      "deco" : "PS5miniz16tdefl_compressor"
+     }
+    ],
+    "endline" : 3963,
+    "endchar" : 1
+   }
+  ]
+ }
+]

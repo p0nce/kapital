@@ -1,0 +1,5587 @@
+[
+ {
+  "name" : "dplug.canvas.angularblit",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\angularblit.d",
+  "members" : [
+   {
+    "name" : "core.stdc.math",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "sqrtf"
+    ]
+   },
+   {
+    "name" : "dplug.canvas.rasterizer",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.gradient",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.misc",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "XMZERO",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 14,
+    "char" : 19,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yNhG4i",
+    "originalType" : "__m128i",
+    "init" : "cast(immutable(__vector(int[4])))0"
+   },
+   {
+    "name" : "XMFFFF",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 15,
+    "char" : 19,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yNhG4i",
+    "originalType" : "__m128i",
+    "init" : "cast(immutable(__vector(int[4])))65535"
+   },
+   {
+    "name" : "XM7FFF",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 16,
+    "char" : 19,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yNhG4i",
+    "originalType" : "__m128i",
+    "init" : "cast(immutable(__vector(int[4])))32767"
+   },
+   {
+    "name" : "XMABSMASK",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 17,
+    "char" : 19,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yNhG4i",
+    "originalType" : "__m128i",
+    "init" : "cast(immutable(__vector(int[4])))2147483647"
+   },
+   {
+    "name" : "XMSIGNMASK",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 18,
+    "char" : 19,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yNhG4i",
+    "originalType" : "__m128i",
+    "init" : "cast(immutable(__vector(int[4])))-2147483648"
+   },
+   {
+    "name" : "AngularBlit",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 25,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "init",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 28,
+      "char" : 10,
+      "deco" : "FNbNiC5dplug6canvas8gradient8GradientffffffZv",
+      "parameters" : [
+       {
+        "name" : "g",
+        "deco" : "C5dplug6canvas8gradient8Gradient"
+       },
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       },
+       {
+        "name" : "x2",
+        "deco" : "f"
+       },
+       {
+        "name" : "y2",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 44,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "private",
+      "line" : 48,
+      "char" : 10,
+      "name" : "angular_blit",
+      "parameters" : [
+       {
+        "name" : "wr",
+        "kind" : "value",
+        "deco" : "E5dplug6canvas10rasterizer11WindingRule"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "angular_blit",
+        "kind" : "function",
+        "line" : 48,
+        "char" : 10,
+        "type" : "void(uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+        "parameters" : [
+         {
+          "name" : "dest",
+          "type" : "uint*"
+         },
+         {
+          "name" : "delta",
+          "type" : "int*"
+         },
+         {
+          "name" : "mask",
+          "type" : "DMWord*"
+         },
+         {
+          "name" : "x0",
+          "deco" : "i"
+         },
+         {
+          "name" : "x1",
+          "deco" : "i"
+         },
+         {
+          "name" : "y",
+          "deco" : "i"
+         }
+        ],
+        "endline" : 305,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "gradient",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 308,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "C5dplug6canvas8gradient8Gradient",
+      "originalType" : "Gradient",
+      "offset" : 0
+     },
+     {
+      "name" : "xctr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 309,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 8
+     },
+     {
+      "name" : "yctr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 309,
+      "char" : 21,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 12
+     },
+     {
+      "name" : "xstep0",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 310,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 16
+     },
+     {
+      "name" : "ystep0",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 310,
+      "char" : 23,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 20
+     },
+     {
+      "name" : "xstep1",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 311,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 24
+     },
+     {
+      "name" : "ystep1",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 311,
+      "char" : 23,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 28
+     }
+    ]
+   },
+   {
+    "name" : "doBlit_AngularBlit_NonZero",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 314,
+    "char" : 6,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 318,
+    "endchar" : 1
+   },
+   {
+    "name" : "doBlit_AngularBlit_EvenOdd",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 320,
+    "char" : 6,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 324,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 332,
+    "char" : 5,
+    "name" : "calcCoverage",
+    "parameters" : [
+     {
+      "name" : "rule",
+      "kind" : "value",
+      "deco" : "E5dplug6canvas10rasterizer11WindingRule"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "calcCoverage",
+      "kind" : "function",
+      "line" : 332,
+      "char" : 5,
+      "type" : "int(int winding)",
+      "parameters" : [
+       {
+        "name" : "winding",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 344,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "MINSUM",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 353,
+    "char" : 18,
+    "storageClass" : [
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yNhG4f",
+    "originalType" : "__m128",
+    "init" : "cast(immutable(__vector(float[4])))0.001F"
+   },
+   {
+    "name" : "FQTWO",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 354,
+    "char" : 18,
+    "storageClass" : [
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yNhG4f",
+    "originalType" : "__m128",
+    "init" : "cast(immutable(__vector(float[4])))0.5F"
+   },
+   {
+    "name" : "FQONE",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 355,
+    "char" : 18,
+    "storageClass" : [
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yNhG4f",
+    "originalType" : "__m128",
+    "init" : "cast(immutable(__vector(float[4])))1.0F"
+   },
+   {
+    "name" : "gradOfSorts",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 357,
+    "char" : 8,
+    "deco" : "FNbNiNhG4fQfZQi",
+    "originalType" : "nothrow @nogc __m128(__m128 x, __m128 y)",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "NhG4f"
+     },
+     {
+      "name" : "y",
+      "deco" : "NhG4f"
+     }
+    ],
+    "endline" : 365,
+    "endchar" : 1
+   },
+   {
+    "name" : "PCOEF0",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 369,
+    "char" : 18,
+    "storageClass" : [
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yNhG4f",
+    "originalType" : "__m128",
+    "init" : "cast(immutable(__vector(float[4])))0.125F"
+   },
+   {
+    "name" : "PCOEF1",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 370,
+    "char" : 18,
+    "storageClass" : [
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yNhG4f",
+    "originalType" : "__m128",
+    "init" : "cast(immutable(__vector(float[4])))0.154761F"
+   },
+   {
+    "name" : "PCOEF3",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 371,
+    "char" : 18,
+    "storageClass" : [
+     "immutable",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "yNhG4f",
+    "originalType" : "__m128",
+    "init" : "cast(immutable(__vector(float[4])))0.0305495F"
+   },
+   {
+    "name" : "polyAprox",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 373,
+    "char" : 8,
+    "deco" : "FNbNiNhG4fZQg",
+    "originalType" : "nothrow @nogc __m128(__m128 g)",
+    "parameters" : [
+     {
+      "name" : "g",
+      "deco" : "NhG4f"
+     }
+    ],
+    "endline" : 379,
+    "endchar" : 1
+   },
+   {
+    "name" : "fixupQuadrant",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 383,
+    "char" : 8,
+    "deco" : "FNbNiNhG4fQfQhZQk",
+    "originalType" : "nothrow @nogc __m128(__m128 pos, __m128 t0, __m128 t1)",
+    "parameters" : [
+     {
+      "name" : "pos",
+      "deco" : "NhG4f"
+     },
+     {
+      "name" : "t0",
+      "deco" : "NhG4f"
+     },
+     {
+      "name" : "t1",
+      "deco" : "NhG4f"
+     }
+    ],
+    "endline" : 389,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 391,
+    "char" : 9,
+    "name" : "calcCoverage32",
+    "parameters" : [
+     {
+      "name" : "rule",
+      "kind" : "value",
+      "deco" : "E5dplug6canvas10rasterizer11WindingRule"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "calcCoverage32",
+      "kind" : "function",
+      "line" : 391,
+      "char" : 9,
+      "type" : "__m128i(__m128i winding)",
+      "parameters" : [
+       {
+        "name" : "winding",
+        "type" : "__m128i"
+       }
+      ],
+      "endline" : 408,
+      "endchar" : 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas.colorblit",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\colorblit.d",
+  "members" : [
+   {
+    "name" : "dplug.canvas.rasterizer",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.misc",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "ColorBlit",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 19,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "init",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 24,
+      "char" : 10,
+      "deco" : "FNbNikZv",
+      "parameters" : [
+       {
+        "name" : "color",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 34,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "private",
+      "line" : 38,
+      "char" : 10,
+      "name" : "color_blit",
+      "parameters" : [
+       {
+        "name" : "wr",
+        "kind" : "value",
+        "deco" : "E5dplug6canvas10rasterizer11WindingRule"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "color_blit",
+        "kind" : "function",
+        "line" : 38,
+        "char" : 10,
+        "type" : "void(uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+        "parameters" : [
+         {
+          "name" : "dest",
+          "type" : "uint*"
+         },
+         {
+          "name" : "delta",
+          "type" : "int*"
+         },
+         {
+          "name" : "mask",
+          "type" : "DMWord*"
+         },
+         {
+          "name" : "x0",
+          "deco" : "i"
+         },
+         {
+          "name" : "x1",
+          "deco" : "i"
+         },
+         {
+          "name" : "y",
+          "deco" : "i"
+         }
+        ],
+        "endline" : 212,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "color",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 214,
+      "char" : 10,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "k",
+      "offset" : 0
+     },
+     {
+      "name" : "_xmColor",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 215,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G16h",
+      "offset" : 4
+     },
+     {
+      "name" : "_xmAlpha",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 216,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "G16h",
+      "offset" : 20
+     }
+    ]
+   },
+   {
+    "name" : "doBlit_ColorBlit_NonZero",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 219,
+    "char" : 7,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 223,
+    "endchar" : 2
+   },
+   {
+    "name" : "doBlit_ColorBlit_EvenOdd",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 225,
+    "char" : 7,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 229,
+    "endchar" : 2
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas.ellipticalblit",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\ellipticalblit.d",
+  "members" : [
+   {
+    "name" : "dplug.canvas.rasterizer",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.gradient",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.misc",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "EllipticalBlit",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 13,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "init",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 18,
+      "char" : 10,
+      "deco" : "FNbNiC5dplug6canvas8gradient8GradientfffffZv",
+      "parameters" : [
+       {
+        "name" : "g",
+        "deco" : "C5dplug6canvas8gradient8Gradient"
+       },
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       },
+       {
+        "name" : "r2",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 35,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "private",
+      "line" : 39,
+      "char" : 10,
+      "name" : "color_blit",
+      "parameters" : [
+       {
+        "name" : "wr",
+        "kind" : "value",
+        "deco" : "E5dplug6canvas10rasterizer11WindingRule"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "color_blit",
+        "kind" : "function",
+        "line" : 39,
+        "char" : 10,
+        "type" : "void(uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+        "parameters" : [
+         {
+          "name" : "dest",
+          "type" : "uint*"
+         },
+         {
+          "name" : "delta",
+          "type" : "int*"
+         },
+         {
+          "name" : "mask",
+          "type" : "DMWord*"
+         },
+         {
+          "name" : "x0",
+          "deco" : "i"
+         },
+         {
+          "name" : "x1",
+          "deco" : "i"
+         },
+         {
+          "name" : "y",
+          "deco" : "i"
+         }
+        ],
+        "endline" : 291,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "gradient",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 295,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "C5dplug6canvas8gradient8Gradient",
+      "originalType" : "Gradient",
+      "offset" : 0
+     },
+     {
+      "name" : "xctr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 296,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 8
+     },
+     {
+      "name" : "yctr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 296,
+      "char" : 21,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 12
+     },
+     {
+      "name" : "xstep0",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 297,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 16
+     },
+     {
+      "name" : "ystep0",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 297,
+      "char" : 23,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 20
+     },
+     {
+      "name" : "xstep1",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 298,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 24
+     },
+     {
+      "name" : "ystep1",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 298,
+      "char" : 23,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 28
+     }
+    ]
+   },
+   {
+    "name" : "doBlit_EllipticalBlit_NonZero",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 301,
+    "char" : 6,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 305,
+    "endchar" : 1
+   },
+   {
+    "name" : "doBlit_EllipticalBlit_EvenOdd",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 307,
+    "char" : 6,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 311,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas.gradient",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\gradient.d",
+  "members" : [
+   {
+    "name" : "dplug.core.nogc",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.vec",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.misc",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.color",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "Gradient",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 34,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "ColorStop",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 40,
+      "char" : 12,
+      "members" : [
+       {
+        "name" : "color",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 42,
+        "char" : 15,
+        "deco" : "k",
+        "offset" : 0
+       },
+       {
+        "name" : "pos",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 43,
+        "char" : 15,
+        "deco" : "f",
+        "offset" : 4
+       }
+      ]
+     },
+     {
+      "name" : "addStop",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 49,
+      "char" : 10,
+      "deco" : "FNbNifkZv",
+      "parameters" : [
+       {
+        "name" : "pos",
+        "deco" : "f"
+       },
+       {
+        "name" : "color",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 54,
+      "endchar" : 5
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 60,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 65,
+      "endchar" : 5
+     },
+     {
+      "name" : "length",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 70,
+      "char" : 12,
+      "deco" : "FNbNiZm",
+      "originalType" : "nothrow @nogc size_t()",
+      "endline" : 73,
+      "endchar" : 5
+     },
+     {
+      "name" : "lutLength",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 80,
+      "char" : 9,
+      "deco" : "FNbNiZi",
+      "endline" : 84,
+      "endchar" : 5
+     },
+     {
+      "name" : "getLookup",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 89,
+      "char" : 12,
+      "deco" : "FNbNiZAk",
+      "endline" : 93,
+      "endchar" : 5
+     },
+     {
+      "name" : "hasChanged",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 99,
+      "char" : 10,
+      "deco" : "FNbNiZb",
+      "endline" : 102,
+      "endchar" : 5
+     },
+     {
+      "name" : "isOpaque",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 107,
+      "char" : 10,
+      "deco" : "FNbNiZb",
+      "endline" : 110,
+      "endchar" : 5
+     },
+     {
+      "name" : "computeLUTSize",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 114,
+      "char" : 9,
+      "deco" : "FNbNiZi",
+      "endline" : 174,
+      "endchar" : 5
+     },
+     {
+      "name" : "initLookup",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 177,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 256,
+      "endchar" : 5
+     },
+     {
+      "name" : "m_stops",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 258,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTSQy6canvas8gradient8Gradient9ColorStopZQBs",
+      "originalType" : "Vec!ColorStop",
+      "offset" : 16
+     },
+     {
+      "name" : "m_lookup",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 259,
+      "char" : 14,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTkZQh",
+      "offset" : 48
+     },
+     {
+      "name" : "m_changed",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 260,
+      "char" : 10,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "b",
+      "init" : "true",
+      "offset" : 80
+     },
+     {
+      "name" : "m_isOpaque",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 261,
+      "char" : 10,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "b",
+      "init" : "true",
+      "offset" : 81
+     },
+     {
+      "name" : "sortStopsInPlace",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 263,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbNiAS5dplug6canvas8gradient8Gradient9ColorStopZv",
+      "parameters" : [
+       {
+        "name" : "stops",
+        "deco" : "AS5dplug6canvas8gradient8Gradient9ColorStop"
+       }
+      ],
+      "endline" : 278,
+      "endchar" : 5
+     },
+     {
+      "name" : "abs_float",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 280,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNaNbNifZf",
+      "parameters" : [
+       {
+        "name" : "a",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 283,
+      "endchar" : 5
+     },
+     {
+      "name" : "abs_int",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 285,
+      "char" : 16,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNaNbNiiZi",
+      "parameters" : [
+       {
+        "name" : "a",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 288,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 34,
+      "char" : 1,
+      "storageClass" : [
+       "scope"
+      ],
+      "deco" : "FNbNiNlNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L291_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 291,
+    "char" : 1,
+    "endline" : 302,
+    "endchar" : 2
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas.linearblit",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\linearblit.d",
+  "members" : [
+   {
+    "name" : "dplug.core.math",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.rasterizer",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.gradient",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.misc",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "LinearBlit",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 19,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "init",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 24,
+      "char" : 10,
+      "deco" : "FNbNiC5dplug6canvas8gradient8GradientffffZv",
+      "parameters" : [
+       {
+        "name" : "g",
+        "deco" : "C5dplug6canvas8gradient8Gradient"
+       },
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 39,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "private",
+      "line" : 43,
+      "char" : 10,
+      "name" : "linear_blit",
+      "parameters" : [
+       {
+        "name" : "wr",
+        "kind" : "value",
+        "deco" : "E5dplug6canvas10rasterizer11WindingRule"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "linear_blit",
+        "kind" : "function",
+        "line" : 43,
+        "char" : 10,
+        "type" : "void(uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+        "parameters" : [
+         {
+          "name" : "dest",
+          "type" : "uint*"
+         },
+         {
+          "name" : "delta",
+          "type" : "int*"
+         },
+         {
+          "name" : "mask",
+          "type" : "DMWord*"
+         },
+         {
+          "name" : "x0",
+          "deco" : "i"
+         },
+         {
+          "name" : "x1",
+          "deco" : "i"
+         },
+         {
+          "name" : "y",
+          "deco" : "i"
+         }
+        ],
+        "endline" : 277,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "gradient",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 281,
+      "char" : 14,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "C5dplug6canvas8gradient8Gradient",
+      "originalType" : "Gradient",
+      "offset" : 0
+     },
+     {
+      "name" : "xctr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 282,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 8
+     },
+     {
+      "name" : "yctr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 282,
+      "char" : 16,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 12
+     },
+     {
+      "name" : "xstep",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 283,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 16
+     },
+     {
+      "name" : "ystep",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 283,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 20
+     }
+    ]
+   },
+   {
+    "name" : "doBlit_LinearBlit_NonZero",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 289,
+    "char" : 6,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 293,
+    "endchar" : 1
+   },
+   {
+    "name" : "doBlit_LinearBlit_EvenOdd",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 295,
+    "char" : 6,
+    "deco" : "FNbNiPvPkPiPmiiiZv",
+    "originalType" : "nothrow @nogc void(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)",
+    "parameters" : [
+     {
+      "name" : "userData",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dest",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "delta",
+      "deco" : "Pi"
+     },
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "i"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     },
+     {
+      "name" : "y",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 299,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas.misc",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\misc.d",
+  "members" : [
+   {
+    "name" : "core.stdc.stdlib",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "malloc",
+     "free",
+     "realloc"
+    ]
+   },
+   {
+    "name" : "inteli",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 15
+   },
+   {
+    "name" : "std.math",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 15,
+    "selective" : [
+     "sqrt",
+     "abs"
+    ]
+   },
+   {
+    "name" : "ldc.intrinsics",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "intr_bsf",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 20,
+    "char" : 5,
+    "originalType" : "llvm_ctlz"
+   },
+   {
+    "name" : "intr_bsr",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 21,
+    "char" : 5,
+    "originalType" : "llvm_cttz"
+   },
+   {
+    "name" : "fabs",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 5,
+    "originalType" : "llvm_fabs"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 35,
+    "char" : 3,
+    "name" : "min",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "min",
+      "kind" : "function",
+      "line" : 35,
+      "char" : 3,
+      "type" : "T(T a, T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T"
+       },
+       {
+        "name" : "b",
+        "type" : "T"
+       }
+      ],
+      "endline" : 38,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 40,
+    "char" : 3,
+    "name" : "max",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "max",
+      "kind" : "function",
+      "line" : 40,
+      "char" : 3,
+      "type" : "T(T a, T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T"
+       },
+       {
+        "name" : "b",
+        "type" : "T"
+       }
+      ],
+      "endline" : 43,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 45,
+    "char" : 3,
+    "name" : "clip",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "clip",
+      "kind" : "function",
+      "line" : 45,
+      "char" : 3,
+      "type" : "T(T x, T min, T max)",
+      "parameters" : [
+       {
+        "name" : "x",
+        "type" : "T"
+       },
+       {
+        "name" : "min",
+        "type" : "T"
+       },
+       {
+        "name" : "max",
+        "type" : "T"
+       }
+      ],
+      "endline" : 50,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "roundUpTo",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 54,
+    "char" : 6,
+    "deco" : "FNbNikkZk",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "k"
+     },
+     {
+      "name" : "q",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 58,
+    "endchar" : 1
+   },
+   {
+    "name" : "roundUpPow2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 62,
+    "char" : 6,
+    "deco" : "FNbNikZk",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 71,
+    "endchar" : 1
+   },
+   {
+    "name" : "roundUpPow2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 73,
+    "char" : 7,
+    "deco" : "FNbNimZm",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 83,
+    "endchar" : 1
+   },
+   {
+    "name" : "isPow2",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 87,
+    "char" : 6,
+    "deco" : "FNbNiiZb",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 90,
+    "endchar" : 1
+   },
+   {
+    "name" : "_mm_broadcast_alpha",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 101,
+    "char" : 9,
+    "deco" : "FNbNiNhG4iZQg",
+    "originalType" : "nothrow @nogc __m128i(__m128i x)",
+    "parameters" : [
+     {
+      "name" : "x",
+      "deco" : "NhG4i"
+     }
+    ],
+    "endline" : 106,
+    "endchar" : 1
+   },
+   {
+    "name" : "_mm_clamp_0_to_N_epi32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 109,
+    "char" : 9,
+    "deco" : "FNbNiNhG4isZQh",
+    "originalType" : "nothrow @nogc __m128i(__m128i v, short max)",
+    "parameters" : [
+     {
+      "name" : "v",
+      "deco" : "NhG4i"
+     },
+     {
+      "name" : "max",
+      "deco" : "s"
+     }
+    ],
+    "endline" : 124,
+    "endchar" : 1
+   },
+   {
+    "name" : "nextSetBit",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 141,
+    "char" : 5,
+    "deco" : "FNbNiPmiiZi",
+    "parameters" : [
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "start",
+      "deco" : "i"
+     },
+     {
+      "name" : "end",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 168,
+    "endchar" : 1
+   },
+   {
+    "name" : "nextSetBit",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 170,
+    "char" : 5,
+    "deco" : "FNbNiPkiiZi",
+    "parameters" : [
+     {
+      "name" : "mask",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "start",
+      "deco" : "i"
+     },
+     {
+      "name" : "end",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 197,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 209,
+    "char" : 1,
+    "name" : "ArenaAllocator",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     },
+     {
+      "name" : "blockSize",
+      "kind" : "value",
+      "deco" : "k"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "ArenaAllocator",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 209,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "EABlock",
+        "kind" : "struct",
+        "protection" : "public",
+        "line" : 213,
+        "char" : 5,
+        "members" : [
+         {
+          "name" : "next",
+          "kind" : "variable",
+          "line" : 215,
+          "char" : 18,
+          "type" : "EABlock*"
+         },
+         {
+          "name" : "items",
+          "kind" : "variable",
+          "line" : 216,
+          "char" : 22,
+          "type" : "T[blockSize]"
+         }
+        ]
+       },
+       {
+        "name" : "m_root",
+        "kind" : "variable",
+        "line" : 219,
+        "char" : 14,
+        "type" : "EABlock*"
+       },
+       {
+        "name" : "m_block",
+        "kind" : "variable",
+        "line" : 220,
+        "char" : 14,
+        "type" : "EABlock*"
+       },
+       {
+        "name" : "m_pos",
+        "kind" : "variable",
+        "line" : 221,
+        "char" : 10,
+        "deco" : "k",
+        "init" : "(uint).max"
+       },
+       {
+        "name" : "~this",
+        "kind" : "destructor",
+        "line" : 228,
+        "char" : 5,
+        "endline" : 236,
+        "endchar" : 5
+       },
+       {
+        "name" : "allocate",
+        "kind" : "function",
+        "line" : 238,
+        "char" : 8,
+        "type" : "T*()",
+        "endline" : 276,
+        "endchar" : 5
+       },
+       {
+        "name" : "reset",
+        "kind" : "function",
+        "line" : 278,
+        "char" : 10,
+        "type" : "void()",
+        "endline" : 282,
+        "endchar" : 5
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\package.d",
+  "members" : [
+   {
+    "name" : "std.math",
+    "kind" : "import",
+    "line" : 30,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "cos",
+     "sin",
+     "tan",
+     "PI"
+    ]
+   },
+   {
+    "name" : "dplug.core.vec",
+    "kind" : "import",
+    "line" : 32,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.nogc",
+    "kind" : "import",
+    "line" : 33,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.math",
+    "kind" : "import",
+    "line" : 34,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.color",
+    "kind" : "import",
+    "line" : 36,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.graphics.image",
+    "kind" : "import",
+    "line" : 37,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.gradient",
+    "kind" : "import",
+    "line" : 39,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.colorblit",
+    "kind" : "import",
+    "line" : 40,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.linearblit",
+    "kind" : "import",
+    "line" : 41,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.ellipticalblit",
+    "kind" : "import",
+    "line" : 42,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.angularblit",
+    "kind" : "import",
+    "line" : 43,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.rasterizer",
+    "kind" : "import",
+    "line" : 44,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors",
+    "kind" : "import",
+    "line" : 46,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "godotmath",
+    "kind" : "import",
+    "line" : 50,
+    "char" : 15
+   },
+   {
+    "name" : "dplug.math.vector",
+    "kind" : "import",
+    "line" : 51,
+    "char" : 15
+   },
+   {
+    "name" : "dplug.math.box",
+    "kind" : "import",
+    "line" : 52,
+    "char" : 15
+   },
+   {
+    "name" : "ImageDest",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 55,
+    "char" : 1,
+    "deco" : "S5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx",
+    "originalType" : "ImageRef!RGBA"
+   },
+   {
+    "name" : "FillRule",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 58,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "nonZero",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 61,
+      "char" : 5
+     },
+     {
+      "name" : "evenOdd",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 64,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CompositeOperation",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 68,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "sourceOver",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 74,
+      "char" : 5
+     },
+     {
+      "name" : "add",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 77,
+      "char" : 5
+     },
+     {
+      "name" : "lighter",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 78,
+      "char" : 5
+     },
+     {
+      "name" : "subtract",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 81,
+      "char" : 5
+     },
+     {
+      "name" : "lighten",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 84,
+      "char" : 5
+     },
+     {
+      "name" : "darken",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 87,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "Canvas",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 101,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "initialize",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 108,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCxZv",
+      "originalType" : "nothrow @nogc void(ImageRef!RGBA imageDest)",
+      "parameters" : [
+       {
+        "name" : "imageDest",
+        "deco" : "S5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx"
+       }
+      ],
+      "endline" : 128,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 130,
+      "char" : 5,
+      "deco" : "FNbNiZv",
+      "endline" : 138,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 144,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug8graphics5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZv",
+      "originalType" : "nothrow @nogc void(RGBA color)",
+      "parameters" : [
+       {
+        "name" : "color",
+        "deco" : "S5dplug8graphics5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBt"
+       }
+      ],
+      "endline" : 150,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 152,
+      "char" : 10,
+      "deco" : "FNbNiS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 156,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 158,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "htmlColorString",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 170,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 172,
+      "char" : 10,
+      "deco" : "FNbNiC5dplug6canvas14CanvasGradientZv",
+      "parameters" : [
+       {
+        "name" : "gradient",
+        "deco" : "C5dplug6canvas14CanvasGradient"
+       }
+      ],
+      "endline" : 202,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRule",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 205,
+      "char" : 10,
+      "deco" : "FNbNiE5dplug6canvas8FillRuleZv",
+      "parameters" : [
+       {
+        "name" : "rule",
+        "deco" : "E5dplug6canvas8FillRule"
+       }
+      ],
+      "endline" : 208,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRule",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 210,
+      "char" : 14,
+      "deco" : "FNbNiZE5dplug6canvas8FillRule",
+      "endline" : 213,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalCompositeOperation",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 216,
+      "char" : 10,
+      "deco" : "FNbNiE5dplug6canvas18CompositeOperationZv",
+      "parameters" : [
+       {
+        "name" : "op",
+        "deco" : "E5dplug6canvas18CompositeOperation"
+       }
+      ],
+      "endline" : 219,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalCompositeOperation",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 221,
+      "char" : 24,
+      "deco" : "FNbNiZE5dplug6canvas18CompositeOperation",
+      "endline" : 224,
+      "endchar" : 5
+     },
+     {
+      "name" : "beginPath",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 230,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 237,
+      "endchar" : 5
+     },
+     {
+      "name" : "closePath",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 240,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 243,
+      "endchar" : 5
+     },
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 246,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 250,
+      "endchar" : 5
+     },
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 252,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoZv",
+      "originalType" : "nothrow @nogc void(vec2f point)",
+      "parameters" : [
+       {
+        "name" : "point",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 255,
+      "endchar" : 5
+     },
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 257,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqZv",
+      "originalType" : "nothrow @nogc void(Vector2 point)",
+      "parameters" : [
+       {
+        "name" : "point",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 260,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 264,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 268,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 270,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoZv",
+      "originalType" : "nothrow @nogc void(vec2f point)",
+      "parameters" : [
+       {
+        "name" : "point",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 273,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 275,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqZv",
+      "originalType" : "nothrow @nogc void(Vector2 point)",
+      "parameters" : [
+       {
+        "name" : "point",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 278,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 280,
+      "char" : 10,
+      "deco" : "FNbNiAS5dplug4math6vector__T6VectorTfVii2ZQoXv",
+      "originalType" : "nothrow @nogc void(vec2f[] points...)",
+      "parameters" : [
+       {
+        "name" : "points",
+        "deco" : "AS5dplug4math6vector__T6VectorTfVii2ZQo",
+        "storageClass" : [
+         "scope"
+        ]
+       }
+      ],
+      "endline" : 289,
+      "endchar" : 5
+     },
+     {
+      "name" : "bezierCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 292,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "cp1x",
+        "deco" : "f"
+       },
+       {
+        "name" : "cp1y",
+        "deco" : "f"
+       },
+       {
+        "name" : "cp2x",
+        "deco" : "f"
+       },
+       {
+        "name" : "cp2y",
+        "deco" : "f"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 298,
+      "endchar" : 5
+     },
+     {
+      "name" : "bezierCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 300,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmQBpZv",
+      "originalType" : "nothrow @nogc void(vec2f controlPoint1, vec2f controlPoint2, vec2f dest)",
+      "parameters" : [
+       {
+        "name" : "controlPoint1",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "controlPoint2",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "dest",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 303,
+      "endchar" : 5
+     },
+     {
+      "name" : "bezierCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 305,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqQBgQBjZv",
+      "originalType" : "nothrow @nogc void(Vector2 controlPoint1, Vector2 controlPoint2, Vector2 dest)",
+      "parameters" : [
+       {
+        "name" : "controlPoint1",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       },
+       {
+        "name" : "controlPoint2",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       },
+       {
+        "name" : "dest",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 308,
+      "endchar" : 5
+     },
+     {
+      "name" : "quadraticCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 311,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "cpx",
+        "deco" : "f"
+       },
+       {
+        "name" : "cpy",
+        "deco" : "f"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 316,
+      "endchar" : 5
+     },
+     {
+      "name" : "quadraticCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 318,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmZv",
+      "originalType" : "nothrow @nogc void(vec2f controlPoint, vec2f dest)",
+      "parameters" : [
+       {
+        "name" : "controlPoint",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "dest",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 321,
+      "endchar" : 5
+     },
+     {
+      "name" : "quadraticCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 323,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqQBgZv",
+      "originalType" : "nothrow @nogc void(Vector2 controlPoint, Vector2 dest)",
+      "parameters" : [
+       {
+        "name" : "controlPoint",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       },
+       {
+        "name" : "dest",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 326,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 329,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "width",
+        "deco" : "f"
+       },
+       {
+        "name" : "height",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 336,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 338,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmZv",
+      "originalType" : "nothrow @nogc void(vec2f topLeftPoint, vec2f dimension)",
+      "parameters" : [
+       {
+        "name" : "topLeftPoint",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "dimension",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 341,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 343,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqQBgZv",
+      "originalType" : "nothrow @nogc void(Vector2 topLeftPoint, Vector2 dimension)",
+      "parameters" : [
+       {
+        "name" : "topLeftPoint",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       },
+       {
+        "name" : "dimension",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 346,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 348,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTfVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(box2f rectangle)",
+      "parameters" : [
+       {
+        "name" : "rectangle",
+        "deco" : "S5dplug4math3box__T3BoxTfVii2ZQl"
+       }
+      ],
+      "endline" : 351,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 353,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(box2i rectangle)",
+      "parameters" : [
+       {
+        "name" : "rectangle",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 356,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 358,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T9Rect2ImplTfZQnZv",
+      "originalType" : "nothrow @nogc void(Rect2 rectangle)",
+      "parameters" : [
+       {
+        "name" : "rectangle",
+        "deco" : "S9godotmath__T9Rect2ImplTfZQn"
+       }
+      ],
+      "endline" : 361,
+      "endchar" : 5
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 363,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T9Rect2ImplTiZQnZv",
+      "originalType" : "nothrow @nogc void(Rect2i rectangle)",
+      "parameters" : [
+       {
+        "name" : "rectangle",
+        "deco" : "S9godotmath__T9Rect2ImplTiZQn"
+       }
+      ],
+      "endline" : 366,
+      "endchar" : 5
+     },
+     {
+      "name" : "arc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 369,
+      "char" : 10,
+      "deco" : "FNbNifffffbZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "radius",
+        "deco" : "f"
+       },
+       {
+        "name" : "startAngle",
+        "deco" : "f"
+       },
+       {
+        "name" : "endAngle",
+        "deco" : "f"
+       },
+       {
+        "name" : "anticlockwise",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 488,
+      "endchar" : 5
+     },
+     {
+      "name" : "arc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 490,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQofffbZv",
+      "originalType" : "nothrow @nogc void(vec2f center, float radius, float startAngle, float endAngle, bool anticlockwise = false)",
+      "parameters" : [
+       {
+        "name" : "center",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "radius",
+        "deco" : "f"
+       },
+       {
+        "name" : "startAngle",
+        "deco" : "f"
+       },
+       {
+        "name" : "endAngle",
+        "deco" : "f"
+       },
+       {
+        "name" : "anticlockwise",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 493,
+      "endchar" : 5
+     },
+     {
+      "name" : "arc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 495,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqfffbZv",
+      "originalType" : "nothrow @nogc void(Vector2 center, float radius, float startAngle, float endAngle, bool anticlockwise = false)",
+      "parameters" : [
+       {
+        "name" : "center",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       },
+       {
+        "name" : "radius",
+        "deco" : "f"
+       },
+       {
+        "name" : "startAngle",
+        "deco" : "f"
+       },
+       {
+        "name" : "endAngle",
+        "deco" : "f"
+       },
+       {
+        "name" : "anticlockwise",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 498,
+      "endchar" : 5
+     },
+     {
+      "name" : "fill",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 503,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 525,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 529,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "width",
+        "deco" : "f"
+       },
+       {
+        "name" : "height",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 534,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 536,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmZv",
+      "originalType" : "nothrow @nogc void(vec2f topLeft, vec2f dimension)",
+      "parameters" : [
+       {
+        "name" : "topLeft",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "dimension",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 539,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 541,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqQBgZv",
+      "originalType" : "nothrow @nogc void(Vector2 topLeft, Vector2 dimension)",
+      "parameters" : [
+       {
+        "name" : "topLeft",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       },
+       {
+        "name" : "dimension",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 544,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 546,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTfVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(box2f rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTfVii2ZQl"
+       }
+      ],
+      "endline" : 549,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 551,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math3box__T3BoxTiVii2ZQlZv",
+      "originalType" : "nothrow @nogc void(box2i rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S5dplug4math3box__T3BoxTiVii2ZQl"
+       }
+      ],
+      "endline" : 554,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 556,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T9Rect2ImplTfZQnZv",
+      "originalType" : "nothrow @nogc void(Rect2 rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S9godotmath__T9Rect2ImplTfZQn"
+       }
+      ],
+      "endline" : 559,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 561,
+      "char" : 10,
+      "deco" : "FNbNiS9godotmath__T9Rect2ImplTiZQnZv",
+      "originalType" : "nothrow @nogc void(Rect2i rect)",
+      "parameters" : [
+       {
+        "name" : "rect",
+        "deco" : "S9godotmath__T9Rect2ImplTiZQn"
+       }
+      ],
+      "endline" : 564,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillCircle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 568,
+      "char" : 10,
+      "deco" : "FNbNifffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "radius",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 574,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillCircle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 576,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQofZv",
+      "originalType" : "nothrow @nogc void(vec2f center, float radius)",
+      "parameters" : [
+       {
+        "name" : "center",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "radius",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 579,
+      "endchar" : 5
+     },
+     {
+      "name" : "createLinearGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 588,
+      "char" : 20,
+      "deco" : "FNbNiffffZC5dplug6canvas14CanvasGradient",
+      "parameters" : [
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 601,
+      "endchar" : 5
+     },
+     {
+      "name" : "createLinearGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 603,
+      "char" : 20,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmZCQBq6canvas14CanvasGradient",
+      "originalType" : "nothrow @nogc CanvasGradient(vec2f pt0, vec2f pt1)",
+      "parameters" : [
+       {
+        "name" : "pt0",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "pt1",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 606,
+      "endchar" : 5
+     },
+     {
+      "name" : "createCircularGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 610,
+      "char" : 20,
+      "deco" : "FNbNifffZC5dplug6canvas14CanvasGradient",
+      "parameters" : [
+       {
+        "name" : "centerX",
+        "deco" : "f"
+       },
+       {
+        "name" : "centerY",
+        "deco" : "f"
+       },
+       {
+        "name" : "endRadius",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 616,
+      "endchar" : 5
+     },
+     {
+      "name" : "createCircularGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 618,
+      "char" : 20,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQofZCQBo6canvas14CanvasGradient",
+      "originalType" : "nothrow @nogc CanvasGradient(vec2f center, float endRadius)",
+      "parameters" : [
+       {
+        "name" : "center",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "endRadius",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 621,
+      "endchar" : 5
+     },
+     {
+      "name" : "createEllipticalGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 625,
+      "char" : 20,
+      "deco" : "FNbNifffffZC5dplug6canvas14CanvasGradient",
+      "parameters" : [
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       },
+       {
+        "name" : "r2",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 645,
+      "endchar" : 5
+     },
+     {
+      "name" : "createEllipticalGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 647,
+      "char" : 20,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmfZCQBr6canvas14CanvasGradient",
+      "originalType" : "nothrow @nogc CanvasGradient(vec2f pt0, vec2f pt1, float r2)",
+      "parameters" : [
+       {
+        "name" : "pt0",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "pt1",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "r2",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 650,
+      "endchar" : 5
+     },
+     {
+      "name" : "createAngularGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 658,
+      "char" : 20,
+      "deco" : "FNbNiffffZC5dplug6canvas14CanvasGradient",
+      "parameters" : [
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 662,
+      "endchar" : 5
+     },
+     {
+      "name" : "createAngularGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 664,
+      "char" : 20,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmZCQBq6canvas14CanvasGradient",
+      "originalType" : "nothrow @nogc CanvasGradient(vec2f pt0, vec2f pt1)",
+      "parameters" : [
+       {
+        "name" : "pt0",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "pt1",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 667,
+      "endchar" : 5
+     },
+     {
+      "name" : "createAngularGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 676,
+      "char" : 20,
+      "deco" : "FNbNiffffffZC5dplug6canvas14CanvasGradient",
+      "parameters" : [
+       {
+        "name" : "x0",
+        "deco" : "f"
+       },
+       {
+        "name" : "y0",
+        "deco" : "f"
+       },
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       },
+       {
+        "name" : "x2",
+        "deco" : "f"
+       },
+       {
+        "name" : "y2",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 692,
+      "endchar" : 5
+     },
+     {
+      "name" : "createAngularGradient",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 694,
+      "char" : 20,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoQBmQBpZCQBt6canvas14CanvasGradient",
+      "originalType" : "nothrow @nogc CanvasGradient(vec2f pt0, vec2f pt1, vec2f pt2)",
+      "parameters" : [
+       {
+        "name" : "pt0",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "pt1",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       },
+       {
+        "name" : "pt2",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 697,
+      "endchar" : 5
+     },
+     {
+      "name" : "save",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 707,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 710,
+      "endchar" : 5
+     },
+     {
+      "name" : "restore",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 713,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 718,
+      "endchar" : 5
+     },
+     {
+      "name" : "currentTransform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 721,
+      "char" : 17,
+      "deco" : "FNbNiZS5dplug6canvas11Transform2D",
+      "endline" : 724,
+      "endchar" : 5
+     },
+     {
+      "name" : "getTransform",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 725,
+      "char" : 5,
+      "originalType" : "currentTransform"
+     },
+     {
+      "name" : "rotate",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 729,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "angle",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 734,
+      "endchar" : 5
+     },
+     {
+      "name" : "scale",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 737,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 740,
+      "endchar" : 5
+     },
+     {
+      "name" : "scale",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 742,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoZv",
+      "originalType" : "nothrow @nogc void(vec2f xy)",
+      "parameters" : [
+       {
+        "name" : "xy",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 745,
+      "endchar" : 5
+     },
+     {
+      "name" : "scale",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 747,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "xy",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 750,
+      "endchar" : 5
+     },
+     {
+      "name" : "translate",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 754,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 757,
+      "endchar" : 5
+     },
+     {
+      "name" : "translate",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 759,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoZv",
+      "originalType" : "nothrow @nogc void(vec2f position)",
+      "parameters" : [
+       {
+        "name" : "position",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 762,
+      "endchar" : 5
+     },
+     {
+      "name" : "transform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 765,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "a",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "c",
+        "deco" : "f"
+       },
+       {
+        "name" : "d",
+        "deco" : "f"
+       },
+       {
+        "name" : "e",
+        "deco" : "f"
+       },
+       {
+        "name" : "f",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 770,
+      "endchar" : 5
+     },
+     {
+      "name" : "setTransform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 772,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "a",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "c",
+        "deco" : "f"
+       },
+       {
+        "name" : "d",
+        "deco" : "f"
+       },
+       {
+        "name" : "e",
+        "deco" : "f"
+       },
+       {
+        "name" : "f",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 777,
+      "endchar" : 5
+     },
+     {
+      "name" : "setTransform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 780,
+      "char" : 10,
+      "deco" : "FNbNiS5dplug6canvas11Transform2DZv",
+      "parameters" : [
+       {
+        "name" : "transform",
+        "deco" : "S5dplug6canvas11Transform2D"
+       }
+      ],
+      "endline" : 783,
+      "endchar" : 5
+     },
+     {
+      "name" : "resetTransform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 786,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 789,
+      "endchar" : 5
+     },
+     {
+      "name" : "_imageDest",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 795,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug8graphics5image__T8ImageRefTSQBjQBg5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZQCx",
+      "originalType" : "ImageRef!RGBA",
+      "offset" : 0
+     },
+     {
+      "name" : "BrushStyle",
+      "kind" : "enum",
+      "protection" : "private",
+      "line" : 797,
+      "char" : 5,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "plainColor",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "0",
+        "line" : 799,
+        "char" : 9
+       }
+      ]
+     },
+     {
+      "name" : "BlitType",
+      "kind" : "enum",
+      "protection" : "private",
+      "line" : 802,
+      "char" : 5,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "color",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "0",
+        "line" : 804,
+        "char" : 9
+       },
+       {
+        "name" : "linear",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "1",
+        "line" : 805,
+        "char" : 9
+       },
+       {
+        "name" : "elliptical",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "2",
+        "line" : 806,
+        "char" : 9
+       },
+       {
+        "name" : "angular",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "3",
+        "line" : 807,
+        "char" : 9
+       }
+      ]
+     },
+     {
+      "name" : "_rasterizer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 810,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas10rasterizer10Rasterizer",
+      "offset" : 24
+     },
+     {
+      "name" : "_currentBlitter",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 812,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas10rasterizer7Blitter",
+      "offset" : 280
+     },
+     {
+      "name" : "_blitType",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 813,
+      "char" : 14,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "E5dplug6canvas6Canvas8BlitType",
+      "offset" : 296
+     },
+     {
+      "name" : "getBlitFunction",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 816,
+      "char" : 10,
+      "storageClass" : [
+       "auto"
+      ],
+      "deco" : "FNaNbNiNfZPFNbNiPvPkPiPmiiiZv",
+      "originalType" : "pure nothrow @nogc ()",
+      "endline" : 840,
+      "endchar" : 5
+     },
+     {
+      "name" : "_plainColorBlit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 846,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas9colorblit9ColorBlit",
+      "offset" : 304
+     },
+     {
+      "name" : "_linearGradientBlit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 847,
+      "char" : 20,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas10linearblit10LinearBlit",
+      "offset" : 304
+     },
+     {
+      "name" : "_ellipticalGradientBlit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 848,
+      "char" : 24,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas14ellipticalblit14EllipticalBlit",
+      "offset" : 304
+     },
+     {
+      "name" : "_angularGradientBlit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 849,
+      "char" : 21,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas11angularblit11AngularBlit",
+      "offset" : 304
+     },
+     {
+      "name" : "_gradientUsed",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 854,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 340
+     },
+     {
+      "name" : "_gradients",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 855,
+      "char" : 24,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTCQy6canvas14CanvasGradientZQBg",
+      "originalType" : "Vec!CanvasGradient",
+      "offset" : 344
+     },
+     {
+      "name" : "newOrReuseGradient",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 858,
+      "char" : 20,
+      "deco" : "FNbNiZC5dplug6canvas14CanvasGradient",
+      "endline" : 871,
+      "endchar" : 5
+     },
+     {
+      "name" : "_stateStack",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 875,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTSQy6canvas6Canvas5StateZQBd",
+      "originalType" : "Vec!State",
+      "offset" : 376
+     },
+     {
+      "name" : "State",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 878,
+      "char" : 5,
+      "members" : [
+       {
+        "name" : "transform",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 880,
+        "char" : 21,
+        "deco" : "S5dplug6canvas11Transform2D",
+        "offset" : 0
+       },
+       {
+        "name" : "fillRule",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 881,
+        "char" : 18,
+        "deco" : "E5dplug6canvas8FillRule",
+        "offset" : 24
+       },
+       {
+        "name" : "compositeOp",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 882,
+        "char" : 28,
+        "deco" : "E5dplug6canvas18CompositeOperation",
+        "offset" : 28
+       }
+      ]
+     },
+     {
+      "name" : "curMatrix",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 885,
+      "char" : 21,
+      "deco" : "FNbNcNiZS5dplug6canvas11Transform2D",
+      "endline" : 888,
+      "endchar" : 5
+     },
+     {
+      "name" : "transformPoint",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 890,
+      "char" : 11,
+      "deco" : "FNbNiffZS5dplug4math6vector__T6VectorTfVii2ZQo",
+      "originalType" : "nothrow @nogc vec2f(float x, float y)",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 896,
+      "endchar" : 5
+     },
+     {
+      "name" : "transformPoint",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 898,
+      "char" : 11,
+      "deco" : "FNbNiS5dplug4math6vector__T6VectorTfVii2ZQoZQBn",
+      "originalType" : "nothrow @nogc vec2f(vec2f pt)",
+      "parameters" : [
+       {
+        "name" : "pt",
+        "deco" : "S5dplug4math6vector__T6VectorTfVii2ZQo"
+       }
+      ],
+      "endline" : 901,
+      "endchar" : 5
+     },
+     {
+      "name" : "transformPoint",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 904,
+      "char" : 11,
+      "deco" : "FNbNiS9godotmath__T11Vector2ImplTfZQqZS5dplug4math6vector__T6VectorTfVii2ZQo",
+      "originalType" : "nothrow @nogc vec2f(Vector2 pt)",
+      "parameters" : [
+       {
+        "name" : "pt",
+        "deco" : "S9godotmath__T11Vector2ImplTfZQq"
+       }
+      ],
+      "endline" : 907,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 130,
+      "char" : 5,
+      "deco" : "FNbNiZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 130,
+      "char" : 5,
+      "deco" : "FNbNiZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "protection" : "public",
+      "line" : 101,
+      "char" : 1,
+      "deco" : "FNbNcNiNjS5dplug6canvas6CanvasZQw",
+      "originalType" : "ref @system Canvas(Canvas p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S5dplug6canvas6Canvas"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "CanvasGradient",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 922,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 928,
+      "char" : 5,
+      "deco" : "FNbNiZC5dplug6canvas14CanvasGradient",
+      "originalType" : "nothrow @nogc ()",
+      "endline" : 931,
+      "endchar" : 5
+     },
+     {
+      "name" : "addColorStop",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 934,
+      "char" : 10,
+      "deco" : "FNbNifS5dplug8graphics5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBtZv",
+      "originalType" : "nothrow @nogc void(float offset, RGBA color)",
+      "parameters" : [
+       {
+        "name" : "offset",
+        "deco" : "f"
+       },
+       {
+        "name" : "color",
+        "deco" : "S5dplug8graphics5color__T8DefColorThVAyaa1_72VQja1_67VQra1_62VQza1_61ZQBt"
+       }
+      ],
+      "endline" : 938,
+      "endchar" : 5
+     },
+     {
+      "name" : "addColorStop",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 940,
+      "char" : 10,
+      "deco" : "FNbNifS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "offset",
+        "deco" : "f"
+       },
+       {
+        "name" : "color",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 944,
+      "endchar" : 5
+     },
+     {
+      "name" : "Type",
+      "kind" : "enum",
+      "protection" : "package",
+      "line" : 948,
+      "char" : 5,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "linear",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "0",
+        "line" : 950,
+        "char" : 9
+       },
+       {
+        "name" : "radial",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "1",
+        "line" : 951,
+        "char" : 9
+       },
+       {
+        "name" : "elliptical",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "2",
+        "line" : 952,
+        "char" : 9
+       },
+       {
+        "name" : "angular",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "3",
+        "line" : 953,
+        "char" : 9
+       }
+      ]
+     },
+     {
+      "name" : "type",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 956,
+      "char" : 10,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "E5dplug6canvas14CanvasGradient4Type",
+      "offset" : 16
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "protection" : "package",
+      "line" : 958,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 961,
+      "endchar" : 5
+     },
+     {
+      "name" : "x0",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 20
+     },
+     {
+      "name" : "y0",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 24
+     },
+     {
+      "name" : "x1",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 28
+     },
+     {
+      "name" : "y1",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 23,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 32
+     },
+     {
+      "name" : "x2",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 27,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 36
+     },
+     {
+      "name" : "y2",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 31,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 40
+     },
+     {
+      "name" : "r2",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 963,
+      "char" : 35,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 44
+     },
+     {
+      "name" : "_gradient",
+      "kind" : "variable",
+      "protection" : "package",
+      "line" : 964,
+      "char" : 14,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "C5dplug6canvas8gradient8Gradient",
+      "originalType" : "Gradient",
+      "offset" : 48
+     }
+    ]
+   },
+   {
+    "name" : "Transform2D",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 972,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 975,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "1.0F",
+      "offset" : 0
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 975,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 4
+     },
+     {
+      "name" : "c",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 975,
+      "char" : 25,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 8
+     },
+     {
+      "name" : "d",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 976,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 12
+     },
+     {
+      "name" : "e",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 976,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "1.0F",
+      "offset" : 16
+     },
+     {
+      "name" : "f",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 976,
+      "char" : 25,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 20
+     },
+     {
+      "name" : "identity",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 978,
+      "char" : 24,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNaNbNiZS5dplug6canvas11Transform2D",
+      "endline" : 981,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 983,
+      "char" : 10,
+      "name" : "opOpAssign",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"*\"",
+      "members" : [
+       {
+        "name" : "opOpAssign",
+        "kind" : "function",
+        "line" : 983,
+        "char" : 10,
+        "type" : "void(Transform2D o)",
+        "parameters" : [
+         {
+          "name" : "o",
+          "type" : "Transform2D"
+         }
+        ],
+        "endline" : 999,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "translateMulOpt",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1003,
+      "char" : 17,
+      "deco" : "FNaNbNiffZS5dplug6canvas11Transform2D",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1015,
+      "endchar" : 5
+     },
+     {
+      "name" : "scaleMulOpt",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1019,
+      "char" : 17,
+      "deco" : "FNaNbNiffZS5dplug6canvas11Transform2D",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1033,
+      "endchar" : 5
+     },
+     {
+      "name" : "scaleMulRot",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1038,
+      "char" : 17,
+      "deco" : "FNaNbNiffZS5dplug6canvas11Transform2D",
+      "parameters" : [
+       {
+        "name" : "cosa",
+        "deco" : "f"
+       },
+       {
+        "name" : "sina",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1053,
+      "endchar" : 5
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "dplug.canvas.rasterizer",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\dplug\\16.4.6\\dplug\\canvas\\dplug\\canvas\\rasterizer.d",
+  "members" : [
+   {
+    "name" : "std.traits",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.math",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.vec",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.canvas.misc",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "WindingRule",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 64,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "NonZero",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 66,
+      "char" : 5
+     },
+     {
+      "name" : "EvenOdd",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 67,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "RepeatMode",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 70,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "Pad",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 72,
+      "char" : 5
+     },
+     {
+      "name" : "Repeat",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 73,
+      "char" : 5
+     },
+     {
+      "name" : "Mirror",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 74,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "AngularMode",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 77,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "Single",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 79,
+      "char" : 5
+     },
+     {
+      "name" : "Double",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 80,
+      "char" : 5
+     },
+     {
+      "name" : "Quad",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 81,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CompositeOp",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 84,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "SourceOver",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 86,
+      "char" : 5
+     },
+     {
+      "name" : "Add",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 87,
+      "char" : 5
+     },
+     {
+      "name" : "Subtract",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 88,
+      "char" : 5
+     },
+     {
+      "name" : "LightenOnly",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 89,
+      "char" : 5
+     },
+     {
+      "name" : "DarkenOnly",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 90,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "DMWord",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 104,
+    "char" : 5,
+    "deco" : "m"
+   },
+   {
+    "name" : "dmPixPerBit",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 110,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "4"
+   },
+   {
+    "name" : "dmPixPerWord",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 111,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "m",
+    "init" : "256LU"
+   },
+   {
+    "name" : "dmWordMask",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 112,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "m",
+    "init" : "63LU"
+   },
+   {
+    "name" : "DMSetBit",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 118,
+    "char" : 6,
+    "deco" : "FNbNiPmkZv",
+    "originalType" : "nothrow @nogc void(DMWord* mask, uint x)",
+    "parameters" : [
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 121,
+    "endchar" : 1
+   },
+   {
+    "name" : "DMSetBitRange",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 123,
+    "char" : 6,
+    "deco" : "FNbNiPmkiZv",
+    "originalType" : "nothrow @nogc void(DMWord* mask, uint x0, int x1)",
+    "parameters" : [
+     {
+      "name" : "mask",
+      "deco" : "Pm"
+     },
+     {
+      "name" : "x0",
+      "deco" : "k"
+     },
+     {
+      "name" : "x1",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 130,
+    "endchar" : 1
+   },
+   {
+    "name" : "fpFracBits",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 136,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "i",
+    "init" : "8"
+   },
+   {
+    "name" : "fpScale",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 137,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "f",
+    "init" : "256.0F"
+   },
+   {
+    "name" : "fpDXScale",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 138,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "d",
+    "init" : "4.29497e+09"
+   },
+   {
+    "name" : "fpDYScale",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 139,
+    "char" : 6,
+    "storageClass" : [
+     "enum",
+     "nothrow",
+     "@nogc"
+    ],
+    "deco" : "d",
+    "init" : "1.07374e+09"
+   },
+   {
+    "name" : "BlitFunction",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 152,
+    "char" : 1,
+    "deco" : "PFNbNiPvPkPiPmiiiZv",
+    "originalType" : "void function(void* userData, uint* dest, int* delta, DMWord* mask, int x0, int x1, int y)"
+   },
+   {
+    "name" : "Blitter",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 164,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "userData",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 166,
+      "char" : 11,
+      "deco" : "Pv",
+      "offset" : 0
+     },
+     {
+      "name" : "doBlit",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 167,
+      "char" : 18,
+      "deco" : "PFNbNiPvPkPiPmiiiZv",
+      "originalType" : "BlitFunction",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "Rasterizer",
+    "kind" : "struct",
+    "protection" : "package",
+    "line" : 171,
+    "char" : 9,
+    "members" : [
+     {
+      "name" : "initialise",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 201,
+      "char" : 10,
+      "deco" : "FNbNiiiiiZv",
+      "parameters" : [
+       {
+        "name" : "left",
+        "deco" : "i"
+       },
+       {
+        "name" : "top",
+        "deco" : "i"
+       },
+       {
+        "name" : "right",
+        "deco" : "i"
+       },
+       {
+        "name" : "bottom",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 247,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 249,
+      "char" : 5,
+      "deco" : "FNbNiZv",
+      "endline" : 256,
+      "endchar" : 5
+     },
+     {
+      "name" : "rasterize",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 260,
+      "char" : 10,
+      "deco" : "FNbNiPhxmxiS5dplug6canvas10rasterizer7BlitterEQBiQBfQBb11CompositeOpZv",
+      "originalType" : "nothrow @nogc void(ubyte* imagePixels, const size_t imagePitchInBytes, const int imageHeight, Blitter blitter, CompositeOp compositeOp)",
+      "parameters" : [
+       {
+        "name" : "imagePixels",
+        "deco" : "Ph"
+       },
+       {
+        "name" : "imagePitchInBytes",
+        "deco" : "xm"
+       },
+       {
+        "name" : "imageHeight",
+        "deco" : "xi"
+       },
+       {
+        "name" : "blitter",
+        "deco" : "S5dplug6canvas10rasterizer7Blitter"
+       },
+       {
+        "name" : "compositeOp",
+        "deco" : "E5dplug6canvas10rasterizer11CompositeOp"
+       }
+      ],
+      "endline" : 603,
+      "endchar" : 5
+     },
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 609,
+      "char" : 10,
+      "deco" : "FNbNiddZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "d"
+       },
+       {
+        "name" : "y",
+        "deco" : "d"
+       }
+      ],
+      "endline" : 614,
+      "endchar" : 5
+     },
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 616,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 621,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 623,
+      "char" : 10,
+      "deco" : "FNbNiddZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "d"
+       },
+       {
+        "name" : "y",
+        "deco" : "d"
+       }
+      ],
+      "endline" : 628,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 630,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 635,
+      "endchar" : 5
+     },
+     {
+      "name" : "quadTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 637,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       },
+       {
+        "name" : "x2",
+        "deco" : "f"
+       },
+       {
+        "name" : "y2",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 659,
+      "endchar" : 5
+     },
+     {
+      "name" : "cubicTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 661,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "x1",
+        "deco" : "f"
+       },
+       {
+        "name" : "y1",
+        "deco" : "f"
+       },
+       {
+        "name" : "x2",
+        "deco" : "f"
+       },
+       {
+        "name" : "y2",
+        "deco" : "f"
+       },
+       {
+        "name" : "x3",
+        "deco" : "f"
+       },
+       {
+        "name" : "y3",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 705,
+      "endchar" : 5
+     },
+     {
+      "name" : "closePath",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 707,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 713,
+      "endchar" : 5
+     },
+     {
+      "name" : "intMoveTo",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 720,
+      "char" : 10,
+      "deco" : "FNbNiiiZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "i"
+       },
+       {
+        "name" : "y",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 727,
+      "endchar" : 5
+     },
+     {
+      "name" : "intLineTo",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 732,
+      "char" : 10,
+      "deco" : "FNbNiiiZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "i"
+       },
+       {
+        "name" : "y",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 967,
+      "endchar" : 5
+     },
+     {
+      "name" : "Edge",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 971,
+      "char" : 5,
+      "members" : [
+       {
+        "name" : "x",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 973,
+        "char" : 14,
+        "deco" : "l",
+        "offset" : 0
+       },
+       {
+        "name" : "dx",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 973,
+        "char" : 17,
+        "deco" : "l",
+        "offset" : 8
+       },
+       {
+        "name" : "dy",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 973,
+        "char" : 21,
+        "deco" : "l",
+        "offset" : 16
+       },
+       {
+        "name" : "y",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 974,
+        "char" : 13,
+        "deco" : "i",
+        "offset" : 24
+       },
+       {
+        "name" : "y2",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 974,
+        "char" : 16,
+        "deco" : "i",
+        "offset" : 28
+       },
+       {
+        "name" : "next",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 975,
+        "char" : 15,
+        "deco" : "PS5dplug6canvas10rasterizer10Rasterizer4Edge",
+        "offset" : 32
+       }
+      ]
+     },
+     {
+      "name" : "m_edgepool",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 978,
+      "char" : 31,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug6canvas4misc__T14ArenaAllocatorTSQBnQBk10rasterizer10Rasterizer4EdgeVki100ZQCi",
+      "originalType" : "ArenaAllocator!(Edge, 100)",
+      "offset" : 0
+     },
+     {
+      "name" : "m_buckets",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 982,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTPSQz6canvas10rasterizer10Rasterizer4EdgeZQBu",
+      "offset" : 24
+     },
+     {
+      "name" : "m_scandelta",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 983,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTiZQh",
+      "offset" : 56
+     },
+     {
+      "name" : "m_deltamaskSize",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 985,
+      "char" : 12,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "0LU",
+      "offset" : 88
+     },
+     {
+      "name" : "m_deltamaskAlloc",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 986,
+      "char" : 12,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "m",
+      "originalType" : "size_t",
+      "init" : "0LU",
+      "offset" : 96
+     },
+     {
+      "name" : "m_deltamask",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 987,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "Pm",
+      "originalType" : "DMWord*",
+      "offset" : 104
+     },
+     {
+      "name" : "m_clipbfr_l",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 989,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTiZQh",
+      "offset" : 112
+     },
+     {
+      "name" : "m_clipbfr_r",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 990,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTiZQh",
+      "offset" : 144
+     },
+     {
+      "name" : "m_clipleft",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 994,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 176
+     },
+     {
+      "name" : "m_cliptop",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 995,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 180
+     },
+     {
+      "name" : "m_clipright",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 996,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 184
+     },
+     {
+      "name" : "m_clipbottom",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 997,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 188
+     },
+     {
+      "name" : "m_yrmin",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1001,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 192
+     },
+     {
+      "name" : "m_yrmax",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1001,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 196
+     },
+     {
+      "name" : "m_subpx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1005,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 200
+     },
+     {
+      "name" : "m_subpy",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1005,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 204
+     },
+     {
+      "name" : "m_prevx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1009,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 208
+     },
+     {
+      "name" : "m_prevy",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1009,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 212
+     },
+     {
+      "name" : "m_fprevx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1013,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 216
+     },
+     {
+      "name" : "m_fprevy",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1013,
+      "char" : 20,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 220
+     },
+     {
+      "name" : "m_destBuf",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 1016,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "offset" : 224
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 249,
+      "char" : 5,
+      "deco" : "FNbNiZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 249,
+      "char" : 5,
+      "deco" : "FNbNiZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "protection" : "public",
+      "line" : 171,
+      "char" : 9,
+      "deco" : "FNbNcNiNjS5dplug6canvas10rasterizer10RasterizerZQBn",
+      "originalType" : "ref @system Rasterizer(Rasterizer p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S5dplug6canvas10rasterizer10Rasterizer"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "MulDiv64",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1024,
+    "char" : 5,
+    "deco" : "FNbNiiiiZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "i"
+     },
+     {
+      "name" : "b",
+      "deco" : "i"
+     },
+     {
+      "name" : "c",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1027,
+    "endchar" : 1
+   }
+  ]
+ }
+]

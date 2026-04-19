@@ -1,0 +1,5046 @@
+[
+ {
+  "name" : "canvasity",
+  "kind" : "module",
+  "file" : "C:\\Users\\guill\\AppData\\Local\\dub\\packages\\canvasity\\1.0.7\\canvasity\\source\\canvasity.d",
+  "members" : [
+   {
+    "name" : "core.stdc.stdlib",
+    "kind" : "import",
+    "line" : 135,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "malloc",
+     "free"
+    ]
+   },
+   {
+    "name" : "core.stdc.math",
+    "kind" : "import",
+    "line" : 136,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "cosf",
+     "sinf",
+     "tanf",
+     "floorf",
+     "fmodf",
+     "roundf",
+     "sqrtf",
+     "acosf",
+     "ceilf",
+     "atan2f"
+    ]
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 138,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "memset",
+     "memcpy"
+    ]
+   },
+   {
+    "name" : "dplug.core.vec",
+    "kind" : "import",
+    "line" : 139,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "dplug.core.nogc",
+    "kind" : "import",
+    "line" : 140,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "gamut",
+    "kind" : "import",
+    "line" : 141,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "colors",
+    "kind" : "import",
+    "line" : 142,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "inteli.emmintrin",
+    "kind" : "import",
+    "line" : 143,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "inteli.math",
+    "kind" : "import",
+    "line" : 144,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "CanvasCompositeOp",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 155,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "sourceIn",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 156,
+      "char" : 5
+     },
+     {
+      "name" : "sourceCopy",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 157,
+      "char" : 5
+     },
+     {
+      "name" : "sourceOut",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 158,
+      "char" : 5
+     },
+     {
+      "name" : "destinationIn",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 159,
+      "char" : 5
+     },
+     {
+      "name" : "destinationAtop",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "7",
+      "line" : 160,
+      "char" : 5
+     },
+     {
+      "name" : "add",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "10",
+      "line" : 161,
+      "char" : 5
+     },
+     {
+      "name" : "lighter",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "10",
+      "line" : 162,
+      "char" : 5
+     },
+     {
+      "name" : "destinationOver",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "11",
+      "line" : 163,
+      "char" : 5
+     },
+     {
+      "name" : "destinationOut",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "12",
+      "line" : 164,
+      "char" : 5
+     },
+     {
+      "name" : "sourceAtop",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "13",
+      "line" : 165,
+      "char" : 5
+     },
+     {
+      "name" : "sourceOver",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "14",
+      "line" : 166,
+      "char" : 5
+     },
+     {
+      "name" : "exclusiveOr",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "15",
+      "line" : 167,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CanvasLineCap",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 178,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "butt",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 180,
+      "char" : 5
+     },
+     {
+      "name" : "square",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 181,
+      "char" : 5
+     },
+     {
+      "name" : "circle",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 183,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CanvasLineJoin",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 194,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "miter",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 196,
+      "char" : 5
+     },
+     {
+      "name" : "bevel",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 198,
+      "char" : 5
+     },
+     {
+      "name" : "round",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 199,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "repetition_style",
+    "kind" : "enum",
+    "protection" : "private",
+    "line" : 204,
+    "char" : 9,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "repeat",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 206,
+      "char" : 5
+     },
+     {
+      "name" : "repeat_x",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 207,
+      "char" : 5
+     },
+     {
+      "name" : "repeat_y",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 208,
+      "char" : 5
+     },
+     {
+      "name" : "no_repeat",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 209,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "align_style",
+    "kind" : "enum",
+    "protection" : "private",
+    "line" : 220,
+    "char" : 9,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "leftward",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 222,
+      "char" : 5
+     },
+     {
+      "name" : "rightward",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 223,
+      "char" : 5
+     },
+     {
+      "name" : "center",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 224,
+      "char" : 5
+     },
+     {
+      "name" : "start",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 226,
+      "char" : 5
+     },
+     {
+      "name" : "ending",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 227,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "baseline_style",
+    "kind" : "enum",
+    "protection" : "private",
+    "line" : 236,
+    "char" : 9,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "alphabetic",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 238,
+      "char" : 5
+     },
+     {
+      "name" : "top",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 239,
+      "char" : 5
+     },
+     {
+      "name" : "middle",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 240,
+      "char" : 5
+     },
+     {
+      "name" : "bottom",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 241,
+      "char" : 5
+     },
+     {
+      "name" : "hanging",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 242,
+      "char" : 5
+     },
+     {
+      "name" : "ideographic",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 244,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CanvasGammaCurve",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 253,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "none",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 255,
+      "char" : 5
+     },
+     {
+      "name" : "pow2",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 259,
+      "char" : 5
+     },
+     {
+      "name" : "linear",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 264,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CanvasOptions",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 270,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "gammaCurve",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 273,
+      "char" : 22,
+      "deco" : "E9canvasity16CanvasGammaCurve",
+      "init" : "CanvasGammaCurve.pow2",
+      "offset" : 0
+     }
+    ]
+   },
+   {
+    "name" : "Canvasity",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 282,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "protection" : "public",
+      "line" : 314,
+      "char" : 5,
+      "deco" : "FNbNcNiKS5gamut5image5ImageS9canvasity13CanvasOptionsZSQBb9Canvasity",
+      "originalType" : "nothrow @nogc ref (ref Image buffer, CanvasOptions options = CanvasOptions.init)",
+      "parameters" : [
+       {
+        "name" : "buffer",
+        "deco" : "S5gamut5image5Image",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "options",
+        "deco" : "S9canvasity13CanvasOptions",
+        "default" : "CanvasOptions(CanvasGammaCurve.pow2)"
+       }
+      ],
+      "endline" : 318,
+      "endchar" : 5
+     },
+     {
+      "name" : "initialize",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 320,
+      "char" : 10,
+      "deco" : "FNbNiKS5gamut5image5ImageS9canvasity13CanvasOptionsZv",
+      "originalType" : "nothrow @nogc void(ref Image buffer, CanvasOptions options = CanvasOptions.init)",
+      "parameters" : [
+       {
+        "name" : "buffer",
+        "deco" : "S5gamut5image5Image",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "options",
+        "deco" : "S9canvasity13CanvasOptions",
+        "default" : "CanvasOptions(CanvasGammaCurve.pow2)"
+       }
+      ],
+      "endline" : 375,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 377,
+      "char" : 5,
+      "deco" : "FNbNiZv",
+      "endline" : 389,
+      "endchar" : 5
+     },
+     {
+      "name" : "savedBySaveRestore",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 396,
+      "char" : 12
+     },
+     {
+      "name" : "scale",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 411,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 413,
+      "endchar" : 5
+     },
+     {
+      "name" : "rotate",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 430,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "angle",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 434,
+      "endchar" : 5
+     },
+     {
+      "name" : "translate",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 449,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 451,
+      "endchar" : 5
+     },
+     {
+      "name" : "transform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 475,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "a",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "c",
+        "deco" : "f"
+       },
+       {
+        "name" : "d",
+        "deco" : "f"
+       },
+       {
+        "name" : "e",
+        "deco" : "f"
+       },
+       {
+        "name" : "f",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 485,
+      "endchar" : 5
+     },
+     {
+      "name" : "setTransform",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 513,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "a",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "c",
+        "deco" : "f"
+       },
+       {
+        "name" : "d",
+        "deco" : "f"
+       },
+       {
+        "name" : "e",
+        "deco" : "f"
+       },
+       {
+        "name" : "f",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 525,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalCompositeOperation",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 536,
+      "char" : 10,
+      "deco" : "FNbNiE9canvasity17CanvasCompositeOpZv",
+      "parameters" : [
+       {
+        "name" : "op",
+        "deco" : "E9canvasity17CanvasCompositeOp"
+       }
+      ],
+      "endline" : 538,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalCompositeOperation",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 540,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "compositeOp",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 559,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalCompositeOperation",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 561,
+      "char" : 23,
+      "deco" : "FNbNiZE9canvasity17CanvasCompositeOp",
+      "endline" : 563,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalAlpha",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 582,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "alpha",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 585,
+      "endchar" : 5
+     },
+     {
+      "name" : "globalAlpha",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 587,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 589,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 611,
+      "char" : 10,
+      "deco" : "FNbNiS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 617,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 619,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "cssColor",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 621,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 623,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace5RGBAfZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace5RGBAf"
+       }
+      ],
+      "endline" : 623,
+      "endchar" : 61
+     },
+     {
+      "name" : "shadowColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 625,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace5RGBA8Zv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace5RGBA8"
+       }
+      ],
+      "endline" : 625,
+      "endchar" : 61
+     },
+     {
+      "name" : "shadowColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 627,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace6RGBA16Zv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace6RGBA16"
+       }
+      ],
+      "endline" : 627,
+      "endchar" : 61
+     },
+     {
+      "name" : "shadowColor",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 629,
+      "char" : 21,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "f"
+       },
+       {
+        "name" : "g",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "a",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 631,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowBlur",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 651,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "level",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 654,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowBlur",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 656,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 658,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowOffsetX",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 668,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "offsetX",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 670,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowOffsetX",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 672,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 674,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowOffsetY",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 677,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "offsetY",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 679,
+      "endchar" : 5
+     },
+     {
+      "name" : "shadowOffsetY",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 681,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 683,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineWidth",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 701,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "width",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 704,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineWidth",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 706,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 708,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineCap",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 713,
+      "char" : 10,
+      "deco" : "FNbNiE9canvasity13CanvasLineCapZv",
+      "parameters" : [
+       {
+        "name" : "capStyle",
+        "deco" : "E9canvasity13CanvasLineCap"
+       }
+      ],
+      "endline" : 715,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineCap",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 717,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "capStyle",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 724,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineCap",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 726,
+      "char" : 19,
+      "deco" : "FNbNiZE9canvasity13CanvasLineCap",
+      "endline" : 728,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineJoin",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 733,
+      "char" : 10,
+      "deco" : "FNbNiE9canvasity14CanvasLineJoinZv",
+      "parameters" : [
+       {
+        "name" : "joinStyle",
+        "deco" : "E9canvasity14CanvasLineJoin"
+       }
+      ],
+      "endline" : 735,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineJoin",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 737,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "joinStyle",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 744,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineJoin",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 746,
+      "char" : 20,
+      "deco" : "FNbNiZE9canvasity14CanvasLineJoin",
+      "endline" : 748,
+      "endchar" : 5
+     },
+     {
+      "name" : "miterLimit",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 769,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "limit",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 772,
+      "endchar" : 5
+     },
+     {
+      "name" : "miterLimit",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 774,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 776,
+      "endchar" : 5
+     },
+     {
+      "name" : "setLineDash",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 801,
+      "char" : 10,
+      "deco" : "FNbNiPxfiZv",
+      "parameters" : [
+       {
+        "name" : "segments",
+        "deco" : "Pxf"
+       },
+       {
+        "name" : "count",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 819,
+      "endchar" : 5
+     },
+     {
+      "name" : "setLineDash",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 822,
+      "char" : 10,
+      "deco" : "FNbNiAxfZv",
+      "parameters" : [
+       {
+        "name" : "segments",
+        "deco" : "Axf"
+       }
+      ],
+      "endline" : 824,
+      "endchar" : 5
+     },
+     {
+      "name" : "setLineDash",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 827,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 829,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineDashOffset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 843,
+      "char" : 10,
+      "deco" : "FNbNifZv",
+      "parameters" : [
+       {
+        "name" : "offset",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 845,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineDashOffset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 846,
+      "char" : 11,
+      "deco" : "FNbNiZf",
+      "endline" : 848,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 865,
+      "char" : 10,
+      "deco" : "FNbNiS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 868,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 870,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "cssColor",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 872,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 874,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace5RGBAfZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace5RGBAf"
+       }
+      ],
+      "endline" : 874,
+      "endchar" : 57
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 876,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace5RGBA8Zv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace5RGBA8"
+       }
+      ],
+      "endline" : 876,
+      "endchar" : 57
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 878,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace6RGBA16Zv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace6RGBA16"
+       }
+      ],
+      "endline" : 878,
+      "endchar" : 57
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 880,
+      "char" : 10,
+      "name" : "fillStyle",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "constraint" : "isLikeRGBA8!T",
+      "members" : [
+       {
+        "name" : "fillStyle",
+        "kind" : "function",
+        "line" : 880,
+        "char" : 10,
+        "type" : "void(T col)",
+        "parameters" : [
+         {
+          "name" : "col",
+          "type" : "T"
+         }
+        ],
+        "endline" : 886,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "strokeStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 890,
+      "char" : 10,
+      "deco" : "FNbNiS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 893,
+      "endchar" : 5
+     },
+     {
+      "name" : "strokeStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 895,
+      "char" : 10,
+      "deco" : "FNbNiAxaZv",
+      "parameters" : [
+       {
+        "name" : "cssColor",
+        "deco" : "Axa"
+       }
+      ],
+      "endline" : 897,
+      "endchar" : 5
+     },
+     {
+      "name" : "strokeStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 899,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace5RGBAfZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace5RGBAf"
+       }
+      ],
+      "endline" : 899,
+      "endchar" : 61
+     },
+     {
+      "name" : "strokeStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 901,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace5RGBA8Zv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace5RGBA8"
+       }
+      ],
+      "endline" : 901,
+      "endchar" : 61
+     },
+     {
+      "name" : "strokeStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 903,
+      "char" : 10,
+      "deco" : "FNbNiS6colors10colorspace6RGBA16Zv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "S6colors10colorspace6RGBA16"
+       }
+      ],
+      "endline" : 903,
+      "endchar" : 61
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 905,
+      "char" : 10,
+      "name" : "strokeStyle",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "constraint" : "isLikeRGBA8!T",
+      "members" : [
+       {
+        "name" : "strokeStyle",
+        "kind" : "function",
+        "line" : 905,
+        "char" : 10,
+        "type" : "void(T rgba)",
+        "parameters" : [
+         {
+          "name" : "rgba",
+          "type" : "T"
+         }
+        ],
+        "endline" : 910,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "fillStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 914,
+      "char" : 14,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "f"
+       },
+       {
+        "name" : "g",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "a",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 916,
+      "endchar" : 5
+     },
+     {
+      "name" : "strokeStyle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 918,
+      "char" : 10,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "r",
+        "deco" : "f"
+       },
+       {
+        "name" : "g",
+        "deco" : "f"
+       },
+       {
+        "name" : "b",
+        "deco" : "f"
+       },
+       {
+        "name" : "a",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 920,
+      "endchar" : 5
+     },
+     {
+      "name" : "beginPath",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1071,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1074,
+      "endchar" : 5
+     },
+     {
+      "name" : "moveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1088,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1098,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1100,
+      "char" : 10,
+      "name" : "moveTo",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "moveTo",
+        "kind" : "function",
+        "line" : 1100,
+        "char" : 10,
+        "type" : "void(T v)",
+        "parameters" : [
+         {
+          "name" : "v",
+          "type" : "T"
+         }
+        ],
+        "endline" : 1102,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "closePath",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1115,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1133,
+      "endchar" : 5
+     },
+     {
+      "name" : "lineTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1149,
+      "char" : 10,
+      "deco" : "FNbNiffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1163,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1165,
+      "char" : 10,
+      "name" : "lineTo",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "lineTo",
+        "kind" : "function",
+        "line" : 1165,
+        "char" : 10,
+        "type" : "void(T v)",
+        "parameters" : [
+         {
+          "name" : "v",
+          "type" : "T"
+         }
+        ],
+        "endline" : 1167,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "quadraticCurveYo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1190,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "cx",
+        "deco" : "f"
+       },
+       {
+        "name" : "cy",
+        "deco" : "f"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1204,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1206,
+      "char" : 10,
+      "name" : "quadraticCurveYo",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "quadraticCurveYo",
+        "kind" : "function",
+        "line" : 1206,
+        "char" : 10,
+        "type" : "void(T c, T p)",
+        "parameters" : [
+         {
+          "name" : "c",
+          "type" : "T"
+         },
+         {
+          "name" : "p",
+          "type" : "T"
+         }
+        ],
+        "endline" : 1208,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "bezierCurveTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1233,
+      "char" : 10,
+      "deco" : "FNbNiffffffZv",
+      "parameters" : [
+       {
+        "name" : "c1_x",
+        "deco" : "f"
+       },
+       {
+        "name" : "c1_y",
+        "deco" : "f"
+       },
+       {
+        "name" : "c2_x",
+        "deco" : "f"
+       },
+       {
+        "name" : "c2_y",
+        "deco" : "f"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1246,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1248,
+      "char" : 10,
+      "name" : "bezierCurveTo",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "bezierCurveTo",
+        "kind" : "function",
+        "line" : 1248,
+        "char" : 10,
+        "type" : "void(T c1, T c2, T p)",
+        "parameters" : [
+         {
+          "name" : "c1",
+          "type" : "T"
+         },
+         {
+          "name" : "c2",
+          "type" : "T"
+         },
+         {
+          "name" : "p",
+          "type" : "T"
+         }
+        ],
+        "endline" : 1251,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "arcTo",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1284,
+      "char" : 10,
+      "deco" : "FNbNifffffZv",
+      "parameters" : [
+       {
+        "name" : "v_x",
+        "deco" : "f"
+       },
+       {
+        "name" : "v_y",
+        "deco" : "f"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "r",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1307,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1309,
+      "char" : 10,
+      "name" : "arcTo",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "arcTo",
+        "kind" : "function",
+        "line" : 1309,
+        "char" : 10,
+        "type" : "void(T v, T p, float r)",
+        "parameters" : [
+         {
+          "name" : "v",
+          "type" : "T"
+         },
+         {
+          "name" : "p",
+          "type" : "T"
+         },
+         {
+          "name" : "r",
+          "deco" : "f"
+         }
+        ],
+        "endline" : 1312,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "arc",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1342,
+      "char" : 10,
+      "deco" : "FNbNifffffbZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "radius",
+        "deco" : "f"
+       },
+       {
+        "name" : "start_angle",
+        "deco" : "f"
+       },
+       {
+        "name" : "end_angle",
+        "deco" : "f"
+       },
+       {
+        "name" : "counter_clockwise",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 1384,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1386,
+      "char" : 10,
+      "name" : "arc",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "arc",
+        "kind" : "function",
+        "line" : 1386,
+        "char" : 10,
+        "type" : "void(T p, float radius, float start_angle, float end_angle, bool counter_clockwise = false)",
+        "parameters" : [
+         {
+          "name" : "p",
+          "type" : "T"
+         },
+         {
+          "name" : "radius",
+          "deco" : "f"
+         },
+         {
+          "name" : "start_angle",
+          "deco" : "f"
+         },
+         {
+          "name" : "end_angle",
+          "deco" : "f"
+         },
+         {
+          "name" : "counter_clockwise",
+          "deco" : "b",
+          "default" : "false"
+         }
+        ],
+        "endline" : 1390,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "rect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1409,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "width",
+        "deco" : "f"
+       },
+       {
+        "name" : "height",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1415,
+      "endchar" : 5
+     },
+     {
+      "name" : "fill",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1436,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1439,
+      "endchar" : 5
+     },
+     {
+      "name" : "stroke",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1462,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1466,
+      "endchar" : 5
+     },
+     {
+      "name" : "clip",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1484,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 1527,
+      "endchar" : 5
+     },
+     {
+      "name" : "isPointInPath",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1545,
+      "char" : 10,
+      "deco" : "FNbNiffZb",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1574,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 1576,
+      "char" : 10,
+      "name" : "isPointInPath",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "isPointInPath",
+        "kind" : "function",
+        "line" : 1576,
+        "char" : 10,
+        "type" : "bool(T p)",
+        "parameters" : [
+         {
+          "name" : "p",
+          "type" : "T"
+         }
+        ],
+        "endline" : 1578,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "clearRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1600,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "width",
+        "deco" : "f"
+       },
+       {
+        "name" : "height",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1618,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1638,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "w",
+        "deco" : "f"
+       },
+       {
+        "name" : "h",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1654,
+      "endchar" : 5
+     },
+     {
+      "name" : "strokeRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1676,
+      "char" : 10,
+      "deco" : "FNbNiffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "w",
+        "deco" : "f"
+       },
+       {
+        "name" : "h",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1699,
+      "endchar" : 5
+     },
+     {
+      "name" : "setFont",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1726,
+      "char" : 10,
+      "deco" : "FNbNiPxhifZb",
+      "parameters" : [
+       {
+        "name" : "font",
+        "deco" : "Pxh"
+       },
+       {
+        "name" : "bytes",
+        "deco" : "i"
+       },
+       {
+        "name" : "size",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1799,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillText",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1826,
+      "char" : 10,
+      "deco" : "FNbNiPxafffZv",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Pxa"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "maxWidth",
+        "deco" : "f",
+        "default" : "1e+30F"
+       }
+      ],
+      "endline" : 1830,
+      "endchar" : 5
+     },
+     {
+      "name" : "stroke_text",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1855,
+      "char" : 10,
+      "deco" : "FNbNiPxafffZv",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Pxa"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "maxWidth",
+        "deco" : "f",
+        "default" : "1e+30F"
+       }
+      ],
+      "endline" : 1861,
+      "endchar" : 5
+     },
+     {
+      "name" : "measure_text",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1881,
+      "char" : 11,
+      "deco" : "FNbNiPxaZf",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Pxa"
+       }
+      ],
+      "endline" : 1894,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawImage",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1929,
+      "char" : 10,
+      "deco" : "FNbNiPxhiiiffffZv",
+      "parameters" : [
+       {
+        "name" : "image",
+        "deco" : "Pxh"
+       },
+       {
+        "name" : "width",
+        "deco" : "i"
+       },
+       {
+        "name" : "height",
+        "deco" : "i"
+       },
+       {
+        "name" : "stride",
+        "deco" : "i"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "to_width",
+        "deco" : "f"
+       },
+       {
+        "name" : "to_height",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1962,
+      "endchar" : 5
+     },
+     {
+      "name" : "maxSaveRestoreDepth",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 1986,
+      "char" : 10,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "init" : "15"
+     },
+     {
+      "name" : "save",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 2001,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 2013,
+      "endchar" : 5
+     },
+     {
+      "name" : "restore",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 2018,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 2025,
+      "endchar" : 5
+     },
+     {
+      "name" : "brush_type",
+      "kind" : "enum",
+      "protection" : "private",
+      "line" : 2032,
+      "char" : 5,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "fill_style",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "0",
+        "line" : 2034,
+        "char" : 9
+       },
+       {
+        "name" : "stroke_style",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "1",
+        "line" : 2035,
+        "char" : 9
+       }
+      ]
+     },
+     {
+      "name" : "size_x",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2038,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 0
+     },
+     {
+      "name" : "size_y",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2039,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 4
+     },
+     {
+      "name" : "forwardTransform",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2041,
+      "char" : 8,
+      "deco" : "FNbNiS9canvasity2xyZQp",
+      "parameters" : [
+       {
+        "name" : "pt",
+        "deco" : "S9canvasity2xy"
+       }
+      ],
+      "endline" : 2044,
+      "endchar" : 5
+     },
+     {
+      "name" : "inverseTransform",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2046,
+      "char" : 8,
+      "deco" : "FNbNiS9canvasity2xyZQp",
+      "parameters" : [
+       {
+        "name" : "pt",
+        "deco" : "S9canvasity2xy"
+       }
+      ],
+      "endline" : 2049,
+      "endchar" : 5
+     },
+     {
+      "name" : "State",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 2052,
+      "char" : 5,
+      "members" : [
+       {
+        "name" : "op",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2056,
+        "char" : 27,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "E9canvasity17CanvasCompositeOp",
+        "init" : "CanvasCompositeOp.sourceOver",
+        "offset" : 0
+       },
+       {
+        "name" : "shadow_offset_x",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2057,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "0.0F",
+        "offset" : 4
+       },
+       {
+        "name" : "shadow_offset_y",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2058,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "0.0F",
+        "offset" : 8
+       },
+       {
+        "name" : "line_cap",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2059,
+        "char" : 23,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "E9canvasity13CanvasLineCap",
+        "init" : "CanvasLineCap.butt",
+        "offset" : 12
+       },
+       {
+        "name" : "line_join",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2060,
+        "char" : 24,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "E9canvasity14CanvasLineJoin",
+        "init" : "CanvasLineJoin.miter",
+        "offset" : 16
+       },
+       {
+        "name" : "line_dash_offset",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2061,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "0.0F",
+        "offset" : 20
+       },
+       {
+        "name" : "text_align",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2062,
+        "char" : 21,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "E9canvasity11align_style",
+        "init" : "align_style.leftward",
+        "offset" : 24
+       },
+       {
+        "name" : "text_baseline",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2063,
+        "char" : 24,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "E9canvasity14baseline_style",
+        "init" : "baseline_style.alphabetic",
+        "offset" : 28
+       },
+       {
+        "name" : "forward",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2064,
+        "char" : 23,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S9canvasity13affine_matrix",
+        "init" : "affine_matrix(1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F)",
+        "offset" : 32
+       },
+       {
+        "name" : "inverse",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2065,
+        "char" : 23,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S9canvasity13affine_matrix",
+        "init" : "affine_matrix(1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F)",
+        "offset" : 56
+       },
+       {
+        "name" : "global_alpha",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2066,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "1.0F",
+        "offset" : 80
+       },
+       {
+        "name" : "shadow_color",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2067,
+        "char" : 14,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S9canvasity4rgba",
+        "init" : "rgba(0.0F, 0.0F, 0.0F, 0.0F)",
+        "offset" : 84
+       },
+       {
+        "name" : "shadow_blur",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2068,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "0.0F",
+        "offset" : 100
+       },
+       {
+        "name" : "line_width",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2069,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "1.0F",
+        "offset" : 104
+       },
+       {
+        "name" : "miter_limit",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2070,
+        "char" : 15,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "f",
+        "init" : "10.0F",
+        "offset" : 108
+       },
+       {
+        "name" : "line_dash",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2071,
+        "char" : 19,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S5dplug4core3vec__T3VecTfZQh",
+        "offset" : 112
+       },
+       {
+        "name" : "fill_brush",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2072,
+        "char" : 21,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S9canvasity11paint_brush",
+        "offset" : 144
+       },
+       {
+        "name" : "stroke_brush",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2073,
+        "char" : 21,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S9canvasity11paint_brush",
+        "offset" : 256
+       },
+       {
+        "name" : "mask",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2074,
+        "char" : 23,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S5dplug4core3vec__T3VecTS9canvasity9pixel_runZQBb",
+        "originalType" : "Vec!pixel_run",
+        "offset" : 368
+       },
+       {
+        "name" : "face",
+        "kind" : "variable",
+        "protection" : "public",
+        "line" : 2075,
+        "char" : 19,
+        "storageClass" : [
+         "nothrow",
+         "@nogc"
+        ],
+        "deco" : "S9canvasity9font_face",
+        "offset" : 400
+       },
+       {
+        "name" : "opAssign",
+        "kind" : "function",
+        "protection" : "public",
+        "line" : 2078,
+        "char" : 14,
+        "deco" : "FNbNiKxS9canvasity9Canvasity5StateZv",
+        "parameters" : [
+         {
+          "name" : "other",
+          "deco" : "xS9canvasity9Canvasity5State",
+          "storageClass" : [
+           "ref"
+          ]
+         }
+        ],
+        "endline" : 2100,
+        "endchar" : 9
+       },
+       {
+        "name" : "free",
+        "kind" : "function",
+        "protection" : "public",
+        "line" : 2102,
+        "char" : 14,
+        "deco" : "FNbNiZv",
+        "endline" : 2107,
+        "endchar" : 9
+       },
+       {
+        "name" : "~this",
+        "kind" : "destructor",
+        "protection" : "public",
+        "line" : 2052,
+        "char" : 5,
+        "deco" : "FNbNiNeZv"
+       },
+       {
+        "name" : "~this",
+        "kind" : "alias",
+        "protection" : "public"
+       },
+       {
+        "name" : "__xpostblit",
+        "kind" : "alias",
+        "protection" : "public"
+       }
+      ]
+     },
+     {
+      "name" : "image_brush",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2111,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity11paint_brush",
+      "offset" : 8
+     },
+     {
+      "name" : "temp_brush",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2112,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity11paint_brush",
+      "offset" : 120
+     },
+     {
+      "name" : "path",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2113,
+      "char" : 17,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity11bezier_path",
+      "offset" : 232
+     },
+     {
+      "name" : "lines",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2114,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity9line_path",
+      "offset" : 296
+     },
+     {
+      "name" : "scratch",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2115,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity9line_path",
+      "offset" : 360
+     },
+     {
+      "name" : "runs",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2116,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity9pixel_runZQBb",
+      "originalType" : "Vec!pixel_run",
+      "offset" : 424
+     },
+     {
+      "name" : "initialized",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2118,
+      "char" : 10,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 456
+     },
+     {
+      "name" : "outBitmap",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2119,
+      "char" : 11,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5gamut5image5Image",
+      "offset" : 464
+     },
+     {
+      "name" : "shadow",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2121,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTfZQh",
+      "offset" : 528
+     },
+     {
+      "name" : "scanBuf",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2122,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "offset" : 560
+     },
+     {
+      "name" : "interType",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2123,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "E5gamut5types9PixelType",
+      "offset" : 592
+     },
+     {
+      "name" : "interBuf",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2124,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "offset" : 600
+     },
+     {
+      "name" : "_stateCount",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2128,
+      "char" : 9,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 632
+     },
+     {
+      "name" : "_state",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2129,
+      "char" : 12,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "PS9canvasity9Canvasity5State",
+      "offset" : 640
+     },
+     {
+      "name" : "options",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 2130,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity13CanvasOptions",
+      "offset" : 648
+     },
+     {
+      "name" : "current",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2134,
+      "char" : 12,
+      "deco" : "FNaNbNiZPS9canvasity9Canvasity5State",
+      "endline" : 2136,
+      "endchar" : 5
+     },
+     {
+      "name" : "set_color",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2138,
+      "char" : 10,
+      "deco" : "FNbNiE9canvasity9Canvasity10brush_typeffffZv",
+      "parameters" : [
+       {
+        "name" : "type",
+        "deco" : "E9canvasity9Canvasity10brush_type"
+       },
+       {
+        "name" : "red",
+        "deco" : "f"
+       },
+       {
+        "name" : "green",
+        "deco" : "f"
+       },
+       {
+        "name" : "blue",
+        "deco" : "f"
+       },
+       {
+        "name" : "alpha",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 2151,
+      "endchar" : 5
+     },
+     {
+      "name" : "add_tessellation",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2168,
+      "char" : 10,
+      "deco" : "FNbNiS9canvasity2xyQoQqQsfiZv",
+      "parameters" : [
+       {
+        "name" : "point_1",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "control_1",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "control_2",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "point_2",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "angular",
+        "deco" : "f"
+       },
+       {
+        "name" : "limit",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 2223,
+      "endchar" : 5
+     },
+     {
+      "name" : "add_bezier",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2234,
+      "char" : 10,
+      "deco" : "FNbNiS9canvasity2xyQoQqQsfZv",
+      "parameters" : [
+       {
+        "name" : "point_1",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "control_1",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "control_2",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "point_2",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "angular",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 2321,
+      "endchar" : 5
+     },
+     {
+      "name" : "path_to_lines",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2330,
+      "char" : 10,
+      "deco" : "FNbNibZv",
+      "parameters" : [
+       {
+        "name" : "stroking",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 2358,
+      "endchar" : 5
+     },
+     {
+      "name" : "add_glyph",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2367,
+      "char" : 10,
+      "deco" : "FNbNiifZv",
+      "parameters" : [
+       {
+        "name" : "glyph",
+        "deco" : "i"
+       },
+       {
+        "name" : "angular",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 2530,
+      "endchar" : 5
+     },
+     {
+      "name" : "character_to_glyph",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2543,
+      "char" : 9,
+      "deco" : "FNbNiPxaKiZi",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Pxa"
+       },
+       {
+        "name" : "index",
+        "deco" : "i",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 2616,
+      "endchar" : 5
+     },
+     {
+      "name" : "text_to_lines",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2625,
+      "char" : 10,
+      "deco" : "FNbNiPxaS9canvasity2xyfbZv",
+      "parameters" : [
+       {
+        "name" : "text",
+        "deco" : "Pxa"
+       },
+       {
+        "name" : "position",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "maximum_width",
+        "deco" : "f"
+       },
+       {
+        "name" : "stroking",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 2674,
+      "endchar" : 5
+     },
+     {
+      "name" : "dash_lines",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2687,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 2766,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "private",
+      "line" : 2772,
+      "char" : 12,
+      "name" : "rotateArray",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "rotateArray",
+        "kind" : "function",
+        "line" : 2772,
+        "char" : 12,
+        "type" : "size_t(T[] arr, size_t first, size_t middle, size_t last)",
+        "parameters" : [
+         {
+          "name" : "arr",
+          "type" : "T[]"
+         },
+         {
+          "name" : "first",
+          "type" : "size_t"
+         },
+         {
+          "name" : "middle",
+          "type" : "size_t"
+         },
+         {
+          "name" : "last",
+          "type" : "size_t"
+         }
+        ],
+        "endline" : 2795,
+        "endchar" : 5
+       }
+      ]
+     },
+     {
+      "name" : "setPattern",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2826,
+      "char" : 10,
+      "deco" : "FNbNiE9canvasity9Canvasity10brush_typePxhiiiEQBn16repetition_styleZv",
+      "parameters" : [
+       {
+        "name" : "type",
+        "deco" : "E9canvasity9Canvasity10brush_type"
+       },
+       {
+        "name" : "image",
+        "deco" : "Pxh"
+       },
+       {
+        "name" : "width",
+        "deco" : "i"
+       },
+       {
+        "name" : "height",
+        "deco" : "i"
+       },
+       {
+        "name" : "stride",
+        "deco" : "i"
+       },
+       {
+        "name" : "repetition",
+        "deco" : "E9canvasity16repetition_style"
+       }
+      ],
+      "endline" : 2849,
+      "endchar" : 5
+     },
+     {
+      "name" : "add_half_stroke",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2865,
+      "char" : 10,
+      "deco" : "FNbNimmbZv",
+      "originalType" : "nothrow @nogc void(size_t beginning, size_t ending, bool closed)",
+      "parameters" : [
+       {
+        "name" : "beginning",
+        "deco" : "m"
+       },
+       {
+        "name" : "ending",
+        "deco" : "m"
+       },
+       {
+        "name" : "closed",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 2971,
+      "endchar" : 5
+     },
+     {
+      "name" : "stroke_lines",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 2983,
+      "char" : 10,
+      "deco" : "FNbNiZv",
+      "endline" : 3017,
+      "endchar" : 5
+     },
+     {
+      "name" : "add_runs",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 3026,
+      "char" : 10,
+      "deco" : "FNbNiS9canvasity2xyQoZv",
+      "parameters" : [
+       {
+        "name" : "from",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "to",
+        "deco" : "S9canvasity2xy"
+       }
+      ],
+      "endline" : 3081,
+      "endchar" : 5
+     },
+     {
+      "name" : "lines_to_runs",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 3093,
+      "char" : 10,
+      "deco" : "FNbNiS9canvasity2xyiZv",
+      "parameters" : [
+       {
+        "name" : "offset",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "padding",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 3173,
+      "endchar" : 5
+     },
+     {
+      "name" : "dplug.core.vec",
+      "kind" : "import",
+      "line" : 3175,
+      "char" : 12,
+      "protection" : "private",
+      "selective" : [
+       "Vec"
+      ]
+     },
+     {
+      "name" : "timsortBuf",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 3176,
+      "char" : 27,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity9pixel_runZQBb",
+      "originalType" : "Vec!pixel_run",
+      "offset" : 656
+     },
+     {
+      "name" : "paint_pixel",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 3188,
+      "char" : 10,
+      "deco" : "FNbNiS9canvasity2xyKxSQq11paint_brushZSQBh4rgba",
+      "parameters" : [
+       {
+        "name" : "point",
+        "deco" : "S9canvasity2xy"
+       },
+       {
+        "name" : "brush",
+        "deco" : "xS9canvasity11paint_brush",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 3307,
+      "endchar" : 5
+     },
+     {
+      "name" : "render_shadow",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 3325,
+      "char" : 10,
+      "deco" : "FNbNiKxS9canvasity11paint_brushZv",
+      "parameters" : [
+       {
+        "name" : "brush",
+        "deco" : "xS9canvasity11paint_brush",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 3521,
+      "endchar" : 5
+     },
+     {
+      "name" : "render_main",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 3533,
+      "char" : 10,
+      "deco" : "FNbNiKxS9canvasity11paint_brushZv",
+      "parameters" : [
+       {
+        "name" : "brush",
+        "deco" : "xS9canvasity11paint_brush",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 3639,
+      "endchar" : 5
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 377,
+      "char" : 5,
+      "deco" : "FNbNiNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 377,
+      "char" : 5,
+      "deco" : "FNbNiZv",
+      "originalType" : "nothrow @nogc void()"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "protection" : "public",
+      "line" : 282,
+      "char" : 1,
+      "deco" : "FNbNcNiNjS9canvasity9CanvasityZQw",
+      "originalType" : "ref Canvasity(Canvasity p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S9canvasity9Canvasity"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "unsigned_8",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3664,
+    "char" : 5,
+    "deco" : "FNbNiKS5dplug4core3vec__T3VecThZQhiZi",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "index",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3667,
+    "endchar" : 1
+   },
+   {
+    "name" : "signed_8",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3669,
+    "char" : 5,
+    "deco" : "FNbNiKS5dplug4core3vec__T3VecThZQhiZi",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "index",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3673,
+    "endchar" : 1
+   },
+   {
+    "name" : "unsigned_16",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3675,
+    "char" : 5,
+    "deco" : "FNbNiKS5dplug4core3vec__T3VecThZQhiZi",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "index",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3678,
+    "endchar" : 1
+   },
+   {
+    "name" : "signed_16",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3680,
+    "char" : 5,
+    "deco" : "FNbNiKS5dplug4core3vec__T3VecThZQhiZi",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "index",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3684,
+    "endchar" : 1
+   },
+   {
+    "name" : "signed_32",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3686,
+    "char" : 5,
+    "deco" : "FNbNiKS5dplug4core3vec__T3VecThZQhiZi",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "index",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 3691,
+    "endchar" : 1
+   },
+   {
+    "name" : "comparePixelRuns",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 3693,
+    "char" : 5,
+    "deco" : "FNbNiIS9canvasity9pixel_runIQwZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "xS9canvasity9pixel_run",
+      "storageClass" : [
+       "in"
+      ]
+     },
+     {
+      "name" : "b",
+      "deco" : "xS9canvasity9pixel_run",
+      "storageClass" : [
+       "in"
+      ]
+     }
+    ],
+    "endline" : 3706,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 3711,
+    "char" : 5,
+    "name" : "isLikeRGBA8",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "isLikeRGBA8",
+      "kind" : "variable",
+      "line" : 3713,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "!is(T == RGBA8) && (T.sizeof == 4) && __traits(hasMember, T, \"r\") && __traits(hasMember, T, \"g\") && __traits(hasMember, T, \"b\") && __traits(hasMember, T, \"a\")"
+     }
+    ]
+   },
+   {
+    "name" : "fabsf",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3722,
+    "char" : 11,
+    "deco" : "FNbNifZf",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 3725,
+    "endchar" : 5
+   },
+   {
+    "name" : "xy",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 3726,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "x",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3729,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 0
+     },
+     {
+      "name" : "y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3729,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 4
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3731,
+      "char" : 12,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"*\"",
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 3731,
+        "char" : 12,
+        "type" : "const xy(float t)",
+        "parameters" : [
+         {
+          "name" : "t",
+          "deco" : "f"
+         }
+        ],
+        "endline" : 3737,
+        "endchar" : 9
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3739,
+      "char" : 12,
+      "name" : "opBinaryRight",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"*\"",
+      "members" : [
+       {
+        "name" : "opBinaryRight",
+        "kind" : "function",
+        "line" : 3739,
+        "char" : 12,
+        "type" : "const xy(float t)",
+        "parameters" : [
+         {
+          "name" : "t",
+          "deco" : "f"
+         }
+        ],
+        "endline" : 3745,
+        "endchar" : 9
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3747,
+      "char" : 12,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"+\"",
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 3747,
+        "char" : 12,
+        "type" : "const xy(xy o)",
+        "parameters" : [
+         {
+          "name" : "o",
+          "type" : "xy"
+         }
+        ],
+        "endline" : 3753,
+        "endchar" : 9
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3755,
+      "char" : 12,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"-\"",
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 3755,
+        "char" : 12,
+        "type" : "const xy(xy o)",
+        "parameters" : [
+         {
+          "name" : "o",
+          "type" : "xy"
+         }
+        ],
+        "endline" : 3761,
+        "endchar" : 9
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "matrix_mul_vec",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3764,
+    "char" : 8,
+    "deco" : "FNbNixS9canvasity13affine_matrixSQBa2xyZQi",
+    "parameters" : [
+     {
+      "name" : "left",
+      "deco" : "xS9canvasity13affine_matrix"
+     },
+     {
+      "name" : "right",
+      "deco" : "S9canvasity2xy"
+     }
+    ],
+    "endline" : 3768,
+    "endchar" : 5
+   },
+   {
+    "name" : "dot",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3770,
+    "char" : 11,
+    "deco" : "FNbNiS9canvasity2xyQoZf",
+    "parameters" : [
+     {
+      "name" : "left",
+      "deco" : "S9canvasity2xy"
+     },
+     {
+      "name" : "right",
+      "deco" : "S9canvasity2xy"
+     }
+    ],
+    "endline" : 3773,
+    "endchar" : 5
+   },
+   {
+    "name" : "length",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3775,
+    "char" : 11,
+    "deco" : "FNbNiS9canvasity2xyZf",
+    "parameters" : [
+     {
+      "name" : "that",
+      "deco" : "S9canvasity2xy"
+     }
+    ],
+    "endline" : 3778,
+    "endchar" : 5
+   },
+   {
+    "name" : "direction",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3780,
+    "char" : 11,
+    "deco" : "FNbNiS9canvasity2xyZf",
+    "parameters" : [
+     {
+      "name" : "that",
+      "deco" : "S9canvasity2xy"
+     }
+    ],
+    "endline" : 3783,
+    "endchar" : 5
+   },
+   {
+    "name" : "normalized",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3785,
+    "char" : 8,
+    "deco" : "FNbNiS9canvasity2xyZQp",
+    "parameters" : [
+     {
+      "name" : "that",
+      "deco" : "S9canvasity2xy"
+     }
+    ],
+    "endline" : 3790,
+    "endchar" : 5
+   },
+   {
+    "name" : "perpendicular",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3792,
+    "char" : 8,
+    "deco" : "FNbNiS9canvasity2xyZQp",
+    "parameters" : [
+     {
+      "name" : "that",
+      "deco" : "S9canvasity2xy"
+     }
+    ],
+    "endline" : 3795,
+    "endchar" : 5
+   },
+   {
+    "name" : "lerp",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3797,
+    "char" : 8,
+    "deco" : "FNbNiS9canvasity2xyQofZQs",
+    "parameters" : [
+     {
+      "name" : "from",
+      "deco" : "S9canvasity2xy"
+     },
+     {
+      "name" : "to",
+      "deco" : "S9canvasity2xy"
+     },
+     {
+      "name" : "ratio",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 3800,
+    "endchar" : 5
+   },
+   {
+    "name" : "rgba",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 3802,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "r",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3805,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 0
+     },
+     {
+      "name" : "g",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3805,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 4
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3805,
+      "char" : 21,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 8
+     },
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3805,
+      "char" : 24,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 12
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3807,
+      "char" : 14,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"*\"",
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 3807,
+        "char" : 14,
+        "type" : "const rgba(float t)",
+        "parameters" : [
+         {
+          "name" : "t",
+          "deco" : "f"
+         }
+        ],
+        "endline" : 3815,
+        "endchar" : 9
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3817,
+      "char" : 14,
+      "name" : "opBinaryRight",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"*\"",
+      "members" : [
+       {
+        "name" : "opBinaryRight",
+        "kind" : "function",
+        "line" : 3817,
+        "char" : 14,
+        "type" : "const rgba(float t)",
+        "parameters" : [
+         {
+          "name" : "t",
+          "deco" : "f"
+         }
+        ],
+        "endline" : 3825,
+        "endchar" : 9
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3827,
+      "char" : 14,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"+\"",
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 3827,
+        "char" : 14,
+        "type" : "const rgba(rgba o)",
+        "parameters" : [
+         {
+          "name" : "o",
+          "type" : "rgba"
+         }
+        ],
+        "endline" : 3835,
+        "endchar" : 9
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "line" : 3837,
+      "char" : 14,
+      "name" : "opBinary",
+      "parameters" : [
+       {
+        "name" : "op",
+        "kind" : "value",
+        "deco" : "Aya"
+       }
+      ],
+      "constraint" : "op == \"-\"",
+      "members" : [
+       {
+        "name" : "opBinary",
+        "kind" : "function",
+        "line" : 3837,
+        "char" : 14,
+        "type" : "const rgba(rgba o)",
+        "parameters" : [
+         {
+          "name" : "o",
+          "type" : "rgba"
+         }
+        ],
+        "endline" : 3845,
+        "endchar" : 9
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "fromGammaSpace",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3848,
+    "char" : 10,
+    "deco" : "FNbNiAS9canvasity4rgbaEQq16CanvasGammaCurveZv",
+    "parameters" : [
+     {
+      "name" : "arr",
+      "deco" : "AS9canvasity4rgba"
+     },
+     {
+      "name" : "gammaCurve",
+      "deco" : "E9canvasity16CanvasGammaCurve"
+     }
+    ],
+    "endline" : 3880,
+    "endchar" : 5
+   },
+   {
+    "name" : "toGammaSpace",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3882,
+    "char" : 10,
+    "deco" : "FNbNiAS9canvasity4rgbaEQq16CanvasGammaCurveZv",
+    "parameters" : [
+     {
+      "name" : "arr",
+      "deco" : "AS9canvasity4rgba"
+     },
+     {
+      "name" : "gammaCurve",
+      "deco" : "E9canvasity16CanvasGammaCurve"
+     }
+    ],
+    "endline" : 3913,
+    "endchar" : 5
+   },
+   {
+    "name" : "premultiplied",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3915,
+    "char" : 10,
+    "deco" : "FNbNiS9canvasity4rgbaZQr",
+    "parameters" : [
+     {
+      "name" : "col",
+      "deco" : "S9canvasity4rgba"
+     }
+    ],
+    "endline" : 3918,
+    "endchar" : 5
+   },
+   {
+    "name" : "unpremultiplied",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3920,
+    "char" : 10,
+    "deco" : "FNbNiS9canvasity4rgbaZQr",
+    "parameters" : [
+     {
+      "name" : "that",
+      "deco" : "S9canvasity4rgba"
+     }
+    ],
+    "endline" : 3926,
+    "endchar" : 5
+   },
+   {
+    "name" : "clamped",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 3928,
+    "char" : 10,
+    "deco" : "FNaNbNiS9canvasity4rgbaZQr",
+    "parameters" : [
+     {
+      "name" : "that",
+      "deco" : "S9canvasity4rgba"
+     }
+    ],
+    "endline" : 3939,
+    "endchar" : 5
+   },
+   {
+    "name" : "affine_matrix",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 3941,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "a",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3944,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 0
+     },
+     {
+      "name" : "b",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3944,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 4
+     },
+     {
+      "name" : "c",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3944,
+      "char" : 21,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 8
+     },
+     {
+      "name" : "d",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3944,
+      "char" : 24,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 12
+     },
+     {
+      "name" : "e",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3944,
+      "char" : 27,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 16
+     },
+     {
+      "name" : "f",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3944,
+      "char" : 30,
+      "storageClass" : [
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "f",
+      "offset" : 20
+     },
+     {
+      "name" : "identity",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3946,
+      "char" : 14,
+      "storageClass" : [
+       "enum",
+       "nothrow",
+       "pure",
+       "@nogc",
+       "@safe"
+      ],
+      "deco" : "S9canvasity13affine_matrix",
+      "init" : "affine_matrix(1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F)"
+     },
+     {
+      "name" : "isInvertible",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 3948,
+      "char" : 14,
+      "deco" : "FNaNbNiNfZb",
+      "endline" : 3950,
+      "endchar" : 9
+     }
+    ]
+   },
+   {
+    "name" : "paint_brush",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 3953,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "types",
+      "kind" : "enum",
+      "protection" : "public",
+      "line" : 3956,
+      "char" : 9,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "color",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "0",
+        "line" : 3958,
+        "char" : 13
+       },
+       {
+        "name" : "linear",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "1",
+        "line" : 3959,
+        "char" : 13
+       },
+       {
+        "name" : "radial",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "2",
+        "line" : 3960,
+        "char" : 13
+       },
+       {
+        "name" : "pattern",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "3",
+        "line" : 3961,
+        "char" : 13
+       }
+      ]
+     },
+     {
+      "name" : "type",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3963,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "E9canvasity11paint_brush5types",
+      "offset" : 0
+     },
+     {
+      "name" : "colors",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3967,
+      "char" : 18,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity4rgbaZQw",
+      "originalType" : "Vec!rgba",
+      "offset" : 8
+     },
+     {
+      "name" : "stops",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3968,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecTfZQh",
+      "offset" : 40
+     },
+     {
+      "name" : "start",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3969,
+      "char" : 12,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity2xy",
+      "init" : "xy(0.0F, 0.0F)",
+      "offset" : 72
+     },
+     {
+      "name" : "end",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3970,
+      "char" : 12,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S9canvasity2xy",
+      "init" : "xy(0.0F, 0.0F)",
+      "offset" : 80
+     },
+     {
+      "name" : "start_radius",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3971,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 88
+     },
+     {
+      "name" : "end_radius",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3971,
+      "char" : 29,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 92
+     },
+     {
+      "name" : "width",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3972,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 96
+     },
+     {
+      "name" : "height",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3972,
+      "char" : 20,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 100
+     },
+     {
+      "name" : "repetition",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 3973,
+      "char" : 26,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "E9canvasity16repetition_style",
+      "offset" : 104
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 3975,
+      "char" : 14,
+      "deco" : "FNbNiKxS9canvasity11paint_brushZv",
+      "parameters" : [
+       {
+        "name" : "other",
+        "deco" : "xS9canvasity11paint_brush",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 3991,
+      "endchar" : 9
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 3953,
+      "char" : 5,
+      "deco" : "FNbNiNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 3995,
+    "char" : 10,
+    "name" : "swap_scalar",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "swap_scalar",
+      "kind" : "function",
+      "line" : 3995,
+      "char" : 10,
+      "type" : "void(ref T a, ref T b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "b",
+        "type" : "T",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 4000,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "swap_xy",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 4002,
+    "char" : 5,
+    "originalType" : "swap_scalar!xy"
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 4005,
+    "char" : 10,
+    "name" : "assign_vec",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "assign_vec",
+      "kind" : "function",
+      "line" : 4005,
+      "char" : 10,
+      "type" : "void(ref Vec!T a, ref const(Vec!T) b)",
+      "parameters" : [
+       {
+        "name" : "a",
+        "type" : "Vec!T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "b",
+        "type" : "const(Vec!T)",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 4011,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "swap_brush",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 4013,
+    "char" : 10,
+    "deco" : "FNbNiKS9canvasity11paint_brushKQzKQBcZv",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "S9canvasity11paint_brush",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "b",
+      "deco" : "S9canvasity11paint_brush",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "tmp",
+      "deco" : "S9canvasity11paint_brush",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 4020,
+    "endchar" : 5
+   },
+   {
+    "name" : "font_face",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 4022,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "data",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4026,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "S5dplug4core3vec__T3VecThZQh",
+      "offset" : 0
+     },
+     {
+      "name" : "cmap",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 13,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 32
+     },
+     {
+      "name" : "glyf",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 19,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 36
+     },
+     {
+      "name" : "head",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 25,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 40
+     },
+     {
+      "name" : "hhea",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 31,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 44
+     },
+     {
+      "name" : "hmtx",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 37,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 48
+     },
+     {
+      "name" : "loca",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 43,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 52
+     },
+     {
+      "name" : "maxp",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 49,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 56
+     },
+     {
+      "name" : "os_2",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4027,
+      "char" : 55,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "i",
+      "offset" : 60
+     },
+     {
+      "name" : "scale",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4028,
+      "char" : 15,
+      "storageClass" : [
+       "nothrow",
+       "@nogc"
+      ],
+      "deco" : "f",
+      "offset" : 64
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 4030,
+      "char" : 14,
+      "deco" : "FNbNiKxS9canvasity9font_faceZv",
+      "parameters" : [
+       {
+        "name" : "other",
+        "deco" : "xS9canvasity9font_face",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 4044,
+      "endchar" : 9
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 4022,
+      "char" : 5,
+      "deco" : "FNbNiNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     }
+    ]
+   },
+   {
+    "name" : "subpath_data",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 4047,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "count",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4049,
+      "char" : 16,
+      "deco" : "m",
+      "originalType" : "size_t",
+      "offset" : 0
+     },
+     {
+      "name" : "closed",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4050,
+      "char" : 14,
+      "deco" : "b",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "bezier_path",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 4053,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "points",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4056,
+      "char" : 16,
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity2xyZQu",
+      "originalType" : "Vec!xy",
+      "offset" : 0
+     },
+     {
+      "name" : "subpaths",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4057,
+      "char" : 26,
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity12subpath_dataZQBf",
+      "originalType" : "Vec!subpath_data",
+      "offset" : 32
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 4053,
+      "char" : 5,
+      "deco" : "FNbNiNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "protection" : "public",
+      "line" : 4053,
+      "char" : 5,
+      "deco" : "FNbNcNiNjNeS9canvasity11bezier_pathZQz",
+      "originalType" : "ref @trusted bezier_path(bezier_path p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S9canvasity11bezier_path"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "line_path",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 4060,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "points",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4063,
+      "char" : 16,
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity2xyZQu",
+      "originalType" : "Vec!xy",
+      "offset" : 0
+     },
+     {
+      "name" : "subpaths",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4064,
+      "char" : 26,
+      "deco" : "S5dplug4core3vec__T3VecTS9canvasity12subpath_dataZQBf",
+      "originalType" : "Vec!subpath_data",
+      "offset" : 32
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "protection" : "public",
+      "line" : 4060,
+      "char" : 5,
+      "deco" : "FNbNiNeZv"
+     },
+     {
+      "name" : "~this",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "__xpostblit",
+      "kind" : "alias",
+      "protection" : "public"
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "protection" : "public",
+      "line" : 4060,
+      "char" : 5,
+      "deco" : "FNbNcNiNjNeS9canvasity9line_pathZQw",
+      "originalType" : "ref @trusted line_path(line_path p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S9canvasity9line_path"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "pixel_run",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 4067,
+    "char" : 5,
+    "members" : [
+     {
+      "name" : "x",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4069,
+      "char" : 16,
+      "deco" : "t",
+      "offset" : 0
+     },
+     {
+      "name" : "y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4069,
+      "char" : 19,
+      "deco" : "t",
+      "offset" : 2
+     },
+     {
+      "name" : "delta",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 4070,
+      "char" : 15,
+      "deco" : "f",
+      "offset" : 4
+     }
+    ]
+   },
+   {
+    "name" : "fminf",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 4073,
+    "char" : 11,
+    "deco" : "FNaNbNiffZf",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "f"
+     },
+     {
+      "name" : "b",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 4076,
+    "endchar" : 5
+   },
+   {
+    "name" : "fmaxf",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 4078,
+    "char" : 11,
+    "deco" : "FNaNbNiffZf",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "f"
+     },
+     {
+      "name" : "b",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 4081,
+    "endchar" : 5
+   },
+   {
+    "name" : "min_int",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 4083,
+    "char" : 9,
+    "deco" : "FNaNbNiiiZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "i"
+     },
+     {
+      "name" : "b",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 4086,
+    "endchar" : 5
+   },
+   {
+    "name" : "max_int",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 4088,
+    "char" : 9,
+    "deco" : "FNaNbNiiiZi",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "i"
+     },
+     {
+      "name" : "b",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 4091,
+    "endchar" : 5
+   },
+   {
+    "name" : "max_size_t",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 4093,
+    "char" : 12,
+    "deco" : "FNaNbNimmZm",
+    "originalType" : "pure nothrow @nogc size_t(size_t a, size_t b)",
+    "parameters" : [
+     {
+      "name" : "a",
+      "deco" : "m"
+     },
+     {
+      "name" : "b",
+      "deco" : "m"
+     }
+    ],
+    "endline" : 4096,
+    "endchar" : 5
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 4099,
+    "char" : 10,
+    "name" : "vec_insert",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "vec_insert",
+      "kind" : "function",
+      "line" : 4099,
+      "char" : 10,
+      "type" : "void(ref Vec!T v, size_t index, T value)",
+      "parameters" : [
+       {
+        "name" : "v",
+        "type" : "Vec!T",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "index",
+        "type" : "size_t"
+       },
+       {
+        "name" : "value",
+        "type" : "T"
+       }
+      ],
+      "endline" : 4108,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L4112_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 4112,
+    "char" : 1,
+    "endline" : 4117,
+    "endchar" : 2
+   }
+  ]
+ }
+]

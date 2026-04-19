@@ -1,0 +1,3635 @@
+[
+ {
+  "name" : "brutor.avatar",
+  "kind" : "module",
+  "file" : "..\\source\\brutor\\avatar.d",
+  "members" : [
+   {
+    "name" : "turtle",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "brutor.dice",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "max"
+    ]
+   },
+   {
+    "name" : "MAX_HP",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 7,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "5"
+   },
+   {
+    "name" : "Avatar",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 9,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "hp",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 11,
+      "char" : 25,
+      "deco" : "G6i",
+      "originalType" : "int[NUM_BODY_PARTS]",
+      "offset" : 0
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 14,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 17,
+      "endchar" : 5
+     },
+     {
+      "name" : "isAlive",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 22,
+      "char" : 10,
+      "deco" : "FZb",
+      "endline" : 28,
+      "endchar" : 5
+     },
+     {
+      "name" : "applyDamage",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 31,
+      "char" : 10,
+      "deco" : "FE6brutor4dice8BodyPartiZv",
+      "parameters" : [
+       {
+        "name" : "part",
+        "deco" : "E6brutor4dice8BodyPart"
+       },
+       {
+        "name" : "amount",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 34,
+      "endchar" : 5
+     },
+     {
+      "name" : "setHP",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 37,
+      "char" : 10,
+      "deco" : "FE6brutor4dice8BodyPartiZv",
+      "parameters" : [
+       {
+        "name" : "part",
+        "deco" : "E6brutor4dice8BodyPart"
+       },
+       {
+        "name" : "value",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 41,
+      "endchar" : 5
+     },
+     {
+      "name" : "destroy",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 44,
+      "char" : 10,
+      "deco" : "FE6brutor4dice8BodyPartZv",
+      "parameters" : [
+       {
+        "name" : "part",
+        "deco" : "E6brutor4dice8BodyPart"
+       }
+      ],
+      "endline" : 47,
+      "endchar" : 5
+     },
+     {
+      "name" : "draw",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 58,
+      "char" : 10,
+      "deco" : "FPS5dplug6canvas6CanvasfffIG6bbibIQhbZv",
+      "originalType" : "void(Canvas* c, float cx, float cy, float s = 1.0F, in bool[NUM_BODY_PARTS] flash = [false, false, false, false, false, false], bool flashOn = false, int helmetLevel = 0, bool hasShield = false, in bool[NUM_BODY_PARTS] healFlash = [false, false, false, false, false, false], bool healFlashOn = false)",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "cx",
+        "deco" : "f"
+       },
+       {
+        "name" : "cy",
+        "deco" : "f"
+       },
+       {
+        "name" : "s",
+        "deco" : "f",
+        "default" : "1.0F"
+       },
+       {
+        "name" : "flash",
+        "deco" : "xG6b",
+        "storageClass" : [
+         "in"
+        ],
+        "default" : "[false, false, false, false, false, false]"
+       },
+       {
+        "name" : "flashOn",
+        "deco" : "b",
+        "default" : "false"
+       },
+       {
+        "name" : "helmetLevel",
+        "deco" : "i",
+        "default" : "0"
+       },
+       {
+        "name" : "hasShield",
+        "deco" : "b",
+        "default" : "false"
+       },
+       {
+        "name" : "healFlash",
+        "deco" : "xG6b",
+        "storageClass" : [
+         "in"
+        ],
+        "default" : "[false, false, false, false, false, false]"
+       },
+       {
+        "name" : "healFlashOn",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 286,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawHPBars",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 289,
+      "char" : 10,
+      "deco" : "FPS5dplug6canvas6CanvasffZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "cx",
+        "deco" : "f"
+       },
+       {
+        "name" : "cy",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 337,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "drawSword",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 342,
+    "char" : 14,
+    "deco" : "FPS5dplug6canvas6CanvasfffZv",
+    "parameters" : [
+     {
+      "name" : "c",
+      "deco" : "PS5dplug6canvas6Canvas"
+     },
+     {
+      "name" : "hx",
+      "deco" : "f"
+     },
+     {
+      "name" : "hy",
+      "deco" : "f"
+     },
+     {
+      "name" : "s",
+      "deco" : "f"
+     }
+    ],
+    "endline" : 392,
+    "endchar" : 1
+   },
+   {
+    "name" : "hpColor",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 396,
+    "char" : 15,
+    "deco" : "FiZS6colors5types5Color",
+    "parameters" : [
+     {
+      "name" : "currentHP",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 407,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "brutor.combat",
+  "kind" : "module",
+  "file" : "..\\source\\brutor\\combat.d",
+  "members" : [
+   {
+    "name" : "brutor.dice",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "brutor.avatar",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "turtle",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.format",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "format"
+    ]
+   },
+   {
+    "name" : "DamageAction",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 9,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "Type",
+      "kind" : "enum",
+      "protection" : "public",
+      "line" : 11,
+      "char" : 5,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "flatDamage",
+        "kind" : "enum member",
+        "protection" : "public",
+        "value" : "0",
+        "line" : 13,
+        "char" : 9
+       }
+      ]
+     },
+     {
+      "name" : "type",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 16,
+      "char" : 10,
+      "deco" : "E6brutor6combat12DamageAction4Type",
+      "offset" : 0
+     },
+     {
+      "name" : "target",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 17,
+      "char" : 14,
+      "deco" : "E6brutor4dice8BodyPart",
+      "offset" : 4
+     },
+     {
+      "name" : "amount",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 18,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "bodyPartName",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 8,
+    "deco" : "FE6brutor4dice8BodyPartZAya",
+    "parameters" : [
+     {
+      "name" : "part",
+      "deco" : "E6brutor4dice8BodyPart"
+     }
+    ],
+    "endline" : 33,
+    "endchar" : 1
+   },
+   {
+    "name" : "isStraight",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 37,
+    "char" : 6,
+    "deco" : "FAS6brutor4dice5ComboZb",
+    "parameters" : [
+     {
+      "name" : "combos",
+      "deco" : "AS6brutor4dice5Combo"
+     }
+    ],
+    "endline" : 40,
+    "endchar" : 1
+   },
+   {
+    "name" : "isFullHouse",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 44,
+    "char" : 6,
+    "deco" : "FAS6brutor4dice5ComboZb",
+    "parameters" : [
+     {
+      "name" : "combos",
+      "deco" : "AS6brutor4dice5Combo"
+     }
+    ],
+    "endline" : 50,
+    "endchar" : 1
+   },
+   {
+    "name" : "DamageDescription",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 55,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "actions",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 57,
+      "char" : 20,
+      "deco" : "AS6brutor6combat12DamageAction",
+      "offset" : 0
+     },
+     {
+      "name" : "previewLines",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 58,
+      "char" : 14,
+      "deco" : "AAya",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "describeDamage",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 62,
+    "char" : 19,
+    "deco" : "FAS6brutor4dice5ComboZSQu6combat17DamageDescription",
+    "parameters" : [
+     {
+      "name" : "combos",
+      "deco" : "AS6brutor4dice5Combo"
+     }
+    ],
+    "endline" : 118,
+    "endchar" : 1
+   },
+   {
+    "name" : "resolveDamage",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 121,
+    "char" : 16,
+    "deco" : "FAS6brutor4dice5ComboZASQv6combat12DamageAction",
+    "parameters" : [
+     {
+      "name" : "combos",
+      "deco" : "AS6brutor4dice5Combo"
+     }
+    ],
+    "endline" : 124,
+    "endchar" : 1
+   },
+   {
+    "name" : "applyActions",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 127,
+    "char" : 6,
+    "deco" : "FKS6brutor6avatar6AvatarASQx6combat12DamageActionZv",
+    "parameters" : [
+     {
+      "name" : "avatar",
+      "deco" : "S6brutor6avatar6Avatar",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "actions",
+      "deco" : "AS6brutor6combat12DamageAction"
+     }
+    ],
+    "endline" : 138,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "brutor.dice",
+  "kind" : "module",
+  "file" : "..\\source\\brutor\\dice.d",
+  "members" : [
+   {
+    "name" : "turtle",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "NUM_DICE",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 5,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "5"
+   },
+   {
+    "name" : "MAX_ROLLS",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 6,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "3"
+   },
+   {
+    "name" : "BodyPart",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 9,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "leftLeg",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 11,
+      "char" : 5
+     },
+     {
+      "name" : "rightLeg",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 12,
+      "char" : 5
+     },
+     {
+      "name" : "leftArm",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 13,
+      "char" : 5
+     },
+     {
+      "name" : "rightArm",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 14,
+      "char" : 5
+     },
+     {
+      "name" : "chest",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 15,
+      "char" : 5
+     },
+     {
+      "name" : "head",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "5",
+      "line" : 16,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "NUM_BODY_PARTS",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 19,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "6"
+   },
+   {
+    "name" : "diceToBodyPart",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 10,
+    "deco" : "FiZE6brutor4dice8BodyPart",
+    "parameters" : [
+     {
+      "name" : "diceValue",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 25,
+    "endchar" : 1
+   },
+   {
+    "name" : "ComboType",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "single",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 30,
+      "char" : 5
+     },
+     {
+      "name" : "pair",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 31,
+      "char" : 5
+     },
+     {
+      "name" : "threeOfAKind",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 32,
+      "char" : 5
+     },
+     {
+      "name" : "fourOfAKind",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 33,
+      "char" : 5
+     },
+     {
+      "name" : "yahtzee",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 34,
+      "char" : 5
+     },
+     {
+      "name" : "straight",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "5",
+      "line" : 35,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "Combo",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 39,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "type",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 41,
+      "char" : 15,
+      "deco" : "E6brutor4dice9ComboType",
+      "offset" : 0
+     },
+     {
+      "name" : "target",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 42,
+      "char" : 14,
+      "deco" : "E6brutor4dice8BodyPart",
+      "offset" : 4
+     }
+    ]
+   },
+   {
+    "name" : "DiceSet",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 45,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "values",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 47,
+      "char" : 19,
+      "deco" : "G5i",
+      "originalType" : "int[NUM_DICE]",
+      "init" : "[1, 1, 1, 1, 1]",
+      "offset" : 0
+     },
+     {
+      "name" : "kept",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 48,
+      "char" : 20,
+      "deco" : "G5b",
+      "originalType" : "bool[NUM_DICE]",
+      "init" : "[false, false, false, false, false]",
+      "offset" : 20
+     },
+     {
+      "name" : "roll",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 52,
+      "char" : 10,
+      "deco" : "FIG5bZv",
+      "originalType" : "void(in bool[NUM_DICE] frozen = [false, false, false, false, false])",
+      "parameters" : [
+       {
+        "name" : "frozen",
+        "deco" : "xG5b",
+        "storageClass" : [
+         "in"
+        ],
+        "default" : "[false, false, false, false, false]"
+       }
+      ],
+      "endline" : 59,
+      "endchar" : 5
+     },
+     {
+      "name" : "toggleKeep",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 62,
+      "char" : 10,
+      "deco" : "FiZv",
+      "parameters" : [
+       {
+        "name" : "index",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 65,
+      "endchar" : 5
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 68,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 71,
+      "endchar" : 5
+     },
+     {
+      "name" : "analyze",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 76,
+      "char" : 13,
+      "deco" : "FZAS6brutor4dice5Combo",
+      "endline" : 114,
+      "endchar" : 5
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "brutor.game",
+  "kind" : "module",
+  "file" : "..\\source\\brutor\\game.d",
+  "members" : [
+   {
+    "name" : "turtle",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "textmode",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "brutor.dice",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "brutor.avatar",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "brutor.combat",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "to"
+    ]
+   },
+   {
+    "name" : "std.format",
+    "kind" : "import",
+    "line" : 9,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "format"
+    ]
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "indexOf"
+    ]
+   },
+   {
+    "name" : "Phase",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 12,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "rolling",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 14,
+      "char" : 5
+     },
+     {
+      "name" : "selecting",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "line" : 15,
+      "char" : 5
+     },
+     {
+      "name" : "resolving",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "line" : 16,
+      "char" : 5
+     },
+     {
+      "name" : "gameOver",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "line" : 17,
+      "char" : 5
+     },
+     {
+      "name" : "upgrade",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "4",
+      "line" : 18,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "MAX_MP",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 21,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "5"
+   },
+   {
+    "name" : "MAX_BANKED_REROLLS",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "2"
+   },
+   {
+    "name" : "Button",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 29,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "x",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 31,
+      "char" : 11,
+      "deco" : "f",
+      "offset" : 0
+     },
+     {
+      "name" : "y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 31,
+      "char" : 14,
+      "deco" : "f",
+      "offset" : 4
+     },
+     {
+      "name" : "w",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 31,
+      "char" : 17,
+      "deco" : "f",
+      "offset" : 8
+     },
+     {
+      "name" : "h",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 31,
+      "char" : 20,
+      "deco" : "f",
+      "offset" : 12
+     },
+     {
+      "name" : "label",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 32,
+      "char" : 12,
+      "deco" : "Aya",
+      "offset" : 16
+     },
+     {
+      "name" : "enabled",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 33,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "true",
+      "offset" : 32
+     },
+     {
+      "name" : "visible",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 34,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "true",
+      "offset" : 33
+     },
+     {
+      "name" : "purchased",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 35,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 34
+     },
+     {
+      "name" : "blueStyle",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 36,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 35
+     },
+     {
+      "name" : "isHovered",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 42,
+      "char" : 10,
+      "deco" : "xFffZb",
+      "parameters" : [
+       {
+        "name" : "px",
+        "deco" : "f"
+       },
+       {
+        "name" : "py",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 46,
+      "endchar" : 5
+     },
+     {
+      "name" : "hitTest",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 49,
+      "char" : 10,
+      "deco" : "xFffZb",
+      "parameters" : [
+       {
+        "name" : "px",
+        "deco" : "f"
+       },
+       {
+        "name" : "py",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 52,
+      "endchar" : 5
+     },
+     {
+      "name" : "draw",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 54,
+      "char" : 10,
+      "deco" : "xFPS5dplug6canvas6CanvasffZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "mouseVX",
+        "deco" : "f"
+       },
+       {
+        "name" : "mouseVY",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 78,
+      "endchar" : 5
+     },
+     {
+      "name" : "fillRect",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 80,
+      "char" : 18,
+      "deco" : "xFPS5dplug6canvas6CanvasS6colors5types5ColorZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "col",
+        "deco" : "S6colors5types5Color"
+       }
+      ],
+      "endline" : 92,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawLabel",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 94,
+      "char" : 10,
+      "deco" : "xFPS8textmode10TM_ConsoleZv",
+      "parameters" : [
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       }
+      ],
+      "endline" : 104,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "Player",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 107,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "dice",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 109,
+      "char" : 13,
+      "deco" : "S6brutor4dice7DiceSet",
+      "offset" : 0
+     },
+     {
+      "name" : "avatar",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 110,
+      "char" : 12,
+      "deco" : "S6brutor6avatar6Avatar",
+      "offset" : 28
+     },
+     {
+      "name" : "mp",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 111,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 52
+     },
+     {
+      "name" : "bankedRerolls",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 114,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 56
+     },
+     {
+      "name" : "helmetLevel",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 117,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "1",
+      "offset" : 60
+     },
+     {
+      "name" : "shieldLevel",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 124,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "1",
+      "offset" : 64
+     },
+     {
+      "name" : "parryActive",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 127,
+      "char" : 10,
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 68
+     },
+     {
+      "name" : "upgradesPurchasedMask",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 130,
+      "char" : 11,
+      "deco" : "m",
+      "init" : "0LU",
+      "offset" : 72
+     },
+     {
+      "name" : "nudgesRemainingThisTurn",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 134,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 80
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 136,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 147,
+      "endchar" : 5
+     },
+     {
+      "name" : "isUpgradePurchased",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 149,
+      "char" : 10,
+      "deco" : "xFmZb",
+      "originalType" : "const bool(size_t i)",
+      "parameters" : [
+       {
+        "name" : "i",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 152,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "UPGRADE_NO_PREREQ",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 160,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "-1"
+   },
+   {
+    "name" : "Upgrade",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 162,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "id",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 166,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 0
+     },
+     {
+      "name" : "requiredId",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 170,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 4
+     },
+     {
+      "name" : "name",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 171,
+      "char" : 12,
+      "deco" : "Aya",
+      "offset" : 8
+     },
+     {
+      "name" : "costInMP",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 172,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 24
+     },
+     {
+      "name" : "desc",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 173,
+      "char" : 12,
+      "deco" : "Aya",
+      "offset" : 32
+     },
+     {
+      "name" : "apply",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 177,
+      "char" : 50,
+      "deco" : "PFKS6brutor4game6PlayerQuZAya",
+      "offset" : 48
+     },
+     {
+      "name" : "isAvailable",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 178,
+      "char" : 34,
+      "deco" : "PFKS6brutor4game6PlayerZb",
+      "offset" : 56
+     },
+     {
+      "name" : "positionInTreeX",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 179,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 64
+     },
+     {
+      "name" : "positionInTreeY",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 180,
+      "char" : 9,
+      "deco" : "i",
+      "offset" : 68
+     }
+    ]
+   },
+   {
+    "name" : "applyReinforceHelmet",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 183,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 187,
+    "endchar" : 1
+   },
+   {
+    "name" : "isReinforceAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 189,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 192,
+    "endchar" : 1
+   },
+   {
+    "name" : "applyShieldPlus",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 194,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 198,
+    "endchar" : 1
+   },
+   {
+    "name" : "isShieldPlusAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 200,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 203,
+    "endchar" : 1
+   },
+   {
+    "name" : "NUDGE_UPGRADE_ID",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 207,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "5"
+   },
+   {
+    "name" : "INSTANT_PLUS_UPGRADE_ID",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 208,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "7"
+   },
+   {
+    "name" : "PAIR_UPGRADE_ID",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 209,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "8"
+   },
+   {
+    "name" : "applyNudge",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 211,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 217,
+    "endchar" : 1
+   },
+   {
+    "name" : "isNudgeAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 219,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 224,
+    "endchar" : 1
+   },
+   {
+    "name" : "applyInstantPlus",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 226,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 229,
+    "endchar" : 1
+   },
+   {
+    "name" : "isInstantPlusAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 231,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 234,
+    "endchar" : 1
+   },
+   {
+    "name" : "applyPair",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 236,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 239,
+    "endchar" : 1
+   },
+   {
+    "name" : "isPairAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 241,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 244,
+    "endchar" : 1
+   },
+   {
+    "name" : "applyRegrow",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 250,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 273,
+    "endchar" : 1
+   },
+   {
+    "name" : "isRegrowAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 275,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 280,
+    "endchar" : 1
+   },
+   {
+    "name" : "applyReincarnation",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 283,
+    "char" : 16,
+    "deco" : "FKS6brutor4game6PlayerQuZAya",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "other",
+      "deco" : "S6brutor4game6Player"
+     }
+    ],
+    "endline" : 287,
+    "endchar" : 1
+   },
+   {
+    "name" : "isReincarnationAvailable",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 289,
+    "char" : 14,
+    "deco" : "FKS6brutor4game6PlayerZb",
+    "parameters" : [
+     {
+      "name" : "me",
+      "deco" : "S6brutor4game6Player",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 294,
+    "endchar" : 1
+   },
+   {
+    "name" : "UPGRADES",
+    "kind" : "variable",
+    "protection" : "public",
+    "line" : 296,
+    "char" : 21,
+    "storageClass" : [
+     "immutable"
+    ],
+    "deco" : "yAS6brutor4game7Upgrade",
+    "originalType" : "Upgrade[]",
+    "init" : "[Upgrade(2, -1, \"HELMET++\", 1, \"Restore helmet\\n-2 dmg to head\", & applyReinforceHelmet, & isReinforceAvailable, 0, -1), Upgrade(3, 2, \"SHIELD++\", 1, \"Restore shield\\n-2 dmg to L.arm\", & applyShieldPlus, & isShieldPlusAvailable, -1, -1), Upgrade(4, -1, \"REGROW\", 1, \"Revive dead part\\nor +2 to lowest\", & applyRegrow, & isRegrowAvailable, -1, 0), Upgrade(5, -1, \"NUDGE\", 1, \"1 nudge/turn\\n+1 to any die\", & applyNudge, & isNudgeAvailable, 1, 0), Upgrade(6, 4, \"REINCARNATION\", 3, \"Back to full HP\\non all parts\", & applyReincarnation, & isReincarnationAvailable, -1, 1), Upgrade(7, 5, \"INSTANT++\", 2, \"Bank on 2nd roll\\n+1 reroll banked\", & applyInstantPlus, & isInstantPlusAvailable, 1, 1), Upgrade(8, -1, \"PAIRS\", 2, \"Pairs deal damage\\n1\\xe2\\x99\\xa6DMG per pair\", & applyPair, & isPairAvailable, 0, 1)]"
+   },
+   {
+    "name" : "upgradeIndexById",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 364,
+    "char" : 13,
+    "deco" : "FiZi",
+    "parameters" : [
+     {
+      "name" : "id",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 370,
+    "endchar" : 1
+   },
+   {
+    "name" : "GameState",
+    "kind" : "struct",
+    "protection" : "public",
+    "line" : 372,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "players",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 374,
+      "char" : 15,
+      "deco" : "G2S6brutor4game6Player",
+      "offset" : 0
+     },
+     {
+      "name" : "activePlayer",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 375,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 176
+     },
+     {
+      "name" : "rollsUsed",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 376,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 180
+     },
+     {
+      "name" : "extraRollsThisTurn",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 379,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 184
+     },
+     {
+      "name" : "phase",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 380,
+      "char" : 11,
+      "deco" : "E6brutor4game5Phase",
+      "init" : "Phase.rolling",
+      "offset" : 188
+     },
+     {
+      "name" : "statusText",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 381,
+      "char" : 12,
+      "deco" : "Aya",
+      "init" : "\"\"",
+      "offset" : 192
+     },
+     {
+      "name" : "upgradeToast",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 385,
+      "char" : 12,
+      "deco" : "Aya",
+      "init" : "\"\"",
+      "offset" : 208
+     },
+     {
+      "name" : "animTimer",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 390,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 224
+     },
+     {
+      "name" : "hitAnim",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 391,
+      "char" : 26,
+      "deco" : "G6b",
+      "originalType" : "bool[NUM_BODY_PARTS]",
+      "offset" : 228
+     },
+     {
+      "name" : "ANIM_DURATION",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 392,
+      "char" : 16,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "0.8F"
+     },
+     {
+      "name" : "ANIM_BLINK_PERIOD",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 393,
+      "char" : 16,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "0.1F"
+     },
+     {
+      "name" : "healAnimTimer",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 399,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 236
+     },
+     {
+      "name" : "healAnim",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 400,
+      "char" : 26,
+      "deco" : "G6b",
+      "originalType" : "bool[NUM_BODY_PARTS]",
+      "offset" : 240
+     },
+     {
+      "name" : "healAnimPlayer",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 401,
+      "char" : 9,
+      "deco" : "i",
+      "init" : "0",
+      "offset" : 248
+     },
+     {
+      "name" : "CONSOLE_COLS",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 419,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "80"
+     },
+     {
+      "name" : "CONSOLE_ROWS",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 420,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "45"
+     },
+     {
+      "name" : "CELL_VIRTUAL",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 421,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "12"
+     },
+     {
+      "name" : "VIRTUAL_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 422,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "960"
+     },
+     {
+      "name" : "VIRTUAL_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 423,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "540"
+     },
+     {
+      "name" : "DICE_SIZE",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 426,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "50.0F"
+     },
+     {
+      "name" : "DICE_GAP",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 427,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "15.0F"
+     },
+     {
+      "name" : "DICE_Y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 428,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "298.0F"
+     },
+     {
+      "name" : "DICE_TAG_ROW_ABOVE",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 432,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "23"
+     },
+     {
+      "name" : "DICE_TAG_ROW_BELOW",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 433,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "30"
+     },
+     {
+      "name" : "REROLL_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 436,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "264.0F"
+     },
+     {
+      "name" : "REROLL_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 437,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "40.0F"
+     },
+     {
+      "name" : "REROLL_Y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 438,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "390.0F"
+     },
+     {
+      "name" : "INSTANT_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 444,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "264.0F"
+     },
+     {
+      "name" : "INSTANT_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 445,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "40.0F"
+     },
+     {
+      "name" : "INSTANT_Y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 446,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "440.0F"
+     },
+     {
+      "name" : "MAGIC_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 449,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "180.0F"
+     },
+     {
+      "name" : "MAGIC_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 450,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "36.0F"
+     },
+     {
+      "name" : "MAGIC_X",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 451,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "390.0F"
+     },
+     {
+      "name" : "MAGIC_Y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 452,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "48.0F"
+     },
+     {
+      "name" : "TREE_CX",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 461,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "480.0F"
+     },
+     {
+      "name" : "TREE_CY",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 462,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "282.0F"
+     },
+     {
+      "name" : "TREE_CENTER_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 463,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "216.0F"
+     },
+     {
+      "name" : "TREE_CENTER_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 464,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "60.0F"
+     },
+     {
+      "name" : "UPGRADE_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 465,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "216.0F"
+     },
+     {
+      "name" : "UPGRADE_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 466,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "60.0F"
+     },
+     {
+      "name" : "UPGRADE_DX",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 467,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "240.0F"
+     },
+     {
+      "name" : "UPGRADE_DY",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 468,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "84.0F"
+     },
+     {
+      "name" : "BACK_W",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 469,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "200.0F"
+     },
+     {
+      "name" : "BACK_H",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 470,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "40.0F"
+     },
+     {
+      "name" : "BACK_X",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 471,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "380.0F"
+     },
+     {
+      "name" : "BACK_Y",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 472,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "f",
+      "init" : "420.0F"
+     },
+     {
+      "name" : "btnColorIdle",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 477,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FZS6colors5types5Color",
+      "endline" : 477,
+      "endchar" : 73
+     },
+     {
+      "name" : "btnColorHover",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 478,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FZS6colors5types5Color",
+      "endline" : 478,
+      "endchar" : 73
+     },
+     {
+      "name" : "mouseVX",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 481,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 252
+     },
+     {
+      "name" : "mouseVY",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 482,
+      "char" : 11,
+      "deco" : "f",
+      "init" : "0.0F",
+      "offset" : 256
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 484,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 499,
+      "endchar" : 5
+     },
+     {
+      "name" : "opponent",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 502,
+      "char" : 9,
+      "deco" : "FZi",
+      "endline" : 505,
+      "endchar" : 5
+     },
+     {
+      "name" : "startTurn",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 509,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 521,
+      "endchar" : 5
+     },
+     {
+      "name" : "nudgeDice",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 526,
+      "char" : 10,
+      "deco" : "FiZv",
+      "parameters" : [
+       {
+        "name" : "index",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 535,
+      "endchar" : 5
+     },
+     {
+      "name" : "totalRollsThisTurn",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 540,
+      "char" : 9,
+      "deco" : "xFZi",
+      "endline" : 546,
+      "endchar" : 5
+     },
+     {
+      "name" : "canKeep",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 550,
+      "char" : 10,
+      "deco" : "xFZb",
+      "endline" : 553,
+      "endchar" : 5
+     },
+     {
+      "name" : "legDebuffMask",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 558,
+      "char" : 20,
+      "deco" : "xFZG5b",
+      "originalType" : "const bool[NUM_DICE]()",
+      "endline" : 567,
+      "endchar" : 5
+     },
+     {
+      "name" : "doRoll",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 571,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 581,
+      "endchar" : 5
+     },
+     {
+      "name" : "FULL_HOUSE_MP",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 584,
+      "char" : 14,
+      "storageClass" : [
+       "enum"
+      ],
+      "deco" : "i",
+      "init" : "2"
+     },
+     {
+      "name" : "activeCombos",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 589,
+      "char" : 21,
+      "deco" : "FZAS6brutor4dice5Combo",
+      "endline" : 604,
+      "endchar" : 5
+     },
+     {
+      "name" : "grantMP",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 607,
+      "char" : 18,
+      "deco" : "FiZv",
+      "parameters" : [
+       {
+        "name" : "amount",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 612,
+      "endchar" : 5
+     },
+     {
+      "name" : "applyDefenderModifiers",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 617,
+      "char" : 18,
+      "deco" : "FKAS6brutor6combat12DamageActionZv",
+      "parameters" : [
+       {
+        "name" : "actions",
+        "deco" : "AS6brutor6combat12DamageAction",
+        "storageClass" : [
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 629,
+      "endchar" : 5
+     },
+     {
+      "name" : "doResolve",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 635,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 691,
+      "endchar" : 5
+     },
+     {
+      "name" : "instantBankAmount",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 695,
+      "char" : 9,
+      "deco" : "xFZi",
+      "endline" : 699,
+      "endchar" : 5
+     },
+     {
+      "name" : "doInstant",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 703,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 707,
+      "endchar" : 5
+     },
+     {
+      "name" : "update",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 711,
+      "char" : 10,
+      "deco" : "FdZv",
+      "parameters" : [
+       {
+        "name" : "dt",
+        "deco" : "d"
+       }
+      ],
+      "endline" : 746,
+      "endchar" : 5
+     },
+     {
+      "name" : "animFlashOn",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 749,
+      "char" : 10,
+      "deco" : "xFZb",
+      "endline" : 755,
+      "endchar" : 5
+     },
+     {
+      "name" : "healFlashOn",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 758,
+      "char" : 10,
+      "deco" : "xFZb",
+      "endline" : 764,
+      "endchar" : 5
+     },
+     {
+      "name" : "previewDamageLines",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 770,
+      "char" : 14,
+      "deco" : "FZAAya",
+      "endline" : 815,
+      "endchar" : 5
+     },
+     {
+      "name" : "canInstant",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 822,
+      "char" : 10,
+      "deco" : "FZb",
+      "endline" : 840,
+      "endchar" : 5
+     },
+     {
+      "name" : "handleRollKey",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 843,
+      "char" : 10,
+      "deco" : "FZv",
+      "endline" : 858,
+      "endchar" : 5
+     },
+     {
+      "name" : "cellSizePx",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 862,
+      "char" : 16,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffZi",
+      "parameters" : [
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 868,
+      "endchar" : 5
+     },
+     {
+      "name" : "virtualScale",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 871,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffZf",
+      "parameters" : [
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 874,
+      "endchar" : 5
+     },
+     {
+      "name" : "viewportOffset",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 878,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffJfJfZv",
+      "parameters" : [
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       },
+       {
+        "name" : "offsetX",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       },
+       {
+        "name" : "offsetY",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       }
+      ],
+      "endline" : 884,
+      "endchar" : 5
+     },
+     {
+      "name" : "windowToVirtual",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 887,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffffJfJfZv",
+      "parameters" : [
+       {
+        "name" : "wx",
+        "deco" : "f"
+       },
+       {
+        "name" : "wy",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       },
+       {
+        "name" : "vx",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       },
+       {
+        "name" : "vy",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       }
+      ],
+      "endline" : 895,
+      "endchar" : 5
+     },
+     {
+      "name" : "virtualToConsole",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 899,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffJiJiZv",
+      "parameters" : [
+       {
+        "name" : "vx",
+        "deco" : "f"
+       },
+       {
+        "name" : "vy",
+        "deco" : "f"
+       },
+       {
+        "name" : "col",
+        "deco" : "i",
+        "storageClass" : [
+         "out"
+        ]
+       },
+       {
+        "name" : "row",
+        "deco" : "i",
+        "storageClass" : [
+         "out"
+        ]
+       }
+      ],
+      "endline" : 903,
+      "endchar" : 5
+     },
+     {
+      "name" : "consoleToVirtual",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 906,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FiiJfJfZv",
+      "parameters" : [
+       {
+        "name" : "col",
+        "deco" : "i"
+       },
+       {
+        "name" : "row",
+        "deco" : "i"
+       },
+       {
+        "name" : "vx",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       },
+       {
+        "name" : "vy",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       }
+      ],
+      "endline" : 910,
+      "endchar" : 5
+     },
+     {
+      "name" : "centerTextInRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 914,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffffiJiJiZv",
+      "parameters" : [
+       {
+        "name" : "rectVX",
+        "deco" : "f"
+       },
+       {
+        "name" : "rectVY",
+        "deco" : "f"
+       },
+       {
+        "name" : "rectVW",
+        "deco" : "f"
+       },
+       {
+        "name" : "rectVH",
+        "deco" : "f"
+       },
+       {
+        "name" : "textCells",
+        "deco" : "i"
+       },
+       {
+        "name" : "col",
+        "deco" : "i",
+        "storageClass" : [
+         "out"
+        ]
+       },
+       {
+        "name" : "row",
+        "deco" : "i",
+        "storageClass" : [
+         "out"
+        ]
+       }
+      ],
+      "endline" : 922,
+      "endchar" : 5
+     },
+     {
+      "name" : "updateMousePos",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 925,
+      "char" : 10,
+      "deco" : "FffffZv",
+      "parameters" : [
+       {
+        "name" : "mx",
+        "deco" : "f"
+       },
+       {
+        "name" : "my",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 928,
+      "endchar" : 5
+     },
+     {
+      "name" : "hitTest",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 931,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FffffffZb",
+      "parameters" : [
+       {
+        "name" : "px",
+        "deco" : "f"
+       },
+       {
+        "name" : "py",
+        "deco" : "f"
+       },
+       {
+        "name" : "rx",
+        "deco" : "f"
+       },
+       {
+        "name" : "ry",
+        "deco" : "f"
+       },
+       {
+        "name" : "rw",
+        "deco" : "f"
+       },
+       {
+        "name" : "rh",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 934,
+      "endchar" : 5
+     },
+     {
+      "name" : "rerollButton",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 942,
+      "char" : 12,
+      "deco" : "FZS6brutor4game6Button",
+      "endline" : 951,
+      "endchar" : 5
+     },
+     {
+      "name" : "instantButton",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 953,
+      "char" : 12,
+      "deco" : "FZS6brutor4game6Button",
+      "endline" : 965,
+      "endchar" : 5
+     },
+     {
+      "name" : "magicButton",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 967,
+      "char" : 12,
+      "deco" : "FZS6brutor4game6Button",
+      "endline" : 975,
+      "endchar" : 5
+     },
+     {
+      "name" : "upgradeSlotPos",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 979,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FiiJfJfZv",
+      "parameters" : [
+       {
+        "name" : "treeX",
+        "deco" : "i"
+       },
+       {
+        "name" : "treeY",
+        "deco" : "i"
+       },
+       {
+        "name" : "vx",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       },
+       {
+        "name" : "vy",
+        "deco" : "f",
+        "storageClass" : [
+         "out"
+        ]
+       }
+      ],
+      "endline" : 985,
+      "endchar" : 5
+     },
+     {
+      "name" : "upgradeButton",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 990,
+      "char" : 12,
+      "deco" : "FmZS6brutor4game6Button",
+      "originalType" : "Button(size_t i)",
+      "parameters" : [
+       {
+        "name" : "i",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 1007,
+      "endchar" : 5
+     },
+     {
+      "name" : "isPrereqMet",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1011,
+      "char" : 10,
+      "deco" : "xFmZb",
+      "originalType" : "const bool(size_t i)",
+      "parameters" : [
+       {
+        "name" : "i",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 1020,
+      "endchar" : 5
+     },
+     {
+      "name" : "backButton",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1022,
+      "char" : 12,
+      "deco" : "FZS6brutor4game6Button",
+      "endline" : 1029,
+      "endchar" : 5
+     },
+     {
+      "name" : "handleClick",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1032,
+      "char" : 10,
+      "deco" : "FffffZv",
+      "parameters" : [
+       {
+        "name" : "mx",
+        "deco" : "f"
+       },
+       {
+        "name" : "my",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1127,
+      "endchar" : 5
+     },
+     {
+      "name" : "tryUpgrade",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1132,
+      "char" : 10,
+      "deco" : "FmZv",
+      "originalType" : "void(size_t i)",
+      "parameters" : [
+       {
+        "name" : "i",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 1170,
+      "endchar" : 5
+     },
+     {
+      "name" : "draw",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1173,
+      "char" : 10,
+      "deco" : "FPS5dplug6canvas6CanvasPS8textmode10TM_ConsoleffZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       },
+       {
+        "name" : "windowW",
+        "deco" : "f"
+       },
+       {
+        "name" : "windowH",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1235,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawUpgradeScreen",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1238,
+      "char" : 10,
+      "deco" : "FPS5dplug6canvas6CanvasZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       }
+      ],
+      "endline" : 1279,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawTreeCenter",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1282,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS5dplug6canvas6CanvasZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       }
+      ],
+      "endline" : 1296,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawTreeConnector",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1301,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS5dplug6canvas6CanvasffffffffZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "cx",
+        "deco" : "f"
+       },
+       {
+        "name" : "cy",
+        "deco" : "f"
+       },
+       {
+        "name" : "cw",
+        "deco" : "f"
+       },
+       {
+        "name" : "ch",
+        "deco" : "f"
+       },
+       {
+        "name" : "px",
+        "deco" : "f"
+       },
+       {
+        "name" : "py",
+        "deco" : "f"
+       },
+       {
+        "name" : "pw",
+        "deco" : "f"
+       },
+       {
+        "name" : "ph",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 1354,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawDice",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1357,
+      "char" : 10,
+      "deco" : "FPS5dplug6canvas6CanvasZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       }
+      ],
+      "endline" : 1411,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawButtonRect",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1414,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS5dplug6canvas6CanvasffffbZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "w",
+        "deco" : "f"
+       },
+       {
+        "name" : "h",
+        "deco" : "f"
+       },
+       {
+        "name" : "hovered",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 1426,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawParryWall",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1431,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS5dplug6canvas6CanvasffbZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "cx",
+        "deco" : "f"
+       },
+       {
+        "name" : "cy",
+        "deco" : "f"
+       },
+       {
+        "name" : "facingRight",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 1463,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawPips",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1466,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS5dplug6canvas6CanvasfffiZv",
+      "parameters" : [
+       {
+        "name" : "c",
+        "deco" : "PS5dplug6canvas6Canvas"
+       },
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "size",
+        "deco" : "f"
+       },
+       {
+        "name" : "value",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1510,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawPlayerHP",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1513,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS8textmode10TM_ConsoleKS6brutor6avatar6AvatariiiZv",
+      "parameters" : [
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       },
+       {
+        "name" : "avatar",
+        "deco" : "S6brutor6avatar6Avatar",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "mp",
+        "deco" : "i"
+       },
+       {
+        "name" : "col",
+        "deco" : "i"
+       },
+       {
+        "name" : "startRow",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1614,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawText",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1617,
+      "char" : 10,
+      "deco" : "FPS8textmode10TM_ConsoleZv",
+      "parameters" : [
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       }
+      ],
+      "endline" : 1807,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawUpgradeButtonText",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1813,
+      "char" : 10,
+      "deco" : "FPS8textmode10TM_ConsolemZv",
+      "originalType" : "void(TM_Console* con, size_t i)",
+      "parameters" : [
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       },
+       {
+        "name" : "i",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 1847,
+      "endchar" : 5
+     },
+     {
+      "name" : "printCenteredAt",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1851,
+      "char" : 17,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FPS8textmode10TM_ConsoleiiiAyaiZv",
+      "parameters" : [
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       },
+       {
+        "name" : "startCol",
+        "deco" : "i"
+       },
+       {
+        "name" : "row",
+        "deco" : "i"
+       },
+       {
+        "name" : "widthCols",
+        "deco" : "i"
+       },
+       {
+        "name" : "text",
+        "deco" : "Aya"
+       },
+       {
+        "name" : "color",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 1860,
+      "endchar" : 5
+     },
+     {
+      "name" : "drawUpgradeText",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 1862,
+      "char" : 10,
+      "deco" : "FPS8textmode10TM_ConsoleZv",
+      "parameters" : [
+       {
+        "name" : "con",
+        "deco" : "PS8textmode10TM_Console"
+       }
+      ],
+      "endline" : 1910,
+      "endchar" : 5
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "brutor",
+  "kind" : "module",
+  "file" : "..\\source\\brutor\\package.d",
+  "members" : [
+   {
+    "name" : "brutor.dice",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 15
+   },
+   {
+    "name" : "brutor.avatar",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 15
+   },
+   {
+    "name" : "brutor.combat",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 15
+   },
+   {
+    "name" : "brutor.game",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 15
+   }
+  ]
+ },
+ {
+  "kind" : "module",
+  "file" : "..\\source\\main.d",
+  "members" : [
+   {
+    "name" : "turtle",
+    "kind" : "import",
+    "line" : 1,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "textmode",
+    "kind" : "import",
+    "line" : 2,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "brutor",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "main",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 5,
+    "char" : 5,
+    "deco" : "FAAyaZi",
+    "parameters" : [
+     {
+      "name" : "args",
+      "deco" : "AAya"
+     }
+    ],
+    "endline" : 9,
+    "endchar" : 1
+   },
+   {
+    "name" : "BrutorGame",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 11,
+    "char" : 1,
+    "base" : "turtle.game.TurtleGame",
+    "members" : [
+     {
+      "name" : "state",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 13,
+      "char" : 15,
+      "deco" : "S6brutor4game9GameState",
+      "offset" : 1632
+     },
+     {
+      "name" : "pal",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 14,
+      "char" : 16,
+      "deco" : "i",
+      "originalType" : "TM_Palette",
+      "init" : "10",
+      "offset" : 1896
+     },
+     {
+      "name" : "load",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 16,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FZv",
+      "endline" : 28,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.game.TurtleGame.load"
+      ]
+     },
+     {
+      "name" : "update",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 30,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FdZv",
+      "parameters" : [
+       {
+        "name" : "dt",
+        "deco" : "d"
+       }
+      ],
+      "endline" : 35,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.game.TurtleGame.update"
+      ]
+     },
+     {
+      "name" : "keyPressed",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 37,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FAyaZv",
+      "originalType" : "void(KeyConstant key)",
+      "parameters" : [
+       {
+        "name" : "key",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 43,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.game.TurtleGame.keyPressed"
+      ]
+     },
+     {
+      "name" : "mouseMoved",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 45,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FffffZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "dx",
+        "deco" : "f"
+       },
+       {
+        "name" : "dy",
+        "deco" : "f"
+       }
+      ],
+      "endline" : 48,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.game.TurtleGame.mouseMoved"
+      ]
+     },
+     {
+      "name" : "mousePressed",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 50,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FffE6turtle5mouse11MouseButtoniZv",
+      "parameters" : [
+       {
+        "name" : "x",
+        "deco" : "f"
+       },
+       {
+        "name" : "y",
+        "deco" : "f"
+       },
+       {
+        "name" : "button",
+        "deco" : "E6turtle5mouse11MouseButton"
+       },
+       {
+        "name" : "repeat",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 56,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.game.TurtleGame.mousePressed"
+      ]
+     },
+     {
+      "name" : "draw",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 58,
+      "char" : 19,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FZv",
+      "endline" : 62,
+      "endchar" : 5,
+      "overrides" : [
+       "turtle.game.TurtleGame.draw"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "_d_cmain!()",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 5,
+    "char" : 5
+   }
+  ]
+ }
+]
