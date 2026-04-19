@@ -48,14 +48,15 @@ function world.draw(state)
   local font = love.graphics.getFont()
 
   for building_id, building in pairs(state.buildings) do
+    if not building.built then goto continue end
     local bw = 56  -- natural sprite width (7 * 8)
     local bh = 32  -- natural sprite height (4 * 8)
 
     if atlas and house_quad then
-      love.graphics.setColor(building.built and {1,1,1} or {0.35,0.35,0.35})
+      love.graphics.setColor(1, 1, 1)
       love.graphics.draw(atlas, house_quad, building.x, building.y)
     else
-      love.graphics.setColor(building.built and {0.3,0.3,0.3} or {0.1,0.1,0.1})
+      love.graphics.setColor(0.3, 0.3, 0.3)
       love.graphics.rectangle("fill", building.x, building.y, bw, bh)
     end
 
@@ -71,6 +72,8 @@ function world.draw(state)
     love.graphics.setColor(1, 1, 1)
     love.graphics.print(building.name, 0, 0)
     love.graphics.pop()
+
+    ::continue::
   end
 end
 
