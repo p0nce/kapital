@@ -7,7 +7,7 @@ local sprites = require("src/sprites")
 -- Spaced with 8px gaps. Layout origin x values: 0, 64, 128, 192, 256, 320, 384, 448, 512, 576
 local building_defs = {
   lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false },
-  log_pile     = { name = "Log pile",     x = 64,  y = 0, w = 7, h = 4, built = true  },
+  log_pile     = { name = "Log pile",     x = 64,  y = 0, w = 9, h = 1, built = true  },
   tree         = { name = "Tree",         x = 128, y = 0, w = 7, h = 4, built = true  },
   stone_pile   = { name = "Stone pile",   x = 192, y = 0, w = 7, h = 4, built = true  },
   rock         = { name = "Rock",         x = 256, y = 0, w = 7, h = 4, built = true  },
@@ -66,13 +66,28 @@ function world.draw(state)
   local composite_map = {
     rock = { {"rock_left", 0}, {"rock_right", 8} },
   }
+  -- Tile strip sprites: {quad_name, count} — drawn as N horizontal repetitions
+  local tile_strip_map = {
+    log_pile = { quad_name = "log_pile_tile", count = 9 },
+  }
 
   for building_id, building in pairs(state.buildings) do
     if not building.built then goto continue end
 
     local bw, bh, draw_y
 
-    if composite_map[building_id] then
+    if tile_strip_map[building_id] then
+      local strip = tile_strip_map[building_id]
+      bw, bh = strip.count * 8, 8
+      draw_y = GROUND_Y - bh
+      local satlas, squad = sprites.get_quad(strip.quad_name)
+      if satlas then
+        love.graphics.setColor(1, 1, 1)
+        for i = 0, strip.count - 1 do
+          love.graphics.draw(satlas, squad, building.x + i * 8, draw_y)
+        end
+      end
+    elseif composite_map[building_id] then
       bw, bh = 24, 8
       draw_y = GROUND_Y - bh
       love.graphics.setColor(1, 1, 1)
