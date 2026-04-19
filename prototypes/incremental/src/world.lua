@@ -62,8 +62,9 @@ function world.draw(state)
     -- Label centered horizontally on top of the building, constant screen size
     love.graphics.push()
     local text_w = font:getWidth(building.name)
+    local text_h = font:getHeight()
     local cx = building.x + bw / 2 - (text_w * inv_zoom) / 2
-    love.graphics.translate(cx, building.y + 2)
+    love.graphics.translate(cx, building.y - text_h * inv_zoom - 2)
     love.graphics.scale(inv_zoom, inv_zoom)
     love.graphics.setColor(0, 0, 0)
     love.graphics.print(building.name, 1, 1)  -- shadow
