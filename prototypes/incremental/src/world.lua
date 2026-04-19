@@ -62,21 +62,39 @@ function world.draw(state)
   local sprite_map = {
     tree = "tree",
   }
+  -- Composite sprites: list of {quad_name, x_offset}
+  local composite_map = {
+    rock = { {"rock_left", 0}, {"rock_right", 8} },
+  }
 
   for building_id, building in pairs(state.buildings) do
     if not building.built then goto continue end
 
-    local sprite_name = sprite_map[building_id] or "house"
-    local batlas, quad = sprites.get_quad(sprite_name)
-    local qx, qy, bw, bh = quad:getViewport()
-    local draw_y = GROUND_Y - bh  -- bottom-align to ground
+    local bw, bh, draw_y
 
-    if batlas and quad then
+    if composite_map[building_id] then
+      bw, bh = 24, 8
+      draw_y = GROUND_Y - bh
       love.graphics.setColor(1, 1, 1)
-      love.graphics.draw(batlas, quad, building.x, draw_y)
+      for _, part in ipairs(composite_map[building_id]) do
+        local patlas, pquad = sprites.get_quad(part[1])
+        if patlas then
+          love.graphics.draw(patlas, pquad, building.x + part[2], draw_y)
+        end
+      end
     else
-      love.graphics.setColor(0.3, 0.3, 0.3)
-      love.graphics.rectangle("fill", building.x, draw_y, bw, bh)
+      local sprite_name = sprite_map[building_id] or "house"
+      local batlas, quad = sprites.get_quad(sprite_name)
+      local qx, qy
+      qx, qy, bw, bh = quad:getViewport()
+      draw_y = GROUND_Y - bh
+      if batlas then
+        love.graphics.setColor(1, 1, 1)
+        love.graphics.draw(batlas, quad, building.x, draw_y)
+      else
+        love.graphics.setColor(0.3, 0.3, 0.3)
+        love.graphics.rectangle("fill", building.x, draw_y, bw, bh)
+      end
     end
 
     -- Label centered above the building, constant screen size

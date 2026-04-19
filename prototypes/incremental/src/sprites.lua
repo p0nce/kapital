@@ -13,7 +13,10 @@ function sprites.load()
   -- House sprite at (0, 32), 7x4 tiles = 56x32 px
   quads.house = { atlas = buildings, q = love.graphics.newQuad(0, 32, 56, 32, bw, bh) }
   -- Tree sprite at (120, 80), 1x2 tiles = 8x16 px
-  quads.tree  = { atlas = buildings, q = love.graphics.newQuad(120, 80, 8, 16, bw, bh) }
+  quads.tree       = { atlas = buildings, q = love.graphics.newQuad(120, 80,  8, 16, bw, bh) }
+  -- Rock: two quads drawn side by side → 3x1 tiles = 24x8 px total
+  quads.rock_left  = { atlas = buildings, q = love.graphics.newQuad( 88, 16,  8,  8, bw, bh) }
+  quads.rock_right = { atlas = buildings, q = love.graphics.newQuad(104, 16, 16,  8, bw, bh) }
 
   local underground = love.graphics.newImage("Tilesets/Chroma-Noir-8x8/Underground.png")
   underground:setFilter("nearest", "nearest")
