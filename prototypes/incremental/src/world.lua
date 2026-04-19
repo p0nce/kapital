@@ -51,8 +51,8 @@ function world.draw(state)
   local ground_atlas, ground_quad = sprites.get_quad("ground")
   if ground_atlas and ground_quad then
     love.graphics.setColor(1, 1, 1)
-    local x = -64
-    while x < 700 do
+    local x = -200
+    while x < 900 do
       love.graphics.draw(ground_atlas, ground_quad, x, GROUND_Y)
       x = x + 8
     end
@@ -112,6 +112,10 @@ function world.draw(state)
         love.graphics.rectangle("fill", building.x, draw_y, bw, bh)
       end
     end
+
+    -- Labels suppressed for storage piles (their role is visually obvious)
+    local no_label = { log_pile = true, stone_pile = true }
+    if no_label[building_id] then goto continue end
 
     -- Label centered above the building, constant screen size
     love.graphics.push()

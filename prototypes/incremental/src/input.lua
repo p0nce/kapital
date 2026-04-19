@@ -37,10 +37,6 @@ function input.keypressed(state, key)
     love.event.quit("restart")
   elseif key == "escape" then
     menu.close(state)
-  elseif key == "left" then
-    state.camera.x = state.camera.x - 30
-  elseif key == "right" then
-    state.camera.x = state.camera.x + 30
   elseif key == "up" then
     state.camera.y = state.camera.y - 30
   elseif key == "down" then
