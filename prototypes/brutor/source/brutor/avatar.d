@@ -61,7 +61,8 @@ struct Avatar
               int helmetLevel = 0,
               bool hasShield = false,
               in bool[NUM_BODY_PARTS] healFlash = [false, false, false, false, false, false],
-              bool healFlashOn = false)
+              bool healFlashOn = false,
+              float rightArmAngle = 0)
     {
         float headRadius = 18.0f * s;
         float chestW = 40.0f * s;
@@ -153,20 +154,9 @@ struct Avatar
             }
         }
 
-        // Chest
-        if (hp[BodyPart.chest] > 0)
-        {
-            c.save();
-            c.fillStyle = partColor(BodyPart.chest);
-            c.beginPath();
-            c.moveTo(cx - chestW / 2, chestTop);
-            c.lineTo(cx + chestW / 2, chestTop);
-            c.lineTo(cx + chestW / 2, chestBot);
-            c.lineTo(cx - chestW / 2, chestBot);
-            c.closePath();
-            c.fill();
-            c.restore();
-        }
+        // Arms are drawn BEFORE the chest (and the shield, which is drawn
+        // last) so the torso and shield cleanly cover the shoulder joints
+        // — especially important for the rotated right arm.
 
         // Left arm
         if (hp[BodyPart.leftArm] > 0)
@@ -185,26 +175,50 @@ struct Avatar
             c.restore();
         }
 
-        // Right arm
+        // Right arm — optionally rotated at the shoulder. Pivot sits at
+        // the center of the arm's cross-section, near the shoulder, so
+        // the arm swings around its own midline rather than its outer
+        // edge. The sword follows the hand.
         if (hp[BodyPart.rightArm] > 0)
         {
+            float pivotX = cx + chestW / 2 + armW / 2;
+            float pivotY = chestTop;
+            // Nudge the pivot one console cell left and 3px down while
+            // the arm is raised so the rotated arm sits tighter against
+            // the torso and its joint lines up with the shoulder.
+            if (rightArmAngle != 0)
+            {
+                pivotX -= 13.0f;
+                pivotY += 3.0f;
+            }
             c.save();
+            c.translate(pivotX, pivotY);
+            c.rotate(rightArmAngle);
             c.fillStyle = partColor(BodyPart.rightArm);
             c.beginPath();
-            float ax = cx + chestW / 2;
-            float ay = chestTop;
-            c.moveTo(ax, ay);
-            c.lineTo(ax + armW, ay);
-            c.lineTo(ax + armW, ay + armH);
-            c.lineTo(ax, ay + armH);
+            c.moveTo(-armW / 2, 0);
+            c.lineTo( armW / 2, 0);
+            c.lineTo( armW / 2, armH);
+            c.lineTo(-armW / 2, armH);
+            c.closePath();
+            c.fill();
+            drawSword(c, 0, armH, s);
+            c.restore();
+        }
+
+        // Chest (drawn after arms so it covers the inner shoulder edge).
+        if (hp[BodyPart.chest] > 0)
+        {
+            c.save();
+            c.fillStyle = partColor(BodyPart.chest);
+            c.beginPath();
+            c.moveTo(cx - chestW / 2, chestTop);
+            c.lineTo(cx + chestW / 2, chestTop);
+            c.lineTo(cx + chestW / 2, chestBot);
+            c.lineTo(cx - chestW / 2, chestBot);
             c.closePath();
             c.fill();
             c.restore();
-
-            // Sword held in the right hand
-            float handCx = ax + armW / 2;
-            float handCy = ay + armH;
-            drawSword(c, handCx, handCy, s);
         }
 
         // Left leg

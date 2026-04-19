@@ -34,6 +34,10 @@ struct Button
     bool visible = true;   // false skips draw and hit-test
     bool purchased = false; // true → render green, hover state suppressed
     bool blueStyle = false; // true → blue idle/hover (matches the MP color)
+    // Shift the drawn frame (and hit test) vertically without moving the
+    // label. Useful to nudge the frame off the text grid for finer
+    // vertical alignment with neighboring UI.
+    float frameYOffset = 0;
 
     /// Pure bounds test — true whenever the cursor is inside the button
     /// rect and it's visible. Doesn't care about `enabled`/`purchased`,
@@ -42,7 +46,8 @@ struct Button
     bool isHovered(float px, float py) const
     {
         if (!visible) return false;
-        return px >= x && px <= x + w && py >= y && py <= y + h;
+        float fy = y + frameYOffset;
+        return px >= x && px <= x + w && py >= fy && py <= fy + h;
     }
 
     /// Click-gate: hover AND the button is accepting input.
@@ -74,18 +79,20 @@ struct Button
                 : rgba(70, 130, 220, 255));
             return;
         }
-        GameState.drawButtonRect(c, x, y, w, h, hitTest(mouseVX, mouseVY));
+        GameState.drawButtonRect(c, x, y + frameYOffset, w, h,
+                                 hitTest(mouseVX, mouseVY));
     }
 
     private void fillRect(Canvas* c, Color col) const
     {
+        float fy = y + frameYOffset;
         c.save();
         c.fillStyle = col;
         c.beginPath();
-        c.moveTo(x, y);
-        c.lineTo(x + w, y);
-        c.lineTo(x + w, y + h);
-        c.lineTo(x, y + h);
+        c.moveTo(x, fy);
+        c.lineTo(x + w, fy);
+        c.lineTo(x + w, fy + h);
+        c.lineTo(x, fy + h);
         c.closePath();
         c.fill();
         c.restore();
@@ -209,6 +216,8 @@ private bool isShieldPlusAvailable(ref Player me)
 enum NUDGE_UPGRADE_ID = 5;
 enum INSTANT_PLUS_UPGRADE_ID = 7;
 enum PAIR_UPGRADE_ID = 8;
+enum REGROW_II_UPGRADE_ID = 9;
+enum NUDGE_II_UPGRADE_ID = 10;
 
 private string applyNudge(ref Player me, Player other)
 {
@@ -222,6 +231,16 @@ private bool isNudgeAvailable(ref Player me)
 {
     // NUDGE always grants a new per-turn ability on purchase, so it's
     // always "available" until the one-shot mask blocks re-purchase.
+    return true;
+}
+
+private string applyNudgeII(ref Player me, Player other)
+{
+    return "Nudge -1 unlocked";
+}
+
+private bool isNudgeIIAvailable(ref Player me)
+{
     return true;
 }
 
@@ -277,7 +296,7 @@ private string applyRegrow(ref Player me, Player other)
 private bool isRegrowAvailable(ref Player me)
 {
     foreach (hp; me.avatar.hp)
-        if (hp < MAX_HP) return true;
+        if (hp == 0) return true;
     return false;
 }
 
@@ -300,7 +319,7 @@ immutable Upgrade[] UPGRADES = [
         2, UPGRADE_NO_PREREQ,
         "HELMET++",
         1,
-        "Restore helmet\n-2 dmg to head",
+        "Helmet -2\u2666\nwhen Head hit",
         &applyReinforceHelmet,
         &isReinforceAvailable,
         0, -1,   // defense → above center
@@ -308,8 +327,8 @@ immutable Upgrade[] UPGRADES = [
     Upgrade(
         3, /*requires HELMET++*/ 2,
         "SHIELD++",
-        1,
-        "Restore shield\n-2 dmg L.arm/chest",
+        2,
+        "Shield -2\u2666\nL.Arm and Chest",
         &applyShieldPlus,
         &isShieldPlusAvailable,
         -1, -1,  // top-left, to the left of HELMET++
@@ -317,8 +336,8 @@ immutable Upgrade[] UPGRADES = [
     Upgrade(
         4, UPGRADE_NO_PREREQ,
         "REGROW",
-        1,
-        "Revive dead part\nor +2 to lowest",
+        2,
+        "Revive dead limb",
         &applyRegrow,
         &isRegrowAvailable,
         -1, 0,   // heal → left of center
@@ -333,19 +352,28 @@ immutable Upgrade[] UPGRADES = [
         1, 0,    // dice → right of center
     ),
     Upgrade(
-        6, /*requires REGROW*/ 4,
+        REGROW_II_UPGRADE_ID, /*requires REGROW*/ 4,
+        "REGROW II",
+        2,
+        "Revive dead limb",
+        &applyRegrow,
+        &isRegrowAvailable,
+        -1, 1,   // heal → directly below REGROW
+    ),
+    Upgrade(
+        6, /*requires REGROW II*/ REGROW_II_UPGRADE_ID,
         "REINCARNATION",
-        3,
+        5,
         "Back to full HP\non all parts",
         &applyReincarnation,
         &isReincarnationAvailable,
-        -1, 1,   // heal → directly below REGROW
+        -1, 2,   // heal → two slots below REGROW
     ),
     Upgrade(
         INSTANT_PLUS_UPGRADE_ID, /*requires NUDGE*/ NUDGE_UPGRADE_ID,
         "INSTANT++",
         2,
-        "INSTANT at any time",
+        "Instant enabled\nafter 1st turn",
         &applyInstantPlus,
         &isInstantPlusAvailable,
         1, 1,    // dice → directly below NUDGE
@@ -353,11 +381,20 @@ immutable Upgrade[] UPGRADES = [
     Upgrade(
         PAIR_UPGRADE_ID, UPGRADE_NO_PREREQ,
         "PAIRS",
-        2,
-        "Pairs deal damage\n1♦DMG per pair",
+        1,
+        "Pairs do damage\n<lred>2\u2666</lred> per pair",
         &applyPair,
         &isPairAvailable,
         0, 1,    // attack → directly below center
+    ),
+    Upgrade(
+        NUDGE_II_UPGRADE_ID, /*requires NUDGE*/ NUDGE_UPGRADE_ID,
+        "NUDGE II",
+        2,
+        "Nudge also -1\n1\u2192 6, wraps",
+        &applyNudgeII,
+        &isNudgeIIAvailable,
+        1, -1,   // dice → above NUDGE, same row as HELMET++/SHIELD++
     ),
 ];
 
@@ -390,7 +427,7 @@ struct GameState
     // that should flash during the animation.
     float animTimer = 0;
     bool[NUM_BODY_PARTS] hitAnim;
-    enum float ANIM_DURATION = 0.8f;    // seconds
+    enum float ANIM_DURATION = 1.2f;    // seconds
     enum float ANIM_BLINK_PERIOD = 0.1f; // seconds per on/off frame
 
     // Heal animation state — mirrors the damage flash but in green and
@@ -468,8 +505,8 @@ struct GameState
     enum UPGRADE_DY = 84.0f;                   // 7 rows (2-row gap)
     enum BACK_W   = 200.0f;
     enum BACK_H   = 40.0f;
-    enum BACK_X   = (VIRTUAL_W - BACK_W) / 2;     // 380
-    enum BACK_Y   = 420.0f;
+    enum BACK_X   = VIRTUAL_W - BACK_W - 12.0f;   // bottom-right, 1-col margin
+    enum BACK_Y   = VIRTUAL_H - BACK_H - 12.0f;
 
     // Button colors (Couture palette, sampled from text-mode):
     //   TM_colorRed  = 0x832539 (not hovered)
@@ -527,18 +564,32 @@ struct GameState
         statusText = "";
     }
 
-    /// Spend one of the active player's nudges to add +1 to die `index`,
-    /// wrapping 6→1. No-op if not selecting, out of nudges, or the index
-    /// is out of range.
-    void nudgeDice(int index)
+    /// Spend one of the active player's nudges to shift die `index` by
+    /// `delta` (+1 or -1), wrapping 6→1 and 1→6. The -1 direction only
+    /// activates if NUDGE II is owned. No-op if not selecting, out of
+    /// nudges, the index is out of range, or delta isn't ±1.
+    void nudgeDice(int index, int delta = 1)
     {
         if (phase != Phase.selecting) return;
         if (index < 0 || index >= NUM_DICE) return;
         if (players[activePlayer].nudgesRemainingThisTurn <= 0) return;
+        if (delta != 1 && delta != -1) return;
+        if (delta == -1 && !hasNudgeII()) return;
         int v = players[activePlayer].dice.values[index];
-        v = (v >= 6) ? 1 : v + 1;
+        if (delta > 0)
+            v = (v >= 6) ? 1 : v + 1;
+        else
+            v = (v <= 1) ? 6 : v - 1;
         players[activePlayer].dice.values[index] = v;
         players[activePlayer].nudgesRemainingThisTurn--;
+    }
+
+    /// True when the active player owns the NUDGE II upgrade.
+    bool hasNudgeII() const
+    {
+        int idx = upgradeIndexById(NUDGE_II_UPGRADE_ID);
+        return idx >= 0
+            && players[activePlayer].isUpgradePurchased(idx);
     }
 
     /// True while the active player can still roll: either the initial
@@ -550,11 +601,20 @@ struct GameState
         return players[activePlayer].rerolls > 0;
     }
 
-    /// The active player can only toggle KEEP on dice while their head is
-    /// still intact.
+    /// The active player can always toggle KEEP in the selecting phase.
+    /// Beheaded players are still allowed to KEEP, but capped at 2 dice
+    /// (enforced at the toggle-on site).
     bool canKeep() const
     {
-        return players[activePlayer].avatar.hp[BodyPart.head] > 0;
+        return true;
+    }
+
+    /// Max dice the active player may mark KEEP simultaneously. Beheaded
+    /// players are capped at 2; everyone else has no practical limit.
+    int keepCap() const
+    {
+        return players[activePlayer].avatar.hp[BodyPart.head] == 0
+            ? 2 : NUM_DICE;
     }
 
     /// Status lines (label + short rule explanation) to display under a
@@ -565,14 +625,14 @@ struct GameState
         PlayerStatus[] out_;
         auto av = players[idx].avatar;
         if (av.hp[BodyPart.head] == 0)
-            out_ ~= PlayerStatus("Beheaded", "no KEEP");
+            out_ ~= PlayerStatus("Beheaded", "KEEP max 2 dice");
         if (av.hp[BodyPart.chest] == 0)
             out_ ~= PlayerStatus("Impaled", "-1 HP all parts/turn");
         int armsGone = 0;
         if (av.hp[BodyPart.leftArm]  == 0) armsGone++;
         if (av.hp[BodyPart.rightArm] == 0) armsGone++;
         if (armsGone == 1)
-            out_ ~= PlayerStatus("One-armed", "-1 reroll/turn");
+            out_ ~= PlayerStatus("One-armed", "-1⌘/turn");
         else if (armsGone == 2)
             out_ ~= PlayerStatus("No arms", "-2 rerolls/turn");
         int legsGone = 0;
@@ -619,6 +679,8 @@ struct GameState
 
     /// Flat MP gain awarded for a full house, regardless of body-part state.
     enum int FULL_HOUSE_MP = 2;
+    /// MP awarded for rolling a straight (on top of raising a parry wall).
+    enum int STRAIGHT_MP = 1;
 
     /// Active player's dice combos with upgrade-gated combos filtered out.
     /// Pair (and two-pair) hands are inert unless the player owns PAIRS or
@@ -683,7 +745,9 @@ struct GameState
         {
             // Raise a wall in front of the active player — it will absorb
             // every damage action the opponent rolls on their next turn.
+            // Also reward the roller with STRAIGHT_MP of magic points.
             players[activePlayer].parryActive = true;
+            grantMP(STRAIGHT_MP);
             hitAnim[] = false;
             phase = Phase.resolving;
             animTimer = ANIM_DURATION * 0.5f; // brief pause before handing over
@@ -805,6 +869,8 @@ struct GameState
     string[] previewDamageLines()
     {
         auto combos = activeCombos();
+        if (combos.length == 0)
+            return ["No combination."];
         if (isFullHouse(combos))
             return [format("Full house: <lblue>%d\u2301MP</lblue> gained.", FULL_HOUSE_MP)];
         auto lines = describeDamage(combos).previewLines;
@@ -1011,6 +1077,7 @@ struct GameState
         Button b = {
             x: btnX, y: REROLL_Y, w: REROLL_W, h: REROLL_H,
             label: lbl, visible: phase == Phase.selecting,
+            frameYOffset: CELL_VIRTUAL * 0.25f,
         };
         return b;
     }
@@ -1018,9 +1085,12 @@ struct GameState
     Button instantButton()
     {
         float btnX = (VIRTUAL_W - INSTANT_W) / 2;
+        int pool = players[activePlayer].rerolls;
         Button b = {
             x: btnX, y: INSTANT_Y, w: INSTANT_W, h: INSTANT_H,
-            label: "INSTANT", visible: canInstant(),
+            label: format("INSTANT (bank <lmagenta>%d\u2318</lmagenta>)", pool),
+            visible: canInstant(),
+            frameYOffset: CELL_VIRTUAL * 0.25f,
         };
         return b;
     }
@@ -1102,37 +1172,61 @@ struct GameState
                 break;
 
             case Phase.selecting:
-                // Nudge "+1" tags sit one cell below each die (mirroring
-                // the KEEP tag above). Check these first so the click is
+                // Nudge "+1" (and "-1" when NUDGE II is owned) tags sit
+                // below each die. Check these first so the click is
                 // consumed before the dice-body hit-test.
                 if (players[activePlayer].nudgesRemainingThisTurn > 0)
                 {
                     float totalDiceW = NUM_DICE * DICE_SIZE + (NUM_DICE - 1) * DICE_GAP;
                     float diceStartX = (VIRTUAL_W - totalDiceW) / 2;
-                    float nudgeY = DICE_TAG_ROW_BELOW * cast(float) CELL_VIRTUAL;
+                    float plusY  = DICE_TAG_ROW_BELOW       * cast(float) CELL_VIRTUAL;
+                    float minusY = (DICE_TAG_ROW_BELOW + 1) * cast(float) CELL_VIRTUAL;
                     foreach (i; 0 .. NUM_DICE)
                     {
                         float dx = diceStartX + i * (DICE_SIZE + DICE_GAP);
-                        if (hitTest(vx, vy, dx, nudgeY, DICE_SIZE, CELL_VIRTUAL))
+                        if (hitTest(vx, vy, dx, plusY, DICE_SIZE, CELL_VIRTUAL))
                         {
-                            nudgeDice(cast(int) i);
+                            nudgeDice(cast(int) i, +1);
+                            return;
+                        }
+                        if (hasNudgeII()
+                            && hitTest(vx, vy, dx, minusY, DICE_SIZE, CELL_VIRTUAL))
+                        {
+                            nudgeDice(cast(int) i, -1);
                             return;
                         }
                     }
                 }
 
-                // Check dice clicks — toggling KEEP requires an intact head.
+                // Check dice clicks — beheaded players are capped at
+                // keepCap() dice kept simultaneously; toggling OFF is
+                // always allowed.
                 if (canKeep())
                 {
                     float totalDiceW = NUM_DICE * DICE_SIZE + (NUM_DICE - 1) * DICE_GAP;
                     float diceStartX = (VIRTUAL_W - totalDiceW) / 2;
+
+                    bool[NUM_DICE] frozen;
+                    if (rollsUsed >= 1)
+                        frozen = legDebuffMask();
 
                     foreach (i; 0 .. NUM_DICE)
                     {
                         float dx = diceStartX + i * (DICE_SIZE + DICE_GAP);
                         if (hitTest(vx, vy, dx, DICE_Y, DICE_SIZE, DICE_SIZE))
                         {
-                            players[activePlayer].dice.toggleKeep(i);
+                            if (frozen[i])
+                                return;
+                            auto dice = &players[activePlayer].dice;
+                            if (!dice.kept[i])
+                            {
+                                int keptCount = 0;
+                                foreach (k; dice.kept)
+                                    if (k) keptCount++;
+                                if (keptCount >= keepCap())
+                                    return;
+                            }
+                            dice.toggleKeep(i);
                             return;
                         }
                     }
@@ -1256,7 +1350,7 @@ struct GameState
         // Centers in virtual px: P1 at 120, P2 at 816; HP box top at y=432.
         float avatar1X = 120.0f;
         float avatar2X = 816.0f;
-        float avatarY = 337.0f;
+        float avatarY = 325.0f;
         float avatarScale = 1.2f;
 
         // Only the opponent (= damage receiver this turn) flashes white.
@@ -1270,14 +1364,18 @@ struct GameState
         auto heal0 = (healAnimTimer > 0 && healAnimPlayer == 0) ? healAnim : noFlash;
         auto heal1 = (healAnimTimer > 0 && healAnimPlayer == 1) ? healAnim : noFlash;
 
+        // Active player's right arm is raised ~45° as a ready-stance cue.
+        enum float ACTIVE_ARM_ANGLE = -0.45f;
+        float arm0 = (activePlayer == 0) ? ACTIVE_ARM_ANGLE : 0.0f;
+        float arm1 = (activePlayer == 1) ? ACTIVE_ARM_ANGLE : 0.0f;
         players[0].avatar.draw(c, avatar1X, avatarY, avatarScale,
                                flash0, flashOn,
                                players[0].helmetLevel, players[0].shieldLevel > 0,
-                               heal0, healOn);
+                               heal0, healOn, arm0);
         players[1].avatar.draw(c, avatar2X, avatarY, avatarScale,
                                flash1, flashOn,
                                players[1].helmetLevel, players[1].shieldLevel > 0,
-                               heal1, healOn);
+                               heal1, healOn, arm1);
 
         // Parry walls — drawn on the side facing the opponent so the
         // protected player is visibly behind the wall.
@@ -1763,35 +1861,71 @@ struct GameState
             int p2LabelStart = (activePlayer == 1) ? 64 : 72;
             enum int REROLL_BAR_MAX = MAX_REROLLS; // 5 cells
 
-            void drawRerollIndicator(int startCol, int pips)
+            void drawRerollIndicator(int startCol, int pips, bool mirror)
             {
                 locate(startCol, 2);
-                foreach (j; 0 .. REROLL_BAR_MAX)
+                if (mirror)
                 {
-                    if (j < pips) { fg(TM_colorLMagenta); print("\u25A0"); }
-                    else          { fg(TM_colorGrey);     print("\u25A1"); }
+                    fg(TM_colorLMagenta);
+                    print(format("%d\u2318 ", pips));
+                    foreach (j; 0 .. REROLL_BAR_MAX)
+                    {
+                        // Filled pips hug the player label on the right.
+                        int filledFrom = REROLL_BAR_MAX - pips;
+                        if (j >= filledFrom) { fg(TM_colorLMagenta); print("\u25A0"); }
+                        else                 { fg(TM_colorGrey);     print("\u25A1"); }
+                    }
                 }
-                fg(TM_colorLMagenta);
-                print(format(" %d\u2318", pips));
+                else
+                {
+                    foreach (j; 0 .. REROLL_BAR_MAX)
+                    {
+                        if (j < pips) { fg(TM_colorLMagenta); print("\u25A0"); }
+                        else          { fg(TM_colorGrey);     print("\u25A1"); }
+                    }
+                    fg(TM_colorLMagenta);
+                    print(format(" %d\u2318", pips));
+                }
             }
 
-            drawRerollIndicator(p1LabelEnd + 1, p1Pips);
-            drawRerollIndicator(p2LabelStart - 9, p2Pips);
+            drawRerollIndicator(p1LabelEnd + 1, p1Pips, false);
+            drawRerollIndicator(p2LabelStart - 9, p2Pips, true);
+
+            // Per-turn reroll gain (2, minus 1 per missing arm, floored
+            // at 0) shown on the row directly below each indicator.
+            int rerollGain(int pIdx)
+            {
+                auto a = players[pIdx].avatar;
+                int g = 2;
+                if (a.hp[BodyPart.leftArm]  == 0) g--;
+                if (a.hp[BodyPart.rightArm] == 0) g--;
+                return g < 0 ? 0 : g;
+            }
+            string gainText(int gain)
+            {
+                return format("<lmagenta>+%d\u2318/turn</lmagenta>", gain);
+            }
+            locate(p1LabelEnd + 1, 4);
+            cprint(gainText(rerollGain(0)));
+            locate(p2LabelStart - 9, 4);
+            cprint(gainText(rerollGain(1)));
 
             // Nudges available to the active player this turn, shown
-            // next to the active player's label with '+' markers (row 3,
-            // mirroring the reroll pips on row 1).
+            // next to the active player's label with "+1" (or "±1" when
+            // NUDGE II is owned) markers. Sits on row 6, below the
+            // "+N⌘/turn" line at row 4.
             int nudgesLeft = players[activePlayer].nudgesRemainingThisTurn;
             if (nudgesLeft > 0)
             {
-                int nudgeWidth = nudgesLeft * 2; // each "+1" is 2 cells
+                string nudgeMark = hasNudgeII() ? "\u00B11" : "+1";
+                int nudgeWidth = nudgesLeft * 2; // each mark is 2 cells
                 if (activePlayer == 0)
-                    locate(p1LabelEnd + 1, 3);
+                    locate(p1LabelEnd + 1 + 6, 6);
                 else
-                    locate(p2LabelStart - 1 - nudgeWidth, 3);
-                fg(TM_colorLGreen);
+                    locate(p2LabelStart - 1 - nudgeWidth - 6, 6);
+                fg(TM_colorLBlue);
                 foreach (_; 0 .. nudgesLeft)
-                    print("+1");
+                    print(nudgeMark);
             }
 
             // "KEEP" tag above each kept die — only while rerolls remain.
@@ -1812,20 +1946,43 @@ struct GameState
                 }
             }
 
-            // " +1 " tag below each die — same cell alignment as "KEEP",
-            // shown while the active player has a nudge available.
+            // " +1 " (and " -1 " when NUDGE II is owned) tag below each
+            // die — same cell alignment as "KEEP", shown while the active
+            // player has a nudge available. Hovered tags get a yellow
+            // background; fg is the MP blue.
             if (phase == Phase.selecting && nudgesLeft > 0)
             {
                 float totalDiceW = NUM_DICE * DICE_SIZE + (NUM_DICE - 1) * DICE_GAP;
                 float startX = (VIRTUAL_W - totalDiceW) / 2;
+                bool hasMinus = hasNudgeII();
+                enum int TAG_W = 4; // " +1 " / " -1 " = 4 cells wide
                 foreach (i; 0 .. NUM_DICE)
                 {
                     float dx = startX + i * (DICE_SIZE + DICE_GAP);
                     int col = cast(int)((dx + DICE_SIZE * 0.5f) / CELL_VIRTUAL + 0.5f) - 2;
+                    float tagX = col * cast(float) CELL_VIRTUAL;
+                    float tagW = TAG_W * cast(float) CELL_VIRTUAL;
+
+                    bool hoverPlus = hitTest(mouseVX, mouseVY, tagX,
+                        DICE_TAG_ROW_BELOW * cast(float) CELL_VIRTUAL,
+                        tagW, cast(float) CELL_VIRTUAL);
                     locate(col, DICE_TAG_ROW_BELOW);
-                    fg(TM_colorLGreen);
+                    fg(TM_colorLBlue);
+                    bg(hoverPlus ? TM_colorYellow : TM_colorBlack);
                     print(" +1 ");
+
+                    if (hasMinus)
+                    {
+                        bool hoverMinus = hitTest(mouseVX, mouseVY, tagX,
+                            (DICE_TAG_ROW_BELOW + 1) * cast(float) CELL_VIRTUAL,
+                            tagW, cast(float) CELL_VIRTUAL);
+                        locate(col, DICE_TAG_ROW_BELOW + 1);
+                        fg(TM_colorLBlue);
+                        bg(hoverMinus ? TM_colorYellow : TM_colorBlack);
+                        print(" -1 ");
+                    }
                 }
+                bg(TM_colorBlack);
             }
 
             // Damage preview — active player's dice. Centered in the open
@@ -1924,15 +2081,26 @@ struct GameState
                 line1 = u.desc[0 .. nl];
                 line2 = u.desc[nl + 1 .. $];
             }
-            printCenteredAt(con, btnCol, btnRow + 1, BTN_W_COLS, line1, color);
-            printCenteredAt(con, btnCol, btnRow + 2, BTN_W_COLS, line2, color);
-            printCenteredAt(con, btnCol, btnRow + 3, BTN_W_COLS,
-                            format("%d MP", u.costInMP), color);
+            cprintCenteredAt(con, btnCol, btnRow + 1, BTN_W_COLS, line1, color);
+            cprintCenteredAt(con, btnCol, btnRow + 2, BTN_W_COLS, line2, color);
         }
         else
         {
-            printCenteredAt(con, btnCol, btnRow + 2, BTN_W_COLS, u.name, color);
+            printCenteredAt(con, btnCol, btnRow + 1, BTN_W_COLS, u.name, color);
         }
+        // Cost always visible on row +3. Buyable buttons render in blue
+        // (the MP theme color) against a blue background — unreadable —
+        // so switch to white for those; other states stay MP-blue.
+        bool buyable = btn.enabled && !btn.purchased;
+        string costCCL = buyable
+            ? format("%d\u2301", u.costInMP)
+            : format("<lblue>%d\u2301</lblue>", u.costInMP);
+        int costVisLen = cast(int) visibleCCLLen(costCCL);
+        int costCol = btnCol + (BTN_W_COLS - costVisLen) / 2;
+        if (costCol < 0) costCol = 0;
+        con.locate(costCol, btnRow + 3);
+        con.fg(TM_colorWhite);
+        con.cprint(costCCL);
     }
 
     /// Print `text` horizontally centered inside a `widthCols`-wide span
@@ -1948,6 +2116,20 @@ struct GameState
         con.print(text);
     }
 
+    /// Like `printCenteredAt` but goes through `cprint` so embedded CCL
+    /// tags (e.g. "<lred>2\u2666</lred>") render with their own colors.
+    /// Centering uses the visible length of `text`, tags stripped.
+    static void cprintCenteredAt(TM_Console* con, int startCol, int row,
+                                 int widthCols, string text, int color)
+    {
+        int visLen = cast(int) visibleCCLLen(text);
+        int col = startCol + (widthCols - visLen) / 2;
+        if (col < 0) col = 0;
+        con.locate(col, row);
+        con.fg(color);
+        con.cprint(text);
+    }
+
     void drawUpgradeText(TM_Console* con)
     {
         with (con)
@@ -1955,7 +2137,7 @@ struct GameState
             // Title
             enum title = "UPGRADE";
             locate((CONSOLE_COLS - cast(int) title.length) / 2, 4);
-            fg(TM_colorLRed);
+            fg(TM_colorLBlue);
             print(title);
 
             // Active player + MP balance
@@ -1964,10 +2146,11 @@ struct GameState
             fg(TM_colorWhite);
             print(who);
 
-            string mpLine = format("%d MP", players[activePlayer].mp);
-            locate((CONSOLE_COLS - cast(int) mpLine.length) / 2, 7);
-            fg(TM_colorWhite);
-            print(mpLine);
+            string mpLine = format("<lblue>%d\u2301</lblue>",
+                                   players[activePlayer].mp);
+            int mpVisLen = cast(int) visibleCCLLen(mpLine);
+            locate((CONSOLE_COLS - mpVisLen) / 2, 8);
+            cprint(mpLine);
 
             // Purchase toast — shows the last successful action on this
             // visit to the upgrade screen.

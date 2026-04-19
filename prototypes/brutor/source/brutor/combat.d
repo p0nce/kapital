@@ -64,10 +64,10 @@ DamageDescription describeDamage(Combo[] combos)
     DamageDescription out_;
 
     // Straight: no damage, just a preview line. GameState raises a parry
-    // wall on the active player when the turn resolves.
+    // wall on the active player and awards MP when the turn resolves.
     if (isStraight(combos))
     {
-        out_.previewLines ~= "Straight \u2192 Parry (block opponent's next turn).";
+        out_.previewLines ~= "Straight \u2192 Parry + <lblue>1\u2301</lblue>.";
         return out_;
     }
 
@@ -93,8 +93,8 @@ DamageDescription describeDamage(Combo[] combos)
             // recolor "N♦DMG" in red via cprint, while the rest of
             // the line stays in the ambient (white) color.
             case ComboType.pair:
-                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 1);
-                out_.previewLines ~= format("Pair of %d: <lred>1♦DMG</lred> to %s.", face, bp);
+                out_.actions ~= DamageAction(DamageAction.Type.flatDamage, combo.target, 2);
+                out_.previewLines ~= format("Pair of %d: <lred>2♦DMG</lred> to %s.", face, bp);
                 break;
 
             case ComboType.threeOfAKind:
