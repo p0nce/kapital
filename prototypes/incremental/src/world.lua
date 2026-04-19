@@ -44,17 +44,21 @@ end
 function world.draw(state)
   local inv_zoom = 1 / state.camera.zoom
   local atlas = sprites.get_atlas()
-  local house_quad = sprites.get_quad("house")
   local font = love.graphics.getFont()
+
+  -- Per-building sprite overrides; falls back to house quad
+  local sprite_map = {
+    tree = sprites.get_quad("tree"),
+  }
 
   for building_id, building in pairs(state.buildings) do
     if not building.built then goto continue end
-    local bw = 56  -- natural sprite width (7 * 8)
-    local bh = 32  -- natural sprite height (4 * 8)
+    local quad = sprite_map[building_id] or sprites.get_quad("house")
+    local qx, qy, bw, bh = quad:getViewport()
 
-    if atlas and house_quad then
+    if atlas and quad then
       love.graphics.setColor(1, 1, 1)
-      love.graphics.draw(atlas, house_quad, building.x, building.y)
+      love.graphics.draw(atlas, quad, building.x, building.y)
     else
       love.graphics.setColor(0.3, 0.3, 0.3)
       love.graphics.rectangle("fill", building.x, building.y, bw, bh)

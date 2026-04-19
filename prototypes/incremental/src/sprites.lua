@@ -11,6 +11,8 @@ function sprites.load()
 
   -- House sprite at (0, 32), 7x4 tiles = 56x32 px
   quads.house = love.graphics.newQuad(0, 32, 56, 32, aw, ah)
+  -- Tree sprite at (120, 80), 1x2 tiles = 8x16 px
+  quads.tree = love.graphics.newQuad(120, 80, 8, 16, aw, ah)
 end
 
 function sprites.get_atlas()
