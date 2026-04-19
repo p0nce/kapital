@@ -9,7 +9,7 @@ local building_defs = {
   lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false },
   log_pile     = { name = "Log pile",     x = 56,  y = 0, w = 9, h = 1, built = true  },
   tree         = { name = "Tree",         x = 128, y = 0, w = 7, h = 4, built = true  },
-  stone_pile   = { name = "Stone pile",   x = 192, y = 0, w = 9, h = 1, built = true  },
+  stone_pile   = { name = "Stone pile",   x = 184, y = 0, w = 9, h = 1, built = true  },
   rock         = { name = "Mine",         x = 256, y = 0, w = 7, h = 4, built = true  },
   dormitory    = { name = "Dormitory",    x = 320, y = 0, w = 7, h = 4, built = false },
   compactor    = { name = "Compactor",    x = 384, y = 0, w = 7, h = 4, built = false },
