@@ -1,9 +1,11 @@
 -- main.lua
 local state = require("src/state")
 local world = require("src/world")
+local sprites = require("src/sprites")
 
 function love.load()
   world.init(state)
+  sprites.load()
 end
 
 function love.update(dt)
