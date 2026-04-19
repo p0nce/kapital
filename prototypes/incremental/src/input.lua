@@ -30,7 +30,9 @@ end
 
 function input.keypressed(state, key)
   local menu = require("src/ui/menu")
-  if key == "escape" then
+  if key == "f5" then
+    love.event.quit("restart")
+  elseif key == "escape" then
     menu.close(state)
   elseif key == "left" then
     state.camera.x = state.camera.x - 30
