@@ -4,10 +4,16 @@ local world = require("src/world")
 local sprites = require("src/sprites")
 local camera = require("src/camera")
 local workers = require("src/workers")
+local input = require("src/input")
+local hud = require("src/ui/hud")
+local tree = require("src/buildings/tree")
+local rock = require("src/buildings/rock")
 
 function love.load()
   world.init(state)
   sprites.load()
+  tree.init(state)
+  rock.init(state)
 end
 
 function love.update(dt)
@@ -23,10 +29,12 @@ function love.draw()
   world.draw(state)
   workers.draw(state)
   camera.detach()
+
+  hud.draw(state)
 end
 
 function love.mousepressed(x, y, button)
-  -- Will route to input system
+  input.mousepressed(state, x, y, button)
 end
 
 function love.keypressed(key)
