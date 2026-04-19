@@ -1,0 +1,6 @@
+- [ ] remove nudge indicator
+- [ ] Beheaded => can keep max 3 dices, not just 2  
+- [ ] In heal priority, heal Chest before Head
+- [ ] Players should be able to spend upgrades 
+      at the end of their turn.
+- [ ] On devrait mourir a 4 membre anéantis comme sacré graal
