@@ -7,7 +7,7 @@ local sprites = require("src/sprites")
 -- Spaced with 8px gaps. Layout origin x values: 0, 64, 128, 192, 256, 320, 384, 448, 512, 576
 local building_defs = {
   lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false },
-  log_pile     = { name = "Log pile",     x = 64,  y = 0, w = 9, h = 1, built = true  },
+  log_pile     = { name = "Log pile",     x = 56,  y = 0, w = 9, h = 1, built = true  },
   tree         = { name = "Tree",         x = 128, y = 0, w = 7, h = 4, built = true  },
   stone_pile   = { name = "Stone pile",   x = 192, y = 0, w = 7, h = 4, built = true  },
   rock         = { name = "Rock",         x = 256, y = 0, w = 7, h = 4, built = true  },
@@ -68,7 +68,7 @@ function world.draw(state)
   }
   -- Tile strip sprites: {quad_name, count} — drawn as N horizontal repetitions
   local tile_strip_map = {
-    log_pile = { quad_name = "log_pile_tile", count = 9 },
+    log_pile = { quad_name = "log_pile_tile", count = 9, y_offset = 8 },
   }
 
   for building_id, building in pairs(state.buildings) do
@@ -79,7 +79,7 @@ function world.draw(state)
     if tile_strip_map[building_id] then
       local strip = tile_strip_map[building_id]
       bw, bh = strip.count * 8, 8
-      draw_y = GROUND_Y - bh
+      draw_y = GROUND_Y - bh + (strip.y_offset or 0)
       local satlas, squad = sprites.get_quad(strip.quad_name)
       if satlas then
         love.graphics.setColor(1, 1, 1)
