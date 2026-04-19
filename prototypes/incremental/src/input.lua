@@ -32,7 +32,7 @@ function input.keypressed(state, key)
   local menu = require("src/ui/menu")
   local alt = love.keyboard.isDown("lalt") or love.keyboard.isDown("ralt")
   if key == "f11" or (key == "return" and alt) then
-    love.window.setFullscreen(not love.window.isFullscreen())
+    love.window.setFullscreen(not love.window.getFullscreen())
   elseif key == "f5" then
     love.event.quit("restart")
   elseif key == "escape" then
