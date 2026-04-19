@@ -83,6 +83,7 @@ function world.build(state, building_id)
 end
 
 function world.draw(state)
+  local inv_zoom = 1 / state.camera.zoom
   for building_id, building in pairs(state.buildings) do
     if building.built then
       love.graphics.setColor(0.3, 0.3, 0.3)
@@ -90,8 +91,13 @@ function world.draw(state)
       love.graphics.setColor(0.1, 0.1, 0.1)
     end
     love.graphics.rectangle("fill", building.x, building.y, building.w * 8, building.h * 8)
+    -- Render label at constant screen size regardless of zoom
+    love.graphics.push()
+    love.graphics.translate(building.x + 2, building.y + 2)
+    love.graphics.scale(inv_zoom, inv_zoom)
     love.graphics.setColor(1, 1, 1)
-    love.graphics.print(building.name, building.x + 2, building.y + 2)
+    love.graphics.print(building.name, 0, 0)
+    love.graphics.pop()
   end
 end
 
