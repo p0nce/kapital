@@ -13,7 +13,7 @@ local state = {
   buildings = {},  -- Will be populated by world.lua
   workers = {},    -- Will be populated by workers.lua
   camera = {
-    x = 0,
+    x = 224,
     y = 0,
     zoom = 2,  -- 2x zoom = 16px per 8px sprite
   },

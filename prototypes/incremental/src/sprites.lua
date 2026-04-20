@@ -29,6 +29,29 @@ function sprites.load()
   -- Rock: two quads from Underground.png → 3x1 tiles = 24x8 px total
   quads.rock_left  = { atlas = underground, q = love.graphics.newQuad( 88, 16,  8,  8, uw, uh) }
   quads.rock_right = { atlas = underground, q = love.graphics.newQuad(104, 16, 16,  8, uw, uh) }
+
+  local gubos = love.graphics.newImage("Tilesets/gubos.png")
+  gubos:setFilter("nearest", "nearest")
+  local gw, gh = gubos:getDimensions()
+  atlases.gubos = gubos
+  -- Row 0: idle (2 frames), Row 1: walk right (2 frames), Row 2: walk left (2 frames)
+  -- Each tile is 16x16 px; gubo character sits in ~(4,6)-(11,11), ground floor at row 12
+  quads.gubo_idle_0  = { atlas = gubos, q = love.graphics.newQuad(  0,  0, 16, 16, gw, gh) }
+  quads.gubo_idle_1  = { atlas = gubos, q = love.graphics.newQuad( 16,  0, 16, 16, gw, gh) }
+  quads.gubo_right_0 = { atlas = gubos, q = love.graphics.newQuad(  0, 16, 16, 16, gw, gh) }
+  quads.gubo_right_1 = { atlas = gubos, q = love.graphics.newQuad( 16, 16, 16, 16, gw, gh) }
+  quads.gubo_left_0  = { atlas = gubos, q = love.graphics.newQuad(  0, 32, 16, 16, gw, gh) }
+  quads.gubo_left_1  = { atlas = gubos, q = love.graphics.newQuad( 16, 32, 16, 16, gw, gh) }
+  -- Row 3: axe swing, tree to the right; Row 4: axe swing, tree to the left
+  quads.gubo_chop_right_0 = { atlas = gubos, q = love.graphics.newQuad(  0, 48, 16, 16, gw, gh) }
+  quads.gubo_chop_right_1 = { atlas = gubos, q = love.graphics.newQuad( 16, 48, 16, 16, gw, gh) }
+  quads.gubo_chop_left_0  = { atlas = gubos, q = love.graphics.newQuad(  0, 64, 16, 16, gw, gh) }
+  quads.gubo_chop_left_1  = { atlas = gubos, q = love.graphics.newQuad( 16, 64, 16, 16, gw, gh) }
+  -- Row 5: mine swing, rock to the right; Row 6: mine swing, rock to the left
+  quads.gubo_mine_right_0 = { atlas = gubos, q = love.graphics.newQuad(  0, 80, 16, 16, gw, gh) }
+  quads.gubo_mine_right_1 = { atlas = gubos, q = love.graphics.newQuad( 16, 80, 16, 16, gw, gh) }
+  quads.gubo_mine_left_0  = { atlas = gubos, q = love.graphics.newQuad(  0, 96, 16, 16, gw, gh) }
+  quads.gubo_mine_left_1  = { atlas = gubos, q = love.graphics.newQuad( 16, 96, 16, 16, gw, gh) }
 end
 
 function sprites.get_atlas()

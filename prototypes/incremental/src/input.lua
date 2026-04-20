@@ -1,28 +1,52 @@
 -- src/input.lua
 local camera = require("src/camera")
-local tree = require("src/buildings/tree")
-local rock = require("src/buildings/rock")
-local world = require("src/world")
+local tree   = require("src/buildings/tree")
+local rock   = require("src/buildings/rock")
+local menu   = require("src/ui/menu")
 
 local input = {}
+
+local HOLD_RATE  = 0.075  -- seconds between repeated clicks while held
+local hold_timer = 0
+
+function input.update(dt, state)
+  if not love.mouse.isDown(1) then
+    hold_timer = 0
+    return
+  end
+
+  local mx, my = love.mouse.getPosition()
+  local world_x, world_y = camera.screen_to_world(state, mx, my)
+
+  local tb = state.buildings.tree
+  local over_tree = world_x >= tb.x and world_x < tb.x + tb.w * 8 and
+                    world_y >= tb.y and world_y < tb.y + tb.h * 8
+  local rb = state.buildings.rock
+  local over_rock = world_x >= rb.x and world_x < rb.x + rb.w * 8 and
+                    world_y >= rb.y and world_y < rb.y + rb.h * 8
+
+  if not over_tree and not over_rock then
+    hold_timer = 0
+    return
+  end
+
+  hold_timer = hold_timer + dt
+  while hold_timer >= HOLD_RATE do
+    hold_timer = hold_timer - HOLD_RATE
+    if over_tree then tree.click(state) end
+    if over_rock then rock.click(state) end
+  end
+end
 
 function input.mousepressed(state, x, y, button)
   if button ~= 1 then return end
 
-  local menu    = require("src/ui/menu")
   local world_x, world_y = camera.screen_to_world(state, x, y)
-
-  -- When a menu is open all clicks go to menu/world handling
-  if menu.is_open(state) then
-    world.mousepressed(state, world_x, world_y, x, y)
-    return
-  end
 
   local tb = state.buildings.tree
   if world_x >= tb.x and world_x < tb.x + tb.w * 8 and
      world_y >= tb.y and world_y < tb.y + tb.h * 8 then
     tree.click(state)
-    menu.open(state, "tree")
     return
   end
 
@@ -30,15 +54,13 @@ function input.mousepressed(state, x, y, button)
   if world_x >= rb.x and world_x < rb.x + rb.w * 8 and
      world_y >= rb.y and world_y < rb.y + rb.h * 8 then
     rock.click(state)
-    menu.open(state, "rock")
     return
   end
 
-  world.mousepressed(state, world_x, world_y, x, y)
+  menu.mousepressed(state, world_x, world_y, x, y)
 end
 
 function input.keypressed(state, key)
-  local menu = require("src/ui/menu")
   local alt = love.keyboard.isDown("lalt") or love.keyboard.isDown("ralt")
   if key == "f11" or (key == "return" and alt) then
     love.window.setFullscreen(not love.window.getFullscreen())

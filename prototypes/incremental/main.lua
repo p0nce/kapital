@@ -19,11 +19,14 @@ local assembler = require("src/buildings/assembler")
 local loading_dock = require("src/buildings/loading_dock")
 local play_zone = require("src/buildings/play_zone")
 local minesweeper = require("src/minesweeper")
+local effects     = require("src/effects")
+local sounds      = require("src/sounds")
 
 function love.load()
   world.init(state)
   world.init_modules()
   sprites.load()
+  sounds.load()
   tree.init(state)
   rock.init(state)
   log_pile.init(state)
@@ -39,6 +42,8 @@ end
 
 function love.update(dt)
   state.update(dt)
+  effects.update(dt)
+  input.update(dt, state)
   camera.update(dt, state)
   workers.update(dt, state)
   tree.update(dt, state)
@@ -56,11 +61,10 @@ function love.draw()
   camera.attach(state)
   world.draw(state)
   workers.draw(state)
+  menu.draw(state)
   camera.detach()
 
   hud.draw(state)
-
-  world.draw_menu(state)
 end
 
 function love.mousepressed(x, y, button)

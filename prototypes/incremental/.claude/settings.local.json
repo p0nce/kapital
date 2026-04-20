@@ -10,7 +10,8 @@
       "Bash(timeout 3 love .)",
       "Bash(git commit *)",
       "Bash(lua *)",
-      "Bash(timeout 5 love .)"
+      "Bash(timeout 5 love .)",
+      "Bash(python3 *)"
     ]
   }
 }

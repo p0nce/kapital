@@ -13,7 +13,6 @@ end
 
 function dormitory.init(state)
   local building = state.buildings.dormitory
-  building.built = false
   building.floors = 0
   building.workers_idle = {}
 end
@@ -38,10 +37,25 @@ function dormitory.hire_worker_for_job(state, job_name)
   if #state.buildings.dormitory.workers_idle == 0 then return false end
   local worker_id = table.remove(state.buildings.dormitory.workers_idle)
   local building_id = jobs.get_building(job_name)
+  local dorm = state.buildings.dormitory
+  local world = require("src/world")
+  local ground_y = world.get_ground_y()
+  local door_x = dorm.x + dorm.w * 4
+  local door_y = ground_y
+  for _, w in ipairs(state.workers) do
+    if w.id == worker_id then
+      w.x = door_x
+      w.y = door_y
+      break
+    end
+  end
   if building_id then
     local building = state.buildings[building_id]
+    local slot = #building.workers  -- 0-based slot index before insert
     table.insert(building.workers, worker_id)
-    workers.assign(state, worker_id, job_name, building.x + 4, building.y + 4)
+    local sign = (slot % 2 == 0) and 1 or -1
+    local spread = sign * math.ceil(slot / 2) * 10
+    workers.assign(state, worker_id, job_name, jobs.get_work_x(job_name, building) + spread, door_y)
   end
   return true
 end
@@ -53,7 +67,8 @@ function dormitory.unassign_worker(state, building_id, worker_id)
       table.remove(building.workers, i)
       table.insert(state.buildings.dormitory.workers_idle, worker_id)
       local dorm = state.buildings.dormitory
-      workers.unassign(state, worker_id, dorm.x + 4, dorm.y + 4)
+      local world = require("src/world")
+      workers.unassign(state, worker_id, dorm.x + dorm.w * 4, world.get_ground_y() - 4)
       return true
     end
   end

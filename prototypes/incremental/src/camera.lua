@@ -12,6 +12,11 @@ function camera.update(dt, state)
   elseif mx > screen.w() - EDGE_MARGIN then
     state.camera.x = state.camera.x + EDGE_SCROLL_SPEED * dt
   end
+  if my < EDGE_MARGIN then
+    state.camera.y = state.camera.y - EDGE_SCROLL_SPEED * dt
+  elseif my > screen.h() - EDGE_MARGIN then
+    state.camera.y = state.camera.y + EDGE_SCROLL_SPEED * dt
+  end
   if love.keyboard.isDown("left") then
     state.camera.x = state.camera.x - EDGE_SCROLL_SPEED * dt
   elseif love.keyboard.isDown("right") then
