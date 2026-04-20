@@ -9,12 +9,20 @@ local input = {}
 function input.mousepressed(state, x, y, button)
   if button ~= 1 then return end
 
+  local menu    = require("src/ui/menu")
   local world_x, world_y = camera.screen_to_world(state, x, y)
+
+  -- When a menu is open all clicks go to menu/world handling
+  if menu.is_open(state) then
+    world.mousepressed(state, world_x, world_y, x, y)
+    return
+  end
 
   local tb = state.buildings.tree
   if world_x >= tb.x and world_x < tb.x + tb.w * 8 and
      world_y >= tb.y and world_y < tb.y + tb.h * 8 then
     tree.click(state)
+    menu.open(state, "tree")
     return
   end
 
@@ -22,6 +30,7 @@ function input.mousepressed(state, x, y, button)
   if world_x >= rb.x and world_x < rb.x + rb.w * 8 and
      world_y >= rb.y and world_y < rb.y + rb.h * 8 then
     rock.click(state)
+    menu.open(state, "rock")
     return
   end
 

@@ -150,37 +150,136 @@ function world.try_build(state, building_id)
   return false
 end
 
--- Handle click on a building: open its menu or trigger buy
--- screen_x/y for menu hit detection, world_x/y for building bounds
 local MENU_X = 200
 local MENU_Y = 100
 local MENU_W = 300
 
+-- Per-building menu configuration
+local menu_configs = {
+  tree         = { title = "Tree",         job_name = "lumberjack",       job_label = "Lumberjacks"    },
+  rock         = { title = "Mine",         job_name = "miner",            job_label = "Miners"         },
+  dormitory    = { title = "Dormitory" },
+  compactor    = { title = "Compactor",    job_name = "compactor_hauler", job_label = "Haulers",
+                   build_costs = { points = 50,  wood = 20 } },
+  assembler    = { title = "Assembler",    job_name = "assembler_hauler", job_label = "Haulers",
+                   build_costs = { points = 75,  wood = 30 } },
+  loading_dock = { title = "Loading Dock", job_name = "truck_driver",     job_label = "Truck Drivers",
+                   build_costs = { points = 100, wood = 40 } },
+  play_zone    = { title = "Play Zone",    job_name = "crane_operator",   job_label = "Crane Operators",
+                   build_costs = { points = 150, wood = 50 } },
+}
+
+function world.draw_menu(state)
+  local menu        = require("src/ui/menu")
+  local dorm_mod    = require("src/buildings/dormitory")
+  local resources   = require("src/resources")
+
+  local open = menu.get_open_building(state)
+  if not open then return end
+  local cfg = menu_configs[open]
+  if not cfg then return end
+
+  menu.draw_header(cfg.title)
+  local y = 40
+
+  if open == "dormitory" then
+    local cost      = dorm_mod.floor_cost(state.buildings.dormitory.floors)
+    local affordable = resources.can_afford(state, "points", cost)
+    menu.draw_item(y, string.format("Buy floor (+2 workers): %d pts", cost), affordable)
+    y = y + 25
+    menu.draw_item(y, string.format("Idle workers: %d", #state.buildings.dormitory.workers_idle), true)
+  else
+    local building = state.buildings[open]
+
+    if not building.built and cfg.build_costs then
+      local costs      = cfg.build_costs
+      local affordable = resources.can_afford(state, "points", costs.points) and
+                         resources.can_afford(state, "wood",   costs.wood)
+      menu.draw_item(y, string.format("Build: %d pts, %d wood", costs.points, costs.wood), affordable)
+      y = y + 25
+    end
+
+    if building.built and cfg.job_name then
+      local count = building.workers and #building.workers or 0
+      local idle  = #state.buildings.dormitory.workers_idle
+
+      love.graphics.setColor(1, 1, 1)
+      love.graphics.print(cfg.job_label .. ":", MENU_X + 10, MENU_Y + y)
+
+      if count > 0 then love.graphics.setColor(1, 1, 1) else love.graphics.setColor(0.4, 0.4, 0.4) end
+      love.graphics.print("<", MENU_X + 140, MENU_Y + y)
+
+      love.graphics.setColor(1, 1, 1)
+      love.graphics.print(tostring(count), MENU_X + 155, MENU_Y + y)
+
+      if idle > 0 then love.graphics.setColor(1, 1, 1) else love.graphics.setColor(0.4, 0.4, 0.4) end
+      love.graphics.print(">", MENU_X + 175, MENU_Y + y)
+    end
+  end
+end
+
 function world.mousepressed(state, world_x, world_y, screen_x, screen_y)
-  local menu = require("src/ui/menu")
-  local dormitory = require("src/buildings/dormitory")
+  local menu     = require("src/ui/menu")
+  local dorm_mod = require("src/buildings/dormitory")
 
   if menu.is_open(state) then
     if menu.close_button_hit(screen_x, screen_y) then
       menu.close(state)
       return
     end
-    -- Dormitory menu: Buy floor button is the first item at y_offset=40
-    if menu.get_open_building(state) == "dormitory" then
+
+    local open = menu.get_open_building(state)
+    local cfg  = menu_configs[open]
+
+    if open == "dormitory" then
       local item_y = MENU_Y + 40
       if screen_x >= MENU_X + 10 and screen_x < MENU_X + MENU_W - 10 and
          screen_y >= item_y and screen_y < item_y + 20 then
-        dormitory.buy_floor(state)
+        dorm_mod.buy_floor(state)
+      end
+    elseif cfg then
+      local building = state.buildings[open]
+
+      if not building.built and cfg.build_costs then
+        local item_y = MENU_Y + 40
+        if screen_x >= MENU_X + 10 and screen_x < MENU_X + MENU_W - 10 and
+           screen_y >= item_y and screen_y < item_y + 20 then
+          if building_modules[open] and building_modules[open].build then
+            building_modules[open].build(state)
+          end
+        end
+      end
+
+      if building.built and cfg.job_name then
+        local worker_y = MENU_Y + 40
+        -- Left arrow "<" unassigns a worker
+        if screen_x >= MENU_X + 140 and screen_x < MENU_X + 157 and
+           screen_y >= worker_y and screen_y < worker_y + 20 then
+          if building.workers and #building.workers > 0 then
+            local wid = building.workers[#building.workers]
+            dorm_mod.unassign_worker(state, open, wid)
+          end
+        end
+        -- Right arrow ">" hires a worker
+        if screen_x >= MENU_X + 175 and screen_x < MENU_X + 192 and
+           screen_y >= worker_y and screen_y < worker_y + 20 then
+          dorm_mod.hire_worker_for_job(state, cfg.job_name)
+        end
       end
     end
     return
   end
 
-  local dorm = state.buildings.dormitory
-  if world_x >= dorm.x and world_x < dorm.x + dorm.w * 8 and
-     world_y >= dorm.y and world_y < dorm.y + dorm.h * 8 then
-    menu.open(state, "dormitory")
-    return
+  -- Open menu for buildings other than tree/rock (those are handled in input.lua)
+  for building_id, _ in pairs(menu_configs) do
+    if building_id ~= "tree" and building_id ~= "rock" then
+      local b = state.buildings[building_id]
+      if b and world_x >= b.x and world_x < b.x + b.w * 8 and
+               world_y >= b.y and world_y < b.y + b.h * 8 then
+        menu.open(state, building_id)
+        return
+      end
+    end
   end
 end
 

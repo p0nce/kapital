@@ -60,16 +60,7 @@ function love.draw()
 
   hud.draw(state)
 
-  local open = menu.get_open_building(state)
-  if open == "dormitory" then
-    menu.draw_header("Dormitory")
-    local items = dormitory.menu_items(state)
-    local y = 40
-    for _, item in ipairs(items) do
-      menu.draw_item(y, item.label, item.affordable)
-      y = y + 25
-    end
-  end
+  world.draw_menu(state)
 end
 
 function love.mousepressed(x, y, button)
