@@ -9,7 +9,8 @@
       "Read(//d D:/kapital/prototypes/**)",
       "Bash(timeout 3 love .)",
       "Bash(git commit *)",
-      "Bash(lua *)"
+      "Bash(lua *)",
+      "Bash(timeout 5 love .)"
     ]
   }
 }

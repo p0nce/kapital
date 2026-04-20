@@ -4,3 +4,10 @@
 - [ ] Players should be able to spend upgrades 
       at the end of their turn.
 - [ ] On devrait mourir a 4 membre anéantis comme sacré graal
+- [ ] Status highlighté avec description
+- [ ] Lisibilité joueur qui joue
+- [ ] Des qui roulent
+- [ ] Des plus visible quand KEEP
+- [ ] Montré les dégats potentiels fait dans la health bar adverse
+- [ ] Animation de dégat
+- [ ] Shake et juiciness
