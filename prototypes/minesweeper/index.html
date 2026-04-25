@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Minesweeper</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a1a; overflow: hidden; }
+    canvas { display: block; }
+
+    #resources {
+      position: fixed;
+      top: 8px; left: 8px;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid #444;
+      padding: 8px 14px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #ddd;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+    #resources:has(.res-row[style*="flex"]) { display: flex; }
+    #resources .res-row { display: none; justify-content: space-between; gap: 16px; align-items: center; }
+    #resources .res-label { color: #999; }
+    #resources .res-value { text-align: right; min-width: 28px; }
+
+    .res-chip {
+      display: inline-block;
+      width: 17px; height: 17px;
+      line-height: 17px;
+      text-align: center;
+      font-weight: bold;
+      font-family: sans-serif;
+      font-size: 12px;
+      background: #b8b8b8;
+    }
+
+    #build-menu {
+      position: fixed;
+      top: 8px; right: 8px; bottom: 8px;
+      width: 120px;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid #444;
+      padding: 8px;
+      font-family: monospace;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+    }
+    #build-menu:has(.build-btn[style*="flex"]) { display: flex; }
+    #build-menu::before {
+      content: 'BUILD';
+      font-size: 10px;
+      color: #555;
+      text-align: center;
+      letter-spacing: 3px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #333;
+    }
+    .build-btn {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 6px;
+      border: 1px solid #555;
+      cursor: pointer;
+      background: #1e1e1e;
+      user-select: none;
+    }
+    .build-btn:hover { background: #2a2a2a; border-color: #888; }
+    .build-btn.selected { border-color: #ffcc00; background: #2a1c00; }
+    .build-btn.unaffordable { opacity: 0.4; cursor: default; }
+    .build-preview {
+      display: block;
+      width: 48px; height: 48px;
+      image-rendering: pixelated;
+    }
+    .build-btn-cost { display: flex; gap: 3px; align-items: center; }
+    .build-cost-chip {
+      display: inline-block;
+      width: 13px; height: 13px;
+      line-height: 13px;
+      text-align: center;
+      font-weight: bold;
+      font-family: sans-serif;
+      font-size: 10px;
+      background: #b8b8b8;
+    }
+
+    #worker-popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.92);
+      border: 1px solid #8a6428;
+      font-family: monospace;
+      color: #d4a050;
+      min-width: 180px;
+      z-index: 20;
+    }
+    #worker-popup .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border-bottom: 1px solid #5a3818;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+    #worker-popup .popup-header button {
+      background: none; border: none; color: #d4a050; cursor: pointer; font-size: 16px; line-height: 1; padding: 0;
+    }
+    #worker-popup .popup-body { padding: 12px; display: flex; gap: 6px; }
+    .job-btn {
+      background: #1e1a10;
+      color: #7a5420;
+      border: 1px solid #5a3818;
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 11px;
+      padding: 5px 8px;
+      letter-spacing: 1px;
+    }
+    .job-btn:hover { border-color: #a07830; color: #a07830; }
+    .job-btn.active { border-color: #d4a050; background: #2a1e00; color: #d4a050; }
+
+    #research-popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.92);
+      border: 1px solid #3a8a3a;
+      padding: 0;
+      font-family: monospace;
+      color: #88cc88;
+      min-width: 220px;
+      z-index: 20;
+    }
+    #research-popup .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border-bottom: 1px solid #2a5a2a;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #44cc44;
+    }
+    #research-popup .popup-header button {
+      background: none;
+      border: none;
+      color: #44cc44;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      padding: 0;
+    }
+    #research-popup .popup-body {
+      padding: 12px;
+      font-size: 12px;
+      color: #557755;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 240px;
+    }
+    .research-status {
+      font-size: 10px;
+      color: #3a6a3a;
+      letter-spacing: 1px;
+      text-align: center;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #1a3a1a;
+    }
+    .research-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 6px 8px;
+      border: 1px solid #1a3a1a;
+    }
+    .research-item.active  { border-color: #3a7a3a; background: #0a1a0a; }
+    .research-item.maxed   { opacity: 0.45; }
+    .research-name  { color: #6acc6a; font-size: 11px; display: flex; justify-content: space-between; }
+    .research-level { color: #3a6a3a; font-size: 10px; }
+    .research-desc  { color: #3a5a3a; font-size: 10px; }
+    .research-pts   { color: #4a7a4a; font-size: 10px; }
+    .research-bar   { height: 4px; background: #1a3a1a; margin: 2px 0; }
+    .research-fill  { height: 100%; background: #44cc44; transition: width 0.4s; }
+    .research-btn {
+      background: #0e1e0e;
+      color: #44aa44;
+      border: 1px solid #2a5a2a;
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 10px;
+      padding: 3px 6px;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+    .research-btn:hover  { border-color: #44aa44; color: #6acc6a; }
+    .research-btn.cancel { color: #aa4444; border-color: #5a2a2a; }
+    .research-btn.cancel:hover { border-color: #cc4444; color: #cc6666; }
+    .job-btn.disabled { opacity: 0.3; cursor: default; }
+
+    #bottom-controls {
+      position: fixed;
+      bottom: 8px; left: 8px;
+      display: flex;
+      gap: 6px;
+    }
+    #bottom-controls button {
+      padding: 4px 10px;
+      background: #1a1a2a;
+      color: #8888cc;
+      border: 1px solid #446;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: monospace;
+    }
+    #bottom-controls #hard-reset {
+      background: #3a1a1a;
+      color: #ff6666;
+      border-color: #ff3333;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="resources">
+    <div class="res-row" id="res-row-0"><span class="res-chip" style="color:#ff8800">0</span><span class="res-value" id="res-0">0</span></div>
+    <div class="res-row" id="res-row-1"><span class="res-chip" style="color:#1a6bff">1</span><span class="res-value" id="res-1">0</span></div>
+    <div class="res-row" id="res-row-2"><span class="res-chip" style="color:#2d7a2d">2</span><span class="res-value" id="res-2">0</span></div>
+    <div class="res-row" id="res-row-3"><span class="res-chip" style="color:#e03333">3</span><span class="res-value" id="res-3">0</span></div>
+    <div class="res-row" id="res-row-4"><span class="res-chip" style="color:#00008b">4</span><span class="res-value" id="res-4">0</span></div>
+    <div class="res-row" id="res-row-5"><span class="res-chip" style="color:#8b0000">5</span><span class="res-value" id="res-5">0</span></div>
+    <div class="res-row" id="res-row-6"><span class="res-chip" style="color:#008b8b">6</span><span class="res-value" id="res-6">0</span></div>
+    <div class="res-row" id="res-row-7"><span class="res-chip" style="color:#222222">7</span><span class="res-value" id="res-7">0</span></div>
+    <div class="res-row" id="res-row-8"><span class="res-chip" style="color:#808080">8</span><span class="res-value" id="res-8">0</span></div>
+    <div class="res-row" id="res-row-mine"><span class="res-chip" style="color:#cc4444">✸</span><span class="res-value" id="res-mine">0</span></div>
+    <div class="res-row" id="res-row-charcoal"><span class="res-label">Charcoal</span><span class="res-value" id="res-charcoal">0</span></div>
+    <div class="res-row" id="res-row-wood">    <span class="res-label">Wood</span>    <span class="res-value" id="res-wood">0</span></div>
+  </div>
+
+  <div id="build-menu"></div>
+
+  <div id="worker-popup">
+    <div class="popup-header">WORKER <button id="worker-close">×</button></div>
+    <div class="popup-body">
+      <button class="job-btn" data-job="idle">IDLE</button>
+      <button class="job-btn" data-job="clear">CLEAR</button>
+      <button class="job-btn" data-job="discover">DISCOVER</button>
+      <button class="job-btn" data-job="lab">LAB</button>
+    </div>
+  </div>
+
+  <div id="research-popup">
+    <div class="popup-header">RESEARCH <button id="research-close">×</button></div>
+    <div class="popup-body"></div>
+  </div>
+
+  <div id="bottom-controls">
+    <button id="btn-save">Save</button>
+    <button id="btn-export">Export</button>
+    <button id="btn-import">Import</button>
+    <button id="hard-reset">Hard Reset</button>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
