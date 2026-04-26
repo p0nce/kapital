@@ -52,8 +52,8 @@ function workers.unassign(state, worker_id, dormitory_x, dormitory_y)
       w.job = nil
       w.target_x = dormitory_x
       w.target_y = dormitory_y
-      w.facing = "idle"
       w.at_work = false
+      w.returning = true
       return
     end
   end
@@ -79,6 +79,9 @@ function workers.update(dt, state)
       w.facing = dx >= 0 and "right" or "left"
       w.at_work = false
     else
+      if w.returning then
+        w.returning = false
+      end
       local job_def = w.job and jobs.get(w.job)
       if job_def and job_def.get_facing then
         w.facing = job_def.get_facing(state, w)
@@ -119,7 +122,7 @@ local anim_quads = {
 function workers.draw(state)
   love.graphics.setColor(1, 1, 1)
   for _, w in ipairs(state.workers) do
-    if w.job ~= nil then
+    if w.job ~= nil or w.returning then
       local quad_name = anim_quads[w.facing][w.anim_frame + 1]
       local atlas, quad = sprites.get_quad(quad_name)
       if atlas then

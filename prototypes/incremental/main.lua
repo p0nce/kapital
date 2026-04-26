@@ -22,7 +22,14 @@ local minesweeper = require("src/minesweeper")
 local effects     = require("src/effects")
 local sounds      = require("src/sounds")
 
+local canvas
+
 function love.load()
+  canvas = love.graphics.newCanvas(screen.w(), screen.h())
+  canvas:setFilter("nearest", "nearest")
+  local font = love.graphics.newFont("fonts/m5x7.ttf", 16)
+  font:setFilter("nearest", "nearest")
+  love.graphics.setFont(font)
   world.init(state)
   world.init_modules()
   sprites.load()
@@ -55,6 +62,7 @@ function love.update(dt)
 end
 
 function love.draw()
+  love.graphics.setCanvas(canvas)
   love.graphics.setColor(0.05, 0.05, 0.05)
   love.graphics.rectangle("fill", 0, 0, screen.dims())
 
@@ -65,10 +73,14 @@ function love.draw()
   camera.detach()
 
   hud.draw(state)
+  love.graphics.setCanvas()
+
+  screen.blit(canvas)
 end
 
 function love.mousepressed(x, y, button)
-  input.mousepressed(state, x, y, button)
+  local cx, cy = screen.to_canvas(x, y)
+  input.mousepressed(state, cx, cy, button)
 end
 
 function love.keypressed(key)

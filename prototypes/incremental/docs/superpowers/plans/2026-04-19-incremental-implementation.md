@@ -1,6 +1,6 @@
 # Incremental Love2D Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Implement a playable MVP of an incremental game with worker assignment, production chain, and Minesweeper integration in Love2D.
 
@@ -55,7 +55,7 @@
 - Create: `conf.lua`
 - Create: `main.lua`
 
-- [ ] **Step 1: Write conf.lua**
+- [x] **Step 1: Write conf.lua**
 
 ```lua
 -- conf.lua
@@ -69,7 +69,7 @@ function love.conf(t)
 end
 ```
 
-- [ ] **Step 2: Write main.lua skeleton**
+- [x] **Step 2: Write main.lua skeleton**
 
 ```lua
 -- main.lua
@@ -94,12 +94,12 @@ function love.keypressed(key)
 end
 ```
 
-- [ ] **Step 3: Test that Love2D window opens**
+- [x] **Step 3: Test that Love2D window opens**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Black window titled "Incremental" opens at 800x600
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add conf.lua main.lua
@@ -113,7 +113,7 @@ git commit -m "feat: Love2D project skeleton with window config"
 **Files:**
 - Create: `src/state.lua`
 
-- [ ] **Step 1: Write state.lua with all top-level state**
+- [x] **Step 1: Write state.lua with all top-level state**
 
 ```lua
 -- src/state.lua
@@ -147,7 +147,7 @@ end
 return state
 ```
 
-- [ ] **Step 2: Import state in main.lua**
+- [x] **Step 2: Import state in main.lua**
 
 Replace the `love.load()` function in main.lua:
 
@@ -163,12 +163,12 @@ function love.update(dt)
 end
 ```
 
-- [ ] **Step 3: Test that Love2D still runs without errors**
+- [x] **Step 3: Test that Love2D still runs without errors**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Black window, no errors in console
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/state.lua main.lua
@@ -182,7 +182,7 @@ git commit -m "feat: global state singleton with resources, buildings, workers, 
 **Files:**
 - Create: `src/resources.lua`
 
-- [ ] **Step 1: Write resources.lua with add/spend/afford functions**
+- [x] **Step 1: Write resources.lua with add/spend/afford functions**
 
 ```lua
 -- src/resources.lua
@@ -225,7 +225,7 @@ end
 return resources
 ```
 
-- [ ] **Step 2: Test resources.lua in a temporary test script**
+- [x] **Step 2: Test resources.lua in a temporary test script**
 
 Create `test_resources.lua`:
 
@@ -255,13 +255,13 @@ print("All resource tests passed!")
 Run: `cd D:\kapital\prototypes\incremental && lua test_resources.lua`
 Expected: "All resource tests passed!"
 
-- [ ] **Step 3: Delete test file**
+- [x] **Step 3: Delete test file**
 
 ```bash
 rm test_resources.lua
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/resources.lua
@@ -277,7 +277,7 @@ git commit -m "feat: resource add/spend/afford helpers"
 **Files:**
 - Create: `src/world.lua`
 
-- [ ] **Step 1: Write world.lua with building definitions and state initialization**
+- [x] **Step 1: Write world.lua with building definitions and state initialization**
 
 ```lua
 -- src/world.lua
@@ -381,7 +381,7 @@ end
 return world
 ```
 
-- [ ] **Step 2: Update main.lua to initialize world and call draw**
+- [x] **Step 2: Update main.lua to initialize world and call draw**
 
 Update `love.load()`:
 
@@ -400,12 +400,12 @@ function love.draw()
 end
 ```
 
-- [ ] **Step 3: Test that buildings render as rectangles with labels**
+- [x] **Step 3: Test that buildings render as rectangles with labels**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Dark rectangles in a horizontal line with building names visible; some light gray (built), some dark (not built)
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/world.lua main.lua
@@ -419,7 +419,7 @@ git commit -m "feat: building registry and initial world draw"
 **Files:**
 - Create: `src/sprites.lua`
 
-- [ ] **Step 1: Write sprites.lua with Chroma Noir atlas loader**
+- [x] **Step 1: Write sprites.lua with Chroma Noir atlas loader**
 
 ```lua
 -- src/sprites.lua
@@ -443,7 +443,7 @@ end
 return sprites
 ```
 
-- [ ] **Step 2: Update main.lua to load sprites**
+- [x] **Step 2: Update main.lua to load sprites**
 
 Add to `love.load()`:
 
@@ -453,12 +453,12 @@ local sprites = require("src/sprites")
 sprites.load()
 ```
 
-- [ ] **Step 3: Test Love2D still runs**
+- [x] **Step 3: Test Love2D still runs**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Same as before; no errors
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/sprites.lua main.lua
@@ -472,7 +472,7 @@ git commit -m "feat: sprites module skeleton for Chroma Noir atlas"
 **Files:**
 - Create: `src/camera.lua`
 
-- [ ] **Step 1: Write camera.lua with world ↔ screen transforms**
+- [x] **Step 1: Write camera.lua with world ↔ screen transforms**
 
 ```lua
 -- src/camera.lua
@@ -508,7 +508,7 @@ end
 return camera
 ```
 
-- [ ] **Step 2: Update main.lua to use camera for world drawing**
+- [x] **Step 2: Update main.lua to use camera for world drawing**
 
 Update `love.draw()`:
 
@@ -525,12 +525,12 @@ function love.draw()
 end
 ```
 
-- [ ] **Step 3: Test camera centering**
+- [x] **Step 3: Test camera centering**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Buildings visible in the center of the screen, can see all initial buildings
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/camera.lua main.lua
@@ -546,7 +546,7 @@ git commit -m "feat: camera with screen-to-world transform and view centering"
 **Files:**
 - Create: `src/workers.lua`
 
-- [ ] **Step 1: Write workers.lua with worker entity management**
+- [x] **Step 1: Write workers.lua with worker entity management**
 
 ```lua
 -- src/workers.lua
@@ -625,7 +625,7 @@ end
 return workers
 ```
 
-- [ ] **Step 2: Update main.lua to call workers.update and workers.draw**
+- [x] **Step 2: Update main.lua to call workers.update and workers.draw**
 
 ```lua
 local workers = require("src/workers")
@@ -646,7 +646,7 @@ function love.draw()
 end
 ```
 
-- [ ] **Step 3: Test spawning workers in love.load()**
+- [x] **Step 3: Test spawning workers in love.load()**
 
 Add to `love.load()`:
 
@@ -658,7 +658,7 @@ workers.spawn(state, 60, 12)  -- Test spawn near stone pile
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Two yellow dots near the piles, visible in the world
 
-- [ ] **Step 4: Test movement by assigning a worker**
+- [x] **Step 4: Test movement by assigning a worker**
 
 Add to `love.load()` after spawning:
 
@@ -669,7 +669,7 @@ workers.assign(state, 1, "test_job", 100, 12)  -- Move worker 1 to x=100
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: First yellow dot moves right toward x=100
 
-- [ ] **Step 5: Remove test spawns and assignments**
+- [x] **Step 5: Remove test spawns and assignments**
 
 Update `love.load()` back to just:
 
@@ -678,7 +678,7 @@ world.init(state)
 sprites.load()
 ```
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/workers.lua main.lua
@@ -692,7 +692,7 @@ git commit -m "feat: worker spawning, assignment, movement"
 **Files:**
 - Create: `src/jobs.lua`
 
-- [ ] **Step 1: Write jobs.lua with job definitions**
+- [x] **Step 1: Write jobs.lua with job definitions**
 
 ```lua
 -- src/jobs.lua
@@ -744,12 +744,12 @@ end
 return jobs
 ```
 
-- [ ] **Step 2: Test Love2D still runs**
+- [x] **Step 2: Test Love2D still runs**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Same as before
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/jobs.lua
@@ -766,7 +766,7 @@ git commit -m "feat: job registry with job definitions"
 - Create: `src/buildings/tree.lua`
 - Create: `src/buildings/rock.lua`
 
-- [ ] **Step 1: Write tree.lua**
+- [x] **Step 1: Write tree.lua**
 
 ```lua
 -- src/buildings/tree.lua
@@ -792,7 +792,7 @@ end
 return tree
 ```
 
-- [ ] **Step 2: Write rock.lua**
+- [x] **Step 2: Write rock.lua**
 
 ```lua
 -- src/buildings/rock.lua
@@ -818,7 +818,7 @@ end
 return rock
 ```
 
-- [ ] **Step 3: Write input.lua to handle mouse clicks on buildings**
+- [x] **Step 3: Write input.lua to handle mouse clicks on buildings**
 
 ```lua
 -- src/input.lua
@@ -849,7 +849,7 @@ end
 return input
 ```
 
-- [ ] **Step 4: Update main.lua to initialize buildings and route input**
+- [x] **Step 4: Update main.lua to initialize buildings and route input**
 
 ```lua
 local input = require("src/input")
@@ -868,12 +868,12 @@ function love.mousepressed(x, y, button)
 end
 ```
 
-- [ ] **Step 5: Test clicking on Tree and Rock**
+- [x] **Step 5: Test clicking on Tree and Rock**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Window opens; clicking on Tree or Rock adds points and wood/stones
 
-- [ ] **Step 6: Add HUD to display resources**
+- [x] **Step 6: Add HUD to display resources**
 
 Create `src/ui/hud.lua`:
 
@@ -896,7 +896,7 @@ end
 return hud
 ```
 
-- [ ] **Step 7: Update main.lua to draw HUD after camera detach**
+- [x] **Step 7: Update main.lua to draw HUD after camera detach**
 
 ```lua
 local hud = require("src/ui/hud")
@@ -914,12 +914,12 @@ function love.draw()
 end
 ```
 
-- [ ] **Step 8: Test HUD displays and updates**
+- [x] **Step 8: Test HUD displays and updates**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: HUD at top shows Points, Wood increasing as you click Tree/Rock
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add src/buildings/tree.lua src/buildings/rock.lua src/input.lua src/ui/hud.lua main.lua
@@ -935,7 +935,7 @@ git commit -m "feat: click actions for Tree and Rock; basic HUD"
 - Create: `src/buildings/stone_pile.lua`
 - Create: `src/buildings/lumberyard.lua`
 
-- [ ] **Step 1: Write log_pile.lua (auto-init in world)**
+- [x] **Step 1: Write log_pile.lua (auto-init in world)**
 
 ```lua
 -- src/buildings/log_pile.lua
@@ -950,7 +950,7 @@ end
 return log_pile
 ```
 
-- [ ] **Step 2: Write stone_pile.lua**
+- [x] **Step 2: Write stone_pile.lua**
 
 ```lua
 -- src/buildings/stone_pile.lua
@@ -965,7 +965,7 @@ end
 return stone_pile
 ```
 
-- [ ] **Step 3: Write lumberyard.lua**
+- [x] **Step 3: Write lumberyard.lua**
 
 ```lua
 -- src/buildings/lumberyard.lua
@@ -981,7 +981,7 @@ end
 return lumberyard
 ```
 
-- [ ] **Step 4: Update tree.lua to respect log_pile capacity**
+- [x] **Step 4: Update tree.lua to respect log_pile capacity**
 
 Replace `tree.click()`:
 
@@ -995,7 +995,7 @@ function tree.click(state)
 end
 ```
 
-- [ ] **Step 5: Update rock.lua to respect stone_pile capacity**
+- [x] **Step 5: Update rock.lua to respect stone_pile capacity**
 
 Replace `rock.click()`:
 
@@ -1009,7 +1009,7 @@ function rock.click(state)
 end
 ```
 
-- [ ] **Step 6: Update main.lua to initialize storage buildings**
+- [x] **Step 6: Update main.lua to initialize storage buildings**
 
 ```lua
 local log_pile = require("src/buildings/log_pile")
@@ -1027,12 +1027,12 @@ function love.load()
 end
 ```
 
-- [ ] **Step 7: Test storage capacity**
+- [x] **Step 7: Test storage capacity**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Click Tree 10 times → wood stops increasing; same for Rock/Stone
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/buildings/log_pile.lua src/buildings/stone_pile.lua src/buildings/lumberyard.lua src/buildings/tree.lua src/buildings/rock.lua main.lua
@@ -1046,7 +1046,7 @@ git commit -m "feat: resource storage with capacity limits (log_pile, stone_pile
 **Files:**
 - Create: `src/buildings/dormitory.lua`
 
-- [ ] **Step 1: Write dormitory.lua with floor purchase logic**
+- [x] **Step 1: Write dormitory.lua with floor purchase logic**
 
 ```lua
 -- src/buildings/dormitory.lua
@@ -1092,7 +1092,7 @@ end
 return dormitory
 ```
 
-- [ ] **Step 2: Create menu.lua (generic popup)**
+- [x] **Step 2: Create menu.lua (generic popup)**
 
 ```lua
 -- src/ui/menu.lua
@@ -1140,7 +1140,7 @@ end
 return menu
 ```
 
-- [ ] **Step 3: Create dormitory menu wrapper**
+- [x] **Step 3: Create dormitory menu wrapper**
 
 Add to dormitory.lua:
 
@@ -1161,7 +1161,7 @@ function dormitory.menu_items(state)
 end
 ```
 
-- [ ] **Step 4: Update world.lua to handle building clicks and route to menu**
+- [x] **Step 4: Update world.lua to handle building clicks and route to menu**
 
 Add to world.lua:
 
@@ -1179,7 +1179,7 @@ function world.mousepressed(state, world_x, world_y)
 end
 ```
 
-- [ ] **Step 5: Update input.lua to route building clicks to world.mousepressed**
+- [x] **Step 5: Update input.lua to route building clicks to world.mousepressed**
 
 Add to input.mousepressed():
 
@@ -1189,7 +1189,7 @@ local world = require("src/world")
 world.mousepressed(state, world_x, world_y)
 ```
 
-- [ ] **Step 6: Update main.lua to initialize dormitory**
+- [x] **Step 6: Update main.lua to initialize dormitory**
 
 ```lua
 local dormitory = require("src/buildings/dormitory")
@@ -1200,12 +1200,12 @@ function love.load()
 end
 ```
 
-- [ ] **Step 7: Test dormitory floor purchase**
+- [x] **Step 7: Test dormitory floor purchase**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Click dormitory to open menu; buy floor at 10 points; workers spawn there
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/buildings/dormitory.lua src/ui/menu.lua src/input.lua src/world.lua main.lua
@@ -1224,7 +1224,7 @@ git commit -m "feat: dormitory with floor purchase and worker spawning; menu sys
 - Create: `src/buildings/loading_dock.lua`
 - Create: `src/buildings/play_zone.lua`
 
-- [ ] **Step 1: Write compactor.lua**
+- [x] **Step 1: Write compactor.lua**
 
 ```lua
 -- src/buildings/compactor.lua
@@ -1258,7 +1258,7 @@ end
 return compactor
 ```
 
-- [ ] **Step 2: Write assembler.lua**
+- [x] **Step 2: Write assembler.lua**
 
 ```lua
 -- src/buildings/assembler.lua
@@ -1292,7 +1292,7 @@ end
 return assembler
 ```
 
-- [ ] **Step 3: Write loading_dock.lua**
+- [x] **Step 3: Write loading_dock.lua**
 
 ```lua
 -- src/buildings/loading_dock.lua
@@ -1324,7 +1324,7 @@ end
 return loading_dock
 ```
 
-- [ ] **Step 4: Write play_zone.lua**
+- [x] **Step 4: Write play_zone.lua**
 
 ```lua
 -- src/buildings/play_zone.lua
@@ -1356,7 +1356,7 @@ end
 return play_zone
 ```
 
-- [ ] **Step 5: Update main.lua to initialize all buildings**
+- [x] **Step 5: Update main.lua to initialize all buildings**
 
 ```lua
 local compactor = require("src/buildings/compactor")
@@ -1373,7 +1373,7 @@ function love.load()
 end
 ```
 
-- [ ] **Step 6: Add global "build" functions to a building registry**
+- [x] **Step 6: Add global "build" functions to a building registry**
 
 Update world.lua to include a build registry:
 
@@ -1400,7 +1400,7 @@ function world.try_build(state, building_id)
 end
 ```
 
-- [ ] **Step 7: Update input.lua to handle building purchase on menu interaction**
+- [x] **Step 7: Update input.lua to handle building purchase on menu interaction**
 
 For now, add a simple test by updating input.mousepressed to check a key press for building:
 
@@ -1418,7 +1418,7 @@ function input.keypressed(state, key)
 end
 ```
 
-- [ ] **Step 8: Update main.lua to route keypresses**
+- [x] **Step 8: Update main.lua to route keypresses**
 
 ```lua
 function love.keypressed(key)
@@ -1432,12 +1432,12 @@ Also add to love.load():
 world.init_modules(state)
 ```
 
-- [ ] **Step 9: Test building construction**
+- [x] **Step 9: Test building construction**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Click Tree/Rock to gather points/wood; press C/A/L/P to build buildings (if affordable); unbuilt buildings go from dark to light gray
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 ```bash
 git add src/buildings/compactor.lua src/buildings/assembler.lua src/buildings/loading_dock.lua src/buildings/play_zone.lua src/input.lua src/world.lua main.lua
@@ -1451,7 +1451,7 @@ git commit -m "feat: construction for Compactor, Assembler, Loading Dock, Play Z
 **Files:**
 - Create: `src/ui/arrows.lua`
 
-- [ ] **Step 1: Write arrows.lua (◀ N ▶ widget)**
+- [x] **Step 1: Write arrows.lua (◀ N ▶ widget)**
 
 ```lua
 -- src/ui/arrows.lua
@@ -1474,7 +1474,7 @@ end
 return arrows
 ```
 
-- [ ] **Step 2: Update dormitory.lua with hire/unassign actions**
+- [x] **Step 2: Update dormitory.lua with hire/unassign actions**
 
 Add to dormitory.lua:
 
@@ -1517,7 +1517,7 @@ function dormitory.unassign_worker(state, building_id, worker_id)
 end
 ```
 
-- [ ] **Step 3: Test worker hiring by adding a test menu interaction**
+- [x] **Step 3: Test worker hiring by adding a test menu interaction**
 
 For now, add a keyboard shortcut in input.lua:
 
@@ -1530,13 +1530,13 @@ function input.keypressed(state, key)
 end
 ```
 
-- [ ] **Step 4: Update main.lua to call dormitory module**
+- [x] **Step 4: Update main.lua to call dormitory module**
 
 ```lua
 local dormitory = require("src/buildings/dormitory")
 ```
 
-- [ ] **Step 5: Test worker hiring and movement**
+- [x] **Step 5: Test worker hiring and movement**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected:
@@ -1545,7 +1545,7 @@ Expected:
 - Press H: one worker moves toward Tree (and becomes a Lumberjack)
 - Click Tree with worker assigned: harvesting happens automatically (TBD in next tasks)
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/ui/arrows.lua src/buildings/dormitory.lua src/input.lua main.lua
@@ -1563,7 +1563,7 @@ git commit -m "feat: worker hiring and assignment to jobs"
 - Modify: `src/buildings/rock.lua`
 - Modify: `src/workers.lua`
 
-- [ ] **Step 1: Update tree.lua to implement Lumberjack action**
+- [x] **Step 1: Update tree.lua to implement Lumberjack action**
 
 ```lua
 -- src/buildings/tree.lua
@@ -1606,7 +1606,7 @@ end
 return tree
 ```
 
-- [ ] **Step 2: Update rock.lua similarly**
+- [x] **Step 2: Update rock.lua similarly**
 
 ```lua
 -- src/buildings/rock.lua
@@ -1646,7 +1646,7 @@ end
 return rock
 ```
 
-- [ ] **Step 3: Update main.lua to call tree.update() and rock.update()**
+- [x] **Step 3: Update main.lua to call tree.update() and rock.update()**
 
 ```lua
 local tree = require("src/buildings/tree")
@@ -1660,7 +1660,7 @@ function love.update(dt)
 end
 ```
 
-- [ ] **Step 4: Test worker harvest**
+- [x] **Step 4: Test worker harvest**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected:
@@ -1669,7 +1669,7 @@ Expected:
 - Watch wood accumulate over time (~0.5 per sec)
 - Same for Rock/Miner
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/buildings/tree.lua src/buildings/rock.lua main.lua
@@ -1684,7 +1684,7 @@ git commit -m "feat: worker harvest actions for Tree and Rock"
 - Create: `src/minesweeper.lua`
 - Modify: `src/buildings/play_zone.lua`
 
-- [ ] **Step 1: Write minesweeper.lua stub**
+- [x] **Step 1: Write minesweeper.lua stub**
 
 ```lua
 -- src/minesweeper.lua
@@ -1729,7 +1729,7 @@ end
 return minesweeper
 ```
 
-- [ ] **Step 2: Update play_zone.lua to integrate Minesweeper**
+- [x] **Step 2: Update play_zone.lua to integrate Minesweeper**
 
 ```lua
 -- src/buildings/play_zone.lua
@@ -1768,7 +1768,7 @@ end
 return play_zone
 ```
 
-- [ ] **Step 3: Update main.lua to initialize and update Minesweeper**
+- [x] **Step 3: Update main.lua to initialize and update Minesweeper**
 
 ```lua
 local minesweeper = require("src/minesweeper")
@@ -1787,7 +1787,7 @@ function love.update(dt)
 end
 ```
 
-- [ ] **Step 4: Update HUD to display SP and Bombs**
+- [x] **Step 4: Update HUD to display SP and Bombs**
 
 Update hud.lua:
 
@@ -1801,7 +1801,7 @@ local text = string.format(
 )
 ```
 
-- [ ] **Step 5: Test Minesweeper stub by manually triggering tiles**
+- [x] **Step 5: Test Minesweeper stub by manually triggering tiles**
 
 Add to input.keypressed():
 
@@ -1811,7 +1811,7 @@ if key == "t" then  -- Test: press T to add a tile
 end
 ```
 
-- [ ] **Step 6: Test Minesweeper resolution**
+- [x] **Step 6: Test Minesweeper resolution**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected:
@@ -1819,11 +1819,11 @@ Expected:
 - After 4th tile: 2-second pause
 - After pause: SP and Bombs increase, tiles reset
 
-- [ ] **Step 7: Remove test code (the 't' key binding)**
+- [x] **Step 7: Remove test code (the 't' key binding)**
 
 Remove the test key from input.keypressed.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/minesweeper.lua src/buildings/play_zone.lua src/ui/hud.lua main.lua
@@ -1842,7 +1842,7 @@ git commit -m "feat: Minesweeper stub with tile accumulation and auto-resolve"
 - Modify: `src/buildings/loading_dock.lua`
 - Create: `src/transit.lua` (optional: track in-flight resources)
 
-- [ ] **Step 1: Update compactor.lua with Stone → Block conversion**
+- [x] **Step 1: Update compactor.lua with Stone → Block conversion**
 
 ```lua
 -- src/buildings/compactor.lua
@@ -1892,7 +1892,7 @@ end
 return compactor
 ```
 
-- [ ] **Step 2: Update assembler.lua with Block → Tile conversion**
+- [x] **Step 2: Update assembler.lua with Block → Tile conversion**
 
 ```lua
 -- src/buildings/assembler.lua
@@ -1947,7 +1947,7 @@ end
 return assembler
 ```
 
-- [ ] **Step 3: Update loading_dock.lua with Tile → Minesweeper delivery**
+- [x] **Step 3: Update loading_dock.lua with Tile → Minesweeper delivery**
 
 ```lua
 -- src/buildings/loading_dock.lua
@@ -1998,7 +1998,7 @@ end
 return loading_dock
 ```
 
-- [ ] **Step 4: Update main.lua to call production chain updates**
+- [x] **Step 4: Update main.lua to call production chain updates**
 
 ```lua
 local compactor = require("src/buildings/compactor")
@@ -2024,7 +2024,7 @@ function love.update(dt)
 end
 ```
 
-- [ ] **Step 5: Test full production chain**
+- [x] **Step 5: Test full production chain**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected:
@@ -2036,7 +2036,7 @@ Expected:
 - Stones → Blocks → Tiles → Minesweeper
 - Tiles accumulate, then resolve → SP/Bombs increase
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/buildings/compactor.lua src/buildings/assembler.lua src/buildings/loading_dock.lua main.lua
@@ -2053,7 +2053,7 @@ git commit -m "feat: production chain (stones→blocks→tiles→minesweeper)"
 - Modify: `src/camera.lua`
 - Modify: `src/input.lua`
 
-- [ ] **Step 1: Update camera.lua with edge-scroll and zoom**
+- [x] **Step 1: Update camera.lua with edge-scroll and zoom**
 
 ```lua
 -- src/camera.lua
@@ -2110,7 +2110,7 @@ end
 return camera
 ```
 
-- [ ] **Step 2: Update input.lua to handle arrow keys and mouse wheel**
+- [x] **Step 2: Update input.lua to handle arrow keys and mouse wheel**
 
 ```lua
 local input = {}
@@ -2161,7 +2161,7 @@ end
 return input
 ```
 
-- [ ] **Step 3: Update main.lua to call camera.update and route wheel events**
+- [x] **Step 3: Update main.lua to call camera.update and route wheel events**
 
 ```lua
 function love.update(dt)
@@ -2175,7 +2175,7 @@ function love.wheelmoved(x, y)
 end
 ```
 
-- [ ] **Step 4: Test camera controls**
+- [x] **Step 4: Test camera controls**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected:
@@ -2183,7 +2183,7 @@ Expected:
 - Mouse wheel zooms in/out (discrete levels visible, no blur)
 - Mouse near window edges auto-scrolls
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/camera.lua src/input.lua main.lua
@@ -2200,7 +2200,7 @@ git commit -m "feat: camera edge-scroll, arrow-key pan, mouse wheel zoom"
 - Modify: `src/ui/menu.lua`
 - Modify: `src/ui/arrows.lua`
 
-- [ ] **Step 1: Enhance menu.lua to draw building-specific content**
+- [x] **Step 1: Enhance menu.lua to draw building-specific content**
 
 ```lua
 -- src/ui/menu.lua (extended)
@@ -2247,7 +2247,7 @@ end
 return menu
 ```
 
-- [ ] **Step 2: Update world.mousepressed to handle menu clicks**
+- [x] **Step 2: Update world.mousepressed to handle menu clicks**
 
 Add to world.mousepressed() logic to detect menu close button and delegate building interactions to menus:
 
@@ -2275,7 +2275,7 @@ function world.mousepressed(state, world_x, world_y, screen_x, screen_y)
 end
 ```
 
-- [ ] **Step 3: Update input.lua to pass screen coords**
+- [x] **Step 3: Update input.lua to pass screen coords**
 
 ```lua
 function input.mousepressed(state, x, y, button)
@@ -2305,7 +2305,7 @@ function input.mousepressed(state, x, y, button)
 end
 ```
 
-- [ ] **Step 4: Draw building menus in love.draw()**
+- [x] **Step 4: Draw building menus in love.draw()**
 
 ```lua
 local dormitory = require("src/buildings/dormitory")
@@ -2327,12 +2327,12 @@ function love.draw()
 end
 ```
 
-- [ ] **Step 5: Test menu opening/closing**
+- [x] **Step 5: Test menu opening/closing**
 
 Run: `cd D:\kapital\prototypes\incremental && love .`
 Expected: Click dormitory → menu appears; click [x] → menu closes; Esc → menu closes
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/ui/menu.lua src/input.lua src/world.lua main.lua

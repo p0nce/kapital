@@ -12,6 +12,11 @@ function sprites.load()
 
   -- House sprite at (0, 32), 7x4 tiles = 56x32 px
   quads.house = { atlas = buildings, q = love.graphics.newQuad(0, 32, 56, 32, bw, bh) }
+  -- Dormitory rows (slices of the house sprite, each 56x8 px)
+  quads.dorm_row_chimney = { atlas = buildings, q = love.graphics.newQuad(0, 32, 56, 8, bw, bh) }
+  quads.dorm_row_roof    = { atlas = buildings, q = love.graphics.newQuad(0, 40, 56, 8, bw, bh) }
+  quads.dorm_row_windows = { atlas = buildings, q = love.graphics.newQuad(0, 48, 56, 8, bw, bh) }
+  quads.dorm_row_floor   = { atlas = buildings, q = love.graphics.newQuad(0, 56, 56, 8, bw, bh) }
   -- Tree sprite at (120, 80), 1x2 tiles = 8x16 px
   quads.tree       = { atlas = buildings, q = love.graphics.newQuad(120, 80,  8, 16, bw, bh) }
 

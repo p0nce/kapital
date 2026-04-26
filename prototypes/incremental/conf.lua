@@ -7,3 +7,9 @@ function love.conf(t)
   t.window.resizable = true
   t.version = "11.5"
 end
+
+if love._os == "Windows" then
+  local ffi = require "ffi"
+  ffi.cdef[[ bool SetProcessDPIAware(); ]]
+  ffi.C.SetProcessDPIAware();
+end

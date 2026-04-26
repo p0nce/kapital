@@ -6,7 +6,7 @@ local EDGE_MARGIN = 50
 local EDGE_SCROLL_SPEED = 150
 
 function camera.update(dt, state)
-  local mx, my = love.mouse.getPosition()
+  local mx, my = screen.mouse_pos()
   if mx < EDGE_MARGIN then
     state.camera.x = state.camera.x - EDGE_SCROLL_SPEED * dt
   elseif mx > screen.w() - EDGE_MARGIN then

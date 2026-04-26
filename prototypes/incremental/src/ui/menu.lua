@@ -31,9 +31,13 @@ local function menu_world_pos(building, inv_zoom)
   return mx, my
 end
 
-local function menu_row_count(open, building)
-  local jobs = require("src/jobs")
-  if open == "dormitory" then return 2 end
+local function menu_row_count(state, open, building)
+  local jobs  = require("src/jobs")
+  local world = require("src/world")
+  if open == "dormitory" then
+    local purchasable = world.get_purchasable(state)
+    return 2 + #purchasable
+  end
   local rows = 0
   if not building.built and building.build_costs then rows = rows + 1 end
   local job_name = jobs.get_for_building(open)
@@ -61,7 +65,7 @@ function menu.draw(state)
   if not building then return end
 
   local inv_zoom = 1 / state.camera.zoom
-  local rows     = menu_row_count(open, building)
+  local rows     = menu_row_count(state, open, building)
   local panel_sh = HEAD_SH + rows * ITEM_SH + PAD_S
   local mx, my   = menu_world_pos(building, inv_zoom)
 
@@ -76,6 +80,7 @@ function menu.draw(state)
   love.graphics.setColor(0.35, 0.35, 0.35)
   love.graphics.line(0, HEAD_SH, MENU_SW, HEAD_SH)
 
+  local world_mod = require("src/world")
   local row = 0
   if open == "dormitory" then
     local cost = dorm_mod.floor_cost(state.buildings.dormitory.floors)
@@ -85,6 +90,26 @@ function menu.draw(state)
     row = row + 1
     love.graphics.setColor(0.55, 0.55, 0.55)
     love.graphics.print(string.format("Idle workers: %d", #state.buildings.dormitory.workers_idle), PAD_S, HEAD_SH + row * ITEM_SH + 3)
+    row = row + 1
+    for _, entry in ipairs(world_mod.get_purchasable(state)) do
+      local c    = entry.building.build_costs
+      local built = entry.building.built
+      local label
+      if built then
+        label = entry.building.name .. ": built"
+      elseif c.wood then
+        label = string.format("Build %s: %d pts %d wood", entry.building.name, c.points, c.wood)
+      else
+        label = string.format("Build %s: %d pts", entry.building.name, c.points)
+      end
+      local can = not built and res_mod.can_afford(state, "points", c.points) and
+                  (not c.wood or res_mod.can_afford(state, "wood", c.wood))
+      love.graphics.setColor(built and 0.4 or (can and 1 or 0.4),
+                             built and 0.4 or (can and 1 or 0.4),
+                             built and 0.55 or (can and 1 or 0.4))
+      love.graphics.print(label, PAD_S, HEAD_SH + row * ITEM_SH + 3)
+      row = row + 1
+    end
   else
     if not building.built and building.build_costs then
       local c  = building.build_costs
@@ -125,7 +150,7 @@ function menu.mousepressed(state, world_x, world_y, screen_x, screen_y)
     local mx, my   = menu_world_pos(building, inv_zoom)
     local rel_sx   = (world_x - mx) * zoom
     local rel_sy   = (world_y - my) * zoom
-    local rows     = menu_row_count(open, building)
+    local rows     = menu_row_count(state, open, building)
     local panel_sh = HEAD_SH + rows * ITEM_SH + PAD_S
 
     if rel_sx >= 0 and rel_sx < MENU_SW and rel_sy >= 0 and rel_sy < panel_sh then
@@ -133,6 +158,17 @@ function menu.mousepressed(state, world_x, world_y, screen_x, screen_y)
       if open == "dormitory" then
         if rel_sy >= HEAD_SH and rel_sy < HEAD_SH + ITEM_SH then
           dorm_mod.buy_floor(state)
+        end
+        row = 2  -- skip "buy floor" and "idle workers" rows
+        local world_mod = require("src/world")
+        for _, entry in ipairs(world_mod.get_purchasable(state)) do
+          if not entry.building.built then
+            if rel_sy >= HEAD_SH + row * ITEM_SH and rel_sy < HEAD_SH + (row + 1) * ITEM_SH then
+              world_mod.try_build(state, entry.id)
+              break
+            end
+          end
+          row = row + 1
         end
       else
         if not building.built and building.build_costs then

@@ -10,7 +10,8 @@ local screen   = require("src/screen")
 -- All buildings use the same house sprite: 56x32 px (7x4 tiles).
 -- Spaced with 8px gaps. Layout origin x values: 0, 64, 128, 192, 256, 320, 384, 448, 512, 576
 local building_defs = {
-  lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false },
+  lumberyard   = { name = "Lumberyard",   x = 0,   y = 0, w = 7, h = 4, built = false,
+                   build_costs = { points = 100 } },
   log_pile     = { name = "Log pile",     x = 56,  y = 0, w = 9, h = 1, built = true  },
   tree         = { name = "Tree",         x = 128, y = 0, w = 7, h = 4, built = true  },
   stone_pile   = { name = "Stone pile",   x = 184, y = 0, w = 9, h = 1, built = true  },
@@ -91,7 +92,30 @@ function world.draw(state)
     love.graphics.push()
     love.graphics.translate(ox, oy)
 
-    if tile_strip_map[building_id] then
+    if building_id == "dormitory" then
+      local floors = building.floors or 1
+      bw = 56
+      bh = (3 + floors) * 8  -- chimney + roof + floors×windows + door
+      draw_y = GROUND_Y - bh
+      local ac, qc = sprites.get_quad("dorm_row_chimney")
+      local _,  qr = sprites.get_quad("dorm_row_roof")
+      local _,  qw = sprites.get_quad("dorm_row_windows")
+      local _,  qf = sprites.get_quad("dorm_row_floor")
+      if ac then
+        love.graphics.setColor(1, 1, 1)
+        love.graphics.draw(ac, qc, building.x, draw_y)
+        love.graphics.draw(ac, qr, building.x, draw_y + 8)
+        for i = 1, floors do
+          love.graphics.draw(ac, qw, building.x, draw_y + 8 + i * 8)
+        end
+        love.graphics.draw(ac, qf, building.x, draw_y + bh - 8)
+      else
+        love.graphics.setColor(0.3, 0.3, 0.3)
+        love.graphics.rectangle("fill", building.x, draw_y, bw, bh)
+      end
+      scx = building.x + bw / 2
+      scy = draw_y + bh / 2
+    elseif tile_strip_map[building_id] then
       local strip = tile_strip_map[building_id]
       bw, bh = strip.count * 8, 8
       draw_y = GROUND_Y - bh + (strip.y_offset or 0)
@@ -174,6 +198,19 @@ function world.draw(state)
   effects.draw_particles()
 end
 
+-- Returns buildings with build_costs in world-x order, regardless of built state
+local purchasable_order = { "lumberyard", "compactor", "assembler", "loading_dock", "play_zone" }
+function world.get_purchasable(state)
+  local list = {}
+  for _, id in ipairs(purchasable_order) do
+    local b = state.buildings[id]
+    if b and b.build_costs then
+      table.insert(list, { id = id, building = b })
+    end
+  end
+  return list
+end
+
 function world.get_ground_y()
   return GROUND_Y
 end
@@ -188,10 +225,11 @@ end
 
 function world.init_modules()
   building_modules = {
-    compactor = require("src/buildings/compactor"),
-    assembler = require("src/buildings/assembler"),
+    lumberyard   = require("src/buildings/lumberyard"),
+    compactor    = require("src/buildings/compactor"),
+    assembler    = require("src/buildings/assembler"),
     loading_dock = require("src/buildings/loading_dock"),
-    play_zone = require("src/buildings/play_zone"),
+    play_zone    = require("src/buildings/play_zone"),
   }
 end
 

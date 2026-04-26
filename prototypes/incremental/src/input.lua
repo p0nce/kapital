@@ -1,5 +1,6 @@
 -- src/input.lua
 local camera = require("src/camera")
+local screen = require("src/screen")
 local tree   = require("src/buildings/tree")
 local rock   = require("src/buildings/rock")
 local menu   = require("src/ui/menu")
@@ -15,7 +16,7 @@ function input.update(dt, state)
     return
   end
 
-  local mx, my = love.mouse.getPosition()
+  local mx, my = screen.mouse_pos()
   local world_x, world_y = camera.screen_to_world(state, mx, my)
 
   local tb = state.buildings.tree
@@ -79,7 +80,7 @@ local WHEEL_PAN_SPEED = 24
 local HUD_HEIGHT = 30  -- pixels; wheel ignored when cursor is over HUD
 
 function input.wheelmoved(state, x, y)
-  local _, my = love.mouse.getPosition()
+  local _, my = screen.mouse_pos()
   if my <= HUD_HEIGHT then return end
   state.camera.y = state.camera.y - y * WHEEL_PAN_SPEED
   if state.camera.y < -100 then state.camera.y = -100 end

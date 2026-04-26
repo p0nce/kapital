@@ -13,8 +13,12 @@ end
 
 function dormitory.init(state)
   local building = state.buildings.dormitory
-  building.floors = 0
+  building.floors = 1
   building.workers_idle = {}
+  local w1 = workers.spawn(state, building.x + 4, building.y + 4)
+  local w2 = workers.spawn(state, building.x + 4, building.y + 4)
+  table.insert(building.workers_idle, w1.id)
+  table.insert(building.workers_idle, w2.id)
 end
 
 function dormitory.buy_floor(state)
@@ -68,7 +72,7 @@ function dormitory.unassign_worker(state, building_id, worker_id)
       table.insert(state.buildings.dormitory.workers_idle, worker_id)
       local dorm = state.buildings.dormitory
       local world = require("src/world")
-      workers.unassign(state, worker_id, dorm.x + dorm.w * 4, world.get_ground_y() - 4)
+      workers.unassign(state, worker_id, dorm.x + dorm.w * 4, world.get_ground_y())
       return true
     end
   end
